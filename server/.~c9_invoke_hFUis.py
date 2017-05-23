@@ -60,11 +60,8 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pogodex',
-        'USER': 'pogodexuser',
-        'PASSWORD': 'freddec@2012',
-        'HOST': 'localhost',
-        'PORT': '',    }
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [

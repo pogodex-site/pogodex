@@ -1,4 +1,5 @@
 Django==1.11.1
 django-social-auth==0.7.28
 djangorestframework==3.6.3
+psycopg2==2.7.1
 rest-social-auth==1.1.0
