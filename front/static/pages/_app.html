@@ -1,0 +1,43 @@
+<div class="navbar mb-2" ng-controller="AppCtrl">
+    <div class="container d-flex">
+
+        <a class="navbar-brand mr-auto" ui-sref="app.pokedex.view">
+            <img src="/static/img/logo.png" width="24" height="24" class="d-inline-block align-top" style="margin-right: 5px;" />
+            PoGoDex
+        </a>
+        
+		<ul class="navbar-nav">
+		    
+	        <li class="nav-item dropdown">
+	            
+                <a class="nav-link pr-0" href="javascript:;" data-toggle="dropdown">
+                   <i class="fa fa-bars"></i>
+                </a>
+                
+                <div class="dropdown-menu dropdown-menu-right">
+                    
+    	            <a class="dropdown-item" ui-sref="app.profile.view">
+    	                {{'profile_LINK' | translate}}
+                    </a>
+    	            
+	            </div>
+	            
+            </li>
+            
+		</ul>
+        
+    </div>
+</div>
+
+<div class="content">
+    <div class="container" ui-view="" id="toast-content">
+    </div>
+</div>
+
+<div class="navbar navbar-bottom">
+    <div class="container text-center">
+        
+        <small class="navbar-text p-0">Copyright <strong>DECONINCK Frédéric</strong> © 2017</small>
+        
+    </div>
+</div>

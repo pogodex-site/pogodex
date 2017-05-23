@@ -1,0 +1,53 @@
+<div class="card">
+    
+    <div class="card-header">
+        
+        <a ui-sref="app.pokedex.view" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
+    
+        <span class="title">{{'profile_TITLE' | translate}}</span>
+        
+        <a ng-show="!isLoading && profile" ui-sref="app.profile.edit" class="pull-right"><i class="fa fa-pencil-square-o"></i></a>
+
+    </div>
+
+    <div class="card-block">
+        
+        <div ng-show="isLoading" class="text-center">
+            <img src="/static/img/loading.gif" height="64"/>
+        </div>
+        
+        <div ng-show="!isLoading && !profile">
+            <span class="text-danger font-italic">{{'profile_NOPROFILE' | translate}}</span>
+        </div>
+        
+        <div ng-show="!isLoading && profile">
+            
+            <div class="row">
+                <div class="col-4"><strong>{{'profile_TEAM' | translate}}</strong></div>
+                <div class="col-8">
+                    <span ng-if="profile.team">{{profile.team}}</span>
+                    <span ng-if="!profile.team" class="text-danger font-italic">{{'profile_NOTEAM' | translate}}</span>
+                </div>
+            </div>
+    
+            <div class="line-dashed"></div>
+
+            <div class="row">
+                <div class="col-4"><strong>{{'profile_LEVEL' | translate}}</strong></div>
+                <div class="col-8">
+                    <span ng-if="profile.level">{{profile.level}}</span>
+                    <span ng-if="!profile.level" class="text-danger font-italic">{{'profile_NOLEVEL' | translate}}</span>
+                </div>
+            </div>
+    
+            <div class="line-dashed"></div>
+        
+    		<a href="javascript:;" ng-controller="AccountCtrl" ng-click="logout()" class="btn btn-danger mt-4" >
+    			{{'logout_LINK' | translate}}
+    		</a>
+           
+        </div>
+        
+    </div>
+    
+</div>

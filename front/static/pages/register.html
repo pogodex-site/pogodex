@@ -1,0 +1,69 @@
+<div class="card">
+
+    <div class="card-block">
+
+		<form name="form" novalidate>
+
+			<div ng-show="error">
+				<p class="text-danger">{{error | translate}}</p>
+			</div>
+
+			<div class="form-group" ng-class="{'has-danger': form.$submitted && form.username.$invalid}">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user"></i></span>
+					<input type="text" class="form-control" placeholder="{{'register_user_PLACEHOLDER' | translate}}" name="username" ng-model="registerModel.username" required="" />
+				</div>
+				<div ng-show="form.$submitted || form.username.$touched">
+					<p class="text-danger" ng-show="form.username.$error.required">{{'error_REQUIRED' | translate}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-danger': form.$submitted && form.email.$invalid}">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+					<input type="email" class="form-control" placeholder="{{'register_email_PLACEHOLDER' | translate}}" name="email" ng-model="registerModel.email" required="" />
+				</div>
+				<div ng-show="form.$submitted || form.email.$touched">
+					<p class="text-danger" ng-show="form.email.$error.required">{{'error_REQUIRED' | translate}}</p>
+					<p class="text-danger" ng-show="form.email.$error.email">{{'error_EMAIL' | translate}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-danger': form.$submitted && form.password1.$invalid}">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+					<input type="password" class="form-control" placeholder="{{'register_pwd1_PLACEHOLDER' | translate}}" name="password1" ng-model="registerModel.password1" required="" />
+				</div>
+				<div ng-show="form.$submitted || form.password1.$touched">
+					<p class="text-danger" ng-show="form.password1.$error.required">{{'error_REQUIRED' | translate}}</p>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{'has-danger': form.$submitted && form.password2.$invalid}">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+					<input type="password" class="form-control" placeholder="{{'register_pwd2_PLACEHOLDER' | translate}}" name="password2" ng-model="registerModel.password2" required="" />
+				</div>
+				<div ng-show="form.$submitted || form.password2.$touched">
+					<p class="text-danger" ng-show="form.password2.$error.required">{{'error_REQUIRED' | translate}}</p>
+				</div>
+			</div>
+
+			<p class="text-center">
+				{{'register_TEXT1' | translate}}</a>
+			</p>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block" ng-click="register(form);" ng-disabled="!registerModel.username || !registerModel.email || !registerModel.password1 || !registerModel.password2">{{'register_BTN' | translate}}</button>
+			</div>
+
+    		<div class="text-center">
+    			{{'register_TEXT2' | translate}}
+    			<br><a ui-sref="base.account.login" class="highlight">{{'login_LINK' | translate}}</a>
+    		</div>
+			
+		</form>
+
+    </div>
+    
+</div>
