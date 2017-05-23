@@ -57,14 +57,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pogodex',
-        'USER': 'pogodexuser',
-        'PASSWORD': 'freddec@2012',
-        'HOST': 'localhost',
-        'PORT': '',    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 AUTH_PASSWORD_VALIDATORS = [
