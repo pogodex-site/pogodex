@@ -5,7 +5,7 @@ SECRET_KEY = ')tkpe%w1u5c@#e9=ttd4rbr1l_1%qa3w(qvtb%(2_l!=4*qlzy'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pogodex.herokuapp.com']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = [
