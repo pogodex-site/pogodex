@@ -2,7 +2,7 @@ SECRET_KEY = ')tkpe%w1u5c@#e9=ttd4rbr1l_1%qa3w(qvtb%(2_l!=4*qlzy'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['pogodex.herokuapp.com']
+ALLOWED_HOSTS = ['pogodex.herokuapp.com', 'pogodex-freddec.c9users.io']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 INSTALLED_APPS = [
@@ -92,6 +92,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'front/vendor'),
     os.path.join(PROJECT_ROOT, 'front/static'),
 )
 
