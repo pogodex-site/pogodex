@@ -57,7 +57,7 @@ WSGI_APPLICATION = 'server.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(conn_max_age=600, default='postgres://pogodexuser:' + 'freddec@2012' + '@localhost:5432/pogodex')
 }
 
 AUTH_PASSWORD_VALIDATORS = [

@@ -881,7 +881,7 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 	
 	$scope.isLoading = true;
 	
-	API.sendRequest('/api/pokemon/list/', 'GET').then(function success(data) {
+	API.sendRequest('/api/pokemon/list/', 'POST').then(function success(data) {
 		
 		$scope.pokemons = data;
 		
