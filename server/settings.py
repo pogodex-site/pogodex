@@ -1,6 +1,3 @@
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 SECRET_KEY = ')tkpe%w1u5c@#e9=ttd4rbr1l_1%qa3w(qvtb%(2_l!=4*qlzy'
 
 DEBUG = True
@@ -88,8 +85,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+import os
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
-STATIC_ROOT= 'front/static'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 SOCIAL_AUTH_FACEBOOK_KEY = '362521904117518'
 SOCIAL_AUTH_FACEBOOK_SECRET = '53980bc6223a8750da3a203a36a6dd60'
