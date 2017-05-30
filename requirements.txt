@@ -5,3 +5,4 @@ djangorestframework==3.6.3
 gunicorn==19.7.1
 psycopg2==2.7.1
 rest-social-auth==1.1.0
+whitenoise==3.3.0
