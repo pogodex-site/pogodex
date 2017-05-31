@@ -28,8 +28,8 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 				
 			.state('app.pokemon', { templateUrl: '/static/pages/_pokemon.html', })
 			
-				.state('app.pokemon.edit', { url: '/pokemon/:ref/edit', templateUrl: '/static/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_PAGETITLE', authenticated: true }})
-				.state('app.pokemon.view', { url: '/pokemon/:ref',      templateUrl: '/static/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_PAGETITLE', authenticated: true }})
+				.state('app.pokemon.edit', { url: '/pokemon/:ref/edit', templateUrl: '/static/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_PAGETITLE', authenticated: true  }})
+				.state('app.pokemon.view', { url: '/pokemon/:ref',      templateUrl: '/static/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_PAGETITLE', authenticated: false }})
 	
 	$translateProvider.useSanitizeValueStrategy(null);
 	
@@ -238,6 +238,10 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est as renseigné!',
 
 		pokemon_view_PROFILELINK: 'Renseigner mon profil',
+		
+		pokemon_view_NOPOKEMON: 'Aucun pokémon trouvé',
+
+		pokemon_view_SHARELINK: 'Lien de partage',
 
 		/* Pokemon edit */
 		

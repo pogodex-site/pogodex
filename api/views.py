@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.authtoken.models import Token
 
 from rest_social_auth.serializers import UserTokenSerializer
@@ -95,7 +95,7 @@ class ProfileViewSet(viewsets.ViewSet):
 #---------------------------------------------------------------------------------------------------
 class PokemonViewSet(viewsets.ViewSet):
 	
-	permission_classes = IsAuthenticated, 
+	permission_classes = IsAuthenticatedOrReadOnly, 
     
 	def list(self, request):
 		
@@ -151,22 +151,31 @@ class PokemonViewSet(viewsets.ViewSet):
 
 	def view(self, request, ref):
 		
-		results = Pokemon.objects.filter(user = request.user, ref = ref)
+		results = Pokemon.objects.filter(ref = ref)
+		
 		if results.count() < 1:
 			return Response('error_NO_POKEMON', status=status.HTTP_400_BAD_REQUEST)			
 		
 		item = results[0]
 		
-		data = {'name':item.name, 'ref':item.ref, 'code':item.code, 'attack':item.attack,
+		pokemon_data = {'name':item.name, 'ref':item.ref, 'code':item.code, 'attack':item.attack,
 				'defense':item.defense, 'stigmata':item.stigmata, 'percent':item.percent,
 				'cp':item.cp, 'hp':item.hp, 'stardust':item.stardust,
 				'app1':item.app1, 'app2S':item.app2S, 'app2A':item.app2A, 'app2D':item.app2D,
 				'app3':item.app3, 'team':item.team, }
 		
+		is_owned = False
+		if item.user == request.user:
+			is_owned = True
+		
+		owner_data = {'is_owned':is_owned, 'name':item.user.username, 'level':item.user.profile.level, }
+		
+		data = {'pokemon':pokemon_data, 'owner':owner_data, }
+		
 		return Response(data, status=status.HTTP_200_OK)
 
 
-		
+
 	def edit(self, request, ref):
 		
 		results = Pokemon.objects.filter(user = request.user, ref = request.data['ref'])

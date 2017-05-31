@@ -73,7 +73,7 @@ small { font-size: 85%; }
 
 .card { margin-bottom: .5rem; border-radius: 0; border: 0; border-top: 3px solid #e5e6e7; }
 
-.card-header { padding: .75rem; background-color: #fff; border-bottom: 1px solid #e7eaec; border-radius: 0 !important; font-size: .75rem; font-weight: 600; }
+.card-header { padding: .75rem; background-color: #fff; border-bottom: 1px solid #e7eaec; border-radius: 0 !important; font-size: .75rem; }
 
 .card-header .title { font-size: 1rem; font-weight: 600; }
 
@@ -91,6 +91,8 @@ small { font-size: 85%; }
 
 .btn-facebook { color: #fff; background-color: #3b5998;  border-color: #335190; }
 .btn-facebook:hover,.btn-facebook:focus { color: #fff; background-color: #294786; }
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus { border-color: #e5e6e7; }
 
 
 
@@ -116,6 +118,8 @@ select.form-control:not([size]):not([multiple]) { height: auto; }
 .select-group-item:hover, .select-group-item:focus { background-color: #f7f7f9; }
 
 .line-dashed { border-top: 1px dashed #e7eaec; color: #ffffff; background-color: #ffffff; height: 1px; margin: .5rem 0; }
+
+.form-control[readonly] { background-color: transparent; }
 
 
 

@@ -4,9 +4,9 @@
         
         <div class="title">
         
-            <a ui-sref="app.pokemon.view({ref:pokemon.ref})" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
+            <a ui-sref="app.pokemon.view({ref:data.pokemon.ref})" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
             
-            {{'pokemon_edit_TITLE' | translate}} {{pokemon.name}}
+            {{'pokemon_edit_TITLE' | translate}} {{data.pokemon.name}}
             
         </div>
 
@@ -18,9 +18,9 @@
             <img src="/static/img/loading.gif" height="64" />
         </div>
         
-        <div ng-show="!isLoading && !pokemon">{{'pokemon_NOPOKEMON' | translate}}</div>
+        <div ng-show="!isLoading && !data.pokemon">{{'pokemon_view_NOPOKEMON' | translate}}</div>
         
-        <form ng-show="!isLoading && pokemon" name="form" novalidate>
+        <form ng-show="!isLoading && data.pokemon" name="form" novalidate>
             
             <div class="form-group row">
                 <label class="col-4 col-form-label text-right">{{'pokemon_NAME' | translate}}</label>

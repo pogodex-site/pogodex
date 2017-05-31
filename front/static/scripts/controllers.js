@@ -86,26 +86,29 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 	};
 });
 
-angular.module('AngularApp').controller('AppCtrl', function($rootScope, $filter, toastr, API) {
+angular.module('AngularApp').controller('AppCtrl', function($rootScope, $filter, $auth, toastr, API) {
 	
-	$rootScope.isProfileLoading = true;
+	if ($auth.isAuthenticated()) {
 	
-	API.sendRequest('/api/profile', 'GET').then(function success(data) {
+		$rootScope.isProfileLoading = true;
 		
-		$rootScope.profile = data;
-		
-		$rootScope.$broadcast('profile-loaded');
-		
-		$rootScope.isProfileLoading = false;
-		
-	}, function error(data) {
-		
-		$rootScope.$broadcast('profile-loaded');
-		
-		$rootScope.isProfileLoading = false;
-
-		toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-	});
+		API.sendRequest('/api/profile', 'GET').then(function success(data) {
+			
+			$rootScope.profile = data;
+			
+			$rootScope.$broadcast('profile-loaded');
+			
+			$rootScope.isProfileLoading = false;
+			
+		}, function error(data) {
+			
+			$rootScope.$broadcast('profile-loaded');
+			
+			$rootScope.isProfileLoading = false;
+	
+			toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
+		});
+	}
 });
 
 angular.module('AngularApp').controller('ProfileCtrl', function($rootScope, $scope, $location, $filter, toastr, API) {
@@ -1222,29 +1225,29 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 
 	$scope.isLoading = true;
 	
-	$scope.pokemon = null;
+	$scope.data = null;
 	
 	var _computeLevel = function() {
 
-		if (!$scope.pokemon) return;
+		if (!$scope.data || !$scope.data.pokemon) return;
 
-		var stats = data_pokemon_stats.get($scope.pokemon.code);
+		var stats = data_pokemon_stats.get($scope.data.pokemon.code);
 		
-		var levels = data_pokemon_stardust.get($scope.pokemon.stardust);
+		var levels = data_pokemon_stardust.get($scope.data.pokemon.stardust);
 		for (var i = 0; i < 4; i++) {
 			
 			var level = levels[i];
 			var cpm = data_pokemon_cpm.get(level);
 			
-			var tempHP = Math.floor(cpm * (stats.stigmata + $scope.pokemon.stigmata));
+			var tempHP = Math.floor(cpm * (stats.stigmata + $scope.data.pokemon.stigmata));
 			tempHP = tempHP < 10 ? 10 : tempHP;
 			
-			var tempCP = Math.floor((stats.attack + $scope.pokemon.attack) * Math.pow(stats.defense + $scope.pokemon.defense, 0.5) * Math.pow(stats.stigmata + $scope.pokemon.stigmata, 0.5) * Math.pow(cpm, 2) / 10);
+			var tempCP = Math.floor((stats.attack + $scope.data.pokemon.attack) * Math.pow(stats.defense + $scope.data.pokemon.defense, 0.5) * Math.pow(stats.stigmata + $scope.data.pokemon.stigmata, 0.5) * Math.pow(cpm, 2) / 10);
 			tempCP = tempCP < 10 ? 10 : tempCP;
 			
-			if ((tempHP == $scope.pokemon.hp) && (tempCP == $scope.pokemon.cp)) {
+			if ((tempHP == $scope.data.pokemon.hp) && (tempCP == $scope.data.pokemon.cp)) {
 				
-				$scope.pokemon.level = level;
+				$scope.data.pokemon.level = level;
 				break;
 			}
 		}
@@ -1252,31 +1255,31 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 	
 	var _computeFinalData = function() {
 
-		if (!$scope.pokemon) return;
+		if (!$scope.data || !$scope.data.pokemon) return;
 		
-		var stats = data_pokemon_stats.get($scope.pokemon.code);
+		var stats = data_pokemon_stats.get($scope.data.pokemon.code);
 		
-		if ($rootScope.profile && $rootScope.profile.level) {
+		if ($scope.data.owner.level) {
 			
-			$scope.pokemon.finalLevel = $rootScope.profile.level + 1.5;
-			$scope.pokemon.finalLevel = $scope.pokemon.finalLevel > 40 ? 40 : $scope.pokemon.finalLevel;
+			$scope.data.pokemon.finalLevel = $scope.data.owner.level + 1.5;
+			$scope.data.pokemon.finalLevel = $scope.data.pokemon.finalLevel > 40 ? 40 : $scope.data.pokemon.finalLevel;
 			
-			var finalCpm = data_pokemon_cpm.get($scope.pokemon.finalLevel);
+			var finalCpm = data_pokemon_cpm.get($scope.data.pokemon.finalLevel);
 			
-			$scope.pokemon.finalCP = Math.floor((finalCpm * finalCpm * (stats.attack + $scope.pokemon.attack) * Math.sqrt(stats.defense + $scope.pokemon.defense) * Math.sqrt(stats.stigmata + $scope.pokemon.stigmata)) / 10);
-			$scope.pokemon.finalHP = Math.floor(finalCpm * (stats.stigmata + $scope.pokemon.stigmata));
+			$scope.data.pokemon.finalCP = Math.floor((finalCpm * finalCpm * (stats.attack + $scope.data.pokemon.attack) * Math.sqrt(stats.defense + $scope.data.pokemon.defense) * Math.sqrt(stats.stigmata + $scope.data.pokemon.stigmata)) / 10);
+			$scope.data.pokemon.finalHP = Math.floor(finalCpm * (stats.stigmata + $scope.data.pokemon.stigmata));
 		}
 		else {
 		
-			$scope.pokemon.finalCP = null;
-			$scope.pokemon.finalHP = null;
-			$scope.pokemon.finalLevel = null;
+			$scope.data.pokemon.finalCP = null;
+			$scope.data.pokemon.finalHP = null;
+			$scope.data.pokemon.finalLevel = null;
 		}
 	}
 	
 	var _computeRequiredData = function() {
 
-		if (!$scope.pokemon) return;
+		if (!$scope.data || !$scope.data.pokemon) return;
 		
 		var startingStardust = 0;
 		var targetStardust = 0;
@@ -1285,13 +1288,13 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 		
 		for (var i = 0; i < data_pokemon_costs.length; i++) {
 			
-			if (data_pokemon_costs[i].level == $scope.pokemon.level) {
+			if (data_pokemon_costs[i].level == $scope.data.pokemon.level) {
 				
 				startingStardust = data_pokemon_costs[i].stardust;
 				startingCandy = data_pokemon_costs[i].candy;
 			}
 			
-			if (data_pokemon_costs[i].level == $scope.pokemon.finalLevel) {
+			if (data_pokemon_costs[i].level == $scope.data.pokemon.finalLevel) {
 				
 				targetStardust = data_pokemon_costs[i].stardust;
 				targetCandy = data_pokemon_costs[i].candy;
@@ -1299,24 +1302,38 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 			}
 		}
 		
-		$scope.pokemon.requiredStardust = targetStardust - startingStardust;
-		$scope.pokemon.requiredCandy = targetCandy - startingCandy;
+		$scope.data.pokemon.requiredStardust = targetStardust - startingStardust;
+		$scope.data.pokemon.requiredCandy = targetCandy - startingCandy;
 	}
 	
 	var _setEditModel = function() {
 		
 		$scope.editModel = {
 			
-			cp:$scope.pokemon.cp,
-			hp:$scope.pokemon.hp,
-			name:$scope.pokemon.name,
-			stardust:$scope.pokemon.stardust
+			cp:$scope.data.pokemon.cp,
+			hp:$scope.data.pokemon.hp,
+			name:$scope.data.pokemon.name,
+			stardust:$scope.data.pokemon.stardust
 		};
+	}
+	
+	$scope.selectShareLink = function() {
+		
+		$('#js-copytext').select();
+	}
+	
+	$scope.copyToClipboard = function() {
+		
+		$('#js-copytext').select();
+		
+		var successful = document.execCommand('copy');
+		var msg = successful ? 'successful' : 'unsuccessful';
+		console.log('Copying text command was ' + msg);		
 	}
 	
 	API.sendRequest('/api/pokemon/' + $stateParams.ref, 'GET').then(function success(data) {
 		
-		$scope.pokemon = data;
+		$scope.data = data;
 		
 		_computeLevel();
 		_computeFinalData();
@@ -1359,18 +1376,18 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 		
 		if (!form.$invalid) {
 				
-			var tempPokemon = $scope.pokemon;
+			var tempPokemon = $scope.data.pokemon;
 		
 			tempPokemon.cp = $scope.editModel.cp;
 			tempPokemon.hp = $scope.editModel.hp;
 			tempPokemon.name = $scope.editModel.name;
 			tempPokemon.stardust = $scope.editModel.stardust;
 		
-			API.sendRequest('/api/pokemon/' + $scope.pokemon.ref + '/edit/', 'POST', {}, tempPokemon).then(function success(data) {
+			API.sendRequest('/api/pokemon/' + $scope.data.pokemon.ref + '/edit/', 'POST', {}, tempPokemon).then(function success(data) {
 				
 				$scope.pokemon = tempPokemon;
 				
-				$location.path('/pokemon/' + $scope.pokemon.ref);
+				$location.path('/pokemon/' + $scope.data.pokemon.ref);
 				
 				toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
 				
@@ -1383,7 +1400,7 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 	
 	$scope.delete = function() {
 		
-		API.sendRequest('/api/pokemon/' + $scope.pokemon.ref + '/delete/', 'POST', {}, $scope.pokemon).then(function success(data) {
+		API.sendRequest('/api/pokemon/' + $scope.data.pokemon.ref + '/delete/', 'POST', {}, $scope.data.pokemon).then(function success(data) {
 			
 			$location.path('/pokedex');
 			
