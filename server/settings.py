@@ -1,3 +1,6 @@
+import os.path
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
 SECRET_KEY = ')tkpe%w1u5c@#e9=ttd4rbr1l_1%qa3w(qvtb%(2_l!=4*qlzy'
 
 DEBUG = True
@@ -125,11 +128,9 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = (
-	
 	'social_core.backends.facebook.FacebookOAuth2',
 	'social_core.backends.google.GoogleOAuth2',
 	'social_core.backends.twitter.TwitterOAuth',
-	
 	'django.contrib.auth.backends.ModelBackend',
 )
 
