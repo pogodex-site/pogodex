@@ -61,7 +61,7 @@
     <div class="card-block">
        
         <div ng-show="isLoading || isProfileLoading" class="text-center">
-            <img src="/static/img/loading.gif" height="64" />
+            <img src="/static/front/img/loading.gif" height="64" />
         </div>
         
         <div ng-show="!isLoading && !isProfileLoading && !data.pokemon">{{'pokemon_view_NOPOKEMON' | translate}}</div>
@@ -69,23 +69,23 @@
         <div ng-show="!isLoading && !isProfileLoading && data.pokemon">
             
             <p class="text-center">
-                <img ng-src="/static/img/{{data.pokemon.code}}.png" width="128" height="128">
+                <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
             </p>
             
             <div class="row mb-2">
                 
                 <div class="col-4 text-center">
-                    <img src="/static/img/glave.svg" width="16" height="16">
+                    <img src="/static/front/img/glave.svg" width="16" height="16">
                     {{data.pokemon.attack}}
                 </div>
                 
                 <div class="col-4 text-center">
-                    <img src="/static/img/sheild.svg" width="16" height="16">
+                    <img src="/static/front/img/sheild.svg" width="16" height="16">
                     {{data.pokemon.defense}}
                 </div>
         
                 <div class="col-4 text-center">
-                    <img src="/static/img/heart.svg" width="16" height="16">
+                    <img src="/static/front/img/heart.svg" width="16" height="16">
                     {{data.pokemon.stigmata}}
                 </div>
     

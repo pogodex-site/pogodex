@@ -28,7 +28,7 @@
     <div class="card-block">
         
         <div ng-show="isLoading" class="text-center">
-            <img src="/static/img/loading.gif" height="64"/>
+            <img src="/static/front/img/loading.gif" height="64"/>
         </div>
         
         <div ng-show="!isLoading && (!pokemons || !pokemons.length)">
@@ -49,7 +49,7 @@
                     
                     <small>{{item.percent}}%</small>
                     
-                    <br><img ng-src="/static/img/{{item.code}}.png" width="48" height="48">
+                    <br><img ng-src="/static/front/img/{{item.code}}.png" width="48" height="48">
                     
                     <br><small>IV {{item.attack}}/{{item.defense}}/{{item.stigmata}}</small>
                     <br><strong>{{item.name}}</strong>

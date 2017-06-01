@@ -19,11 +19,11 @@
             
             <div class="form-group">
                 <label>{{'pokemon_CODE' | translate}}</label>
-                <input type="text" class="form-control" ng-model="computeModel.pokemon" ng-focus="has_pokemonfocus = true; filterPokemons();" ng-change="filterPokemons();" ng-blur="has_pokemonfocus = false;" style="padding-left: 47px; background-image: url('/static/img/{{computeModel.image}}.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
+                <input type="text" class="form-control" ng-model="computeModel.pokemon" ng-focus="has_pokemonfocus = true; filterPokemons();" ng-change="filterPokemons();" ng-blur="has_pokemonfocus = false;" style="padding-left: 47px; background-image: url('/static/front/img/{{computeModel.image}}.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
                 <div class="select-group row" ng-show="has_pokemonfocus">
                     <div class="col-md-3 p-1" ng-repeat="item in filtered_pokemonlist" ng-mousedown="selectPokemon(item)">
                         <a href="javascript:;" class="select-group-item">
-                            <img ng-src="/static/img/{{item.code}}.png" width="24" height="24" class="mr-2">
+                            <img ng-src="/static/front/img/{{item.code}}.png" width="24" height="24" class="mr-2">
                             {{'pokemon_' + item.code + '_LABEL' | translate}}
                         </a>
                     </div>
@@ -45,11 +45,11 @@
             
             <div class="form-group">
                 <label>{{'pokemon_STARDUST' | translate}}</label>
-                <input type="number" class="form-control" ng-model="computeModel.stardust" ng-focus="has_stardustfocus = true; filterStardust(computeModel.stardust);" ng-change="filterStardust(computeModel.stardust);" ng-blur="has_stardustfocus = false;" style="padding-left: 47px; background-image: url('/static/img/stardust.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
+                <input type="number" class="form-control" ng-model="computeModel.stardust" ng-focus="has_stardustfocus = true; filterStardust(computeModel.stardust);" ng-change="filterStardust(computeModel.stardust);" ng-blur="has_stardustfocus = false;" style="padding-left: 47px; background-image: url('/static/front/img/stardust.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
                 <div class="select-group row" ng-show="has_stardustfocus">
                     <div class="col-md-3 col-6 p-1" ng-repeat="item in filtered_stardustlist" ng-mousedown="computeModel.stardust = item.count">
                         <a href="javascript:;" class="select-group-item">
-                            <img ng-src="/static/img/stardust.png" width="24" height="24" class="mr-2">
+                            <img ng-src="/static/front/img/stardust.png" width="24" height="24" class="mr-2">
                             {{item.count}}
                         </a>
                     </div>
@@ -64,17 +64,17 @@
                 <div class="row">
                     <label class="col-md-4 form-check-label" ng-checked="computeModel.team == 'red'">
                         <input type="radio" ng-model="computeModel.team" ng-click="updateTeam(computeModel.team)" value="red">
-                        <img src="/static/img/team_red.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
+                        <img src="/static/front/img/team_red.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
                         {{'team_RED' | translate}}
                     </label>
                     <label class="col-md-4 form-check-label" ng-checked="computeModel.team == 'blue'">
                         <input type="radio" ng-model="computeModel.team" ng-click="updateTeam(computeModel.team)" value="blue">
-                        <img src="/static/img/team_blue.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
+                        <img src="/static/front/img/team_blue.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
                         {{'team_BLUE' | translate}}
                     </label>
                     <label class="col-md-4 form-check-label" ng-checked="computeModel.team == 'yellow'">
                         <input type="radio" ng-model="computeModel.team" ng-click="updateTeam(computeModel.team)" value="yellow">
-                        <img src="/static/img/team_yellow.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
+                        <img src="/static/front/img/team_yellow.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
                         {{'team_YELLOW' | translate}}
                     </label>
                 </div>
