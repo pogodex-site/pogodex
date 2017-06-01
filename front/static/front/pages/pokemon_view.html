@@ -1,193 +1,195 @@
-<div class="card">
-
-    <div class="card-header">
-
-        <a ng-if="data.owner.is_owned" ui-sref="app.pokedex.view" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
-        
-        <span class="title">
-            {{data.pokemon.name}}
-        </span>
-        
-        <span ng-if="!data.owner.is_owned" class="pull-right mt-1">{{data.owner.name}}</span>
-        
-        <div ng-show="!isLoading && data.owner.is_owned && data.pokemon" class="pull-right ml-3 dropdown">
+<div ui-view="">
+    <div class="card">
+    
+        <div class="card-header">
+    
+            <a ng-if="data.owner.is_owned" ui-sref="app.pokedex" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
             
-            <a href="javascript:;" class="pull-right" data-toggle="dropdown"><i class="fa fa-share-alt"></i></a>
-        
-            <div class="dropdown-menu dropdown-menu-right p-2" style="width:275px;">
+            <span class="title">
+                {{data.pokemon.name}}
+            </span>
+            
+            <span ng-if="!data.owner.is_owned" class="pull-right mt-1">{{data.owner.name}}</span>
+            
+            <div ng-show="!isLoading && data.owner.is_owned && data.pokemon" class="pull-right ml-3 dropdown">
                 
-                <div class="mb-1">{{'pokemon_view_SHARELINK' | translate}}</div>
-                
-                <div class="input-group">
-                    <input type="text" class="form-control" value="https://pogodex.herokuapp.com/#!/pokemon/{{data.pokemon.ref}}" readonly id="js-copytext" ng-focus="selectShareLink();">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button" ng-click="copyToClipboard();"><i class="fa fa-clipboard"></i></button>
-                    </span>
-                </div>
-
-            </div>
-
-        </div>
-        
-        <a ng-show="!isLoading && data.owner.is_owned && data.pokemon" ui-sref="app.pokemon.edit({ref:data.pokemon.ref})" class="pull-right ml-3"><i class="fa fa-pencil-square-o"></i></a>
-        
-        <a ng-show="!isLoading && data.owner.is_owned && data.pokemon" href="javascript:;" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></a>
-        
-        <div class="modal fade" id="myModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
+                <a href="javascript:;" class="pull-right" data-toggle="dropdown"><i class="fa fa-share-alt"></i></a>
+            
+                <div class="dropdown-menu dropdown-menu-right p-2" style="width:275px;">
                     
-                    <div class="modal-header">
+                    <div class="mb-1">{{'pokemon_view_SHARELINK' | translate}}</div>
+                    
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="https://pogodex.herokuapp.com/#!/pokemon/{{data.pokemon.ref}}" readonly id="js-copytext" ng-focus="selectShareLink();">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button" ng-click="copyToClipboard();"><i class="fa fa-clipboard"></i></button>
+                        </span>
+                    </div>
+    
+                </div>
+    
+            </div>
+            
+            <a ng-show="!isLoading && data.owner.is_owned && data.pokemon" ui-sref="app.pokemon.edit({ref:data.pokemon.ref})" class="pull-right ml-3"><i class="fa fa-pencil-square-o"></i></a>
+            
+            <a ng-show="!isLoading && data.owner.is_owned && data.pokemon" href="javascript:;" class="pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></a>
+            
+            <div class="modal fade" id="myModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
                         
-                        <div class="title">{{'pokemon_delete_CONFIRM' | translate}}</div>
+                        <div class="modal-header">
+                            
+                            <div class="title">{{'pokemon_delete_CONFIRM' | translate}}</div>
+                            
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            
+                        </div>
                         
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{'btn_NO' | translate}}</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="delete();">{{'btn_YES' | translate}}</button>
+                        </div>
                         
                     </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="card-block">
+           
+            <div ng-show="isLoading || isProfileLoading" class="text-center">
+                <img src="/static/front/img/loading.gif" height="64" />
+            </div>
+            
+            <div ng-show="!isLoading && !isProfileLoading && !data.pokemon">{{'pokemon_view_NOPOKEMON' | translate}}</div>
+            
+            <div ng-show="!isLoading && !isProfileLoading && data.pokemon">
+                
+                <p class="text-center">
+                    <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
+                </p>
+                
+                <div class="row mb-2">
                     
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{'btn_NO' | translate}}</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="delete();">{{'btn_YES' | translate}}</button>
+                    <div class="col-4 text-center">
+                        <img src="/static/front/img/glave.svg" width="16" height="16">
+                        {{data.pokemon.attack}}
                     </div>
                     
+                    <div class="col-4 text-center">
+                        <img src="/static/front/img/sheild.svg" width="16" height="16">
+                        {{data.pokemon.defense}}
+                    </div>
+            
+                    <div class="col-4 text-center">
+                        <img src="/static/front/img/heart.svg" width="16" height="16">
+                        {{data.pokemon.stigmata}}
+                    </div>
+        
+            	</div>
+            	
+                <div class="progress mb-1">
+                    <div class="progress-bar" style=" height: 3px; width:{{data.pokemon.percent}}%"></div>
                 </div>
+    
+                <div class="text-center">
+                    {{data.pokemon.percent}}%
+                </div>
+                
             </div>
+        
         </div>
         
     </div>
     
-    <div class="card-block">
-       
-        <div ng-show="isLoading || isProfileLoading" class="text-center">
-            <img src="/static/front/img/loading.gif" height="64" />
+    <div ng-show="!isLoading && !isProfileLoading && data.pokemon" class="card">
+        
+        <div class="card-header">
+            <span class="title">{{'pokemon_view_CURRENT' | translate}}</span>
         </div>
         
-        <div ng-show="!isLoading && !isProfileLoading && !data.pokemon">{{'pokemon_view_NOPOKEMON' | translate}}</div>
-        
-        <div ng-show="!isLoading && !isProfileLoading && data.pokemon">
+        <div class="card-block">
             
-            <p class="text-center">
-                <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
-            </p>
+            <div ng-if="data.user.is_owned && !profile.level" class="alert alert-danger text-center m-0">
+                <small>
+                    {{'pokemon_view_NOSTATUS' | translate}}
+                    <br><a ui-sref="app.profile.edit" class="highlight">{{'pokemon_view_PROFILELINK' | translate}}</a>
+                </small>
+            </div>
             
-            <div class="row mb-2">
+            <div ng-if="data.pokemon.finalLevel && data.pokemon.finalHP && data.pokemon.finalCP">
                 
-                <div class="col-4 text-center">
-                    <img src="/static/front/img/glave.svg" width="16" height="16">
-                    {{data.pokemon.attack}}
+                <div class="row">
+                    
+                    <div class="col-5"><strong>{{'pokemon_HP' | translate}}</strong></div>
+                    <div class="col-7 text-right">
+                        {{data.pokemon.hp}}
+                        <small class="text-muted">/ {{data.pokemon.finalHP}}</small>
+                    </div>
                 </div>
                 
-                <div class="col-4 text-center">
-                    <img src="/static/front/img/sheild.svg" width="16" height="16">
-                    {{data.pokemon.defense}}
+                <div class="line-dashed"></div>
+                
+                <div class="row">
+                    
+                    <div class="col-5"><strong>{{'pokemon_LEVEL' | translate}}</strong></div>
+                    <div class="col-7 text-right">
+                        {{data.pokemon.level}}
+                        <small class="text-muted">/ {{data.pokemon.finalLevel}}</small>
+                    </div>
                 </div>
-        
-                <div class="col-4 text-center">
-                    <img src="/static/front/img/heart.svg" width="16" height="16">
-                    {{data.pokemon.stigmata}}
+                
+                <div class="line-dashed"></div>
+                
+                <div class="row">
+                    
+                    <div class="col-5"><strong>{{'pokemon_CP' | translate}}</strong></div>
+                    <div class="col-7 text-right">
+                        {{data.pokemon.cp}}
+                        <small class="text-muted">/ {{data.pokemon.finalCP}}</small>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div ng-if="data.pokemon.level < data.pokemon.finalLevel" class="alert alert-warning text-center p-1 mt-4 mb-2">
+                <small>{{'pokemon_view_NOTMAX' | translate}}</small>
+            </div>
+            
+            <div ng-if="data.pokemon.level >= data.pokemon.finalLevel" class="alert alert-success text-center p-1 mt-4 mb-0">
+                <small>
+                    <i class="fa fa-star mr-1"></i>
+                    {{'pokemon_view_ONMAX' | translate}}
+                </small>
+            </div>
+            
+            <div ng-if="data.pokemon.finalLevel && data.pokemon.finalHP && data.pokemon.finalCP && (data.pokemon.level < data.pokemon.finalLevel)">
+                
+                <div class="row">
+                    
+                    <div class="col-7"><strong>{{'pokemon_STARDUSTREQUIRED' | translate}}</strong></div>
+                    <div class="col-5 text-right">
+                        {{data.pokemon.requiredStardust}}
+                    </div>
+                </div>
+                
+                <div class="line-dashed"></div>
+                
+                <div class="row">
+                    
+                    <div class="col-7"><strong>{{'pokemon_CANDIESREQUIRED' | translate}}</strong></div>
+                    <div class="col-5 text-right">
+                        {{data.pokemon.requiredCandy}}
+                    </div>
                 </div>
     
-        	</div>
-        	
-            <div class="progress mb-1">
-                <div class="progress-bar" style=" height: 3px; width:{{data.pokemon.percent}}%"></div>
             </div>
-
-            <div class="text-center">
-                {{data.pokemon.percent}}%
-            </div>
-            
+     		
         </div>
-    
+        
     </div>
-    
-</div>
-
-<div ng-show="!isLoading && !isProfileLoading && data.pokemon" class="card">
-    
-    <div class="card-header">
-        <span class="title">{{'pokemon_view_CURRENT' | translate}}</span>
-    </div>
-    
-    <div class="card-block">
-        
-        <div ng-if="data.user.is_owned && !profile.level" class="alert alert-danger text-center m-0">
-            <small>
-                {{'pokemon_view_NOSTATUS' | translate}}
-                <br><a ui-sref="app.profile.edit" class="highlight">{{'pokemon_view_PROFILELINK' | translate}}</a>
-            </small>
-        </div>
-        
-        <div ng-if="data.pokemon.finalLevel && data.pokemon.finalHP && data.pokemon.finalCP">
-            
-            <div class="row">
-                
-                <div class="col-5"><strong>{{'pokemon_HP' | translate}}</strong></div>
-                <div class="col-7 text-right">
-                    {{data.pokemon.hp}}
-                    <small class="text-muted">/ {{data.pokemon.finalHP}}</small>
-                </div>
-            </div>
-            
-            <div class="line-dashed"></div>
-            
-            <div class="row">
-                
-                <div class="col-5"><strong>{{'pokemon_LEVEL' | translate}}</strong></div>
-                <div class="col-7 text-right">
-                    {{data.pokemon.level}}
-                    <small class="text-muted">/ {{data.pokemon.finalLevel}}</small>
-                </div>
-            </div>
-            
-            <div class="line-dashed"></div>
-            
-            <div class="row">
-                
-                <div class="col-5"><strong>{{'pokemon_CP' | translate}}</strong></div>
-                <div class="col-7 text-right">
-                    {{data.pokemon.cp}}
-                    <small class="text-muted">/ {{data.pokemon.finalCP}}</small>
-                </div>
-            </div>
-        
-        </div>
-        
-        <div ng-if="data.pokemon.level < data.pokemon.finalLevel" class="alert alert-warning text-center p-1 mt-4 mb-2">
-            <small>{{'pokemon_view_NOTMAX' | translate}}</small>
-        </div>
-        
-        <div ng-if="data.pokemon.level >= data.pokemon.finalLevel" class="alert alert-success text-center p-1 mt-4 mb-0">
-            <small>
-                <i class="fa fa-star mr-1"></i>
-                {{'pokemon_view_ONMAX' | translate}}
-            </small>
-        </div>
-        
-        <div ng-if="data.pokemon.finalLevel && data.pokemon.finalHP && data.pokemon.finalCP && (data.pokemon.level < data.pokemon.finalLevel)">
-            
-            <div class="row">
-                
-                <div class="col-7"><strong>{{'pokemon_STARDUSTREQUIRED' | translate}}</strong></div>
-                <div class="col-5 text-right">
-                    {{data.pokemon.requiredStardust}}
-                </div>
-            </div>
-            
-            <div class="line-dashed"></div>
-            
-            <div class="row">
-                
-                <div class="col-7"><strong>{{'pokemon_CANDIESREQUIRED' | translate}}</strong></div>
-                <div class="col-5 text-right">
-                    {{data.pokemon.requiredCandy}}
-                </div>
-            </div>
-
-        </div>
- 		
-    </div>
-    
 </div>

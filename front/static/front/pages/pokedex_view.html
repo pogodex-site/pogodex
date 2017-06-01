@@ -1,64 +1,66 @@
-<div class="card">
+<div ui-view="">
+    <div class="card">
 
-    <div class="card-header">
-        
-        <span class="title">{{'pokedex_view_TITLE' | translate}}</span>
-
-        <div ng-show="!isLoading && pokemons" class="pull-right ml-3 dropdown">
+        <div class="card-header">
             
-            <a href="javascript:;" class="pull-right" data-toggle="dropdown"><i class="fa fa-sort"></i></a>
-            
-            <div class="dropdown-menu dropdown-menu-right">
-                
-	            <a href="javascript:;" class="dropdown-item" ng-click="sort('name');">{{'pokemon_sort_NAME' | translate}}</a>
-	            <a href="javascript:;" class="dropdown-item" ng-click="sort('percent');">{{'pokemon_sort_PERCENT' | translate}}</a>
-	            <a href="javascript:;" class="dropdown-item" ng-click="sort('attack');">{{'pokemon_sort_ATTACK' | translate}}</a>
-	            <a href="javascript:;" class="dropdown-item" ng-click="sort('defense');">{{'pokemon_sort_DEFENSE' | translate}}</a>
-	            <a href="javascript:;" class="dropdown-item" ng-click="sort('stigmata');">{{'pokemon_sort_STIGMATA' | translate}}</a>
-	            <a href="javascript:;" class="dropdown-item" ng-click="sort('dexnumber');">{{'pokemon_sort_DEXNUMBER' | translate}}</a>
-	            
-            </div>
-
-        </div>
-            
-        <a class="pull-right" ui-sref="app.pokedex.add"><i class="fa fa-plus-square"></i></a>
-        
-    </div>
-
-    <div class="card-block">
-        
-        <div ng-show="isLoading" class="text-center">
-            <img src="/static/front/img/loading.gif" height="64"/>
-        </div>
-        
-        <div ng-show="!isLoading && (!pokemons || !pokemons.length)">
-            <div class="alert alert-info mb-0 text-center">
-                {{'pokedex_view_NOPOKEMON' | translate}}
-                <a class="highlight ml-1" ui-sref="app.pokedex.add"><i class="fa fa-plus-square"></i></a>
-            </div>
-        </div>
-        
-        <div ng-show="!isLoading && pokemons && pokemons.length" class="row">
-
-            <div class="col-md-2 col-4 mb-3" ng-repeat="item in pokemons">
-                <a ui-sref="app.pokemon.view({ref:item.ref})" class="normal d-block text-center" style="line-height:1;">
-                    
-                    <small style="position:absolute; top:10px; left: 20px;">
-                        <i ng-show="item.cp == item.finalCP" class="fa fa-star text-success mr-2"></i>
-                    </small>
-                    
-                    <small>{{item.percent}}%</small>
-                    
-                    <br><img ng-src="/static/front/img/{{item.code}}.png" width="48" height="48">
-                    
-                    <br><small>IV {{item.attack}}/{{item.defense}}/{{item.stigmata}}</small>
-                    <br><strong>{{item.name}}</strong>
-                    
-                </a>
-            </div>
-            
-        </div>
-        
-    </div>
+            <span class="title">{{'pokedex_view_TITLE' | translate}}</span>
     
+            <div ng-show="!isLoading && pokemons" class="pull-right ml-3 dropdown">
+                
+                <a href="javascript:;" class="pull-right" data-toggle="dropdown"><i class="fa fa-sort"></i></a>
+                
+                <div class="dropdown-menu dropdown-menu-right">
+                    
+    	            <a href="javascript:;" class="dropdown-item" ng-click="sort('name');">{{'pokemon_sort_NAME' | translate}}</a>
+    	            <a href="javascript:;" class="dropdown-item" ng-click="sort('percent');">{{'pokemon_sort_PERCENT' | translate}}</a>
+    	            <a href="javascript:;" class="dropdown-item" ng-click="sort('attack');">{{'pokemon_sort_ATTACK' | translate}}</a>
+    	            <a href="javascript:;" class="dropdown-item" ng-click="sort('defense');">{{'pokemon_sort_DEFENSE' | translate}}</a>
+    	            <a href="javascript:;" class="dropdown-item" ng-click="sort('stigmata');">{{'pokemon_sort_STIGMATA' | translate}}</a>
+    	            <a href="javascript:;" class="dropdown-item" ng-click="sort('dexnumber');">{{'pokemon_sort_DEXNUMBER' | translate}}</a>
+    	            
+                </div>
+    
+            </div>
+                
+            <a class="pull-right" ui-sref="app.pokedex.add"><i class="fa fa-plus-square"></i></a>
+            
+        </div>
+    
+        <div class="card-block">
+            
+            <div ng-show="isLoading" class="text-center">
+                <img src="/static/front/img/loading.gif" height="64"/>
+            </div>
+            
+            <div ng-show="!isLoading && (!pokemons || !pokemons.length)">
+                <div class="alert alert-info mb-0 text-center">
+                    {{'pokedex_view_NOPOKEMON' | translate}}
+                    <a class="highlight ml-1" ui-sref="app.pokedex.add"><i class="fa fa-plus-square"></i></a>
+                </div>
+            </div>
+            
+            <div ng-show="!isLoading && pokemons && pokemons.length" class="row">
+    
+                <div class="col-md-2 col-4 mb-3" ng-repeat="item in pokemons">
+                    <a ui-sref="app.pokemon({ref:item.ref})" class="normal d-block text-center" style="line-height:1;">
+                        
+                        <small style="position:absolute; top:10px; left: 20px;">
+                            <i ng-show="item.cp == item.finalCP" class="fa fa-star text-success mr-2"></i>
+                        </small>
+                        
+                        <small>{{item.percent}}%</small>
+                        
+                        <br><img ng-src="/static/front/img/{{item.code}}.png" width="48" height="48">
+                        
+                        <br><small>IV {{item.attack}}/{{item.defense}}/{{item.stigmata}}</small>
+                        <br><strong>{{item.name}}</strong>
+                        
+                    </a>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
 </div>

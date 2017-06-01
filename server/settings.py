@@ -1,3 +1,6 @@
+import os.path
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
 SECRET_KEY = ')tkpe%w1u5c@#e9=ttd4rbr1l_1%qa3w(qvtb%(2_l!=4*qlzy'
 
 DEBUG = True
@@ -88,7 +91,6 @@ USE_TZ = True
 import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
