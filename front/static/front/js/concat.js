@@ -1033,7 +1033,7 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 			
 			$auth.setToken(response.data.token);
 			$cookies.token = response.data.token;
-			$location.path('/pokedex/');
+			$location.path('/pokedex');
 			
 		});
 	};
@@ -1054,7 +1054,7 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 				
 					$auth.setToken(data.token);
 					$cookies.token = data.token;
-					$location.path('/pokedex/');
+					$location.path('/pokedex');
 					
 				},function error(data) {
 				
@@ -1072,7 +1072,7 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 				
 					$auth.setToken(data.token);
 					$cookies.token = data.token;
-					$location.path('/pokedex/');
+					$location.path('/pokedex');
 					
 				},function(data) {
 				
