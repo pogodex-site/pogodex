@@ -1875,7 +1875,7 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		
 		if ($rootScope.profile && $rootScope.profile.team) {
 			
-			$scope.computeModel.team = $rootScope.profile.team;
+			$scope.computeModel.team = $scope.profile.team;
 			$scope.updateTeam($scope.computeModel.team);
 		}
 		
