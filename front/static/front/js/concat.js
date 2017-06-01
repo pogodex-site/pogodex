@@ -1873,7 +1873,7 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		
 		$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
 		
-		if ($rootScope.profile && $rootScope.profile.team) {
+		if ($scope.profile && $scope.profile.team) {
 			
 			$scope.computeModel.team = $scope.profile.team;
 			$scope.updateTeam($scope.computeModel.team);
@@ -1903,12 +1903,12 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 			
 			$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
 			
-			if ($rootScope.profile && $rootScope.profile.team && $rootScope.profile.level) {
+			if ($scope.profile && $scope.profile.team && $scope.profile.level) {
 				
-				$scope.computeModel.team = $rootScope.profile.team;
+				$scope.computeModel.team = $scope.profile.team;
 				$scope.updateTeam($scope.computeModel.team);
 				
-				$scope.computeModel.level = $rootScope.profile.level;
+				$scope.computeModel.level = $scope.profile.level;
 			}
 		
 			$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
@@ -1975,16 +1975,16 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		
 		var updateProfile = false;
 		
-		if ($scope.computeModel.team && !$rootScope.profile.team) { updateProfile = true; }
-		if ($scope.computeModel.level && !$rootScope.profile.level) { updateProfile = true; }
+		if ($scope.computeModel.team && !$scope.profile.team) { updateProfile = true; }
+		if ($scope.computeModel.level && !$scope.profile.level) { updateProfile = true; }
 		
 		if (updateProfile == true) {
 			
 			var data = { 'team':$scope.computeModel.team, 'level':$scope.computeModel.level }
 			API.sendRequest('/api/profile/edit/', 'POST', {}, data).then(function(data) {
 				
-				$rootScope.profile.team = $scope.computeModel.team
-				$rootScope.profile.level = $scope.computeModel.level
+				$scope.profile.team = $scope.computeModel.team
+				$scope.profile.level = $scope.computeModel.level
 
 			}, function error(data) {
 				
