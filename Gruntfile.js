@@ -30,6 +30,10 @@ module.exports = function(grunt) {
 					'front/vendor/angular-translate/js/angular-translate.min.js',
 					'front/vendor/angular-ui-router/js/angular-ui-router.min.js',
 					
+					'front/build/data/data_level.js',
+					'front/build/data/data_pokemon.js',
+					'front/build/data/data_stardust.js',
+					
 					'front/build/scripts/services.js',
 					'front/build/scripts/app.js',
 					'front/build/scripts/directives.js',

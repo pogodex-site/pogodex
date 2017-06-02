@@ -373,6 +373,348 @@ f+" > 4096 bytes)!");k.cookie=e}}c.module("ngCookies",["ng"]).info({angularVersi
  */
 "undefined"!=typeof module&&"undefined"!=typeof exports&&module.exports===exports&&(module.exports="ui.router"),function(a,b,c){"use strict";function d(a,b){return T(new(T(function(){},{prototype:a})),b)}function e(a){return S(arguments,function(b){b!==a&&S(b,function(b,c){a.hasOwnProperty(c)||(a[c]=b)})}),a}function f(a,b){var c=[];for(var d in a.path){if(a.path[d]!==b.path[d])break;c.push(a.path[d])}return c}function g(a){if(Object.keys)return Object.keys(a);var b=[];return S(a,function(a,c){b.push(c)}),b}function h(a,b){if(Array.prototype.indexOf)return a.indexOf(b,Number(arguments[2])||0);var c=a.length>>>0,d=Number(arguments[2])||0;for(d=d<0?Math.ceil(d):Math.floor(d),d<0&&(d+=c);d<c;d++)if(d in a&&a[d]===b)return d;return-1}function i(a,b,c,d){var e,i=f(c,d),j={},k=[];for(var l in i)if(i[l]&&i[l].params&&(e=g(i[l].params),e.length))for(var m in e)h(k,e[m])>=0||(k.push(e[m]),j[e[m]]=a[e[m]]);return T({},j,b)}function j(a,b,c){if(!c){c=[];for(var d in a)c.push(d)}for(var e=0;e<c.length;e++){var f=c[e];if(a[f]!=b[f])return!1}return!0}function k(a,b){var c={};return S(a,function(a){c[a]=b[a]}),c}function l(a){var b={},c=Array.prototype.concat.apply(Array.prototype,Array.prototype.slice.call(arguments,1));return S(c,function(c){c in a&&(b[c]=a[c])}),b}function m(a){var b={},c=Array.prototype.concat.apply(Array.prototype,Array.prototype.slice.call(arguments,1));for(var d in a)h(c,d)==-1&&(b[d]=a[d]);return b}function n(a,b){var c=R(a),d=c?[]:{};return S(a,function(a,e){b(a,e)&&(d[c?d.length:e]=a)}),d}function o(a,b){var c=R(a)?[]:{};return S(a,function(a,d){c[d]=b(a,d)}),c}function p(a){return a.then(c,function(){})&&a}function q(a,b){var d=1,f=2,i={},j=[],k=i,l=T(a.when(i),{$$promises:i,$$values:i});this.study=function(i){function n(a,c){if(t[c]!==f){if(s.push(c),t[c]===d)throw s.splice(0,h(s,c)),new Error("Cyclic dependency: "+s.join(" -> "));if(t[c]=d,P(a))r.push(c,[function(){return b.get(a)}],j);else{var e=b.annotate(a);S(e,function(a){a!==c&&i.hasOwnProperty(a)&&n(i[a],a)}),r.push(c,a,e)}s.pop(),t[c]=f}}function o(a){return Q(a)&&a.then&&a.$$promises}if(!Q(i))throw new Error("'invocables' must be an object");var q=g(i||{}),r=[],s=[],t={};return S(i,n),i=s=t=null,function(d,f,g){function h(){--v||(w||e(u,f.$$values),s.$$values=u,s.$$promises=s.$$promises||!0,delete s.$$inheritedValues,n.resolve(u))}function i(a){s.$$failure=a,n.reject(a)}function j(c,e,f){function j(a){l.reject(a),i(a)}function k(){if(!N(s.$$failure))try{l.resolve(b.invoke(e,g,u)),l.promise.then(function(a){u[c]=a,h()},j)}catch(a){j(a)}}var l=a.defer(),m=0;S(f,function(a){t.hasOwnProperty(a)&&!d.hasOwnProperty(a)&&(m++,t[a].then(function(b){u[a]=b,--m||k()},j))}),m||k(),t[c]=p(l.promise)}if(o(d)&&g===c&&(g=f,f=d,d=null),d){if(!Q(d))throw new Error("'locals' must be an object")}else d=k;if(f){if(!o(f))throw new Error("'parent' must be a promise returned by $resolve.resolve()")}else f=l;var n=a.defer(),s=p(n.promise),t=s.$$promises={},u=T({},d),v=1+r.length/3,w=!1;if(p(s),N(f.$$failure))return i(f.$$failure),s;f.$$inheritedValues&&e(u,m(f.$$inheritedValues,q)),T(t,f.$$promises),f.$$values?(w=e(u,m(f.$$values,q)),s.$$inheritedValues=m(f.$$values,q),h()):(f.$$inheritedValues&&(s.$$inheritedValues=m(f.$$inheritedValues,q)),f.then(h,i));for(var x=0,y=r.length;x<y;x+=3)d.hasOwnProperty(r[x])?h():j(r[x],r[x+1],r[x+2]);return s}},this.resolve=function(a,b,c,d){return this.study(a)(b,c,d)}}function r(){var a=b.version.minor<3;this.shouldUnsafelyUseHttp=function(b){a=!!b},this.$get=["$http","$templateCache","$injector",function(b,c,d){return new s(b,c,d,a)}]}function s(a,b,c,d){this.fromConfig=function(a,b,c){return N(a.template)?this.fromString(a.template,b):N(a.templateUrl)?this.fromUrl(a.templateUrl,b):N(a.templateProvider)?this.fromProvider(a.templateProvider,b,c):null},this.fromString=function(a,b){return O(a)?a(b):a},this.fromUrl=function(e,f){return O(e)&&(e=e(f)),null==e?null:d?a.get(e,{cache:b,headers:{Accept:"text/html"}}).then(function(a){return a.data}):c.get("$templateRequest")(e)},this.fromProvider=function(a,b,d){return c.invoke(a,null,d||{params:b})}}function t(a,b,e){function f(b,c,d,e){if(q.push(b),o[b])return o[b];if(!/^\w+([-.]+\w+)*(?:\[\])?$/.test(b))throw new Error("Invalid parameter name '"+b+"' in pattern '"+a+"'");if(p[b])throw new Error("Duplicate parameter name '"+b+"' in pattern '"+a+"'");return p[b]=new W.Param(b,c,d,e),p[b]}function g(a,b,c,d){var e=["",""],f=a.replace(/[\\\[\]\^$*+?.()|{}]/g,"\\$&");if(!b)return f;switch(c){case!1:e=["(",")"+(d?"?":"")];break;case!0:f=f.replace(/\/$/,""),e=["(?:/(",")|/)?"];break;default:e=["("+c+"|",")?"]}return f+e[0]+b+e[1]}function h(e,f){var g,h,i,j,k;return g=e[2]||e[3],k=b.params[g],i=a.substring(m,e.index),h=f?e[4]:e[4]||("*"==e[1]?".*":null),h&&(j=W.type(h)||d(W.type("string"),{pattern:new RegExp(h,b.caseInsensitive?"i":c)})),{id:g,regexp:h,segment:i,type:j,cfg:k}}b=T({params:{}},Q(b)?b:{});var i,j=/([:*])([\w\[\]]+)|\{([\w\[\]]+)(?:\:\s*((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,k=/([:]?)([\w\[\].-]+)|\{([\w\[\].-]+)(?:\:\s*((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,l="^",m=0,n=this.segments=[],o=e?e.params:{},p=this.params=e?e.params.$$new():new W.ParamSet,q=[];this.source=a;for(var r,s,t;(i=j.exec(a))&&(r=h(i,!1),!(r.segment.indexOf("?")>=0));)s=f(r.id,r.type,r.cfg,"path"),l+=g(r.segment,s.type.pattern.source,s.squash,s.isOptional),n.push(r.segment),m=j.lastIndex;t=a.substring(m);var u=t.indexOf("?");if(u>=0){var v=this.sourceSearch=t.substring(u);if(t=t.substring(0,u),this.sourcePath=a.substring(0,m+u),v.length>0)for(m=0;i=k.exec(v);)r=h(i,!0),s=f(r.id,r.type,r.cfg,"search"),m=j.lastIndex}else this.sourcePath=a,this.sourceSearch="";l+=g(t)+(b.strict===!1?"/?":"")+"$",n.push(t),this.regexp=new RegExp(l,b.caseInsensitive?"i":c),this.prefix=n[0],this.$$paramNames=q}function u(a){T(this,a)}function v(){function a(a){return null!=a?a.toString().replace(/(~|\/)/g,function(a){return{"~":"~~","/":"~2F"}[a]}):a}function e(a){return null!=a?a.toString().replace(/(~~|~2F)/g,function(a){return{"~~":"~","~2F":"/"}[a]}):a}function f(){return{strict:p,caseInsensitive:m}}function i(a){return O(a)||R(a)&&O(a[a.length-1])}function j(){for(;w.length;){var a=w.shift();if(a.pattern)throw new Error("You cannot override a type's .pattern at runtime.");b.extend(r[a.name],l.invoke(a.def))}}function k(a){T(this,a||{})}W=this;var l,m=!1,p=!0,q=!1,r={},s=!0,w=[],x={string:{encode:a,decode:e,is:function(a){return null==a||!N(a)||"string"==typeof a},pattern:/[^\/]*/},int:{encode:a,decode:function(a){return parseInt(a,10)},is:function(a){return a!==c&&null!==a&&this.decode(a.toString())===a},pattern:/\d+/},bool:{encode:function(a){return a?1:0},decode:function(a){return 0!==parseInt(a,10)},is:function(a){return a===!0||a===!1},pattern:/0|1/},date:{encode:function(a){return this.is(a)?[a.getFullYear(),("0"+(a.getMonth()+1)).slice(-2),("0"+a.getDate()).slice(-2)].join("-"):c},decode:function(a){if(this.is(a))return a;var b=this.capture.exec(a);return b?new Date(b[1],b[2]-1,b[3]):c},is:function(a){return a instanceof Date&&!isNaN(a.valueOf())},equals:function(a,b){return this.is(a)&&this.is(b)&&a.toISOString()===b.toISOString()},pattern:/[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,capture:/([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/},json:{encode:b.toJson,decode:b.fromJson,is:b.isObject,equals:b.equals,pattern:/[^\/]*/},any:{encode:b.identity,decode:b.identity,equals:b.equals,pattern:/.*/}};v.$$getDefaultValue=function(a){if(!i(a.value))return a.value;if(!l)throw new Error("Injectable functions cannot be called at configuration time");return l.invoke(a.value)},this.caseInsensitive=function(a){return N(a)&&(m=a),m},this.strictMode=function(a){return N(a)&&(p=a),p},this.defaultSquashPolicy=function(a){if(!N(a))return q;if(a!==!0&&a!==!1&&!P(a))throw new Error("Invalid squash policy: "+a+". Valid policies: false, true, arbitrary-string");return q=a,a},this.compile=function(a,b){return new t(a,T(f(),b))},this.isMatcher=function(a){if(!Q(a))return!1;var b=!0;return S(t.prototype,function(c,d){O(c)&&(b=b&&N(a[d])&&O(a[d]))}),b},this.type=function(a,b,c){if(!N(b))return r[a];if(r.hasOwnProperty(a))throw new Error("A type named '"+a+"' has already been defined.");return r[a]=new u(T({name:a},b)),c&&(w.push({name:a,def:c}),s||j()),this},S(x,function(a,b){r[b]=new u(T({name:b},a))}),r=d(r,{}),this.$get=["$injector",function(a){return l=a,s=!1,j(),S(x,function(a,b){r[b]||(r[b]=new u(a))}),this}],this.Param=function(a,d,e,f){function j(a){var b=Q(a)?g(a):[],c=h(b,"value")===-1&&h(b,"type")===-1&&h(b,"squash")===-1&&h(b,"array")===-1;return c&&(a={value:a}),a.$$fn=i(a.value)?a.value:function(){return a.value},a}function k(c,d,e){if(c.type&&d)throw new Error("Param '"+a+"' has two type configurations.");return d?d:c.type?b.isString(c.type)?r[c.type]:c.type instanceof u?c.type:new u(c.type):"config"===e?r.any:r.string}function m(){var b={array:"search"===f&&"auto"},c=a.match(/\[\]$/)?{array:!0}:{};return T(b,c,e).array}function p(a,b){var c=a.squash;if(!b||c===!1)return!1;if(!N(c)||null==c)return q;if(c===!0||P(c))return c;throw new Error("Invalid squash policy: '"+c+"'. Valid policies: false, true, or arbitrary string")}function s(a,b,d,e){var f,g,i=[{from:"",to:d||b?c:""},{from:null,to:d||b?c:""}];return f=R(a.replace)?a.replace:[],P(e)&&f.push({from:e,to:c}),g=o(f,function(a){return a.from}),n(i,function(a){return h(g,a.from)===-1}).concat(f)}function t(){if(!l)throw new Error("Injectable functions cannot be called at configuration time");var a=l.invoke(e.$$fn);if(null!==a&&a!==c&&!x.type.is(a))throw new Error("Default value ("+a+") for parameter '"+x.id+"' is not an instance of Type ("+x.type.name+")");return a}function v(a){function b(a){return function(b){return b.from===a}}function c(a){var c=o(n(x.replace,b(a)),function(a){return a.to});return c.length?c[0]:a}return a=c(a),N(a)?x.type.$normalize(a):t()}function w(){return"{Param:"+a+" "+d+" squash: '"+A+"' optional: "+z+"}"}var x=this;e=j(e),d=k(e,d,f);var y=m();d=y?d.$asArray(y,"search"===f):d,"string"!==d.name||y||"path"!==f||e.value!==c||(e.value="");var z=e.value!==c,A=p(e,z),B=s(e,y,z,A);T(this,{id:a,type:d,location:f,array:y,squash:A,replace:B,isOptional:z,value:v,dynamic:c,config:e,toString:w})},k.prototype={$$new:function(){return d(this,T(new k,{$$parent:this}))},$$keys:function(){for(var a=[],b=[],c=this,d=g(k.prototype);c;)b.push(c),c=c.$$parent;return b.reverse(),S(b,function(b){S(g(b),function(b){h(a,b)===-1&&h(d,b)===-1&&a.push(b)})}),a},$$values:function(a){var b={},c=this;return S(c.$$keys(),function(d){b[d]=c[d].value(a&&a[d])}),b},$$equals:function(a,b){var c=!0,d=this;return S(d.$$keys(),function(e){var f=a&&a[e],g=b&&b[e];d[e].type.equals(f,g)||(c=!1)}),c},$$validates:function(a){var d,e,f,g,h,i=this.$$keys();for(d=0;d<i.length&&(e=this[i[d]],f=a[i[d]],f!==c&&null!==f||!e.isOptional);d++){if(g=e.type.$normalize(f),!e.type.is(g))return!1;if(h=e.type.encode(g),b.isString(h)&&!e.type.pattern.exec(h))return!1}return!0},$$parent:c},this.ParamSet=k}function w(a,d){function e(a){var b=/^\^((?:\\[^a-zA-Z0-9]|[^\\\[\]\^$*+?.()|{}]+)*)/.exec(a.source);return null!=b?b[1].replace(/\\(.)/g,"$1"):""}function f(a,b){return a.replace(/\$(\$|\d{1,2})/,function(a,c){return b["$"===c?0:Number(c)]})}function g(a,b,c){if(!c)return!1;var d=a.invoke(b,b,{$match:c});return!N(d)||d}function h(d,e,f,g,h){function m(a,b,c){return"/"===q?a:b?q.slice(0,-1)+a:c?q.slice(1)+a:a}function n(a){function b(a){var b=a(f,d);return!!b&&(P(b)&&d.replace().url(b),!0)}if(!a||!a.defaultPrevented){p&&d.url()===p;p=c;var e,g=j.length;for(e=0;e<g;e++)if(b(j[e]))return;k&&b(k)}}function o(){return i=i||e.$on("$locationChangeSuccess",n)}var p,q=g.baseHref(),r=d.url();return l||o(),{sync:function(){n()},listen:function(){return o()},update:function(a){return a?void(r=d.url()):void(d.url()!==r&&(d.url(r),d.replace()))},push:function(a,b,e){var f=a.format(b||{});null!==f&&b&&b["#"]&&(f+="#"+b["#"]),d.url(f),p=e&&e.$$avoidResync?d.url():c,e&&e.replace&&d.replace()},href:function(c,e,f){if(!c.validates(e))return null;var g=a.html5Mode();b.isObject(g)&&(g=g.enabled),g=g&&h.history;var i=c.format(e);if(f=f||{},g||null===i||(i="#"+a.hashPrefix()+i),null!==i&&e&&e["#"]&&(i+="#"+e["#"]),i=m(i,g,f.absolute),!f.absolute||!i)return i;var j=!g&&i?"/":"",k=d.port();return k=80===k||443===k?"":":"+k,[d.protocol(),"://",d.host(),k,j,i].join("")}}}var i,j=[],k=null,l=!1;this.rule=function(a){if(!O(a))throw new Error("'rule' must be a function");return j.push(a),this},this.otherwise=function(a){if(P(a)){var b=a;a=function(){return b}}else if(!O(a))throw new Error("'rule' must be a function");return k=a,this},this.when=function(a,b){var c,h=P(b);if(P(a)&&(a=d.compile(a)),!h&&!O(b)&&!R(b))throw new Error("invalid 'handler' in when()");var i={matcher:function(a,b){return h&&(c=d.compile(b),b=["$match",function(a){return c.format(a)}]),T(function(c,d){return g(c,b,a.exec(d.path(),d.search()))},{prefix:P(a.prefix)?a.prefix:""})},regex:function(a,b){if(a.global||a.sticky)throw new Error("when() RegExp must not be global or sticky");return h&&(c=b,b=["$match",function(a){return f(c,a)}]),T(function(c,d){return g(c,b,a.exec(d.path()))},{prefix:e(a)})}},j={matcher:d.isMatcher(a),regex:a instanceof RegExp};for(var k in j)if(j[k])return this.rule(i[k](a,b));throw new Error("invalid 'what' in when()")},this.deferIntercept=function(a){a===c&&(a=!0),l=a},this.$get=h,h.$inject=["$location","$rootScope","$injector","$browser","$sniffer"]}function x(a,e){function f(a){return 0===a.indexOf(".")||0===a.indexOf("^")}function m(a,b){if(!a)return c;var d=P(a),e=d?a:a.name,g=f(e);if(g){if(!b)throw new Error("No reference point given for path '"+e+"'");b=m(b);for(var h=e.split("."),i=0,j=h.length,k=b;i<j;i++)if(""!==h[i]||0!==i){if("^"!==h[i])break;if(!k.parent)throw new Error("Path '"+e+"' not valid for state '"+b.name+"'");k=k.parent}else k=b;h=h.slice(i).join("."),e=k.name+(k.name&&h?".":"")+h}var l=A[e];return!l||!d&&(d||l!==a&&l.self!==a)?c:l}function n(a,b){B[a]||(B[a]=[]),B[a].push(b)}function q(a){for(var b=B[a]||[];b.length;)r(b.shift())}function r(b){b=d(b,{self:b,resolve:b.resolve||{},toString:function(){return this.name}});var c=b.name;if(!P(c)||c.indexOf("@")>=0)throw new Error("State must have a valid name");if(A.hasOwnProperty(c))throw new Error("State '"+c+"' is already defined");var e=c.indexOf(".")!==-1?c.substring(0,c.lastIndexOf(".")):P(b.parent)?b.parent:Q(b.parent)&&P(b.parent.name)?b.parent.name:"";if(e&&!A[e])return n(e,b.self);for(var f in D)O(D[f])&&(b[f]=D[f](b,D.$delegates[f]));return A[c]=b,!b[C]&&b.url&&a.when(b.url,["$match","$stateParams",function(a,c){z.$current.navigable==b&&j(a,c)||z.transitionTo(b,a,{inherit:!0,location:!1})}]),q(c),b}function s(a){return a.indexOf("*")>-1}function t(a){for(var b=a.split("."),c=z.$current.name.split("."),d=0,e=b.length;d<e;d++)"*"===b[d]&&(c[d]="*");return"**"===b[0]&&(c=c.slice(h(c,b[1])),c.unshift("**")),"**"===b[b.length-1]&&(c.splice(h(c,b[b.length-2])+1,Number.MAX_VALUE),c.push("**")),b.length==c.length&&c.join("")===b.join("")}function u(a,b){return P(a)&&!N(b)?D[a]:O(b)&&P(a)?(D[a]&&!D.$delegates[a]&&(D.$delegates[a]=D[a]),D[a]=b,this):this}function v(a,b){return Q(a)?b=a:b.name=a,r(b),this}function w(a,e,f,h,j,l,n,q,r){function u(b,c,d,f){var g=a.$broadcast("$stateNotFound",b,c,d);if(g.defaultPrevented)return n.update(),E;if(!g.retry)return null;if(f.$retry)return n.update(),F;var h=z.transition=e.when(g.retry);return h.then(function(){return h!==z.transition?(a.$broadcast("$stateChangeCancel",b.to,b.toParams,c,d),B):(b.options.$retry=!0,z.transitionTo(b.to,b.toParams,b.options))},function(){return E}),n.update(),h}function v(a,c,d,g,i,l){function m(){var c=[];return S(a.views,function(d,e){var g=d.resolve&&d.resolve!==a.resolve?d.resolve:{};g.$template=[function(){return f.load(e,{view:d,locals:i.globals,params:n,notify:l.notify})||""}],c.push(j.resolve(g,i.globals,i.resolve,a).then(function(c){if(O(d.controllerProvider)||R(d.controllerProvider)){var f=b.extend({},g,i.globals);c.$$controller=h.invoke(d.controllerProvider,null,f)}else c.$$controller=d.controller;c.$$state=a,c.$$controllerAs=d.controllerAs,c.$$resolveAs=d.resolveAs,i[e]=c}))}),e.all(c).then(function(){return i.globals})}var n=d?c:k(a.params.$$keys(),c),o={$stateParams:n};i.resolve=j.resolve(a.resolve,o,i.resolve,a);var p=[i.resolve.then(function(a){i.globals=a})];return g&&p.push(g),e.all(p).then(m).then(function(a){return i})}var w=new Error("transition superseded"),B=p(e.reject(w)),D=p(e.reject(new Error("transition prevented"))),E=p(e.reject(new Error("transition aborted"))),F=p(e.reject(new Error("transition failed")));return y.locals={resolve:null,globals:{$stateParams:{}}},z={params:{},current:y.self,$current:y,transition:null},z.reload=function(a){return z.transitionTo(z.current,l,{reload:a||!0,inherit:!1,notify:!0})},z.go=function(a,b,c){return z.transitionTo(a,b,T({inherit:!0,relative:z.$current},c))},z.transitionTo=function(b,c,f){c=c||{},f=T({location:!0,inherit:!1,relative:null,notify:!0,reload:!1,$retry:!1},f||{});var g,j=z.$current,o=z.params,q=j.path,r=m(b,f.relative),s=c["#"];if(!N(r)){var t={to:b,toParams:c,options:f},A=u(t,j.self,o,f);if(A)return A;if(b=t.to,c=t.toParams,f=t.options,r=m(b,f.relative),!N(r)){if(!f.relative)throw new Error("No such state '"+b+"'");throw new Error("Could not resolve '"+b+"' from state '"+f.relative+"'")}}if(r[C])throw new Error("Cannot transition to abstract state '"+b+"'");if(f.inherit&&(c=i(l,c||{},z.$current,r)),!r.params.$$validates(c))return F;c=r.params.$$values(c),b=r;var E=b.path,G=0,H=E[G],I=y.locals,J=[];if(f.reload){if(P(f.reload)||Q(f.reload)){if(Q(f.reload)&&!f.reload.name)throw new Error("Invalid reload state object");var K=f.reload===!0?q[0]:m(f.reload);if(f.reload&&!K)throw new Error("No such reload state '"+(P(f.reload)?f.reload:f.reload.name)+"'");for(;H&&H===q[G]&&H!==K;)I=J[G]=H.locals,G++,H=E[G]}}else for(;H&&H===q[G]&&H.ownParams.$$equals(c,o);)I=J[G]=H.locals,G++,H=E[G];if(x(b,c,j,o,I,f))return s&&(c["#"]=s),z.params=c,U(z.params,l),U(k(b.params.$$keys(),l),b.locals.globals.$stateParams),f.location&&b.navigable&&b.navigable.url&&(n.push(b.navigable.url,c,{$$avoidResync:!0,replace:"replace"===f.location}),n.update(!0)),z.transition=null,e.when(z.current);if(c=k(b.params.$$keys(),c||{}),s&&(c["#"]=s),f.notify&&a.$broadcast("$stateChangeStart",b.self,c,j.self,o,f).defaultPrevented)return a.$broadcast("$stateChangeCancel",b.self,c,j.self,o),null==z.transition&&n.update(),D;for(var L=e.when(I),M=G;M<E.length;M++,H=E[M])I=J[M]=d(I),L=v(H,c,H===b,L,I,f);var O=z.transition=L.then(function(){var d,e,g;if(z.transition!==O)return a.$broadcast("$stateChangeCancel",b.self,c,j.self,o),B;for(d=q.length-1;d>=G;d--)g=q[d],g.self.onExit&&h.invoke(g.self.onExit,g.self,g.locals.globals),g.locals=null;for(d=G;d<E.length;d++)e=E[d],e.locals=J[d],e.self.onEnter&&h.invoke(e.self.onEnter,e.self,e.locals.globals);return z.transition!==O?(a.$broadcast("$stateChangeCancel",b.self,c,j.self,o),B):(z.$current=b,z.current=b.self,z.params=c,U(z.params,l),z.transition=null,f.location&&b.navigable&&n.push(b.navigable.url,b.navigable.locals.globals.$stateParams,{$$avoidResync:!0,replace:"replace"===f.location}),f.notify&&a.$broadcast("$stateChangeSuccess",b.self,c,j.self,o),n.update(!0),z.current)}).then(null,function(d){return d===w?B:z.transition!==O?(a.$broadcast("$stateChangeCancel",b.self,c,j.self,o),B):(z.transition=null,g=a.$broadcast("$stateChangeError",b.self,c,j.self,o,d),g.defaultPrevented||n.update(),e.reject(d))});return p(O),O},z.is=function(a,b,d){d=T({relative:z.$current},d||{});var e=m(a,d.relative);return N(e)?z.$current===e&&(!b||g(b).reduce(function(a,c){var d=e.params[c];return a&&!d||d.type.equals(l[c],b[c])},!0)):c},z.includes=function(a,b,d){if(d=T({relative:z.$current},d||{}),P(a)&&s(a)){if(!t(a))return!1;a=z.$current.name}var e=m(a,d.relative);if(!N(e))return c;if(!N(z.$current.includes[e.name]))return!1;if(!b)return!0;for(var f=g(b),h=0;h<f.length;h++){var i=f[h],j=e.params[i];if(j&&!j.type.equals(l[i],b[i]))return!1}return g(b).reduce(function(a,c){var d=e.params[c];return a&&!d||d.type.equals(l[c],b[c])},!0)},z.href=function(a,b,d){d=T({lossy:!0,inherit:!0,absolute:!1,relative:z.$current},d||{});var e=m(a,d.relative);if(!N(e))return null;d.inherit&&(b=i(l,b||{},z.$current,e));var f=e&&d.lossy?e.navigable:e;return f&&f.url!==c&&null!==f.url?n.href(f.url,k(e.params.$$keys().concat("#"),b||{}),{absolute:d.absolute}):null},z.get=function(a,b){if(0===arguments.length)return o(g(A),function(a){return A[a].self});var c=m(a,b||z.$current);return c&&c.self?c.self:null},z}function x(a,b,c,d,e,f){function g(a,b,c){function d(b){return"search"!=a.params[b].location}var e=a.params.$$keys().filter(d),f=l.apply({},[a.params].concat(e)),g=new W.ParamSet(f);return g.$$equals(b,c)}if(!f.reload&&a===c&&(e===c.locals||a.self.reloadOnSearch===!1&&g(c,d,b)))return!0}var y,z,A={},B={},C="abstract",D={parent:function(a){if(N(a.parent)&&a.parent)return m(a.parent);var b=/^(.+)\.[^.]+$/.exec(a.name);return b?m(b[1]):y},data:function(a){return a.parent&&a.parent.data&&(a.data=a.self.data=d(a.parent.data,a.data)),a.data},url:function(a){var b=a.url,c={params:a.params||{}};if(P(b))return"^"==b.charAt(0)?e.compile(b.substring(1),c):(a.parent.navigable||y).url.concat(b,c);if(!b||e.isMatcher(b))return b;throw new Error("Invalid url '"+b+"' in state '"+a+"'")},navigable:function(a){return a.url?a:a.parent?a.parent.navigable:null},ownParams:function(a){var b=a.url&&a.url.params||new W.ParamSet;return S(a.params||{},function(a,c){b[c]||(b[c]=new W.Param(c,null,a,"config"))}),b},params:function(a){var b=l(a.ownParams,a.ownParams.$$keys());return a.parent&&a.parent.params?T(a.parent.params.$$new(),b):new W.ParamSet},views:function(a){var b={};return S(N(a.views)?a.views:{"":a},function(c,d){d.indexOf("@")<0&&(d+="@"+a.parent.name),c.resolveAs=c.resolveAs||a.resolveAs||"$resolve",b[d]=c}),b},path:function(a){return a.parent?a.parent.path.concat(a):[]},includes:function(a){var b=a.parent?T({},a.parent.includes):{};return b[a.name]=!0,b},$delegates:{}};y=r({name:"",url:"^",views:null,abstract:!0}),y.navigable=null,this.decorator=u,this.state=v,this.$get=w,w.$inject=["$rootScope","$q","$view","$injector","$resolve","$stateParams","$urlRouter","$location","$urlMatcherFactory"]}function y(){function a(a,b){return{load:function(a,c){var d,e={template:null,controller:null,view:null,locals:null,notify:!0,async:!0,params:{}};return c=T(e,c),c.view&&(d=b.fromConfig(c.view,c.params,c.locals)),d}}}this.$get=a,a.$inject=["$rootScope","$templateFactory"]}function z(){var a=!1;this.useAnchorScroll=function(){a=!0},this.$get=["$anchorScroll","$timeout",function(b,c){return a?b:function(a){return c(function(){a[0].scrollIntoView()},0,!1)}}]}function A(a,c,d,e,f){function g(){return c.has?function(a){return c.has(a)?c.get(a):null}:function(a){try{return c.get(a)}catch(a){return null}}}function h(a,c){var d=function(){return{enter:function(a,b,c){b.after(a),c()},leave:function(a,b){a.remove(),b()}}};if(k)return{enter:function(a,c,d){b.version.minor>2?k.enter(a,null,c).then(d):k.enter(a,null,c,d)},leave:function(a,c){b.version.minor>2?k.leave(a).then(c):k.leave(a,c)}};if(j){var e=j&&j(c,a);return{enter:function(a,b,c){e.enter(a,null,b),c()},leave:function(a,b){e.leave(a),b()}}}return d()}var i=g(),j=i("$animator"),k=i("$animate"),l={restrict:"ECA",terminal:!0,priority:400,transclude:"element",compile:function(c,g,i){return function(c,g,j){function k(){if(m&&(m.remove(),m=null),o&&(o.$destroy(),o=null),n){var a=n.data("$uiViewAnim");s.leave(n,function(){a.$$animLeave.resolve(),m=null}),m=n,n=null}}function l(h){var l,m=C(c,j,g,e),t=m&&a.$current&&a.$current.locals[m];if(h||t!==p){l=c.$new(),p=a.$current.locals[m],l.$emit("$viewContentLoading",m);var u=i(l,function(a){var e=f.defer(),h=f.defer(),i={$animEnter:e.promise,$animLeave:h.promise,$$animLeave:h};a.data("$uiViewAnim",i),s.enter(a,g,function(){e.resolve(),o&&o.$emit("$viewContentAnimationEnded"),(b.isDefined(r)&&!r||c.$eval(r))&&d(a)}),k()});n=u,o=l,o.$emit("$viewContentLoaded",m),o.$eval(q)}}var m,n,o,p,q=j.onload||"",r=j.autoscroll,s=h(j,c);g.inheritedData("$uiView");c.$on("$stateChangeSuccess",function(){l(!1)}),l(!0)}}};return l}function B(a,c,d,e){return{restrict:"ECA",priority:-400,compile:function(f){var g=f.html();return f.empty?f.empty():f[0].innerHTML=null,function(f,h,i){var j=d.$current,k=C(f,i,h,e),l=j&&j.locals[k];if(!l)return h.html(g),void a(h.contents())(f);h.data("$uiView",{name:k,state:l.$$state}),h.html(l.$template?l.$template:g);var m=b.extend({},l);f[l.$$resolveAs]=m;var n=a(h.contents());if(l.$$controller){l.$scope=f,l.$element=h;var o=c(l.$$controller,l);l.$$controllerAs&&(f[l.$$controllerAs]=o,f[l.$$controllerAs][l.$$resolveAs]=m),O(o.$onInit)&&o.$onInit(),h.data("$ngControllerController",o),h.children().data("$ngControllerController",o)}n(f)}}}}function C(a,b,c,d){var e=d(b.uiView||b.name||"")(a),f=c.inheritedData("$uiView");return e.indexOf("@")>=0?e:e+"@"+(f?f.state.name:"")}function D(a,b){var c,d=a.match(/^\s*({[^}]*})\s*$/);if(d&&(a=b+"("+d[1]+")"),c=a.replace(/\n/g," ").match(/^([^(]+?)\s*(\((.*)\))?$/),!c||4!==c.length)throw new Error("Invalid state ref '"+a+"'");return{state:c[1],paramExpr:c[3]||null}}function E(a){var b=a.parent().inheritedData("$uiView");if(b&&b.state&&b.state.name)return b.state}function F(a){var b="[object SVGAnimatedString]"===Object.prototype.toString.call(a.prop("href")),c="FORM"===a[0].nodeName;return{attr:c?"action":b?"xlink:href":"href",isAnchor:"A"===a.prop("tagName").toUpperCase(),clickable:!c}}function G(a,b,c,d,e){return function(f){var g=f.which||f.button,h=e();if(!(g>1||f.ctrlKey||f.metaKey||f.shiftKey||a.attr("target"))){var i=c(function(){b.go(h.state,h.params,h.options)});f.preventDefault();var j=d.isAnchor&&!h.href?1:0;f.preventDefault=function(){j--<=0&&c.cancel(i)}}}}function H(a,b){return{relative:E(a)||b.$current,inherit:!0}}function I(a,c){return{restrict:"A",require:["?^uiSrefActive","?^uiSrefActiveEq"],link:function(d,e,f,g){var h,i=D(f.uiSref,a.current.name),j={state:i.state,href:null,params:null},k=F(e),l=g[1]||g[0],m=null;j.options=T(H(e,a),f.uiSrefOpts?d.$eval(f.uiSrefOpts):{});var n=function(c){c&&(j.params=b.copy(c)),j.href=a.href(i.state,j.params,j.options),m&&m(),l&&(m=l.$$addStateInfo(i.state,j.params)),null!==j.href&&f.$set(k.attr,j.href)};i.paramExpr&&(d.$watch(i.paramExpr,function(a){a!==j.params&&n(a)},!0),j.params=b.copy(d.$eval(i.paramExpr))),n(),k.clickable&&(h=G(e,a,c,k,function(){return j}),e[e.on?"on":"bind"]("click",h),d.$on("$destroy",function(){e[e.off?"off":"unbind"]("click",h)}))}}}function J(a,b){return{restrict:"A",require:["?^uiSrefActive","?^uiSrefActiveEq"],link:function(c,d,e,f){function g(b){m.state=b[0],m.params=b[1],m.options=b[2],m.href=a.href(m.state,m.params,m.options),n&&n(),j&&(n=j.$$addStateInfo(m.state,m.params)),m.href&&e.$set(i.attr,m.href)}var h,i=F(d),j=f[1]||f[0],k=[e.uiState,e.uiStateParams||null,e.uiStateOpts||null],l="["+k.map(function(a){return a||"null"}).join(", ")+"]",m={state:null,params:null,options:null,href:null},n=null;c.$watch(l,g,!0),g(c.$eval(l)),i.clickable&&(h=G(d,a,b,i,function(){return m}),d[d.on?"on":"bind"]("click",h),c.$on("$destroy",function(){d[d.off?"off":"unbind"]("click",h)}))}}}function K(a,b,c){return{restrict:"A",controller:["$scope","$element","$attrs","$timeout",function(b,d,e,f){function g(b,c,e){var f=a.get(b,E(d)),g=h(b,c),i={state:f||{name:b},params:c,hash:g};return p.push(i),q[g]=e,function(){var a=p.indexOf(i);a!==-1&&p.splice(a,1)}}function h(a,c){if(!P(a))throw new Error("state should be a string");return Q(c)?a+V(c):(c=b.$eval(c),Q(c)?a+V(c):a)}function i(){for(var a=0;a<p.length;a++)l(p[a].state,p[a].params)?j(d,q[p[a].hash]):k(d,q[p[a].hash]),m(p[a].state,p[a].params)?j(d,n):k(d,n)}function j(a,b){f(function(){a.addClass(b)})}function k(a,b){a.removeClass(b)}function l(b,c){return a.includes(b.name,c)}function m(b,c){return a.is(b.name,c)}var n,o,p=[],q={};n=c(e.uiSrefActiveEq||"",!1)(b);try{o=b.$eval(e.uiSrefActive)}catch(a){}o=o||c(e.uiSrefActive||"",!1)(b),Q(o)&&S(o,function(c,d){if(P(c)){var e=D(c,a.current.name);g(e.state,b.$eval(e.paramExpr),d)}}),this.$$addStateInfo=function(a,b){if(!(Q(o)&&p.length>0)){var c=g(a,b,o);return i(),c}},b.$on("$stateChangeSuccess",i),i()}]}}function L(a){var b=function(b,c){return a.is(b,c)};return b.$stateful=!0,b}function M(a){var b=function(b,c,d){return a.includes(b,c,d)};return b.$stateful=!0,b}var N=b.isDefined,O=b.isFunction,P=b.isString,Q=b.isObject,R=b.isArray,S=b.forEach,T=b.extend,U=b.copy,V=b.toJson;b.module("ui.router.util",["ng"]),b.module("ui.router.router",["ui.router.util"]),b.module("ui.router.state",["ui.router.router","ui.router.util"]),b.module("ui.router",["ui.router.state"]),b.module("ui.router.compat",["ui.router"]),q.$inject=["$q","$injector"],b.module("ui.router.util").service("$resolve",q),b.module("ui.router.util").provider("$templateFactory",r);var W;t.prototype.concat=function(a,b){var c={caseInsensitive:W.caseInsensitive(),strict:W.strictMode(),squash:W.defaultSquashPolicy()};return new t(this.sourcePath+a+this.sourceSearch,T(c,b),this)},t.prototype.toString=function(){return this.source},t.prototype.exec=function(a,b){function c(a){function b(a){return a.split("").reverse().join("")}function c(a){return a.replace(/\\-/g,"-")}var d=b(a).split(/-(?!\\)/),e=o(d,b);return o(e,c).reverse()}var d=this.regexp.exec(a);if(!d)return null;b=b||{};var e,f,g,h=this.parameters(),i=h.length,j=this.segments.length-1,k={};if(j!==d.length-1)throw new Error("Unbalanced capture group in route '"+this.source+"'");var l,m;for(e=0;e<j;e++){for(g=h[e],l=this.params[g],m=d[e+1],f=0;f<l.replace.length;f++)l.replace[f].from===m&&(m=l.replace[f].to);m&&l.array===!0&&(m=c(m)),N(m)&&(m=l.type.decode(m)),k[g]=l.value(m)}for(;e<i;e++){for(g=h[e],k[g]=this.params[g].value(b[g]),l=this.params[g],m=b[g],f=0;f<l.replace.length;f++)l.replace[f].from===m&&(m=l.replace[f].to);N(m)&&(m=l.type.decode(m)),k[g]=l.value(m)}return k},t.prototype.parameters=function(a){return N(a)?this.params[a]||null:this.$$paramNames},t.prototype.validates=function(a){return this.params.$$validates(a)},t.prototype.format=function(a){function b(a){return encodeURIComponent(a).replace(/-/g,function(a){return"%5C%"+a.charCodeAt(0).toString(16).toUpperCase()})}a=a||{};var c=this.segments,d=this.parameters(),e=this.params;if(!this.validates(a))return null;var f,g=!1,h=c.length-1,i=d.length,j=c[0];for(f=0;f<i;f++){var k=f<h,l=d[f],m=e[l],n=m.value(a[l]),p=m.isOptional&&m.type.equals(m.value(),n),q=!!p&&m.squash,r=m.type.encode(n);if(k){var s=c[f+1],t=f+1===h;if(q===!1)null!=r&&(j+=R(r)?o(r,b).join("-"):encodeURIComponent(r)),j+=s;else if(q===!0){var u=j.match(/\/$/)?/\/?(.*)/:/(.*)/;j+=s.match(u)[1]}else P(q)&&(j+=q+s);t&&m.squash===!0&&"/"===j.slice(-1)&&(j=j.slice(0,-1))}else{if(null==r||p&&q!==!1)continue;if(R(r)||(r=[r]),0===r.length)continue;r=o(r,encodeURIComponent).join("&"+l+"="),j+=(g?"&":"?")+(l+"="+r),g=!0}}return j},u.prototype.is=function(a,b){return!0},u.prototype.encode=function(a,b){return a},u.prototype.decode=function(a,b){return a},u.prototype.equals=function(a,b){return a==b},u.prototype.$subPattern=function(){var a=this.pattern.toString();return a.substr(1,a.length-2)},u.prototype.pattern=/.*/,u.prototype.toString=function(){return"{Type:"+this.name+"}"},u.prototype.$normalize=function(a){return this.is(a)?a:this.decode(a)},u.prototype.$asArray=function(a,b){function d(a,b){function d(a,b){return function(){return a[b].apply(a,arguments)}}function e(a){return R(a)?a:N(a)?[a]:[]}function f(a){switch(a.length){case 0:return c;case 1:return"auto"===b?a[0]:a;default:return a}}function g(a){return!a}function h(a,b){return function(c){if(R(c)&&0===c.length)return c;c=e(c);var d=o(c,a);return b===!0?0===n(d,g).length:f(d)}}function i(a){return function(b,c){var d=e(b),f=e(c);if(d.length!==f.length)return!1;
 for(var g=0;g<d.length;g++)if(!a(d[g],f[g]))return!1;return!0}}this.encode=h(d(a,"encode")),this.decode=h(d(a,"decode")),this.is=h(d(a,"is"),!0),this.equals=i(d(a,"equals")),this.pattern=a.pattern,this.$normalize=h(d(a,"$normalize")),this.name=a.name,this.$arrayMode=b}if(!a)return this;if("auto"===a&&!b)throw new Error("'auto' array mode is for query parameters only");return new d(this,a)},b.module("ui.router.util").provider("$urlMatcherFactory",v),b.module("ui.router.util").run(["$urlMatcherFactory",function(a){}]),w.$inject=["$locationProvider","$urlMatcherFactoryProvider"],b.module("ui.router.router").provider("$urlRouter",w),x.$inject=["$urlRouterProvider","$urlMatcherFactoryProvider"],b.module("ui.router.state").factory("$stateParams",function(){return{}}).constant("$state.runtime",{autoinject:!0}).provider("$state",x).run(["$injector",function(a){a.get("$state.runtime").autoinject&&a.get("$state")}]),y.$inject=[],b.module("ui.router.state").provider("$view",y),b.module("ui.router.state").provider("$uiViewScroll",z),A.$inject=["$state","$injector","$uiViewScroll","$interpolate","$q"],B.$inject=["$compile","$controller","$state","$interpolate"],b.module("ui.router.state").directive("uiView",A),b.module("ui.router.state").directive("uiView",B),I.$inject=["$state","$timeout"],J.$inject=["$state","$timeout"],K.$inject=["$state","$stateParams","$interpolate"],b.module("ui.router.state").directive("uiSref",I).directive("uiSrefActive",K).directive("uiSrefActiveEq",K).directive("uiState",J),L.$inject=["$state"],M.$inject=["$state"],b.module("ui.router.state").filter("isState",L).filter("includedByState",M)}(window,window.angular);
+var data_level = new Map();
+data_level.set( 1.0,	{'level': 1.0,	'cpm': 0.0940000000,	'cumul_stardust':   200,	'cumul_candy':  1});
+data_level.set( 1.5,	{'level': 1.5,	'cpm': 0.1351374320,	'cumul_stardust':   400,	'cumul_candy':  2});
+data_level.set( 2.0,	{'level': 2.0,	'cpm': 0.1663978700,	'cumul_stardust':   600,	'cumul_candy':  3});
+data_level.set( 2.5,	{'level': 2.5,	'cpm': 0.1926509190,	'cumul_stardust':   800,	'cumul_candy':  4});
+data_level.set( 3.0,	{'level': 3.0,	'cpm': 0.2157324700,	'cumul_stardust':  1200,	'cumul_candy':  5});
+data_level.set( 3.5,	{'level': 3.5,	'cpm': 0.2365726610,	'cumul_stardust':  1600,	'cumul_candy':  6});
+data_level.set( 4.0,	{'level': 4.0,	'cpm': 0.2557200500,	'cumul_stardust':  2000,	'cumul_candy':  7});
+data_level.set( 4.5,	{'level': 4.5,	'cpm': 0.2735303810,	'cumul_stardust':  2400,	'cumul_candy':  8});
+data_level.set( 5.0,	{'level': 5.0,	'cpm': 0.2902498800,	'cumul_stardust':  3000,	'cumul_candy':  9});
+data_level.set( 5.5,	{'level': 5.5,	'cpm': 0.3060573770,	'cumul_stardust':  3600,	'cumul_candy': 10});
+data_level.set( 6.0,	{'level': 6.0,	'cpm': 0.3210876000,	'cumul_stardust':  4200,	'cumul_candy': 11});
+data_level.set( 6.5,	{'level': 6.5,	'cpm': 0.3354450360,	'cumul_stardust':  4800,	'cumul_candy': 12});
+data_level.set( 7.0,	{'level': 7.0,	'cpm': 0.3492126800,	'cumul_stardust':  5600,	'cumul_candy': 13});
+data_level.set( 7.5,	{'level': 7.5,	'cpm': 0.3624577510,	'cumul_stardust':  6400,	'cumul_candy': 14});
+data_level.set( 8.0,	{'level': 8.0,	'cpm': 0.3752355900,	'cumul_stardust':  7200,	'cumul_candy': 15});
+data_level.set( 8.5,	{'level': 8.5,	'cpm': 0.3875924060,	'cumul_stardust':  8000,	'cumul_candy': 16});
+data_level.set( 9.0,	{'level': 9.0,	'cpm': 0.3995672800,	'cumul_stardust':  9000,	'cumul_candy': 17});
+data_level.set( 9.5,	{'level': 9.5,	'cpm': 0.4111935510,	'cumul_stardust': 10000,	'cumul_candy': 18});
+data_level.set(10.0,	{'level':10.0,	'cpm': 0.4225000100,	'cumul_stardust': 11000,	'cumul_candy': 19});
+data_level.set(10.5,	{'level':10.5,	'cpm': 0.4329264190,	'cumul_stardust': 12000,	'cumul_candy': 20});
+data_level.set(11.0,	{'level':11.0,	'cpm': 0.4431075500,	'cumul_stardust': 13300,	'cumul_candy': 22});
+data_level.set(11.5,	{'level':11.5,	'cpm': 0.4530599578,	'cumul_stardust': 14600,	'cumul_candy': 24});
+data_level.set(12.0,	{'level':12.0,	'cpm': 0.4627983900,	'cumul_stardust': 15900,	'cumul_candy': 26});
+data_level.set(12.5,	{'level':12.5,	'cpm': 0.4723360830,	'cumul_stardust': 17200,	'cumul_candy': 28});
+data_level.set(13.0,	{'level':13.0,	'cpm': 0.4816849500,	'cumul_stardust': 18800,	'cumul_candy': 30});
+data_level.set(13.5,	{'level':13.5,	'cpm': 0.4908558000,	'cumul_stardust': 20400,	'cumul_candy': 32});
+data_level.set(14.0,	{'level':14.0,	'cpm': 0.4998584400,	'cumul_stardust': 22000,	'cumul_candy': 34});
+data_level.set(14.5,	{'level':14.5,	'cpm': 0.5087017650,	'cumul_stardust': 23600,	'cumul_candy': 36});
+data_level.set(15.0,	{'level':15.0,	'cpm': 0.5173939500,	'cumul_stardust': 25500,	'cumul_candy': 38});
+data_level.set(15.5,	{'level':15.5,	'cpm': 0.5259425110,	'cumul_stardust': 27400,	'cumul_candy': 40});
+data_level.set(16.0,	{'level':16.0,	'cpm': 0.5343543300,	'cumul_stardust': 29300,	'cumul_candy': 42});
+data_level.set(16.5,	{'level':16.5,	'cpm': 0.5426357670,	'cumul_stardust': 31200,	'cumul_candy': 44});
+data_level.set(17.0,	{'level':17.0,	'cpm': 0.5507926900,	'cumul_stardust': 33400,	'cumul_candy': 46});
+data_level.set(17.5,	{'level':17.5,	'cpm': 0.5588305760,	'cumul_stardust': 35600,	'cumul_candy': 48});
+data_level.set(18.0,	{'level':18.0,	'cpm': 0.5667545200,	'cumul_stardust': 37800,	'cumul_candy': 50});
+data_level.set(18.5,	{'level':18.5,	'cpm': 0.5745691530,	'cumul_stardust': 40000,	'cumul_candy': 52});
+data_level.set(19.0,	{'level':19.0,	'cpm': 0.5822789100,	'cumul_stardust': 42500,	'cumul_candy': 54});
+data_level.set(19.5,	{'level':19.5,	'cpm': 0.5898879170,	'cumul_stardust': 45000,	'cumul_candy': 56});
+data_level.set(20.0,	{'level':20.0,	'cpm': 0.5974000100,	'cumul_stardust': 47500,	'cumul_candy': 58});
+data_level.set(20.5,	{'level':20.5,	'cpm': 0.6048188140,	'cumul_stardust': 50000,	'cumul_candy': 60});
+data_level.set(21.0,	{'level':21.0,	'cpm': 0.6121572900,	'cumul_stardust': 53000,	'cumul_candy': 63});
+data_level.set(21.5,	{'level':21.5,	'cpm': 0.6193993650,	'cumul_stardust': 56000,	'cumul_candy': 66});
+data_level.set(22.0,	{'level':22.0,	'cpm': 0.6265671300,	'cumul_stardust': 59000,	'cumul_candy': 69});
+data_level.set(22.5,	{'level':22.5,	'cpm': 0.6336445330,	'cumul_stardust': 62000,	'cumul_candy': 72});
+data_level.set(23.0,	{'level':23.0,	'cpm': 0.6406529500,	'cumul_stardust': 65500,	'cumul_candy': 75});
+data_level.set(23.5,	{'level':23.5,	'cpm': 0.6475764260,	'cumul_stardust': 69000,	'cumul_candy': 78});
+data_level.set(24.0,	{'level':24.0,	'cpm': 0.6544356300,	'cumul_stardust': 72500,	'cumul_candy': 81});
+data_level.set(24.5,	{'level':24.5,	'cpm': 0.6612148060,	'cumul_stardust': 76000,	'cumul_candy': 84});
+data_level.set(25.0,	{'level':25.0,	'cpm': 0.6679340000,	'cumul_stardust': 80000,	'cumul_candy': 87});
+data_level.set(25.5,	{'level':25.5,	'cpm': 0.6745775370,	'cumul_stardust': 84000,	'cumul_candy': 90});
+data_level.set(26.0,	{'level':26.0,	'cpm': 0.6811649200,	'cumul_stardust': 88000,	'cumul_candy': 94});
+data_level.set(26.5,	{'level':26.5,	'cpm': 0.6876806480,	'cumul_stardust': 92000,	'cumul_candy': 98});
+data_level.set(27.0,	{'level':27.0,	'cpm': 0.6941436500,	'cumul_stardust': 96500,	'cumul_candy':102});
+data_level.set(27.5,	{'level':27.5,	'cpm': 0.7005386730,	'cumul_stardust':101000,	'cumul_candy':106});
+data_level.set(28.0,	{'level':28.0,	'cpm': 0.7068842100,	'cumul_stardust':105500,	'cumul_candy':110});
+data_level.set(28.5,	{'level':28.5,	'cpm': 0.7131649960,	'cumul_stardust':110000,	'cumul_candy':114});
+data_level.set(29.0,	{'level':29.0,	'cpm': 0.7193990900,	'cumul_stardust':115000,	'cumul_candy':118});
+data_level.set(29.5,	{'level':29.5,	'cpm': 0.7255715520,	'cumul_stardust':120000,	'cumul_candy':122});
+data_level.set(30.0,	{'level':30.0,	'cpm': 0.7317000000,	'cumul_stardust':125000,	'cumul_candy':126});
+data_level.set(30.5,	{'level':30.5,	'cpm': 0.7347410090,	'cumul_stardust':130000,	'cumul_candy':130});
+data_level.set(31.0,	{'level':31.0,	'cpm': 0.7377694800,	'cumul_stardust':136000,	'cumul_candy':136});
+data_level.set(31.5,	{'level':31.5,	'cpm': 0.7407855740,	'cumul_stardust':142000,	'cumul_candy':142});
+data_level.set(32.0,	{'level':32.0,	'cpm': 0.7437894300,	'cumul_stardust':148000,	'cumul_candy':148});
+data_level.set(32.5,	{'level':32.5,	'cpm': 0.7467812110,	'cumul_stardust':154000,	'cumul_candy':154});
+data_level.set(33.0,	{'level':33.0,	'cpm': 0.7497610400,	'cumul_stardust':161000,	'cumul_candy':162});
+data_level.set(33.5,	{'level':33.5,	'cpm': 0.7527290870,	'cumul_stardust':168000,	'cumul_candy':170});
+data_level.set(34.0,	{'level':34.0,	'cpm': 0.7556855100,	'cumul_stardust':175000,	'cumul_candy':178});
+data_level.set(34.5,	{'level':34.5,	'cpm': 0.7586303780,	'cumul_stardust':182000,	'cumul_candy':186});
+data_level.set(35.0,	{'level':35.0,	'cpm': 0.7615638400,	'cumul_stardust':190000,	'cumul_candy':196});
+data_level.set(35.5,	{'level':35.5,	'cpm': 0.7644860650,	'cumul_stardust':198000,	'cumul_candy':206});
+data_level.set(36.0,	{'level':36.0,	'cpm': 0.7673971700,	'cumul_stardust':206000,	'cumul_candy':216});
+data_level.set(36.5,	{'level':36.5,	'cpm': 0.7702972660,	'cumul_stardust':214000,	'cumul_candy':226});
+data_level.set(37.0,	{'level':37.0,	'cpm': 0.7731865000,	'cumul_stardust':223000,	'cumul_candy':238});
+data_level.set(37.5,	{'level':37.5,	'cpm': 0.7760649620,	'cumul_stardust':232000,	'cumul_candy':250});
+data_level.set(38.0,	{'level':38.0,	'cpm': 0.7789327500,	'cumul_stardust':241000,	'cumul_candy':262});
+data_level.set(38.5,	{'level':38.5,	'cpm': 0.7817900550,	'cumul_stardust':250000,	'cumul_candy':274});
+data_level.set(39.0,	{'level':39.0,	'cpm': 0.7846369700,	'cumul_stardust':260000,	'cumul_candy':289});
+data_level.set(39.5,	{'level':39.5,	'cpm': 0.7874735780,	'cumul_stardust':270000,	'cumul_candy':304});
+data_level.set(40.0,	{'level':40.0,	'cpm': 0.7903000100,	'cumul_stardust':280000,	'cumul_candy':319});
+var data_pokemon = new Map();
+data_pokemon.set('bulbasaur',		{'code': 'bulbasaur',	 	'number':  1,	'stigmata': 90,	'attack':118,	'defense':118,	'maxcp': 981, });
+data_pokemon.set('ivysaur', 		{'code': 'ivysaur', 	 	'number':  2,	'stigmata':120,	'attack':151,	'defense':151,	'maxcp':1552, });
+data_pokemon.set('venusaur',		{'code': 'venusaur',	 	'number':  3,	'stigmata':160,	'attack':198,	'defense':198,	'maxcp':2568, });
+data_pokemon.set('charmander',		{'code': 'charmander',	 	'number':  4,	'stigmata': 78,	'attack':116,	'defense': 96,	'maxcp': 831, });
+data_pokemon.set('charmeleon',		{'code': 'charmeleon',	 	'number':  5,	'stigmata':116,	'attack':158,	'defense':129,	'maxcp':1484, });
+data_pokemon.set('charizard',		{'code': 'charizard',	 	'number':  6,	'stigmata':156,	'attack':223,	'defense':176,	'maxcp':2686, });
+data_pokemon.set('squirtle',		{'code': 'squirtle',	 	'number':  7,	'stigmata': 88,	'attack': 94,	'defense':122,	'maxcp': 808, });
+data_pokemon.set('wartortle',		{'code': 'wartortle',	 	'number':  8,	'stigmata':118,	'attack':126,	'defense':155,	'maxcp':1324, });
+data_pokemon.set('blastoise',		{'code': 'blastoise',	 	'number':  9,	'stigmata':158,	'attack':171,	'defense':210,	'maxcp':2291, });
+data_pokemon.set('caterpie',		{'code': 'caterpie',	 	'number': 10,	'stigmata': 90,	'attack': 55,	'defense': 62,	'maxcp': 393, });
+data_pokemon.set('metapod', 		{'code': 'metapod', 	 	'number': 11,	'stigmata':100,	'attack': 45,	'defense': 94,	'maxcp': 419, });
+data_pokemon.set('butterfree',		{'code': 'butterfree',	 	'number': 12,	'stigmata':120,	'attack':167,	'defense':151,	'maxcp':1701, });
+data_pokemon.set('weedle',  		{'code': 'weedle',  	 	'number': 13,	'stigmata': 80,	'attack': 63,	'defense': 55,	'maxcp': 397, });
+data_pokemon.set('kakuna',  		{'code': 'kakuna',  	 	'number': 14,	'stigmata': 90,	'attack': 46,	'defense': 86,	'maxcp': 392, });
+data_pokemon.set('beedrill',		{'code': 'beedrill',	 	'number': 15,	'stigmata':130,	'attack':169,	'defense':150,	'maxcp':1777, });
+data_pokemon.set('pidgey',  		{'code': 'pidgey',  	 	'number': 16,	'stigmata': 80,	'attack': 85,	'defense': 76,	'maxcp': 580, });
+data_pokemon.set('pidgeotto',		{'code': 'pidgeotto',	 	'number': 17,	'stigmata':126,	'attack':117,	'defense':108,	'maxcp':1085, });
+data_pokemon.set('pidgeot',  		{'code': 'pidgeot',  	 	'number': 18,	'stigmata':166,	'attack':166,	'defense':157,	'maxcp':1994, });
+data_pokemon.set('rattata', 		{'code': 'rattata', 	 	'number': 19,	'stigmata': 60,	'attack':103,	'defense': 70,	'maxcp': 588, });
+data_pokemon.set('raticate',		{'code': 'raticate',	 	'number': 20,	'stigmata':110,	'attack':161,	'defense':144,	'maxcp':1549, });
+data_pokemon.set('spearow', 		{'code': 'spearow', 	 	'number': 21,	'stigmata': 80,	'attack':112,	'defense': 61,	'maxcp': 673, });
+data_pokemon.set('fearow',  		{'code': 'fearow',  	 	'number': 22,	'stigmata':130,	'attack':182,	'defense':135,	'maxcp':1814, });
+data_pokemon.set('ekans',   		{'code': 'ekans',   	 	'number': 23,	'stigmata': 70,	'attack':110,	'defense':102,	'maxcp': 778, });
+data_pokemon.set('arbok',   		{'code': 'arbok',   	 	'number': 24,	'stigmata':120,	'attack':167,	'defense':158,	'maxcp':1737, });
+data_pokemon.set('pikachu', 		{'code': 'pikachu', 	 	'number': 25,	'stigmata': 70,	'attack':112,	'defense':101,	'maxcp': 787, });
+data_pokemon.set('raichu',  		{'code': 'raichu',  	 	'number': 26,	'stigmata':120,	'attack':193,	'defense':165,	'maxcp':2025, });
+data_pokemon.set('sandshrew',		{'code': 'sandshrew',	 	'number': 27,	'stigmata':100,	'attack':126,	'defense':145,	'maxcp':1194, });
+data_pokemon.set('sandslash',		{'code': 'sandslash',    	'number': 28,	'stigmata':150,	'attack':182,	'defense':202,	'maxcp':2328, });
+data_pokemon.set('nidoranfemale',	{'code': 'nidoranfemale',	'number': 29,	'stigmata':110,	'attack': 86,	'defense': 94,	'maxcp': 736, });
+data_pokemon.set('nidorina',		{'code': 'nidorina',	 	'number': 30,	'stigmata':140,	'attack':117,	'defense':126,	'maxcp':1218, });
+data_pokemon.set('nidoqueen',		{'code': 'nidoqueen',	 	'number': 31,	'stigmata':180,	'attack':180,	'defense':174,	'maxcp':2338, });
+data_pokemon.set('nidoranmale',		{'code': 'nidoranmale',	 	'number': 32,	'stigmata': 92,	'attack':105,	'defense': 76,	'maxcp': 739, });
+data_pokemon.set('nidorino',		{'code': 'nidorino',	 	'number': 33,	'stigmata':122,	'attack':137,	'defense':112,	'maxcp':1252, });
+data_pokemon.set('nidoking',		{'code': 'nidoking',	 	'number': 34,	'stigmata':162,	'attack':204,	'defense':157,	'maxcp':2386, });
+data_pokemon.set('clefairy',		{'code': 'clefairy',	 	'number': 35,	'stigmata':140,	'attack':107,	'defense':116,	'maxcp':1085, });
+data_pokemon.set('clefable',		{'code': 'clefable',	 	'number': 36,	'stigmata':190,	'attack':178,	'defense':171,	'maxcp':2353, });
+data_pokemon.set('vulpix',  		{'code': 'vulpix',  	 	'number': 37,	'stigmata': 76,	'attack': 96,	'defense':122,	'maxcp': 774, });
+data_pokemon.set('ninetales',		{'code': 'ninetales',	 	'number': 38,	'stigmata':146,	'attack':169,	'defense':204,	'maxcp':2157, });
+data_pokemon.set('jigglypuff',		{'code': 'jigglypuff',	 	'number': 39,	'stigmata':230,	'attack': 80,	'defense': 44,	'maxcp': 713, });
+data_pokemon.set('wigglytuff',		{'code': 'wigglytuff',	 	'number': 40,	'stigmata':280,	'attack':156,	'defense': 93,	'maxcp':1906, });
+data_pokemon.set('zubat',   		{'code': 'zubat',   	 	'number': 41,	'stigmata': 80,	'attack': 83,	'defense': 76,	'maxcp': 569, });
+data_pokemon.set('golbat',  		{'code': 'golbat',  	 	'number': 42,	'stigmata':150,	'attack':161,	'defense':153,	'maxcp':1830, });
+data_pokemon.set('oddish',  		{'code': 'oddish',  	 	'number': 43,	'stigmata': 90,	'attack':131,	'defense':116,	'maxcp':1069, });
+data_pokemon.set('gloom',   		{'code': 'gloom',   	 	'number': 44,	'stigmata':120,	'attack':153,	'defense':139,	'maxcp':1512, });
+data_pokemon.set('vileplume',		{'code': 'vileplume',	 	'number': 45,	'stigmata':150,	'attack':202,	'defense':170,	'maxcp':2367, });
+data_pokemon.set('paras',   		{'code': 'paras',   	 	'number': 46,	'stigmata': 70,	'attack':121,	'defense': 99,	'maxcp': 836, });
+data_pokemon.set('parasect',		{'code': 'parasect',	 	'number': 47,	'stigmata':120,	'attack':165,	'defense':146,	'maxcp':1657, });
+data_pokemon.set('venonat', 		{'code': 'venonat',  	 	'number': 48,	'stigmata':120,	'attack':100,	'defense':102,	'maxcp': 902, });
+data_pokemon.set('venomoth',		{'code': 'venomoth',	 	'number': 49,	'stigmata':140,	'attack':179,	'defense':150,	'maxcp':1937, });
+data_pokemon.set('diglett', 		{'code': 'diglett', 	 	'number': 50,	'stigmata': 20,	'attack':109,	'defense': 88,	'maxcp': 465, });
+data_pokemon.set('dugtrio', 		{'code': 'dugtrio', 	 	'number': 51,	'stigmata': 70,	'attack':167,	'defense':147,	'maxcp':1333, });
+data_pokemon.set('meowth',  		{'code': 'meowth',  	 	'number': 52,	'stigmata': 80,	'attack': 92,	'defense': 81,	'maxcp': 638, });
+data_pokemon.set('persian', 		{'code': 'persian', 	 	'number': 53,	'stigmata':130,	'attack':150,	'defense':139,	'maxcp':1539, });
+data_pokemon.set('psyduck', 		{'code': 'psyduck', 	 	'number': 54,	'stigmata':100,	'attack':122,	'defense': 96,	'maxcp': 966, });
+data_pokemon.set('golduck', 		{'code': 'golduck', 	 	'number': 55,	'stigmata':160,	'attack':191,	'defense':163,	'maxcp':2270, });
+data_pokemon.set('mankey',  		{'code': 'mankey',  	 	'number': 56,	'stigmata': 80,	'attack':148,	'defense': 87,	'maxcp':1002, });
+data_pokemon.set('primeape',		{'code': 'primeape',	 	'number': 57,	'stigmata':130,	'attack':207,	'defense':144,	'maxcp':2105, });
+data_pokemon.set('growlithe',		{'code': 'growlithe',	 	'number': 58,	'stigmata':110,	'attack':136,	'defense': 96,	'maxcp':1110, });
+data_pokemon.set('arcanine',		{'code': 'arcanine',	 	'number': 59,	'stigmata':180,	'attack':227,	'defense':166,	'maxcp':2839, });
+data_pokemon.set('poliwag', 		{'code': 'poliwag', 	 	'number': 60,	'stigmata': 80,	'attack':101,	'defense': 82,	'maxcp': 695, });
+data_pokemon.set('poliwhirl',		{'code': 'poliwhirl',	 	'number': 61,	'stigmata':130,	'attack':130,	'defense':130,	'maxcp':1313, });
+data_pokemon.set('poliwrath',		{'code': 'poliwrath',	 	'number': 62,	'stigmata':180,	'attack':182,	'defense':187,	'maxcp':2441, });
+data_pokemon.set('abra',    		{'code': 'abra',    	 	'number': 63,	'stigmata': 50,	'attack':195,	'defense':103,	'maxcp':1148, });
+data_pokemon.set('kadabra', 		{'code': 'kadabra', 	 	'number': 64,	'stigmata': 80,	'attack':232,	'defense':138,	'maxcp':1859, });
+data_pokemon.set('alakazam',		{'code': 'alakazam',	 	'number': 65,	'stigmata':110,	'attack':271,	'defense':194,	'maxcp':2887, });
+data_pokemon.set('machop',  		{'code': 'machop',  	 	'number': 66,	'stigmata':140,	'attack':137,	'defense': 88,	'maxcp':1199, });
+data_pokemon.set('machoke', 		{'code': 'machoke', 	 	'number': 67,	'stigmata':160,	'attack':177,	'defense':130,	'maxcp':1910, });
+data_pokemon.set('machamp', 		{'code': 'machamp', 	 	'number': 68,	'stigmata':180,	'attack':234,	'defense':162,	'maxcp':2889, });
+data_pokemon.set('bellsprout',		{'code': 'bellsprout',	 	'number': 69,	'stigmata':100,	'attack':139,	'defense': 64,	'maxcp': 916, });
+data_pokemon.set('weepinbell',		{'code': 'weepinbell',	 	'number': 70,	'stigmata':130,	'attack':172,	'defense': 95,	'maxcp':1475, });
+data_pokemon.set('victreebel',		{'code': 'victreebel',	 	'number': 71,	'stigmata':160,	'attack':207,	'defense':138,	'maxcp':2268, });
+data_pokemon.set('tentacool',		{'code': 'tentacool',	 	'number': 72,	'stigmata': 80,	'attack': 97,	'defense':182,	'maxcp': 956, });
+data_pokemon.set('tentacruel',		{'code': 'tentacruel',	 	'number': 73,	'stigmata':160,	'attack':166,	'defense':237,	'maxcp':2374, });
+data_pokemon.set('geodude', 		{'code': 'geodude', 	 	'number': 74,	'stigmata': 80,	'attack':132,	'defense':163,	'maxcp':1193, });
+data_pokemon.set('graveler',		{'code': 'graveler',	 	'number': 75,	'stigmata':110,	'attack':164,	'defense':196,	'maxcp':1815, });
+data_pokemon.set('golem',   		{'code': 'golem',   	 	'number': 76,	'stigmata':160,	'attack':211,	'defense':229,	'maxcp':2916, });
+data_pokemon.set('ponyta',  		{'code': 'ponyta',  	 	'number': 77,	'stigmata':100,	'attack':170,	'defense':132,	'maxcp':1502, });
+data_pokemon.set('rapidash',		{'code': 'rapidash',	 	'number': 78,	'stigmata':130,	'attack':207,	'defense':167,	'maxcp':2252, });
+data_pokemon.set('slowpoke',		{'code': 'slowpoke',	 	'number': 79,	'stigmata':180,	'attack':109,	'defense':109,	'maxcp':1204, });
+data_pokemon.set('slowbro', 		{'code': 'slowbro', 	 	'number': 80,	'stigmata':190,	'attack':177,	'defense':194,	'maxcp':2482, });
+data_pokemon.set('magnemite',		{'code': 'magnemite',	 	'number': 81,	'stigmata': 50,	'attack':165,	'defense':128,	'maxcp':1083, });
+data_pokemon.set('magneton',		{'code': 'magneton',	 	'number': 82,	'stigmata':100,	'attack':223,	'defense':182,	'maxcp':2237, });
+data_pokemon.set('farfetchd',		{'code': 'farfetchd',	 	'number': 83,	'stigmata':104,	'attack':124,	'defense':118,	'maxcp':1092, });
+data_pokemon.set('doduo',   		{'code': 'doduo',   	 	'number': 84,	'stigmata': 70,	'attack':158,	'defense': 88,	'maxcp':1011, });
+data_pokemon.set('dodrio',  		{'code': 'dodrio',  	 	'number': 85,	'stigmata':120,	'attack':218,	'defense':145,	'maxcp':2138, });
+data_pokemon.set('seel',    		{'code': 'seel',    	 	'number': 86,	'stigmata':130,	'attack': 85,	'defense':128,	'maxcp': 899, });
+data_pokemon.set('dewgong', 		{'code': 'dewgong', 	 	'number': 87,	'stigmata':180,	'attack':139,	'defense':184,	'maxcp':1894, });
+data_pokemon.set('grimer',  		{'code': 'grimer',  	 	'number': 88,	'stigmata':160,	'attack':135,	'defense': 90,	'maxcp':1269, });
+data_pokemon.set('muk',     		{'code': 'muk',     	 	'number': 89,	'stigmata':210,	'attack':190,	'defense':184,	'maxcp':2709, });
+data_pokemon.set('shellder',		{'code': 'shellder',	 	'number': 90,	'stigmata': 60,	'attack':116,	'defense':168,	'maxcp': 958, });
+data_pokemon.set('cloyster',		{'code': 'cloyster',	 	'number': 91,	'stigmata':100,	'attack':186,	'defense':323,	'maxcp':2475, });
+data_pokemon.set('gastly',  		{'code': 'gastly',  	 	'number': 92,	'stigmata': 60,	'attack':186,	'defense': 70,	'maxcp':1002, });
+data_pokemon.set('haunter', 		{'code': 'haunter', 	 	'number': 93,	'stigmata': 90,	'attack':223,	'defense':112,	'maxcp':1716, });
+data_pokemon.set('gengar',  		{'code': 'gengar',  	 	'number': 94,	'stigmata':120,	'attack':261,	'defense':156,	'maxcp':2619, });
+data_pokemon.set('onix',    		{'code': 'onix',    	 	'number': 95,	'stigmata': 70,	'attack': 85,	'defense':288,	'maxcp':1002, });
+data_pokemon.set('drowzee', 		{'code': 'drowzee', 	 	'number': 96,	'stigmata':120,	'attack': 89,	'defense':158,	'maxcp': 992, });
+data_pokemon.set('hypno',   		{'code': 'hypno',   	 	'number': 97,	'stigmata':170,	'attack':144,	'defense':215,	'maxcp':2048, });
+data_pokemon.set('krabby',  		{'code': 'krabby',  	 	'number': 98,	'stigmata': 60,	'attack':181,	'defense':156,	'maxcp':1386, });
+data_pokemon.set('kingler', 		{'code': 'kingler', 	 	'number': 99,	'stigmata':110,	'attack':240,	'defense':214,	'maxcp':2694, });
+data_pokemon.set('voltorb', 		{'code': 'voltorb', 	 	'number':100,	'stigmata': 80,	'attack':109,	'defense':114,	'maxcp': 857, });
+data_pokemon.set('electrode',		{'code': 'electrode',	 	'number':101,	'stigmata':120,	'attack':173,	'defense':179,	'maxcp':1900, });
+data_pokemon.set('exeggcute',		{'code': 'exeggcute',	 	'number':102,	'stigmata':120,	'attack':107,	'defense':140,	'maxcp':1102, });
+data_pokemon.set('exeggutor',		{'code': 'exeggutor',	 	'number':103,	'stigmata':190,	'attack':233,	'defense':158,	'maxcp':2916, });
+data_pokemon.set('cubone',  		{'code': 'cubone',  	 	'number':104,	'stigmata':100,	'attack': 90,	'defense':165,	'maxcp': 943, });
+data_pokemon.set('marowak', 		{'code': 'marowak', 	 	'number':105,	'stigmata':120,	'attack':144,	'defense':200,	'maxcp':1691, });
+data_pokemon.set('hitmonlee',		{'code': 'hitmonlee',	 	'number':106,	'stigmata':100,	'attack':224,	'defense':211,	'maxcp':2406, });
+data_pokemon.set('hitmonchan',		{'code': 'hitmonchan',	 	'number':107,	'stigmata':100,	'attack':193,	'defense':212,	'maxcp':2098, });
+data_pokemon.set('lickitung',		{'code': 'lickitung',	 	'number':108,	'stigmata':180,	'attack':108,	'defense':137,	'maxcp':1322, });
+data_pokemon.set('koffing', 		{'code': 'koffing',  	 	'number':109,	'stigmata': 80,	'attack':119,	'defense':164,	'maxcp':1091, });
+data_pokemon.set('weezing', 		{'code': 'weezing',		 	'number':110,	'stigmata':130,	'attack':174,	'defense':221,	'maxcp':2183, });
+data_pokemon.set('rhyhorn', 		{'code': 'rhyhorn', 	 	'number':111,	'stigmata':160,	'attack':140,	'defense':157,	'maxcp':1679, });
+data_pokemon.set('rhydon',  		{'code': 'rhydon',  	 	'number':112,	'stigmata':210,	'attack':222,	'defense':206,	'maxcp':3300, });
+data_pokemon.set('chansey', 		{'code': 'chansey', 	 	'number':113,	'stigmata':500,	'attack': 60,	'defense':176,	'maxcp':1469, });
+data_pokemon.set('tangela', 		{'code': 'tangela', 	 	'number':114,	'stigmata':130,	'attack':183,	'defense':205,	'maxcp':2208, });
+data_pokemon.set('kangaskhan',		{'code': 'kangaskhan',	 	'number':115,	'stigmata':210,	'attack':181,	'defense':165,	'maxcp':2463, });
+data_pokemon.set('horsea',  		{'code': 'horsea',  	 	'number':116,	'stigmata': 60,	'attack':129,	'defense':125,	'maxcp': 921, });
+data_pokemon.set('seadra',  		{'code': 'seadra',  	 	'number':117,	'stigmata':110,	'attack':187,	'defense':182,	'maxcp':1979, });
+data_pokemon.set('goldeen', 		{'code': 'goldeen',  	 	'number':118,	'stigmata': 90,	'attack':123,	'defense':115,	'maxcp':1006, });
+data_pokemon.set('seaking', 		{'code': 'seaking', 	 	'number':119,	'stigmata':160,	'attack':175,	'defense':154,	'maxcp':2040, });
+data_pokemon.set('staryu',  		{'code': 'staryu',  	 	'number':120,	'stigmata': 60,	'attack':137,	'defense':112,	'maxcp': 926, });
+data_pokemon.set('starmie', 		{'code': 'starmie', 	 	'number':121,	'stigmata':120,	'attack':210,	'defense':184,	'maxcp':2303, });
+data_pokemon.set('mrmime',  		{'code': 'mrmime',  	 	'number':122,	'stigmata': 80,	'attack':192,	'defense':233,	'maxcp':1984, });
+data_pokemon.set('scyther', 		{'code': 'scyther', 	 	'number':123,	'stigmata':140,	'attack':218,	'defense':170,	'maxcp':2464, });
+data_pokemon.set('jynx',    		{'code': 'jynx',    	 	'number':124,	'stigmata':130,	'attack':223,	'defense':182,	'maxcp':2512, });
+data_pokemon.set('electabuzz',		{'code': 'electabuzz',	 	'number':125,	'stigmata':130,	'attack':198,	'defense':173,	'maxcp':2196, });
+data_pokemon.set('magmar',  		{'code': 'magmar',  	 	'number':126,	'stigmata':130,	'attack':206,	'defense':169,	'maxcp':2254, });
+data_pokemon.set('pinsir',  		{'code': 'pinsir',  	 	'number':127,	'stigmata':130,	'attack':238,	'defense':197,	'maxcp':2770, });
+data_pokemon.set('tauros',  		{'code': 'tauros',  	 	'number':128,	'stigmata':150,	'attack':198,	'defense':197,	'maxcp':2488, });
+data_pokemon.set('magikarp',		{'code': 'magikarp',	 	'number':129,	'stigmata': 40,	'attack': 29,	'defense':102,	'maxcp': 220, });
+data_pokemon.set('gyarados',		{'code': 'gyarados',	 	'number':130,	'stigmata':190,	'attack':237,	'defense':197,	'maxcp':3281, });
+data_pokemon.set('lapras',  		{'code': 'lapras',  	 	'number':131,	'stigmata':260,	'attack':165,	'defense':180,	'maxcp':2603, });
+data_pokemon.set('ditto',   		{'code': 'ditto',   	 	'number':132,	'stigmata': 96,	'attack': 91,	'defense': 91,	'maxcp': 718, });
+data_pokemon.set('eevee',   		{'code': 'eevee',   	 	'number':133,	'stigmata':110,	'attack':104,	'defense':121,	'maxcp': 969, });
+data_pokemon.set('vaporeon',		{'code': 'vaporeon',	 	'number':134,	'stigmata':260,	'attack':205,	'defense':177,	'maxcp':3157, });
+data_pokemon.set('jolteon', 		{'code': 'jolteon', 	 	'number':135,	'stigmata':130,	'attack':232,	'defense':201,	'maxcp':2730, });
+data_pokemon.set('flareon', 		{'code': 'flareon', 	 	'number':136,	'stigmata':130,	'attack':246,	'defense':204,	'maxcp':2904, });
+data_pokemon.set('porygon', 		{'code': 'porygon', 	 	'number':137,	'stigmata':130,	'attack':153,	'defense':139,	'maxcp':1567, });
+data_pokemon.set('omanyte', 		{'code': 'omanyte', 	 	'number':138,	'stigmata': 70,	'attack':155,	'defense':174,	'maxcp':1345, });
+data_pokemon.set('omastar', 		{'code': 'omastar', 	 	'number':139,	'stigmata':140,	'attack':207,	'defense':227,	'maxcp':2685, });
+data_pokemon.set('kabuto',  		{'code': 'kabuto',  	 	'number':140,	'stigmata': 60,	'attack':148,	'defense':162,	'maxcp':1172, });
+data_pokemon.set('kabutops',		{'code': 'kabutops',	 	'number':141,	'stigmata':120,	'attack':220,	'defense':203,	'maxcp':2517, });
+data_pokemon.set('aerodactyl',		{'code': 'aerodactyl',	 	'number':142,	'stigmata':160,	'attack':221,	'defense':164,	'maxcp':2608, });
+data_pokemon.set('snorlax', 		{'code': 'snorlax',  	 	'number':143,	'stigmata':320,	'attack':190,	'defense':190,	'maxcp':3355, });
+data_pokemon.set('dratini', 		{'code': 'dratini', 	 	'number':147,	'stigmata': 82,	'attack':119,	'defense': 94,	'maxcp': 860, });
+data_pokemon.set('dragonair',		{'code': 'dragonair',	 	'number':148,	'stigmata':122,	'attack':163,	'defense':138,	'maxcp':1609, });
+data_pokemon.set('dragonite',		{'code': 'dragonite',	 	'number':149,	'stigmata':182,	'attack':263,	'defense':201,	'maxcp':3581, });
+data_pokemon.set('chikorita',		{'code': 'chikorita',	 	'number':152,	'stigmata': 90,	'attack': 92,	'defense':122,	'maxcp': 801, });
+data_pokemon.set('bayleef', 		{'code': 'bayleef', 	 	'number':148,	'stigmata':120,	'attack':122,	'defense':155,	'maxcp':3355, });
+data_pokemon.set('meganium',		{'code': 'meganium',	 	'number':149,	'stigmata':160,	'attack':168,	'defense':202,	'maxcp':2227, });
+data_pokemon.set('cyndaquil',		{'code': 'cyndaquil',	 	'number':150,	'stigmata': 78,	'attack':116,	'defense': 96,	'maxcp': 831, });
+data_pokemon.set('quilava', 		{'code': 'quilava', 	 	'number':151,	'stigmata':116,	'attack':158,	'defense':129,	'maxcp':1484, });
+data_pokemon.set('typhlosion',		{'code': 'typhlosion',	 	'number':152,	'stigmata':156,	'attack':223,	'defense':176,	'maxcp':2686, });
+data_pokemon.set('totodile',		{'code': 'totodile',	 	'number':153,	'stigmata':100,	'attack':117,	'defense':116,	'maxcp':1011, });
+data_pokemon.set('croconaw',		{'code': 'croconaw',	 	'number':154,	'stigmata':130,	'attack':150,	'defense':151,	'maxcp':1598, });
+data_pokemon.set('feraligatr',		{'code': 'feraligatr',	 	'number':155,	'stigmata':170,	'attack':205,	'defense':197,	'maxcp':2721, });
+data_pokemon.set('sentret', 		{'code': 'sentret', 	 	'number':156,	'stigmata': 70,	'attack': 79,	'defense': 77,	'maxcp': 519, });
+data_pokemon.set('furret',  		{'code': 'furret',  	 	'number':157,	'stigmata':170,	'attack':148,	'defense':130,	'maxcp':1667, });
+data_pokemon.set('hoothoot',		{'code': 'hoothoot',	 	'number':158,	'stigmata':120,	'attack': 67,	'defense':101,	'maxcp': 640, });
+data_pokemon.set('noctowl', 		{'code': 'noctowl', 	 	'number':159,	'stigmata':200,	'attack':145,	'defense':179,	'maxcp':2040, });
+data_pokemon.set('ledyba',  		{'code': 'ledyba',  	 	'number':160,	'stigmata': 80,	'attack': 72,	'defense':142,	'maxcp': 663, });
+data_pokemon.set('ledian',  		{'code': 'ledian',  	 	'number':161,	'stigmata':110,	'attack':107,	'defense':209,	'maxcp':1275, });
+data_pokemon.set('spinarak',		{'code': 'spinarak',	 	'number':162,	'stigmata': 80,	'attack':105,	'defense': 73,	'maxcp': 685, });
+data_pokemon.set('ariados', 		{'code': 'ariados',  	 	'number':163,	'stigmata':140,	'attack':161,	'defense':128,	'maxcp':1636, });
+data_pokemon.set('crobat',  		{'code': 'crobat',  	 	'number':164,	'stigmata':170,	'attack':194,	'defense':178,	'maxcp':2466, });
+data_pokemon.set('chinchou',		{'code': 'chinchou',	 	'number':165,	'stigmata':150,	'attack':106,	'defense':106,	'maxcp':1067, });
+data_pokemon.set('lanturn', 		{'code': 'lanturn', 	 	'number':166,	'stigmata':250,	'attack':146,	'defense':146,	'maxcp':2077, });
+data_pokemon.set('pichu',   		{'code': 'pichu',   	 	'number':167,	'stigmata': 40,	'attack': 77,	'defense': 63,	'maxcp': 376, });
+data_pokemon.set('cleffa',  		{'code': 'cleffa',  	 	'number':168,	'stigmata':100,	'attack': 75,	'defense': 91,	'maxcp': 620, });
+data_pokemon.set('igglybuff',		{'code': 'igglybuff',	 	'number':169,	'stigmata':180,	'attack': 69,	'defense': 34,	'maxcp': 512, });
+data_pokemon.set('togepi',  		{'code': 'togepi',  	 	'number':170,	'stigmata': 70,	'attack': 67,	'defense':116,	'maxcp': 540, });
+data_pokemon.set('togetic', 		{'code': 'togetic', 	 	'number':171,	'stigmata':110,	'attack':139,	'defense':191,	'maxcp':1543, });
+data_pokemon.set('natu',    		{'code': 'natu',    	 	'number':172,	'stigmata': 80,	'attack':134,	'defense': 89,	'maxcp': 925, });
+data_pokemon.set('xatu',    		{'code': 'xatu',    	 	'number':173,	'stigmata':130,	'attack':192,	'defense':146,	'maxcp':1975, });
+data_pokemon.set('mareep',  		{'code': 'mareep',  	 	'number':174,	'stigmata':110,	'attack':114,	'defense': 82,	'maxcp': 887, });
+data_pokemon.set('flaaffy', 		{'code': 'flaaffy', 	 	'number':175,	'stigmata':140,	'attack':145,	'defense':112,	'maxcp':1402, });
+data_pokemon.set('ampharos',		{'code': 'ampharos',	 	'number':176,	'stigmata':180,	'attack':211,	'defense':172,	'maxcp':2695, });
+data_pokemon.set('bellossom',		{'code': 'bellossom',	 	'number':177,	'stigmata':150,	'attack':169,	'defense':189,	'maxcp':2108, });
+data_pokemon.set('marill',  		{'code': 'marill',  	 	'number':178,	'stigmata':140,	'attack': 37,	'defense': 93,	'maxcp': 420, });
+data_pokemon.set('azumarill',		{'code': 'azumarill',	 	'number':179,	'stigmata':200,	'attack':112,	'defense':152,	'maxcp':1503, });
+data_pokemon.set('sudowoodo',		{'code': 'sudowoodo',	 	'number':180,	'stigmata':140,	'attack':167,	'defense':198,	'maxcp':2065, });
+data_pokemon.set('politoed',		{'code': 'politoed',	 	'number':181,	'stigmata':180,	'attack':174,	'defense':192,	'maxcp':2371, });
+data_pokemon.set('hoppip',  		{'code': 'hoppip',  	 	'number':182,	'stigmata': 70,	'attack': 67,	'defense':101,	'maxcp': 508, });
+data_pokemon.set('skiploom',		{'code': 'skiploom',	 	'number':183,	'stigmata':110,	'attack': 91,	'defense':127,	'maxcp': 882, });
+data_pokemon.set('jumpluff',		{'code': 'jumpluff',	 	'number':184,	'stigmata':150,	'attack':118,	'defense':197,	'maxcp':1553, });
+data_pokemon.set('aipom',   		{'code': 'aipom',   	 	'number':185,	'stigmata':110,	'attack':136,	'defense':112,	'maxcp':1188, });
+data_pokemon.set('sunkern', 		{'code': 'sunkern', 	 	'number':186,	'stigmata': 60,	'attack': 55,	'defense': 55,	'maxcp': 316, });
+data_pokemon.set('sunflora',		{'code': 'sunflora',	 	'number':187,	'stigmata':150,	'attack':185,	'defense':148,	'maxcp':2048, });
+data_pokemon.set('yanma',   		{'code': 'yanma',   	 	'number':188,	'stigmata':130,	'attack':154,	'defense': 94,	'maxcp':1326, });
+data_pokemon.set('wooper',  		{'code': 'wooper',  	 	'number':189,	'stigmata':110,	'attack': 75,	'defense': 75,	'maxcp': 596, });
+data_pokemon.set('quagsire',		{'code': 'quagsire',	 	'number':190,	'stigmata':190,	'attack':152,	'defense':152,	'maxcp':1929, });
+data_pokemon.set('espeon',  		{'code': 'espeon',  	 	'number':191,	'stigmata':130,	'attack':261,	'defense':194,	'maxcp':3000, });
+data_pokemon.set('umbreon', 		{'code': 'umbreon', 	 	'number':192,	'stigmata':190,	'attack':126,	'defense':250,	'maxcp':2052, });
+data_pokemon.set('murkrow', 		{'code': 'murkrow', 	 	'number':193,	'stigmata':120,	'attack':175,	'defense': 87,	'maxcp':1392, });
+data_pokemon.set('slowking',		{'code': 'slowking',	 	'number':194,	'stigmata':190,	'attack':177,	'defense':194,	'maxcp':2482, });
+data_pokemon.set('misdreavus',		{'code': 'misdreavus',	 	'number':195,	'stigmata':120,	'attack':167,	'defense':167,	'maxcp':1781, });
+data_pokemon.set('unown',   		{'code': 'unown',   	 	'number':196,	'stigmata': 96,	'attack':136,	'defense': 91,	'maxcp':1022, });
+data_pokemon.set('wobbuffet',		{'code': 'wobbuffet',	 	'number':197,	'stigmata':380,	'attack': 60,	'defense':106,	'maxcp':1024, });
+data_pokemon.set('girafarig',		{'code': 'girafarig',	 	'number':198,	'stigmata':140,	'attack':182,	'defense':133,	'maxcp':1863, });
+data_pokemon.set('pineco',  		{'code': 'pineco',  	 	'number':199,	'stigmata':100,	'attack':108,	'defense':146,	'maxcp':1045, });
+data_pokemon.set('forretress',		{'code': 'forretress',	 	'number':200,	'stigmata':150,	'attack':161,	'defense':242,	'maxcp':2263, });
+data_pokemon.set('dunsparce',		{'code': 'dunsparce',	 	'number':201,	'stigmata':200,	'attack':131,	'defense':131,	'maxcp':1615, });
+data_pokemon.set('gligar',  		{'code': 'gligar',  	 	'number':202,	'stigmata':130,	'attack':143,	'defense':204,	'maxcp':1758, });
+data_pokemon.set('steelix', 		{'code': 'steelix',  	 	'number':203,	'stigmata':150,	'attack':148,	'defense':333,	'maxcp':2439, });
+data_pokemon.set('snubbull',		{'code': 'snubbull',	 	'number':204,	'stigmata':120,	'attack':137,	'defense': 89,	'maxcp':1124, });
+data_pokemon.set('granbull',		{'code': 'granbull',	 	'number':205,	'stigmata':180,	'attack':212,	'defense':137,	'maxcp':2440, });
+data_pokemon.set('qwilfish',		{'code': 'qwilfish',	 	'number':206,	'stigmata':130,	'attack':184,	'defense':148,	'maxcp':1910, });
+data_pokemon.set('scizor',  		{'code': 'scizor',  	 	'number':207,	'stigmata':140,	'attack':236,	'defense':191,	'maxcp':2801, });
+data_pokemon.set('shuckle', 		{'code': 'shuckle', 	 	'number':208,	'stigmata': 40,	'attack': 17,	'defense':396,	'maxcp': 300, });
+data_pokemon.set('heracross',		{'code': 'heracross',	 	'number':209,	'stigmata':160,	'attack':234,	'defense':189,	'maxcp':2938, });
+data_pokemon.set('sneasel',  		{'code': 'sneasel', 	 	'number':210,	'stigmata':110,	'attack':189,	'defense':157,	'maxcp':1868, });
+data_pokemon.set('teddiursa',		{'code': 'teddiursa',	 	'number':211,	'stigmata':120,	'attack':142,	'defense': 93,	'maxcp':1184, });
+data_pokemon.set('ursaring',		{'code': 'ursaring',	 	'number':212,	'stigmata':180,	'attack':236,	'defense':144,	'maxcp':2760, });
+data_pokemon.set('slugma',  		{'code': 'slugma',  	 	'number':213,	'stigmata': 80,	'attack':118,	'defense': 71,	'maxcp': 750, });
+data_pokemon.set('magcargo',		{'code': 'magcargo',	 	'number':214,	'stigmata':100,	'attack':139,	'defense':209,	'maxcp':1543, });
+data_pokemon.set('swinub',  		{'code': 'swinub',  	 	'number':215,	'stigmata':100,	'attack': 90,	'defense': 74,	'maxcp': 663, });
+data_pokemon.set('piloswine',		{'code': 'piloswine',	 	'number':216,	'stigmata':200,	'attack':181,	'defense':147,	'maxcp':2284, });
+data_pokemon.set('corsola', 		{'code': 'corsola',  	 	'number':217,	'stigmata':110,	'attack':118,	'defense':156,	'maxcp':1214, });
+data_pokemon.set('remoraid',		{'code': 'remoraid',	 	'number':218,	'stigmata': 70,	'attack':127,	'defense': 69,	'maxcp': 749, });
+data_pokemon.set('octillery',		{'code': 'octillery',	 	'number':219,	'stigmata':150,	'attack':197,	'defense':141,	'maxcp':2124, });
+data_pokemon.set('mantine', 		{'code': 'mantine',  	 	'number':226,	'stigmata':130,	'attack':148,	'defense':260,	'maxcp':2032, });
+data_pokemon.set('skarmory',		{'code': 'skarmory',	 	'number':221,	'stigmata':130,	'attack':148,	'defense':260,	'maxcp':2032, });
+data_pokemon.set('houndour',		{'code': 'houndour',	 	'number':222,	'stigmata': 90,	'attack':152,	'defense': 93,	'maxcp':1110, });
+data_pokemon.set('houndoom',		{'code': 'houndoom',	 	'number':223,	'stigmata':150,	'attack':224,	'defense':159,	'maxcp':2529, });
+data_pokemon.set('kingdra', 		{'code': 'kingdra', 	 	'number':224,	'stigmata':150,	'attack':194,	'defense':194,	'maxcp':2424, });
+data_pokemon.set('phanpy',  		{'code': 'phanpy',  	 	'number':225,	'stigmata':180,	'attack':107,	'defense':107,	'maxcp':1175, });
+data_pokemon.set('donphan', 		{'code': 'donphan', 	 	'number':226,	'stigmata':180,	'attack':214,	'defense':214,	'maxcp':3022, });
+data_pokemon.set('porygon2',		{'code': 'porygon2',	 	'number':227,	'stigmata':170,	'attack':198,	'defense':183,	'maxcp':2546, });
+data_pokemon.set('stantler',		{'code': 'stantler',	 	'number':228,	'stigmata':146,	'attack':192,	'defense':132,	'maxcp':1988, });
+data_pokemon.set('tyrogue',  		{'code': 'tyrogue', 	 	'number':236,	'stigmata': 70,	'attack': 64,	'defense': 64,	'maxcp': 404, });
+data_pokemon.set('hitmontop',		{'code': 'hitmontop',	 	'number':230,	'stigmata':100,	'attack':173,	'defense':214,	'maxcp':1905, });
+data_pokemon.set('smoochum',		{'code': 'smoochum',	 	'number':231,	'stigmata': 90,	'attack':153,	'defense':116,	'maxcp':1230, });
+data_pokemon.set('elekid',  		{'code': 'elekid',  	 	'number':232,	'stigmata': 90,	'attack':135,	'defense':110,	'maxcp':1073, });
+data_pokemon.set('magby',   		{'code': 'magby',   	 	'number':233,	'stigmata': 90,	'attack':151,	'defense':108,	'maxcp':1178, });
+data_pokemon.set('miltank', 		{'code': 'miltank', 	 	'number':234,	'stigmata':190,	'attack':157,	'defense':211,	'maxcp':2312, });
+data_pokemon.set('blissey', 		{'code': 'blissey',  	 	'number':235,	'stigmata':510,	'attack':129,	'defense':229,	'maxcp':3219, });
+data_pokemon.set('larvitar',		{'code': 'larvitar',	 	'number':246,	'stigmata':100,	'attack':115,	'defense': 93,	'maxcp': 904, });
+data_pokemon.set('pupitar', 		{'code': 'pupitar', 	 	'number':247,	'stigmata':140,	'attack':155,	'defense':133,	'maxcp':1608, });
+data_pokemon.set('tyranitar',		{'code': 'tyranitar',	 	'number':248,	'stigmata':200,	'attack':251,	'defense':212,	'maxcp':3670, });
+
+var data_stardust = new Map();
+data_stardust.set(  200, {'levels': [ 1.0,  1.5,  2.0,  2.5]});
+data_stardust.set(  400, {'levels': [ 3.0,  3.5,  4.0,  4.5]});
+data_stardust.set(  600, {'levels': [ 5.0,  5.5,  6.0,  6.5]});
+data_stardust.set(  800, {'levels': [ 7.0,  7.5,  8.0,  8.5]});
+data_stardust.set( 1000, {'levels': [ 9.0,  9.5, 10.0, 10.5]});
+data_stardust.set( 1300, {'levels': [11.0, 11.5, 12.0, 12.5]});
+data_stardust.set( 1600, {'levels': [13.0, 13.5, 14.0, 14.5]});
+data_stardust.set( 1900, {'levels': [15.0, 15.5, 16.0, 16.5]});
+data_stardust.set( 2200, {'levels': [17.0, 17.5, 18.0, 18.5]});
+data_stardust.set( 2500, {'levels': [19.0, 19.5, 20.0, 20.5]});
+data_stardust.set( 3000, {'levels': [21.0, 21.5, 22.0, 22.5]});
+data_stardust.set( 3500, {'levels': [23.0, 23.5, 24.0, 24.5]});
+data_stardust.set( 4000, {'levels': [25.0, 25.5, 26.0, 26.5]});
+data_stardust.set( 4500, {'levels': [27.0, 27.5, 28.0, 28.5]});
+data_stardust.set( 5000, {'levels': [29.0, 29.5, 30.0, 30.5]});
+data_stardust.set( 6000, {'levels': [31.0, 31.5, 32.0, 32.5]});
+data_stardust.set( 7000, {'levels': [33.0, 33.5, 34.0, 34.5]});
+data_stardust.set( 8000, {'levels': [35.0, 35.5, 36.0, 36.5]});
+data_stardust.set( 9000, {'levels': [37.0, 37.5, 38.0, 38.5]});
+data_stardust.set(10000, {'levels': [39.0, 39.5, 40.0, 40.5]});
+
 angular.module('AngularApp.services', [])
 
 angular.module('AngularApp.services').service('API', function($q, $http, $cookies) {
@@ -424,31 +766,14 @@ angular.module('AngularApp.services').service('API', function($q, $http, $cookie
 angular.module('AngularApp.services').service('ProfileService', function(API) {
 	
 	var profile = null;
-		
+
 	var service = {
 		
-		init: function() {
-			
-			return API.sendRequest('/api/profile/', 'GET').then(function success(data) {
-				
-				profile = data;
-			});
-		},
+		init: function() { return API.sendRequest('/api/profile/', 'GET').then(function success(data) { profile = data; })},
 		
-		get: function() {
-			
-			return profile;
-		},
+		setProfile: function(data) { profile = data; return profile; },
 		
-		update: function(team, level) {
-			
-			var data = { 'team':team, 'level':level };
-			return API.sendRequest('/api/profile/edit/', 'POST', {}, data).then(function(data) {
-				
-				profile.team = team;
-				profile.level = level;
-			});
-		},
+		getProfile: function() { return profile; },
 	};
 	
 	return service;
@@ -470,17 +795,17 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 				.state('base.account.login',    { url: '/login',    templateUrl: '/static/front/pages/login.html',    data:{ labelKey: 'login_PAGETITLE',    }})
 				.state('base.account.register', { url: '/register', templateUrl: '/static/front/pages/register.html', data:{ labelKey: 'register_PAGETITLE', }})
 
-		.state('app', { templateUrl: '/static/front/pages/_app.html', resolve: { profile: function(ProfileService) { ProfileService.init(); return ProfileService; }, }})
+		.state('app', { abstract: true, templateUrl: '/static/front/pages/_app.html', resolve: { appData: function(ProfileService) { return ProfileService.init(); }}, })
 		
-			.state('app.profile', { url: '/profile', controller: 'ProfileCtrl', templateUrl: '/static/front/pages/profile_view.html', data:{ labelKey: 'profile_PAGETITLE',      authenticated: true }})
+			.state('app.profile', { parent:'app', url: '/profile', controller: 'ProfileCtrl', templateUrl: '/static/front/pages/profile_view.html', data:{ labelKey: 'profile_PAGETITLE',      authenticated: true }})
 			
 				.state('app.profile.edit', { url: '/edit', templateUrl: '/static/front/pages/profile_edit.html', data:{ labelKey: 'profile_edit_PAGETITLE', authenticated: true }})
 			
-			.state('app.pokedex', { url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', data:{ labelKey: 'pokedex_view_PAGETITLE', authenticated: true, redirect: 'base.welcome' }})
+			.state('app.pokedex', { parent:'app', url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', resolve: { pokedex: function(API) { return API.sendRequest('/api/pokemon/list/', 'POST'); }}, data:{ labelKey: 'pokedex_view_PAGETITLE', authenticated: true, redirect: 'base.welcome' }})
 			
 				.state('app.pokedex.add',  { url: '/add', templateUrl: '/static/front/pages/pokedex_add.html',  data:{ labelKey: 'pokedex_add_PAGETITLE',  authenticated: true }})
 
-			.state('app.pokemon', { url: '/pokemon/:ref', controller: 'PokemonCtrl', templateUrl: '/static/front/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_PAGETITLE', authenticated: false }})
+			.state('app.pokemon', { parent:'app', url: '/pokemon/:ref', controller: 'PokemonCtrl', templateUrl: '/static/front/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_PAGETITLE', authenticated: false }})
 			
 				.state('app.pokemon.edit', { url: '/edit', templateUrl: '/static/front/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_PAGETITLE', authenticated: true  }})
 
@@ -1014,7 +1339,7 @@ angular.module('AngularApp').directive('pageTitle', function($rootScope, $filter
 		}
 	};
 });
-angular.module('AngularApp').controller('LangCtrl', function($scope, $translate, $auth, $http, $cookies, $location, API) {
+angular.module('AngularApp').controller('LangCtrl', function($scope, $translate) {
 
 	$scope.changeLanguage = function(key) {
 	
@@ -1023,10 +1348,6 @@ angular.module('AngularApp').controller('LangCtrl', function($scope, $translate,
 });
 
 angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $cookies, $location, $http, API) {
-	
-	$scope.loginModel = {username: '', password: ''};
-	
-	$scope.registerModel = {username: '', password1: '', password2: '', email: ''};
 	
 	$scope.socialLogin = function(provider) {
 		
@@ -1045,6 +1366,8 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 			
 		});
 	};
+	
+	$scope.loginModel = {username: '', password: ''};
 	
 	$scope.localLogin = function(form) {
 		
@@ -1071,6 +1394,8 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 		}
 	};
 
+	$scope.registerModel = {username: '', password1: '', password2: '', email: ''};
+	
 	$scope.register = function(form) {
 		
 		if (!form.$invalid) {
@@ -1102,9 +1427,9 @@ angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $
 	};
 });
 
-angular.module('AngularApp').controller('ProfileCtrl', function($scope, $location, $filter, toastr, profile) {
+angular.module('AngularApp').controller('ProfileCtrl', function($scope, $location, $filter, toastr, API, ProfileService) {
 	
-	$scope.profile = profile.get();
+	$scope.profile = ProfileService.getProfile();
 	
 	var level_list = [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
 						 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -1133,714 +1458,29 @@ angular.module('AngularApp').controller('ProfileCtrl', function($scope, $locatio
 		$scope.profile.level = item;
 	}
 	
-	$scope.edit = function() {
+	$scope.profileModel = {team: $scope.profile.team, level: $scope.profile.level};
+	
+	$scope.edit = function(form) {
 		
-		profile.update($scope.profile.team, $scope.profile.level).then(function(data) {
-			
-			$scope.profile = profile.get();
-			
-			$location.path('/profile');
-			
-			toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
+		if (!form.$invalid) {
+		
+			API.sendRequest('/api/profile/edit/', 'POST', {}, $scope.profileModel).then(function(data) {
 				
-		}, function error(data) {
-			
-			toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-		});
+				$scope.profile = ProfileService.setProfile($scope.profileModel);
+				
+				$location.path('/profile');
+				
+				toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
+					
+			}, function error(data) {
+				
+				toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
+			});
+		}
 	};
 });
 
-var data_pokemon_list = [
-	
-	{ "dexnumber":  1,		"code":"bulbasaur",		"baseS": 90,	"baseA":118,	"baseD":118,		"maxcp": 981, },
-	{ "dexnumber":  2,		"code":"ivysaur",			"baseS":120,	"baseA":151,	"baseD":151,		"maxcp":1552, },
-	{ "dexnumber":  3,		"code":"venusaur",		"baseS":160,	"baseA":198,	"baseD":198,		"maxcp":2568, },
-	{ "dexnumber":  4,		"code":"charmander",		"baseS": 78,	"baseA":116,	"baseD": 96,		"maxcp": 831, },
-	{ "dexnumber":  5,		"code":"charmeleon",		"baseS":116,	"baseA":158,	"baseD":129,		"maxcp":1484, },
-	{ "dexnumber":  6,		"code":"charizard",		"baseS":156,	"baseA":223,	"baseD":176,		"maxcp":2686, },
-	{ "dexnumber":  7,		"code":"squirtle",		"baseS": 88,	"baseA": 94,	"baseD":122,		"maxcp": 808, },
-	{ "dexnumber":  8,		"code":"wartortle",		"baseS":118,	"baseA":126,	"baseD":155,		"maxcp":1324, },
-	{ "dexnumber":  9,		"code":"blastoise",		"baseS":158,	"baseA":171,	"baseD":210,		"maxcp":2291, },
-	{ "dexnumber": 10,		"code":"caterpie",		"baseS": 90,	"baseA": 55,	"baseD": 62,		"maxcp": 393, },
-	{ "dexnumber": 11,		"code":"metapod",			"baseS":100,	"baseA": 45,	"baseD": 94,		"maxcp": 419, },
-	{ "dexnumber": 12,		"code":"butterfree",		"baseS":120,	"baseA":167,	"baseD":151,		"maxcp":1701, },
-	{ "dexnumber": 13,		"code":"weedle",			"baseS": 80,	"baseA": 63,	"baseD": 55,		"maxcp": 397, },
-	{ "dexnumber": 14,		"code":"kakuna",			"baseS": 90,	"baseA": 46,	"baseD": 86,		"maxcp": 392, },
-	{ "dexnumber": 15,		"code":"beedrill",		"baseS":130,	"baseA":169,	"baseD":150,		"maxcp":1777, },
-	{ "dexnumber": 16,		"code":"pidgey",			"baseS": 80,	"baseA": 85,	"baseD": 76,		"maxcp": 580, },
-	{ "dexnumber": 17,		"code":"pidgeotto",		"baseS":126,	"baseA":117,	"baseD":108,		"maxcp":1085, },
-	{ "dexnumber": 18,		"code":"pidgeot",			"baseS":166,	"baseA":166,	"baseD":157,		"maxcp":1994, },
-	{ "dexnumber": 19,		"code":"rattata",			"baseS": 60,	"baseA":103,	"baseD": 70,		"maxcp": 588, },
-	{ "dexnumber": 20,		"code":"raticate",		"baseS":110,	"baseA":161,	"baseD":144,		"maxcp":1549, },
-	{ "dexnumber": 21,		"code":"spearow",			"baseS": 80,	"baseA":112,	"baseD": 61,		"maxcp": 673, },
-	{ "dexnumber": 22,		"code":"fearow",			"baseS":130,	"baseA":182,	"baseD":135,		"maxcp":1814, },
-	{ "dexnumber": 23,		"code":"ekans",			"baseS": 70,	"baseA":110,	"baseD":102,		"maxcp": 778, },
-	{ "dexnumber": 24,		"code":"arbok",			"baseS":120,	"baseA":167,	"baseD":158,		"maxcp":1737, },
-	{ "dexnumber": 25,		"code":"pikachu",			"baseS": 70,	"baseA":112,	"baseD":101,		"maxcp": 787, },
-	{ "dexnumber": 26,		"code":"raichu",			"baseS":120,	"baseA":193,	"baseD":165,		"maxcp":2025, },
-	{ "dexnumber": 27,		"code":"sandshrew",		"baseS":100,	"baseA":126,	"baseD":145,		"maxcp":1194, },
-	{ "dexnumber": 28,		"code":"sandslash",		"baseS":150,	"baseA":182,	"baseD":202,		"maxcp":2328, },
-	{ "dexnumber": 29,		"code":"nidoranfemale",	"baseS":110,	"baseA": 86,	"baseD": 94,		"maxcp": 736, },
-	{ "dexnumber": 30,		"code":"nidorina",		"baseS":140,	"baseA":117,	"baseD":126,		"maxcp":1218, },
-	{ "dexnumber": 31,		"code":"nidoqueen",		"baseS":180,	"baseA":180,	"baseD":174,		"maxcp":2338, },
-	{ "dexnumber": 32,		"code":"nidoranmale",		"baseS": 92,	"baseA":105,	"baseD": 76,		"maxcp": 739, },
-	{ "dexnumber": 33,		"code":"nidorino",		"baseS":122,	"baseA":137,	"baseD":112,		"maxcp":1252, },
-	{ "dexnumber": 34,		"code":"nidoking",		"baseS":162,	"baseA":204,	"baseD":157,		"maxcp":2386, },
-	{ "dexnumber": 35,		"code":"clefairy",		"baseS":140,	"baseA":107,	"baseD":116,		"maxcp":1085, },
-	{ "dexnumber": 36,		"code":"clefable",		"baseS":190,	"baseA":178,	"baseD":171,		"maxcp":2353, },
-	{ "dexnumber": 37,		"code":"vulpix",			"baseS": 76,	"baseA": 96,	"baseD":122,		"maxcp": 774, },
-	{ "dexnumber": 38,		"code":"ninetales",		"baseS":146,	"baseA":169,	"baseD":204,		"maxcp":2157, },
-	{ "dexnumber": 39,		"code":"jigglypuff",		"baseS":230,	"baseA": 80,	"baseD": 44,		"maxcp": 713, },
-	{ "dexnumber": 40,		"code":"wigglytuff",		"baseS":280,	"baseA":156,	"baseD": 93,		"maxcp":1906, },
-	{ "dexnumber": 41,		"code":"zubat",			"baseS": 80,	"baseA": 83,	"baseD": 76,		"maxcp": 569, },
-	{ "dexnumber": 42,		"code":"golbat",			"baseS":150,	"baseA":161,	"baseD":153,		"maxcp":1830, },
-	{ "dexnumber": 43,		"code":"oddish",			"baseS": 90,	"baseA":131,	"baseD":116,		"maxcp":1069, },
-	{ "dexnumber": 44,		"code":"gloom",			"baseS":120,	"baseA":153,	"baseD":139,		"maxcp":1512, },
-	{ "dexnumber": 45,		"code":"vileplume",		"baseS":150,	"baseA":202,	"baseD":170,		"maxcp":2367, },
-	{ "dexnumber": 46,		"code":"paras",			"baseS": 70,	"baseA":121,	"baseD": 99,		"maxcp": 836, },
-	{ "dexnumber": 47,		"code":"parasect",		"baseS":120,	"baseA":165,	"baseD":146,		"maxcp":1657, },
-	{ "dexnumber": 48,		"code":"venonat",			"baseS":120,	"baseA":100,	"baseD":102,		"maxcp": 902, },
-	{ "dexnumber": 49,		"code":"venomoth",		"baseS":140,	"baseA":179,	"baseD":150,		"maxcp":1937, },
-	{ "dexnumber": 50,		"code":"diglett",			"baseS": 20,	"baseA":109,	"baseD": 88,		"maxcp": 465, },
-	{ "dexnumber": 51,		"code":"dugtrio",			"baseS": 70,	"baseA":167,	"baseD":147,		"maxcp":1333, },
-	{ "dexnumber": 52,		"code":"meowth",			"baseS": 80,	"baseA": 92,	"baseD": 81,		"maxcp": 638, },
-	{ "dexnumber": 53,		"code":"persian",			"baseS":130,	"baseA":150,	"baseD":139,		"maxcp":1539, },
-	{ "dexnumber": 54,		"code":"psyduck",			"baseS":100,	"baseA":122,	"baseD": 96,		"maxcp": 966, },
-	{ "dexnumber": 55,		"code":"golduck",			"baseS":160,	"baseA":191,	"baseD":163,		"maxcp":2270, },
-	{ "dexnumber": 56,		"code":"mankey",			"baseS": 80,	"baseA":148,	"baseD": 87,		"maxcp":1002, },
-	{ "dexnumber": 57,		"code":"primeape",		"baseS":130,	"baseA":207,	"baseD":144,		"maxcp":2105, },
-	{ "dexnumber": 58,		"code":"growlithe",		"baseS":110,	"baseA":136,	"baseD": 96,		"maxcp":1110, },
-	{ "dexnumber": 59,		"code":"arcanine",		"baseS":180,	"baseA":227,	"baseD":166,		"maxcp":2839, },
-	{ "dexnumber": 60,		"code":"poliwag",			"baseS": 80,	"baseA":101,	"baseD": 82,		"maxcp": 695, },
-	{ "dexnumber": 61,		"code":"poliwhirl",		"baseS":130,	"baseA":130,	"baseD":130,		"maxcp":1313, },
-	{ "dexnumber": 62,		"code":"poliwrath",		"baseS":180,	"baseA":182,	"baseD":187,		"maxcp":2441, },
-	{ "dexnumber": 63,		"code":"abra",			"baseS": 50,	"baseA":195,	"baseD":103,		"maxcp":1148, },
-	{ "dexnumber": 64,		"code":"kadabra",			"baseS": 80,	"baseA":232,	"baseD":138,		"maxcp":1859, },
-	{ "dexnumber": 65,		"code":"alakazam",		"baseS":110,	"baseA":271,	"baseD":194,		"maxcp":2887, },
-	{ "dexnumber": 66,		"code":"machop",			"baseS":140,	"baseA":137,	"baseD": 88,		"maxcp":1199, },
-	{ "dexnumber": 67,		"code":"machoke",			"baseS":160,	"baseA":177,	"baseD":130,		"maxcp":1910, },
-	{ "dexnumber": 68,		"code":"machamp",			"baseS":180,	"baseA":234,	"baseD":162,		"maxcp":2889, },
-	{ "dexnumber": 69,		"code":"bellsprout",		"baseS":100,	"baseA":139,	"baseD": 64,		"maxcp": 916, },
-	{ "dexnumber": 70,		"code":"weepinbell",		"baseS":130,	"baseA":172,	"baseD": 95,		"maxcp":1475, },
-	{ "dexnumber": 71,		"code":"victreebel",		"baseS":160,	"baseA":207,	"baseD":138,		"maxcp":2268, },
-	{ "dexnumber": 72,		"code":"tentacool",		"baseS": 80,	"baseA": 97,	"baseD":182,		"maxcp": 956, },
-	{ "dexnumber": 73,		"code":"tentacruel",		"baseS":160,	"baseA":166,	"baseD":237,		"maxcp":2374, },
-	{ "dexnumber": 74,		"code":"geodude",			"baseS": 80,	"baseA":132,	"baseD":163,		"maxcp":1193, },
-	{ "dexnumber": 75,		"code":"graveler",		"baseS":110,	"baseA":164,	"baseD":196,		"maxcp":1815, },
-	{ "dexnumber": 76,		"code":"golem",			"baseS":160,	"baseA":211,	"baseD":229,		"maxcp":2916, },
-	{ "dexnumber": 77,		"code":"ponyta",			"baseS":100,	"baseA":170,	"baseD":132,		"maxcp":1502, },
-	{ "dexnumber": 78,		"code":"rapidash",		"baseS":130,	"baseA":207,	"baseD":167,		"maxcp":2252, },
-	{ "dexnumber": 79,		"code":"slowpoke",		"baseS":180,	"baseA":109,	"baseD":109,		"maxcp":1204, },
-	{ "dexnumber": 80,		"code":"slowbro",			"baseS":190,	"baseA":177,	"baseD":194,		"maxcp":2482, },
-	{ "dexnumber": 81,		"code":"magnemite",		"baseS": 50,	"baseA":165,	"baseD":128,		"maxcp":1083, },
-	{ "dexnumber": 82,		"code":"magneton",		"baseS":100,	"baseA":223,	"baseD":182,		"maxcp":2237, },
-	{ "dexnumber": 83,		"code":"farfetchd",		"baseS":104,	"baseA":124,	"baseD":118,		"maxcp":1092, },
-	{ "dexnumber": 84,		"code":"doduo",			"baseS": 70,	"baseA":158,	"baseD": 88,		"maxcp":1011, },
-	{ "dexnumber": 85,		"code":"dodrio",			"baseS":120,	"baseA":218,	"baseD":145,		"maxcp":2138, },
-	{ "dexnumber": 86,		"code":"seel",			"baseS":130,	"baseA": 85,	"baseD":128,		"maxcp": 899, },
-	{ "dexnumber": 87,		"code":"dewgong",			"baseS":180,	"baseA":139,	"baseD":184,		"maxcp":1894, },
-	{ "dexnumber": 88,		"code":"grimer",			"baseS":160,	"baseA":135,	"baseD": 90,		"maxcp":1269, },
-	{ "dexnumber": 89,		"code":"muk",				"baseS":210,	"baseA":190,	"baseD":184,		"maxcp":2709, },
-	{ "dexnumber": 90,		"code":"shellder",		"baseS": 60,	"baseA":116,	"baseD":168,		"maxcp": 958, },
-	{ "dexnumber": 91,		"code":"cloyster",		"baseS":100,	"baseA":186,	"baseD":323,		"maxcp":2475, },
-	{ "dexnumber": 92,		"code":"gastly",			"baseS": 60,	"baseA":186,	"baseD": 70,		"maxcp":1002, },
-	{ "dexnumber": 93,		"code":"haunter",			"baseS": 90,	"baseA":223,	"baseD":112,		"maxcp":1716, },
-	{ "dexnumber": 94,		"code":"gengar",			"baseS":120,	"baseA":261,	"baseD":156,		"maxcp":2619, },
-	{ "dexnumber": 95,		"code":"onix",			"baseS": 70,	"baseA": 85,	"baseD":288,		"maxcp":1002, },
-	{ "dexnumber": 96,		"code":"drowzee",			"baseS":120,	"baseA": 89,	"baseD":158,		"maxcp": 992, },
-	{ "dexnumber": 97,		"code":"hypno",			"baseS":170,	"baseA":144,	"baseD":215,		"maxcp":2048, },
-	{ "dexnumber": 98,		"code":"krabby",			"baseS": 60,	"baseA":181,	"baseD":156,		"maxcp":1386, },
-	{ "dexnumber": 99,		"code":"kingler",			"baseS":110,	"baseA":240,	"baseD":214,		"maxcp":2694, },
-	{ "dexnumber":100,		"code":"voltorb",			"baseS": 80,	"baseA":109,	"baseD":114,		"maxcp": 857, },
-	{ "dexnumber":101,		"code":"electrode",		"baseS":120,	"baseA":173,	"baseD":179,		"maxcp":1900, },
-	{ "dexnumber":102,		"code":"exeggcute",		"baseS":120,	"baseA":107,	"baseD":140,		"maxcp":1102, },
-	{ "dexnumber":103,		"code":"exeggutor",		"baseS":190,	"baseA":233,	"baseD":158,		"maxcp":2916, },
-	{ "dexnumber":104,		"code":"cubone",			"baseS":100,	"baseA": 90,	"baseD":165,		"maxcp": 943, },
-	{ "dexnumber":105,		"code":"marowak",			"baseS":120,	"baseA":144,	"baseD":200,		"maxcp":1691, },
-	{ "dexnumber":106,		"code":"hitmonlee",		"baseS":100,	"baseA":224,	"baseD":211,		"maxcp":2406, },
-	{ "dexnumber":107,		"code":"hitmonchan",		"baseS":100,	"baseA":193,	"baseD":212,		"maxcp":2098, },
-	{ "dexnumber":108,		"code":"lickitung",		"baseS":180,	"baseA":108,	"baseD":137,		"maxcp":1322, },
-	{ "dexnumber":109,		"code":"koffing",			"baseS": 80,	"baseA":119,	"baseD":164,		"maxcp":1091, },
-	{ "dexnumber":110,		"code":"weezing",			"baseS":130,	"baseA":174,	"baseD":221,		"maxcp":2183, },
-	{ "dexnumber":111,		"code":"rhyhorn",			"baseS":160,	"baseA":140,	"baseD":157,		"maxcp":1679, },
-	{ "dexnumber":112,		"code":"rhydon",			"baseS":210,	"baseA":222,	"baseD":206,		"maxcp":3300, },
-	{ "dexnumber":113,		"code":"chansey",			"baseS":500,	"baseA": 60,	"baseD":176,		"maxcp":1469, },
-	{ "dexnumber":114,		"code":"tangela",			"baseS":130,	"baseA":183,	"baseD":205,		"maxcp":2208, },
-	{ "dexnumber":115,		"code":"kangaskhan",		"baseS":210,	"baseA":181,	"baseD":165,		"maxcp":2463, },
-	{ "dexnumber":116,		"code":"horsea",			"baseS": 60,	"baseA":129,	"baseD":125,		"maxcp": 921, },
-	{ "dexnumber":117,		"code":"seadra",			"baseS":110,	"baseA":187,	"baseD":182,		"maxcp":1979, },
-	{ "dexnumber":118,		"code":"goldeen",			"baseS": 90,	"baseA":123,	"baseD":115,		"maxcp":1006, },
-	{ "dexnumber":119,		"code":"seaking",			"baseS":160,	"baseA":175,	"baseD":154,		"maxcp":2040, },
-	{ "dexnumber":120,		"code":"staryu",			"baseS": 60,	"baseA":137,	"baseD":112,		"maxcp": 926, },
-	{ "dexnumber":121,		"code":"starmie",			"baseS":120,	"baseA":210,	"baseD":184,		"maxcp":2303, },
-	{ "dexnumber":122,		"code":"mrmime",			"baseS": 80,	"baseA":192,	"baseD":233,		"maxcp":1984, },
-	{ "dexnumber":123,		"code":"scyther",			"baseS":140,	"baseA":218,	"baseD":170,		"maxcp":2464, },
-	{ "dexnumber":124,		"code":"jynx",			"baseS":130,	"baseA":223,	"baseD":182,		"maxcp":2512, },
-	{ "dexnumber":125,		"code":"electabuzz",		"baseS":130,	"baseA":198,	"baseD":173,		"maxcp":2196, },
-	{ "dexnumber":126,		"code":"magmar",			"baseS":130,	"baseA":206,	"baseD":169,		"maxcp":2254, },
-	{ "dexnumber":127,		"code":"pinsir",			"baseS":130,	"baseA":238,	"baseD":197,		"maxcp":2770, },
-	{ "dexnumber":128,		"code":"tauros",			"baseS":150,	"baseA":198,	"baseD":197,		"maxcp":2488, },
-	{ "dexnumber":129,		"code":"magikarp",		"baseS": 40,	"baseA": 29,	"baseD":102,		"maxcp": 220, },
-	{ "dexnumber":130,		"code":"gyarados",		"baseS":190,	"baseA":237,	"baseD":197,		"maxcp":3281, },
-	{ "dexnumber":131,		"code":"lapras",			"baseS":260,	"baseA":165,	"baseD":180,		"maxcp":2603, },
-	{ "dexnumber":132,		"code":"ditto",			"baseS": 96,	"baseA": 91,	"baseD": 91,		"maxcp": 718, },
-	{ "dexnumber":133,		"code":"eevee",			"baseS":110,	"baseA":104,	"baseD":121,		"maxcp": 969, },
-	{ "dexnumber":134,		"code":"vaporeon",		"baseS":260,	"baseA":205,	"baseD":177,		"maxcp":3157, },
-	{ "dexnumber":135,		"code":"jolteon",			"baseS":130,	"baseA":232,	"baseD":201,		"maxcp":2730, },
-	{ "dexnumber":136,		"code":"flareon",			"baseS":130,	"baseA":246,	"baseD":204,		"maxcp":2904, },
-	{ "dexnumber":137,		"code":"porygon",			"baseS":130,	"baseA":153,	"baseD":139,		"maxcp":1567, },
-	{ "dexnumber":138,		"code":"omanyte",			"baseS": 70,	"baseA":155,	"baseD":174,		"maxcp":1345, },
-	{ "dexnumber":139,		"code":"omastar",			"baseS":140,	"baseA":207,	"baseD":227,		"maxcp":2685, },
-	{ "dexnumber":140,		"code":"kabuto",			"baseS": 60,	"baseA":148,	"baseD":162,		"maxcp":1172, },
-	{ "dexnumber":141,		"code":"kabutops",		"baseS":120,	"baseA":220,	"baseD":203,		"maxcp":2517, },
-	{ "dexnumber":142,		"code":"aerodactyl",		"baseS":160,	"baseA":221,	"baseD":164,		"maxcp":2608, },
-	{ "dexnumber":143,		"code":"snorlax",			"baseS":320,	"baseA":190,	"baseD":190,		"maxcp":3355, },
-	{ "dexnumber":147,		"code":"dratini",			"baseS": 82,	"baseA":119,	"baseD": 94,		"maxcp": 860, },
-	{ "dexnumber":148,		"code":"dragonair",		"baseS":122,	"baseA":163,	"baseD":138,		"maxcp":1609, },
-	{ "dexnumber":149,		"code":"dragonite",		"baseS":182,	"baseA":263,	"baseD":201,		"maxcp":3581, },
-	{ "dexnumber":152,		"code":"chikorita",		"baseS": 90,	"baseA": 92,	"baseD":122,		"maxcp": 801, },
-	{ "dexnumber":148,		"code":"bayleef",			"baseS":120,	"baseA":122,	"baseD":155,		"maxcp":1296, },
-	{ "dexnumber":149,		"code":"meganium",		"baseS":160,	"baseA":168,	"baseD":202,		"maxcp":2227, },
-	{ "dexnumber":150,		"code":"cyndaquil",		"baseS": 78,	"baseA":116,	"baseD": 96,		"maxcp": 831, },
-	{ "dexnumber":151,		"code":"quilava",			"baseS":116,	"baseA":158,	"baseD":129,		"maxcp":1484, },
-	{ "dexnumber":152,		"code":"typhlosion",		"baseS":156,	"baseA":223,	"baseD":176,		"maxcp":2686, },
-	{ "dexnumber":153,		"code":"totodile",		"baseS":100,	"baseA":117,	"baseD":116,		"maxcp":1011, },
-	{ "dexnumber":154,		"code":"croconaw",		"baseS":130,	"baseA":150,	"baseD":151,		"maxcp":1598, },
-	{ "dexnumber":155,		"code":"feraligatr",		"baseS":170,	"baseA":205,	"baseD":197,		"maxcp":2721, },
-	{ "dexnumber":156,		"code":"sentret",			"baseS": 70,	"baseA": 79,	"baseD": 77,		"maxcp": 519, },
-	{ "dexnumber":157,		"code":"furret",			"baseS":170,	"baseA":148,	"baseD":130,		"maxcp":1667, },
-	{ "dexnumber":158,		"code":"hoothoot",		"baseS":120,	"baseA": 67,	"baseD":101,		"maxcp": 640, },
-	{ "dexnumber":159,		"code":"noctowl",			"baseS":200,	"baseA":145,	"baseD":179,		"maxcp":2040, },
-	{ "dexnumber":160,		"code":"ledyba",			"baseS": 80,	"baseA": 72,	"baseD":142,		"maxcp": 663, },
-	{ "dexnumber":161,		"code":"ledian",			"baseS":110,	"baseA":107,	"baseD":209,		"maxcp":1275, },
-	{ "dexnumber":162,		"code":"spinarak",		"baseS": 80,	"baseA":105,	"baseD": 73,		"maxcp": 685, },
-	{ "dexnumber":163,		"code":"ariados",			"baseS":140,	"baseA":161,	"baseD":128,		"maxcp":1636, },
-	{ "dexnumber":164,		"code":"crobat",			"baseS":170,	"baseA":194,	"baseD":178,		"maxcp":2466, },
-	{ "dexnumber":165,		"code":"chinchou",		"baseS":150,	"baseA":106,	"baseD":106,		"maxcp":1067, },
-	{ "dexnumber":166,		"code":"lanturn",			"baseS":250,	"baseA":146,	"baseD":146,		"maxcp":2077, },
-	{ "dexnumber":167,		"code":"pichu",			"baseS": 40,	"baseA": 77,	"baseD": 63,		"maxcp": 376, },
-	{ "dexnumber":168,		"code":"cleffa",			"baseS":100,	"baseA": 75,	"baseD": 91,		"maxcp": 620, },
-	{ "dexnumber":169,		"code":"igglybuff",		"baseS":180,	"baseA": 69,	"baseD": 34,		"maxcp": 512, },
-	{ "dexnumber":170,		"code":"togepi",			"baseS": 70,	"baseA": 67,	"baseD":116,		"maxcp": 540, },
-	{ "dexnumber":171,		"code":"togetic",			"baseS":110,	"baseA":139,	"baseD":191,		"maxcp":1543, },
-	{ "dexnumber":172,		"code":"natu",			"baseS": 80,	"baseA":134,	"baseD": 89,		"maxcp": 925, },
-	{ "dexnumber":173,		"code":"xatu",			"baseS":130,	"baseA":192,	"baseD":146,		"maxcp":1975, },
-	{ "dexnumber":174,		"code":"mareep",			"baseS":110,	"baseA":114,	"baseD": 82,		"maxcp": 887, },
-	{ "dexnumber":175,		"code":"flaaffy",			"baseS":140,	"baseA":145,	"baseD":112,		"maxcp":1402, },
-	{ "dexnumber":176,		"code":"ampharos",		"baseS":180,	"baseA":211,	"baseD":172,		"maxcp":2695, },
-	{ "dexnumber":177,		"code":"bellossom",		"baseS":150,	"baseA":169,	"baseD":189,		"maxcp":2108, },
-	{ "dexnumber":178,		"code":"marill",			"baseS":140,	"baseA": 37,	"baseD": 93,		"maxcp": 420, },
-	{ "dexnumber":179,		"code":"azumarill",		"baseS":200,	"baseA":112,	"baseD":152,		"maxcp":1503, },
-	{ "dexnumber":180,		"code":"sudowoodo",		"baseS":140,	"baseA":167,	"baseD":198,		"maxcp":2065, },
-	{ "dexnumber":181,		"code":"politoed",		"baseS":180,	"baseA":174,	"baseD":192,		"maxcp":2371, },
-	{ "dexnumber":182,		"code":"hoppip",			"baseS": 70,	"baseA": 67,	"baseD":101,		"maxcp": 508, },
-	{ "dexnumber":183,		"code":"skiploom",		"baseS":110,	"baseA": 91,	"baseD":127,		"maxcp": 882, },
-	{ "dexnumber":184,		"code":"jumpluff",		"baseS":150,	"baseA":118,	"baseD":197,		"maxcp":1553, },
-	{ "dexnumber":185,		"code":"aipom",			"baseS":110,	"baseA":136,	"baseD":112,		"maxcp":1188, },
-	{ "dexnumber":186,		"code":"sunkern",			"baseS": 60,	"baseA": 55,	"baseD": 55,		"maxcp": 316, },
-	{ "dexnumber":187,		"code":"sunflora",		"baseS":150,	"baseA":185,	"baseD":148,		"maxcp":2048, },
-	{ "dexnumber":188,		"code":"yanma",			"baseS":130,	"baseA":154,	"baseD": 94,		"maxcp":1326, },
-	{ "dexnumber":189,		"code":"wooper",			"baseS":110,	"baseA": 75,	"baseD": 75,		"maxcp": 596, },
-	{ "dexnumber":190,		"code":"quagsire",		"baseS":190,	"baseA":152,	"baseD":152,		"maxcp":1929, },
-	{ "dexnumber":191,		"code":"espeon",			"baseS":130,	"baseA":261,	"baseD":194,		"maxcp":3000, },
-	{ "dexnumber":192,		"code":"umbreon",			"baseS":190,	"baseA":126,	"baseD":250,		"maxcp":2052, },
-	{ "dexnumber":193,		"code":"murkrow",			"baseS":120,	"baseA":175,	"baseD": 87,		"maxcp":1392, },
-	{ "dexnumber":194,		"code":"slowking",		"baseS":190,	"baseA":177,	"baseD":194,		"maxcp":2482, },
-	{ "dexnumber":195,		"code":"misdreavus",		"baseS":120,	"baseA":167,	"baseD":167,		"maxcp":1781, },
-	{ "dexnumber":196,		"code":"unown",			"baseS": 96,	"baseA":136,	"baseD": 91,		"maxcp":1022, },
-	{ "dexnumber":197,		"code":"wobbuffet",		"baseS":380,	"baseA": 60,	"baseD":106,		"maxcp":1024, },
-	{ "dexnumber":198,		"code":"girafarig",		"baseS":140,	"baseA":182,	"baseD":133,		"maxcp":1863, },
-	{ "dexnumber":199,		"code":"pineco",			"baseS":100,	"baseA":108,	"baseD":146,		"maxcp":1045, },
-	{ "dexnumber":200,		"code":"forretress",		"baseS":150,	"baseA":161,	"baseD":242,		"maxcp":2263, },
-	{ "dexnumber":201,		"code":"dunsparce",		"baseS":200,	"baseA":131,	"baseD":131,		"maxcp":1615, },
-	{ "dexnumber":202,		"code":"gligar",			"baseS":130,	"baseA":143,	"baseD":204,		"maxcp":1758, },
-	{ "dexnumber":203,		"code":"steelix",			"baseS":150,	"baseA":148,	"baseD":333,		"maxcp":2439, },
-	{ "dexnumber":204,		"code":"snubbull",		"baseS":120,	"baseA":137,	"baseD": 89,		"maxcp":1124, },
-	{ "dexnumber":205,		"code":"granbull",		"baseS":180,	"baseA":212,	"baseD":137,		"maxcp":2440, },
-	{ "dexnumber":206,		"code":"qwilfish",		"baseS":130,	"baseA":184,	"baseD":148,		"maxcp":1910, },
-	{ "dexnumber":207,		"code":"scizor",			"baseS":140,	"baseA":236,	"baseD":191,		"maxcp":2801, },
-	{ "dexnumber":208,		"code":"shuckle",			"baseS": 40,	"baseA": 17,	"baseD":396,		"maxcp": 300, },
-	{ "dexnumber":209,		"code":"heracross",		"baseS":160,	"baseA":234,	"baseD":189,		"maxcp":2938, },
-	{ "dexnumber":210,		"code":"sneasel",			"baseS":110,	"baseA":189,	"baseD":157,		"maxcp":1868, },
-	{ "dexnumber":211,		"code":"teddiursa",		"baseS":120,	"baseA":142,	"baseD": 93,		"maxcp":1184, },
-	{ "dexnumber":212,		"code":"ursaring",		"baseS":180,	"baseA":236,	"baseD":144,		"maxcp":2760, },
-	{ "dexnumber":213,		"code":"slugma",			"baseS": 80,	"baseA":118,	"baseD": 71,		"maxcp": 750, },
-	{ "dexnumber":214,		"code":"magcargo",		"baseS":100,	"baseA":139,	"baseD":209,		"maxcp":1543, },
-	{ "dexnumber":215,		"code":"swinub",			"baseS":100,	"baseA": 90,	"baseD": 74,		"maxcp": 663, },
-	{ "dexnumber":216,		"code":"piloswine",		"baseS":200,	"baseA":181,	"baseD":147,		"maxcp":2284, },
-	{ "dexnumber":217,		"code":"corsola",			"baseS":110,	"baseA":118,	"baseD":156,		"maxcp":1214, },
-	{ "dexnumber":218,		"code":"remoraid",		"baseS": 70,	"baseA":127,	"baseD": 69,		"maxcp": 749, },
-	{ "dexnumber":219,		"code":"octillery",		"baseS":150,	"baseA":197,	"baseD":141,		"maxcp":2124, },
-	{ "dexnumber":226,		"code":"mantine",			"baseS":130,	"baseA":148,	"baseD":260,		"maxcp":2032, },
-	{ "dexnumber":221,		"code":"skarmory",		"baseS":130,	"baseA":148,	"baseD":260,		"maxcp":2032, },
-	{ "dexnumber":222,		"code":"houndour",		"baseS": 90,	"baseA":152,	"baseD": 93,		"maxcp":1110, },
-	{ "dexnumber":223,		"code":"houndoom",		"baseS":150,	"baseA":224,	"baseD":159,		"maxcp":2529, },
-	{ "dexnumber":224,		"code":"kingdra",			"baseS":150,	"baseA":194,	"baseD":194,		"maxcp":2424, },
-	{ "dexnumber":225,		"code":"phanpy",			"baseS":180,	"baseA":107,	"baseD":107,		"maxcp":1175, },
-	{ "dexnumber":226,		"code":"donphan",			"baseS":180,	"baseA":214,	"baseD":214,		"maxcp":3022, },
-	{ "dexnumber":227,		"code":"porygon2",		"baseS":170,	"baseA":198,	"baseD":183,		"maxcp":2546, },
-	{ "dexnumber":228,		"code":"stantler",		"baseS":146,	"baseA":192,	"baseD":132,		"maxcp":1988, },
-	{ "dexnumber":236,		"code":"tyrogue",			"baseS": 70,	"baseA": 64,	"baseD": 64,		"maxcp": 404, },
-	{ "dexnumber":230,		"code":"hitmontop",		"baseS":100,	"baseA":173,	"baseD":214,		"maxcp":1905, },
-	{ "dexnumber":231,		"code":"smoochum",		"baseS": 90,	"baseA":153,	"baseD":116,		"maxcp":1230, },
-	{ "dexnumber":232,		"code":"elekid",			"baseS": 90,	"baseA":135,	"baseD":110,		"maxcp":1073, },
-	{ "dexnumber":233,		"code":"magby",			"baseS": 90,	"baseA":151,	"baseD":108,		"maxcp":1178, },
-	{ "dexnumber":234,		"code":"miltank",			"baseS":190,	"baseA":157,	"baseD":211,		"maxcp":2312, },
-	{ "dexnumber":235,		"code":"blissey",			"baseS":510,	"baseA":129,	"baseD":229,		"maxcp":3219, },
-	{ "dexnumber":246,		"code":"larvitar",		"baseS":100,	"baseA":115,	"baseD": 93,		"maxcp": 904, },
-	{ "dexnumber":247,		"code":"pupitar",			"baseS":140,	"baseA":155,	"baseD":133,		"maxcp":1608, },
-	{ "dexnumber":248,		"code":"tyranitar",		"baseS":200,	"baseA":251,	"baseD":212,		"maxcp":3670, },
-];
-
-var data_pokemon_stats = new Map();
-data_pokemon_stats.set('bulbasaur',		{ 'number':  1,	'stigmata': 90,	'attack':118,	'defense':118,	'maxcp': 981, });																
-data_pokemon_stats.set('ivysaur',		{ 'number':  2,	'stigmata':120,	'attack':151,	'defense':151,	'maxcp':1552, });																
-data_pokemon_stats.set('venusaur',		{ 'number':  3,	'stigmata':160,	'attack':198,	'defense':198,	'maxcp':2568, });																
-data_pokemon_stats.set('charmander',	{ 'number':  4,	'stigmata': 78,	'attack':116,	'defense': 96,	'maxcp': 831, });																
-data_pokemon_stats.set('charmeleon',	{ 'number':  5,	'stigmata':116,	'attack':158,	'defense':129,	'maxcp':1484, });																
-data_pokemon_stats.set('charizard',		{ 'number':  6,	'stigmata':156,	'attack':223,	'defense':176,	'maxcp':2686, });																
-data_pokemon_stats.set('squirtle',		{ 'number':  7,	'stigmata': 88,	'attack': 94,	'defense':122,	'maxcp': 808, });																
-data_pokemon_stats.set('wartortle',		{ 'number':  8,	'stigmata':118,	'attack':126,	'defense':155,	'maxcp':1324, });																
-data_pokemon_stats.set('blastoise',		{ 'number':  9,	'stigmata':158,	'attack':171,	'defense':210,	'maxcp':2291, });																
-data_pokemon_stats.set('caterpie',		{ 'number': 10,	'stigmata': 90,	'attack': 55,	'defense': 62,	'maxcp': 393, });																
-data_pokemon_stats.set('metapod',		{ 'number': 11,	'stigmata':100,	'attack': 45,	'defense': 94,	'maxcp': 419, });																
-data_pokemon_stats.set('butterfree',	{ 'number': 12,	'stigmata':120,	'attack':167,	'defense':151,	'maxcp':1701, });																
-data_pokemon_stats.set('weedle',		{ 'number': 13,	'stigmata': 80,	'attack': 63,	'defense': 55,	'maxcp': 397, });																
-data_pokemon_stats.set('kakuna',		{ 'number': 14,	'stigmata': 90,	'attack': 46,	'defense': 86,	'maxcp': 392, });																
-data_pokemon_stats.set('beedrill',		{ 'number': 15,	'stigmata':130,	'attack':169,	'defense':150,	'maxcp':1777, });																
-data_pokemon_stats.set('pidgey',		{ 'number': 16,	'stigmata': 80,	'attack': 85,	'defense': 76,	'maxcp': 580, });																
-data_pokemon_stats.set('pidgeotto',		{ 'number': 17,	'stigmata':126,	'attack':117,	'defense':108,	'maxcp':1085, });																
-data_pokemon_stats.set('pidgeot',		{ 'number': 18,	'stigmata':166,	'attack':166,	'defense':157,	'maxcp':1994, });																
-data_pokemon_stats.set('rattata',		{ 'number': 19,	'stigmata': 60,	'attack':103,	'defense': 70,	'maxcp': 588, });																
-data_pokemon_stats.set('raticate',		{ 'number': 20,	'stigmata':110,	'attack':161,	'defense':144,	'maxcp':1549, });																
-data_pokemon_stats.set('spearow',		{ 'number': 21,	'stigmata': 80,	'attack':112,	'defense': 61,	'maxcp': 673, });																
-data_pokemon_stats.set('fearow',		{ 'number': 22,	'stigmata':130,	'attack':182,	'defense':135,	'maxcp':1814, });																
-data_pokemon_stats.set('ekans',			{ 'number': 23,	'stigmata': 70,	'attack':110,	'defense':102,	'maxcp': 778, });																
-data_pokemon_stats.set('arbok',			{ 'number': 24,	'stigmata':120,	'attack':167,	'defense':158,	'maxcp':1737, });																
-data_pokemon_stats.set('pikachu',		{ 'number': 25,	'stigmata': 70,	'attack':112,	'defense':101,	'maxcp': 787, });																
-data_pokemon_stats.set('raichu',		{ 'number': 26,	'stigmata':120,	'attack':193,	'defense':165,	'maxcp':2025, });																
-data_pokemon_stats.set('sandshrew',		{ 'number': 27,	'stigmata':100,	'attack':126,	'defense':145,	'maxcp':1194, });																
-data_pokemon_stats.set('sandslash',		{ 'number': 28,	'stigmata':150,	'attack':182,	'defense':202,	'maxcp':2328, });																
-data_pokemon_stats.set('nidoranfemale',	{ 'number': 29,	'stigmata':110,	'attack': 86,	'defense': 94,	'maxcp': 736, });																
-data_pokemon_stats.set('nidorina',		{ 'number': 30,	'stigmata':140,	'attack':117,	'defense':126,	'maxcp':1218, });																
-data_pokemon_stats.set('nidoqueen',		{ 'number': 31,	'stigmata':180,	'attack':180,	'defense':174,	'maxcp':2338, });																
-data_pokemon_stats.set('nidoranmale',	{ 'number': 32,	'stigmata': 92,	'attack':105,	'defense': 76,	'maxcp': 739, });																
-data_pokemon_stats.set('nidorino',		{ 'number': 33,	'stigmata':122,	'attack':137,	'defense':112,	'maxcp':1252, });																
-data_pokemon_stats.set('nidoking',		{ 'number': 34,	'stigmata':162,	'attack':204,	'defense':157,	'maxcp':2386, });																
-data_pokemon_stats.set('clefairy',		{ 'number': 35,	'stigmata':140,	'attack':107,	'defense':116,	'maxcp':1085, });																
-data_pokemon_stats.set('clefable',		{ 'number': 36,	'stigmata':190,	'attack':178,	'defense':171,	'maxcp':2353, });																
-data_pokemon_stats.set('vulpix',		{ 'number': 37,	'stigmata': 76,	'attack': 96,	'defense':122,	'maxcp': 774, });																
-data_pokemon_stats.set('ninetales',		{ 'number': 38,	'stigmata':146,	'attack':169,	'defense':204,	'maxcp':2157, });																
-data_pokemon_stats.set('jigglypuff',	{ 'number': 39,	'stigmata':230,	'attack': 80,	'defense': 44,	'maxcp': 713, });																
-data_pokemon_stats.set('wigglytuff',	{ 'number': 40,	'stigmata':280,	'attack':156,	'defense': 93,	'maxcp':1906, });																
-data_pokemon_stats.set('zubat',			{ 'number': 41,	'stigmata': 80,	'attack': 83,	'defense': 76,	'maxcp': 569, });																
-data_pokemon_stats.set('golbat',		{ 'number': 42,	'stigmata':150,	'attack':161,	'defense':153,	'maxcp':1830, });																
-data_pokemon_stats.set('oddish',		{ 'number': 43,	'stigmata': 90,	'attack':131,	'defense':116,	'maxcp':1069, });																
-data_pokemon_stats.set('gloom',			{ 'number': 44,	'stigmata':120,	'attack':153,	'defense':139,	'maxcp':1512, });																
-data_pokemon_stats.set('vileplume',		{ 'number': 45,	'stigmata':150,	'attack':202,	'defense':170,	'maxcp':2367, });																
-data_pokemon_stats.set('paras',			{ 'number': 46,	'stigmata': 70,	'attack':121,	'defense': 99,	'maxcp': 836, });																
-data_pokemon_stats.set('parasect',		{ 'number': 47,	'stigmata':120,	'attack':165,	'defense':146,	'maxcp':1657, });																
-data_pokemon_stats.set('venonat',		{ 'number': 48,	'stigmata':120,	'attack':100,	'defense':102,	'maxcp': 902, });																
-data_pokemon_stats.set('venomoth',		{ 'number': 49,	'stigmata':140,	'attack':179,	'defense':150,	'maxcp':1937, });																
-data_pokemon_stats.set('diglett',		{ 'number': 50,	'stigmata': 20,	'attack':109,	'defense': 88,	'maxcp': 465, });																
-data_pokemon_stats.set('dugtrio',		{ 'number': 51,	'stigmata': 70,	'attack':167,	'defense':147,	'maxcp':1333, });																
-data_pokemon_stats.set('meowth',		{ 'number': 52,	'stigmata': 80,	'attack': 92,	'defense': 81,	'maxcp': 638, });																
-data_pokemon_stats.set('persian',		{ 'number': 53,	'stigmata':130,	'attack':150,	'defense':139,	'maxcp':1539, });																
-data_pokemon_stats.set('psyduck',		{ 'number': 54,	'stigmata':100,	'attack':122,	'defense': 96,	'maxcp': 966, });																
-data_pokemon_stats.set('golduck',		{ 'number': 55,	'stigmata':160,	'attack':191,	'defense':163,	'maxcp':2270, });																
-data_pokemon_stats.set('mankey',		{ 'number': 56,	'stigmata': 80,	'attack':148,	'defense': 87,	'maxcp':1002, });																
-data_pokemon_stats.set('primeape',		{ 'number': 57,	'stigmata':130,	'attack':207,	'defense':144,	'maxcp':2105, });																
-data_pokemon_stats.set('growlithe',		{ 'number': 58,	'stigmata':110,	'attack':136,	'defense': 96,	'maxcp':1110, });																
-data_pokemon_stats.set('arcanine',		{ 'number': 59,	'stigmata':180,	'attack':227,	'defense':166,	'maxcp':2839, });																
-data_pokemon_stats.set('poliwag',		{ 'number': 60,	'stigmata': 80,	'attack':101,	'defense': 82,	'maxcp': 695, });																
-data_pokemon_stats.set('poliwhirl',		{ 'number': 61,	'stigmata':130,	'attack':130,	'defense':130,	'maxcp':1313, });																
-data_pokemon_stats.set('poliwrath',		{ 'number': 62,	'stigmata':180,	'attack':182,	'defense':187,	'maxcp':2441, });																
-data_pokemon_stats.set('abra',			{ 'number': 63,	'stigmata': 50,	'attack':195,	'defense':103,	'maxcp':1148, });																
-data_pokemon_stats.set('kadabra',		{ 'number': 64,	'stigmata': 80,	'attack':232,	'defense':138,	'maxcp':1859, });																
-data_pokemon_stats.set('alakazam',		{ 'number': 65,	'stigmata':110,	'attack':271,	'defense':194,	'maxcp':2887, });																
-data_pokemon_stats.set('machop',		{ 'number': 66,	'stigmata':140,	'attack':137,	'defense': 88,	'maxcp':1199, });																
-data_pokemon_stats.set('machoke',		{ 'number': 67,	'stigmata':160,	'attack':177,	'defense':130,	'maxcp':1910, });																
-data_pokemon_stats.set('machamp',		{ 'number': 68,	'stigmata':180,	'attack':234,	'defense':162,	'maxcp':2889, });																
-data_pokemon_stats.set('bellsprout',	{ 'number': 69,	'stigmata':100,	'attack':139,	'defense': 64,	'maxcp': 916, });																
-data_pokemon_stats.set('weepinbell',	{ 'number': 70,	'stigmata':130,	'attack':172,	'defense': 95,	'maxcp':1475, });																
-data_pokemon_stats.set('victreebel',	{ 'number': 71,	'stigmata':160,	'attack':207,	'defense':138,	'maxcp':2268, });																
-data_pokemon_stats.set('tentacool',		{ 'number': 72,	'stigmata': 80,	'attack': 97,	'defense':182,	'maxcp': 956, });																
-data_pokemon_stats.set('tentacruel',	{ 'number': 73,	'stigmata':160,	'attack':166,	'defense':237,	'maxcp':2374, });																
-data_pokemon_stats.set('geodude',		{ 'number': 74,	'stigmata': 80,	'attack':132,	'defense':163,	'maxcp':1193, });																
-data_pokemon_stats.set('graveler',		{ 'number': 75,	'stigmata':110,	'attack':164,	'defense':196,	'maxcp':1815, });																
-data_pokemon_stats.set('golem',			{ 'number': 76,	'stigmata':160,	'attack':211,	'defense':229,	'maxcp':2916, });																
-data_pokemon_stats.set('ponyta',		{ 'number': 77,	'stigmata':100,	'attack':170,	'defense':132,	'maxcp':1502, });																
-data_pokemon_stats.set('rapidash',		{ 'number': 78,	'stigmata':130,	'attack':207,	'defense':167,	'maxcp':2252, });																
-data_pokemon_stats.set('slowpoke',		{ 'number': 79,	'stigmata':180,	'attack':109,	'defense':109,	'maxcp':1204, });																
-data_pokemon_stats.set('slowbro',		{ 'number': 80,	'stigmata':190,	'attack':177,	'defense':194,	'maxcp':2482, });																
-data_pokemon_stats.set('magnemite',		{ 'number': 81,	'stigmata': 50,	'attack':165,	'defense':128,	'maxcp':1083, });																
-data_pokemon_stats.set('magneton',		{ 'number': 82,	'stigmata':100,	'attack':223,	'defense':182,	'maxcp':2237, });																
-data_pokemon_stats.set('farfetchd',		{ 'number': 83,	'stigmata':104,	'attack':124,	'defense':118,	'maxcp':1092, });																
-data_pokemon_stats.set('doduo',			{ 'number': 84,	'stigmata': 70,	'attack':158,	'defense': 88,	'maxcp':1011, });																
-data_pokemon_stats.set('dodrio',		{ 'number': 85,	'stigmata':120,	'attack':218,	'defense':145,	'maxcp':2138, });																
-data_pokemon_stats.set('seel',			{ 'number': 86,	'stigmata':130,	'attack': 85,	'defense':128,	'maxcp': 899, });																
-data_pokemon_stats.set('dewgong',		{ 'number': 87,	'stigmata':180,	'attack':139,	'defense':184,	'maxcp':1894, });																
-data_pokemon_stats.set('grimer',		{ 'number': 88,	'stigmata':160,	'attack':135,	'defense': 90,	'maxcp':1269, });																
-data_pokemon_stats.set('muk',			{ 'number': 89,	'stigmata':210,	'attack':190,	'defense':184,	'maxcp':2709, });																
-data_pokemon_stats.set('shellder',		{ 'number': 90,	'stigmata': 60,	'attack':116,	'defense':168,	'maxcp': 958, });																
-data_pokemon_stats.set('cloyster',		{ 'number': 91,	'stigmata':100,	'attack':186,	'defense':323,	'maxcp':2475, });																
-data_pokemon_stats.set('gastly',		{ 'number': 92,	'stigmata': 60,	'attack':186,	'defense': 70,	'maxcp':1002, });																
-data_pokemon_stats.set('haunter',		{ 'number': 93,	'stigmata': 90,	'attack':223,	'defense':112,	'maxcp':1716, });																
-data_pokemon_stats.set('gengar',		{ 'number': 94,	'stigmata':120,	'attack':261,	'defense':156,	'maxcp':2619, });																
-data_pokemon_stats.set('onix',			{ 'number': 95,	'stigmata': 70,	'attack': 85,	'defense':288,	'maxcp':1002, });																
-data_pokemon_stats.set('drowzee',		{ 'number': 96,	'stigmata':120,	'attack': 89,	'defense':158,	'maxcp': 992, });																
-data_pokemon_stats.set('hypno',			{ 'number': 97,	'stigmata':170,	'attack':144,	'defense':215,	'maxcp':2048, });																
-data_pokemon_stats.set('krabby',		{ 'number': 98,	'stigmata': 60,	'attack':181,	'defense':156,	'maxcp':1386, });																
-data_pokemon_stats.set('kingler',		{ 'number': 99,	'stigmata':110,	'attack':240,	'defense':214,	'maxcp':2694, });																
-data_pokemon_stats.set('voltorb',		{ 'number':100,	'stigmata': 80,	'attack':109,	'defense':114,	'maxcp': 857, });																
-data_pokemon_stats.set('electrode',		{ 'number':101,	'stigmata':120,	'attack':173,	'defense':179,	'maxcp':1900, });																
-data_pokemon_stats.set('exeggcute',		{ 'number':102,	'stigmata':120,	'attack':107,	'defense':140,	'maxcp':1102, });																
-data_pokemon_stats.set('exeggutor',		{ 'number':103,	'stigmata':190,	'attack':233,	'defense':158,	'maxcp':2916, });																
-data_pokemon_stats.set('cubone',		{ 'number':104,	'stigmata':100,	'attack': 90,	'defense':165,	'maxcp': 943, });																
-data_pokemon_stats.set('marowak',		{ 'number':105,	'stigmata':120,	'attack':144,	'defense':200,	'maxcp':1691, });																
-data_pokemon_stats.set('hitmonlee',		{ 'number':106,	'stigmata':100,	'attack':224,	'defense':211,	'maxcp':2406, });																
-data_pokemon_stats.set('hitmonchan',	{ 'number':107,	'stigmata':100,	'attack':193,	'defense':212,	'maxcp':2098, });																
-data_pokemon_stats.set('lickitung',		{ 'number':108,	'stigmata':180,	'attack':108,	'defense':137,	'maxcp':1322, });																
-data_pokemon_stats.set('koffing',		{ 'number':109,	'stigmata': 80,	'attack':119,	'defense':164,	'maxcp':1091, });																
-data_pokemon_stats.set('weezing',		{ 'number':110,	'stigmata':130,	'attack':174,	'defense':221,	'maxcp':2183, });																
-data_pokemon_stats.set('rhyhorn',		{ 'number':111,	'stigmata':160,	'attack':140,	'defense':157,	'maxcp':1679, });																
-data_pokemon_stats.set('rhydon',		{ 'number':112,	'stigmata':210,	'attack':222,	'defense':206,	'maxcp':3300, });																
-data_pokemon_stats.set('chansey',		{ 'number':113,	'stigmata':500,	'attack': 60,	'defense':176,	'maxcp':1469, });																
-data_pokemon_stats.set('tangela',		{ 'number':114,	'stigmata':130,	'attack':183,	'defense':205,	'maxcp':2208, });																
-data_pokemon_stats.set('kangaskhan',	{ 'number':115,	'stigmata':210,	'attack':181,	'defense':165,	'maxcp':2463, });																
-data_pokemon_stats.set('horsea',		{ 'number':116,	'stigmata': 60,	'attack':129,	'defense':125,	'maxcp': 921, });																
-data_pokemon_stats.set('seadra',		{ 'number':117,	'stigmata':110,	'attack':187,	'defense':182,	'maxcp':1979, });																
-data_pokemon_stats.set('goldeen',		{ 'number':118,	'stigmata': 90,	'attack':123,	'defense':115,	'maxcp':1006, });																
-data_pokemon_stats.set('seaking',		{ 'number':119,	'stigmata':160,	'attack':175,	'defense':154,	'maxcp':2040, });																
-data_pokemon_stats.set('staryu',		{ 'number':120,	'stigmata': 60,	'attack':137,	'defense':112,	'maxcp': 926, });																
-data_pokemon_stats.set('starmie',		{ 'number':121,	'stigmata':120,	'attack':210,	'defense':184,	'maxcp':2303, });																
-data_pokemon_stats.set('mrmime',		{ 'number':122,	'stigmata': 80,	'attack':192,	'defense':233,	'maxcp':1984, });																
-data_pokemon_stats.set('scyther',		{ 'number':123,	'stigmata':140,	'attack':218,	'defense':170,	'maxcp':2464, });																
-data_pokemon_stats.set('jynx',			{ 'number':124,	'stigmata':130,	'attack':223,	'defense':182,	'maxcp':2512, });																
-data_pokemon_stats.set('electabuzz',	{ 'number':125,	'stigmata':130,	'attack':198,	'defense':173,	'maxcp':2196, });																
-data_pokemon_stats.set('magmar',		{ 'number':126,	'stigmata':130,	'attack':206,	'defense':169,	'maxcp':2254, });																
-data_pokemon_stats.set('pinsir',		{ 'number':127,	'stigmata':130,	'attack':238,	'defense':197,	'maxcp':2770, });																
-data_pokemon_stats.set('tauros',		{ 'number':128,	'stigmata':150,	'attack':198,	'defense':197,	'maxcp':2488, });																
-data_pokemon_stats.set('magikarp',		{ 'number':129,	'stigmata': 40,	'attack': 29,	'defense':102,	'maxcp': 220, });																
-data_pokemon_stats.set('gyarados',		{ 'number':130,	'stigmata':190,	'attack':237,	'defense':197,	'maxcp':3281, });																
-data_pokemon_stats.set('lapras',		{ 'number':131,	'stigmata':260,	'attack':165,	'defense':180,	'maxcp':2603, });																
-data_pokemon_stats.set('ditto',			{ 'number':132,	'stigmata': 96,	'attack': 91,	'defense': 91,	'maxcp': 718, });																
-data_pokemon_stats.set('eevee',			{ 'number':133,	'stigmata':110,	'attack':104,	'defense':121,	'maxcp': 969, });																
-data_pokemon_stats.set('vaporeon',		{ 'number':134,	'stigmata':260,	'attack':205,	'defense':177,	'maxcp':3157, });																
-data_pokemon_stats.set('jolteon',		{ 'number':135,	'stigmata':130,	'attack':232,	'defense':201,	'maxcp':2730, });																
-data_pokemon_stats.set('flareon',		{ 'number':136,	'stigmata':130,	'attack':246,	'defense':204,	'maxcp':2904, });																
-data_pokemon_stats.set('porygon',		{ 'number':137,	'stigmata':130,	'attack':153,	'defense':139,	'maxcp':1567, });																
-data_pokemon_stats.set('omanyte',		{ 'number':138,	'stigmata': 70,	'attack':155,	'defense':174,	'maxcp':1345, });																
-data_pokemon_stats.set('omastar',		{ 'number':139,	'stigmata':140,	'attack':207,	'defense':227,	'maxcp':2685, });																
-data_pokemon_stats.set('kabuto',		{ 'number':140,	'stigmata': 60,	'attack':148,	'defense':162,	'maxcp':1172, });																
-data_pokemon_stats.set('kabutops',		{ 'number':141,	'stigmata':120,	'attack':220,	'defense':203,	'maxcp':2517, });																
-data_pokemon_stats.set('aerodactyl',	{ 'number':142,	'stigmata':160,	'attack':221,	'defense':164,	'maxcp':2608, });																
-data_pokemon_stats.set('snorlax',		{ 'number':143,	'stigmata':320,	'attack':190,	'defense':190,	'maxcp':3355, });																
-data_pokemon_stats.set('dratini',		{ 'number':147,	'stigmata': 82,	'attack':119,	'defense': 94,	'maxcp': 860, });																
-data_pokemon_stats.set('dragonair',		{ 'number':148,	'stigmata':122,	'attack':163,	'defense':138,	'maxcp':1609, });																
-data_pokemon_stats.set('dragonite',		{ 'number':149,	'stigmata':182,	'attack':263,	'defense':201,	'maxcp':3581, });																
-data_pokemon_stats.set('chikorita',		{ 'number':152,	'stigmata': 90,	'attack': 92,	'defense':122,	'maxcp': 801, });																
-data_pokemon_stats.set('bayleef',		{ 'number':148,	'stigmata':120,	'attack':122,	'defense':155,	'maxcp':3355, });																
-data_pokemon_stats.set('meganium',		{ 'number':149,	'stigmata':160,	'attack':168,	'defense':202,	'maxcp':2227, });																
-data_pokemon_stats.set('cyndaquil',		{ 'number':150,	'stigmata': 78,	'attack':116,	'defense': 96,	'maxcp': 831, });																
-data_pokemon_stats.set('quilava',		{ 'number':151,	'stigmata':116,	'attack':158,	'defense':129,	'maxcp':1484, });																
-data_pokemon_stats.set('typhlosion',	{ 'number':152,	'stigmata':156,	'attack':223,	'defense':176,	'maxcp':2686, });																
-data_pokemon_stats.set('totodile',		{ 'number':153,	'stigmata':100,	'attack':117,	'defense':116,	'maxcp':1011, });																
-data_pokemon_stats.set('croconaw',		{ 'number':154,	'stigmata':130,	'attack':150,	'defense':151,	'maxcp':1598, });																
-data_pokemon_stats.set('feraligatr',	{ 'number':155,	'stigmata':170,	'attack':205,	'defense':197,	'maxcp':2721, });																
-data_pokemon_stats.set('sentret',		{ 'number':156,	'stigmata': 70,	'attack': 79,	'defense': 77,	'maxcp': 519, });																
-data_pokemon_stats.set('furret',		{ 'number':157,	'stigmata':170,	'attack':148,	'defense':130,	'maxcp':1667, });																
-data_pokemon_stats.set('hoothoot',		{ 'number':158,	'stigmata':120,	'attack': 67,	'defense':101,	'maxcp': 640, });																
-data_pokemon_stats.set('noctowl',		{ 'number':159,	'stigmata':200,	'attack':145,	'defense':179,	'maxcp':2040, });																
-data_pokemon_stats.set('ledyba',		{ 'number':160,	'stigmata': 80,	'attack': 72,	'defense':142,	'maxcp': 663, });																
-data_pokemon_stats.set('ledian',		{ 'number':161,	'stigmata':110,	'attack':107,	'defense':209,	'maxcp':1275, });																
-data_pokemon_stats.set('spinarak',		{ 'number':162,	'stigmata': 80,	'attack':105,	'defense': 73,	'maxcp': 685, });																
-data_pokemon_stats.set('ariados',		{ 'number':163,	'stigmata':140,	'attack':161,	'defense':128,	'maxcp':1636, });																
-data_pokemon_stats.set('crobat',		{ 'number':164,	'stigmata':170,	'attack':194,	'defense':178,	'maxcp':2466, });																
-data_pokemon_stats.set('chinchou',		{ 'number':165,	'stigmata':150,	'attack':106,	'defense':106,	'maxcp':1067, });																
-data_pokemon_stats.set('lanturn',		{ 'number':166,	'stigmata':250,	'attack':146,	'defense':146,	'maxcp':2077, });																
-data_pokemon_stats.set('pichu',			{ 'number':167,	'stigmata': 40,	'attack': 77,	'defense': 63,	'maxcp': 376, });																
-data_pokemon_stats.set('cleffa',		{ 'number':168,	'stigmata':100,	'attack': 75,	'defense': 91,	'maxcp': 620, });																
-data_pokemon_stats.set('igglybuff',		{ 'number':169,	'stigmata':180,	'attack': 69,	'defense': 34,	'maxcp': 512, });																
-data_pokemon_stats.set('togepi',		{ 'number':170,	'stigmata': 70,	'attack': 67,	'defense':116,	'maxcp': 540, });																
-data_pokemon_stats.set('togetic',		{ 'number':171,	'stigmata':110,	'attack':139,	'defense':191,	'maxcp':1543, });																
-data_pokemon_stats.set('natu',			{ 'number':172,	'stigmata': 80,	'attack':134,	'defense': 89,	'maxcp': 925, });																
-data_pokemon_stats.set('xatu',			{ 'number':173,	'stigmata':130,	'attack':192,	'defense':146,	'maxcp':1975, });																
-data_pokemon_stats.set('mareep',		{ 'number':174,	'stigmata':110,	'attack':114,	'defense': 82,	'maxcp': 887, });																
-data_pokemon_stats.set('flaaffy',		{ 'number':175,	'stigmata':140,	'attack':145,	'defense':112,	'maxcp':1402, });																
-data_pokemon_stats.set('ampharos',		{ 'number':176,	'stigmata':180,	'attack':211,	'defense':172,	'maxcp':2695, });																
-data_pokemon_stats.set('bellossom',		{ 'number':177,	'stigmata':150,	'attack':169,	'defense':189,	'maxcp':2108, });																
-data_pokemon_stats.set('marill',		{ 'number':178,	'stigmata':140,	'attack': 37,	'defense': 93,	'maxcp': 420, });																
-data_pokemon_stats.set('azumarill',		{ 'number':179,	'stigmata':200,	'attack':112,	'defense':152,	'maxcp':1503, });																
-data_pokemon_stats.set('sudowoodo',		{ 'number':180,	'stigmata':140,	'attack':167,	'defense':198,	'maxcp':2065, });																
-data_pokemon_stats.set('politoed',		{ 'number':181,	'stigmata':180,	'attack':174,	'defense':192,	'maxcp':2371, });																
-data_pokemon_stats.set('hoppip',		{ 'number':182,	'stigmata': 70,	'attack': 67,	'defense':101,	'maxcp': 508, });																
-data_pokemon_stats.set('skiploom',		{ 'number':183,	'stigmata':110,	'attack': 91,	'defense':127,	'maxcp': 882, });																
-data_pokemon_stats.set('jumpluff',		{ 'number':184,	'stigmata':150,	'attack':118,	'defense':197,	'maxcp':1553, });																
-data_pokemon_stats.set('aipom',			{ 'number':185,	'stigmata':110,	'attack':136,	'defense':112,	'maxcp':1188, });																
-data_pokemon_stats.set('sunkern',		{ 'number':186,	'stigmata': 60,	'attack': 55,	'defense': 55,	'maxcp': 316, });																
-data_pokemon_stats.set('sunflora',		{ 'number':187,	'stigmata':150,	'attack':185,	'defense':148,	'maxcp':2048, });																
-data_pokemon_stats.set('yanma',			{ 'number':188,	'stigmata':130,	'attack':154,	'defense': 94,	'maxcp':1326, });																
-data_pokemon_stats.set('wooper',		{ 'number':189,	'stigmata':110,	'attack': 75,	'defense': 75,	'maxcp': 596, });																
-data_pokemon_stats.set('quagsire',		{ 'number':190,	'stigmata':190,	'attack':152,	'defense':152,	'maxcp':1929, });																
-data_pokemon_stats.set('espeon',		{ 'number':191,	'stigmata':130,	'attack':261,	'defense':194,	'maxcp':3000, });																
-data_pokemon_stats.set('umbreon',		{ 'number':192,	'stigmata':190,	'attack':126,	'defense':250,	'maxcp':2052, });																
-data_pokemon_stats.set('murkrow',		{ 'number':193,	'stigmata':120,	'attack':175,	'defense': 87,	'maxcp':1392, });																
-data_pokemon_stats.set('slowking',		{ 'number':194,	'stigmata':190,	'attack':177,	'defense':194,	'maxcp':2482, });																
-data_pokemon_stats.set('misdreavus',	{ 'number':195,	'stigmata':120,	'attack':167,	'defense':167,	'maxcp':1781, });																
-data_pokemon_stats.set('unown',			{ 'number':196,	'stigmata': 96,	'attack':136,	'defense': 91,	'maxcp':1022, });																
-data_pokemon_stats.set('wobbuffet',		{ 'number':197,	'stigmata':380,	'attack': 60,	'defense':106,	'maxcp':1024, });																
-data_pokemon_stats.set('girafarig',		{ 'number':198,	'stigmata':140,	'attack':182,	'defense':133,	'maxcp':1863, });																
-data_pokemon_stats.set('pineco',		{ 'number':199,	'stigmata':100,	'attack':108,	'defense':146,	'maxcp':1045, });																
-data_pokemon_stats.set('forretress',	{ 'number':200,	'stigmata':150,	'attack':161,	'defense':242,	'maxcp':2263, });																
-data_pokemon_stats.set('dunsparce',		{ 'number':201,	'stigmata':200,	'attack':131,	'defense':131,	'maxcp':1615, });																
-data_pokemon_stats.set('gligar',		{ 'number':202,	'stigmata':130,	'attack':143,	'defense':204,	'maxcp':1758, });																
-data_pokemon_stats.set('steelix',		{ 'number':203,	'stigmata':150,	'attack':148,	'defense':333,	'maxcp':2439, });																
-data_pokemon_stats.set('snubbull',		{ 'number':204,	'stigmata':120,	'attack':137,	'defense': 89,	'maxcp':1124, });																
-data_pokemon_stats.set('granbull',		{ 'number':205,	'stigmata':180,	'attack':212,	'defense':137,	'maxcp':2440, });																
-data_pokemon_stats.set('qwilfish',		{ 'number':206,	'stigmata':130,	'attack':184,	'defense':148,	'maxcp':1910, });																
-data_pokemon_stats.set('scizor',		{ 'number':207,	'stigmata':140,	'attack':236,	'defense':191,	'maxcp':2801, });																
-data_pokemon_stats.set('shuckle',		{ 'number':208,	'stigmata': 40,	'attack': 17,	'defense':396,	'maxcp': 300, });																
-data_pokemon_stats.set('heracross',		{ 'number':209,	'stigmata':160,	'attack':234,	'defense':189,	'maxcp':2938, });																
-data_pokemon_stats.set('sneasel',		{ 'number':210,	'stigmata':110,	'attack':189,	'defense':157,	'maxcp':1868, });																
-data_pokemon_stats.set('teddiursa',		{ 'number':211,	'stigmata':120,	'attack':142,	'defense': 93,	'maxcp':1184, });																
-data_pokemon_stats.set('ursaring',		{ 'number':212,	'stigmata':180,	'attack':236,	'defense':144,	'maxcp':2760, });																
-data_pokemon_stats.set('slugma',		{ 'number':213,	'stigmata': 80,	'attack':118,	'defense': 71,	'maxcp': 750, });																
-data_pokemon_stats.set('magcargo',		{ 'number':214,	'stigmata':100,	'attack':139,	'defense':209,	'maxcp':1543, });																
-data_pokemon_stats.set('swinub',		{ 'number':215,	'stigmata':100,	'attack': 90,	'defense': 74,	'maxcp': 663, });																
-data_pokemon_stats.set('piloswine',		{ 'number':216,	'stigmata':200,	'attack':181,	'defense':147,	'maxcp':2284, });																
-data_pokemon_stats.set('corsola',		{ 'number':217,	'stigmata':110,	'attack':118,	'defense':156,	'maxcp':1214, });																
-data_pokemon_stats.set('remoraid',		{ 'number':218,	'stigmata': 70,	'attack':127,	'defense': 69,	'maxcp': 749, });																
-data_pokemon_stats.set('octillery',		{ 'number':219,	'stigmata':150,	'attack':197,	'defense':141,	'maxcp':2124, });																
-data_pokemon_stats.set('mantine',		{ 'number':226,	'stigmata':130,	'attack':148,	'defense':260,	'maxcp':2032, });																
-data_pokemon_stats.set('skarmory',		{ 'number':221,	'stigmata':130,	'attack':148,	'defense':260,	'maxcp':2032, });																
-data_pokemon_stats.set('houndour',		{ 'number':222,	'stigmata': 90,	'attack':152,	'defense': 93,	'maxcp':1110, });																
-data_pokemon_stats.set('houndoom',		{ 'number':223,	'stigmata':150,	'attack':224,	'defense':159,	'maxcp':2529, });																
-data_pokemon_stats.set('kingdra',		{ 'number':224,	'stigmata':150,	'attack':194,	'defense':194,	'maxcp':2424, });																
-data_pokemon_stats.set('phanpy',		{ 'number':225,	'stigmata':180,	'attack':107,	'defense':107,	'maxcp':1175, });																
-data_pokemon_stats.set('donphan',		{ 'number':226,	'stigmata':180,	'attack':214,	'defense':214,	'maxcp':3022, });																
-data_pokemon_stats.set('porygon2',		{ 'number':227,	'stigmata':170,	'attack':198,	'defense':183,	'maxcp':2546, });																
-data_pokemon_stats.set('stantler',		{ 'number':228,	'stigmata':146,	'attack':192,	'defense':132,	'maxcp':1988, });																
-data_pokemon_stats.set('tyrogue',		{ 'number':236,	'stigmata': 70,	'attack': 64,	'defense': 64,	'maxcp': 404, });																
-data_pokemon_stats.set('hitmontop',		{ 'number':230,	'stigmata':100,	'attack':173,	'defense':214,	'maxcp':1905, });																
-data_pokemon_stats.set('smoochum',		{ 'number':231,	'stigmata': 90,	'attack':153,	'defense':116,	'maxcp':1230, });																
-data_pokemon_stats.set('elekid',		{ 'number':232,	'stigmata': 90,	'attack':135,	'defense':110,	'maxcp':1073, });																
-data_pokemon_stats.set('magby',			{ 'number':233,	'stigmata': 90,	'attack':151,	'defense':108,	'maxcp':1178, });																
-data_pokemon_stats.set('miltank',		{ 'number':234,	'stigmata':190,	'attack':157,	'defense':211,	'maxcp':2312, });																
-data_pokemon_stats.set('blissey',		{ 'number':235,	'stigmata':510,	'attack':129,	'defense':229,	'maxcp':3219, });																
-data_pokemon_stats.set('larvitar',		{ 'number':246,	'stigmata':100,	'attack':115,	'defense': 93,	'maxcp': 904, });																
-data_pokemon_stats.set('pupitar',		{ 'number':247,	'stigmata':140,	'attack':155,	'defense':133,	'maxcp':1608, });																
-data_pokemon_stats.set('tyranitar',		{ 'number':248,	'stigmata':200,	'attack':251,	'defense':212,	'maxcp':3670, });
-
-var data_pokemon_cpm = new Map();
-data_pokemon_cpm.set( 1.0, 0.0940000000);
-data_pokemon_cpm.set( 1.5, 0.1351374320);
-data_pokemon_cpm.set( 2.0, 0.1663978700);
-data_pokemon_cpm.set( 2.5, 0.1926509190);
-data_pokemon_cpm.set( 3.0, 0.2157324700);
-data_pokemon_cpm.set( 3.5, 0.2365726610);
-data_pokemon_cpm.set( 4.0, 0.2557200500);
-data_pokemon_cpm.set( 4.5, 0.2735303810);
-data_pokemon_cpm.set( 5.0, 0.2902498800);
-data_pokemon_cpm.set( 5.5, 0.3060573770);
-data_pokemon_cpm.set( 6.0, 0.3210876000);
-data_pokemon_cpm.set( 6.5, 0.3354450360);
-data_pokemon_cpm.set( 7.0, 0.3492126800);
-data_pokemon_cpm.set( 7.5, 0.3624577510);
-data_pokemon_cpm.set( 8.0, 0.3752355900);
-data_pokemon_cpm.set( 8.5, 0.3875924060);
-data_pokemon_cpm.set( 9.0, 0.3995672800);
-data_pokemon_cpm.set( 9.5, 0.4111935510);
-data_pokemon_cpm.set(10.0, 0.4225000100);
-data_pokemon_cpm.set(10.5, 0.4329264190);
-data_pokemon_cpm.set(11.0, 0.4431075500);
-data_pokemon_cpm.set(11.5, 0.4530599578);
-data_pokemon_cpm.set(12.0, 0.4627983900);
-data_pokemon_cpm.set(12.5, 0.4723360830);
-data_pokemon_cpm.set(13.0, 0.4816849500);
-data_pokemon_cpm.set(13.5, 0.4908558000);
-data_pokemon_cpm.set(14.0, 0.4998584400);
-data_pokemon_cpm.set(14.5, 0.5087017650);
-data_pokemon_cpm.set(15.0, 0.5173939500);
-data_pokemon_cpm.set(15.5, 0.5259425110);
-data_pokemon_cpm.set(16.0, 0.5343543300);
-data_pokemon_cpm.set(16.5, 0.5426357670);
-data_pokemon_cpm.set(17.0, 0.5507926900);
-data_pokemon_cpm.set(17.5, 0.5588305760);
-data_pokemon_cpm.set(18.0, 0.5667545200);
-data_pokemon_cpm.set(18.5, 0.5745691530);
-data_pokemon_cpm.set(19.0, 0.5822789100);
-data_pokemon_cpm.set(19.5, 0.5898879170);
-data_pokemon_cpm.set(20.0, 0.5974000100);
-data_pokemon_cpm.set(20.5, 0.6048188140);
-data_pokemon_cpm.set(21.0, 0.6121572900);
-data_pokemon_cpm.set(21.5, 0.6193993650);
-data_pokemon_cpm.set(22.0, 0.6265671300);
-data_pokemon_cpm.set(22.5, 0.6336445330);
-data_pokemon_cpm.set(23.0, 0.6406529500);
-data_pokemon_cpm.set(23.5, 0.6475764260);
-data_pokemon_cpm.set(24.0, 0.6544356300);
-data_pokemon_cpm.set(24.5, 0.6612148060);
-data_pokemon_cpm.set(25.0, 0.6679340000);
-data_pokemon_cpm.set(25.5, 0.6745775370);
-data_pokemon_cpm.set(26.0, 0.6811649200);
-data_pokemon_cpm.set(26.5, 0.6876806480);
-data_pokemon_cpm.set(27.0, 0.6941436500);
-data_pokemon_cpm.set(27.5, 0.7005386730);
-data_pokemon_cpm.set(28.0, 0.7068842100);
-data_pokemon_cpm.set(28.5, 0.7131649960);
-data_pokemon_cpm.set(29.0, 0.7193990900);
-data_pokemon_cpm.set(29.5, 0.7255715520);
-data_pokemon_cpm.set(30.0, 0.7317000000);
-data_pokemon_cpm.set(30.5, 0.7347410090);
-data_pokemon_cpm.set(31.0, 0.7377694800);
-data_pokemon_cpm.set(31.5, 0.7407855740);
-data_pokemon_cpm.set(32.0, 0.7437894300);
-data_pokemon_cpm.set(32.5, 0.7467812110);
-data_pokemon_cpm.set(33.0, 0.7497610400);
-data_pokemon_cpm.set(33.5, 0.7527290870);
-data_pokemon_cpm.set(34.0, 0.7556855100);
-data_pokemon_cpm.set(34.5, 0.7586303780);
-data_pokemon_cpm.set(35.0, 0.7615638400);
-data_pokemon_cpm.set(35.5, 0.7644860650);
-data_pokemon_cpm.set(36.0, 0.7673971700);
-data_pokemon_cpm.set(36.5, 0.7702972660);
-data_pokemon_cpm.set(37.0, 0.7731865000);
-data_pokemon_cpm.set(37.5, 0.7760649620);
-data_pokemon_cpm.set(38.0, 0.7789327500);
-data_pokemon_cpm.set(38.5, 0.7817900550);
-data_pokemon_cpm.set(39.0, 0.7846369700);
-data_pokemon_cpm.set(39.5, 0.7874735780);
-data_pokemon_cpm.set(40.0, 0.7903000100);
-
-var data_pokemon_stardust = new Map();
-data_pokemon_stardust.set(  200, [ 1.0,  1.5,  2.0,  2.5]);
-data_pokemon_stardust.set(  400, [ 3.0,  3.5,  4.0,  4.5]);
-data_pokemon_stardust.set(  600, [ 5.0,  5.5,  6.0,  6.5]);
-data_pokemon_stardust.set(  800, [ 7.0,  7.5,  8.0,  8.5]);
-data_pokemon_stardust.set( 1000, [ 9.0,  9.5, 10.0, 10.5]);
-data_pokemon_stardust.set( 1300, [11.0, 11.5, 12.0, 12.5]);
-data_pokemon_stardust.set( 1600, [13.0, 13.5, 14.0, 14.5]);
-data_pokemon_stardust.set( 1900, [15.0, 15.5, 16.0, 16.5]);
-data_pokemon_stardust.set( 2200, [17.0, 17.5, 18.0, 18.5]);
-data_pokemon_stardust.set( 2500, [19.0, 19.5, 20.0, 20.5]);
-data_pokemon_stardust.set( 3000, [21.0, 21.5, 22.0, 22.5]);
-data_pokemon_stardust.set( 3500, [23.0, 23.5, 24.0, 24.5]);
-data_pokemon_stardust.set( 4000, [25.0, 25.5, 26.0, 26.5]);
-data_pokemon_stardust.set( 4500, [27.0, 27.5, 28.0, 28.5]);
-data_pokemon_stardust.set( 5000, [29.0, 29.5, 30.0, 30.5]);
-data_pokemon_stardust.set( 6000, [31.0, 31.5, 32.0, 32.5]);
-data_pokemon_stardust.set( 7000, [33.0, 33.5, 34.0, 34.5]);
-data_pokemon_stardust.set( 8000, [35.0, 35.5, 36.0, 36.5]);
-data_pokemon_stardust.set( 9000, [37.0, 37.5, 38.0, 38.5]);
-data_pokemon_stardust.set(10000, [39.0, 39.5, 40.0, 40.5]);
-
-var data_pokemon_costs = [
-	{'level': 1.0, 'stardust':   200, 'candy':  1},
-	{'level': 1.5, 'stardust':   400, 'candy':  2},
-	{'level': 2.0, 'stardust':   600, 'candy':  3},
-	{'level': 2.5, 'stardust':   800, 'candy':  4},
-	{'level': 3.0, 'stardust':  1200, 'candy':  5},
-	{'level': 3.5, 'stardust':  1600, 'candy':  6},
-	{'level': 4.0, 'stardust':  2000, 'candy':  7},
-	{'level': 4.5, 'stardust':  2400, 'candy':  8},
-	{'level': 5.0, 'stardust':  3000, 'candy':  9},
-	{'level': 5.5, 'stardust':  3600, 'candy': 10},
-	{'level': 6.0, 'stardust':  4200, 'candy': 11},
-	{'level': 6.5, 'stardust':  4800, 'candy': 12},
-	{'level': 7.0, 'stardust':  5600, 'candy': 13},
-	{'level': 7.5, 'stardust':  6400, 'candy': 14},
-	{'level': 8.0, 'stardust':  7200, 'candy': 15},
-	{'level': 8.5, 'stardust':  8000, 'candy': 16},
-	{'level': 9.0, 'stardust':  9000, 'candy': 17},
-	{'level': 9.5, 'stardust': 10000, 'candy': 18},
-	{'level':10.0, 'stardust': 11000, 'candy': 19},
-	{'level':10.5, 'stardust': 12000, 'candy': 20},
-	{'level':11.0, 'stardust': 13300, 'candy': 22},
-	{'level':11.5, 'stardust': 14600, 'candy': 24},
-	{'level':12.0, 'stardust': 15900, 'candy': 26},
-	{'level':12.5, 'stardust': 17200, 'candy': 28},
-	{'level':13.0, 'stardust': 18800, 'candy': 30},
-	{'level':13.5, 'stardust': 20400, 'candy': 32},
-	{'level':14.0, 'stardust': 22000, 'candy': 34},
-	{'level':14.5, 'stardust': 23600, 'candy': 36},
-	{'level':15.0, 'stardust': 25500, 'candy': 38},
-	{'level':15.5, 'stardust': 27400, 'candy': 40},
-	{'level':16.0, 'stardust': 29300, 'candy': 42},
-	{'level':16.5, 'stardust': 31200, 'candy': 44},
-	{'level':17.0, 'stardust': 33400, 'candy': 46},
-	{'level':17.5, 'stardust': 35600, 'candy': 48},
-	{'level':18.0, 'stardust': 37800, 'candy': 50},
-	{'level':18.5, 'stardust': 40000, 'candy': 52},
-	{'level':19.0, 'stardust': 42500, 'candy': 54},
-	{'level':19.5, 'stardust': 45000, 'candy': 56},
-	{'level':20.0, 'stardust': 47500, 'candy': 58},
-	{'level':20.5, 'stardust': 50000, 'candy': 60},
-	{'level':21.0, 'stardust': 53000, 'candy': 63},
-	{'level':21.5, 'stardust': 56000, 'candy': 66},
-	{'level':22.0, 'stardust': 59000, 'candy': 69},
-	{'level':22.5, 'stardust': 62000, 'candy': 72},
-	{'level':23.0, 'stardust': 65500, 'candy': 75},
-	{'level':23.5, 'stardust': 69000, 'candy': 78},
-	{'level':24.0, 'stardust': 72500, 'candy': 81},
-	{'level':24.5, 'stardust': 76000, 'candy': 84},
-	{'level':25.0, 'stardust': 80000, 'candy': 87},
-	{'level':25.5, 'stardust': 84000, 'candy': 90},
-	{'level':26.0, 'stardust': 88000, 'candy': 94},
-	{'level':26.5, 'stardust': 92000, 'candy': 98},
-	{'level':27.0, 'stardust': 96500, 'candy':102},
-	{'level':27.5, 'stardust':101000, 'candy':106},
-	{'level':28.0, 'stardust':105500, 'candy':110},
-	{'level':28.5, 'stardust':110000, 'candy':114},
-	{'level':29.0, 'stardust':115000, 'candy':118},
-	{'level':29.5, 'stardust':120000, 'candy':122},
-	{'level':30.0, 'stardust':125000, 'candy':126},
-	{'level':30.5, 'stardust':130000, 'candy':130},
-	{'level':31.0, 'stardust':136000, 'candy':136},
-	{'level':31.5, 'stardust':142000, 'candy':142},
-	{'level':32.0, 'stardust':148000, 'candy':148},
-	{'level':32.5, 'stardust':154000, 'candy':154},
-	{'level':33.0, 'stardust':161000, 'candy':162},
-	{'level':33.5, 'stardust':168000, 'candy':170},
-	{'level':34.0, 'stardust':175000, 'candy':178},
-	{'level':34.5, 'stardust':182000, 'candy':186},
-	{'level':35.0, 'stardust':190000, 'candy':196},
-	{'level':35.5, 'stardust':198000, 'candy':206},
-	{'level':36.0, 'stardust':206000, 'candy':216},
-	{'level':36.5, 'stardust':214000, 'candy':226},
-	{'level':37.0, 'stardust':223000, 'candy':238},
-	{'level':37.5, 'stardust':232000, 'candy':250},
-	{'level':38.0, 'stardust':241000, 'candy':262},
-	{'level':38.5, 'stardust':250000, 'candy':274},
-	{'level':39.0, 'stardust':260000, 'candy':289},
-	{'level':39.5, 'stardust':270000, 'candy':304},
-	{'level':40.0, 'stardust':280000, 'candy':319},
-];
-
-angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootScope, $filter, $location, $cookies, toastr, API, profile) {
-	
-	$scope.stardust_list = [
-		{ "count":  200, "levels":[{"level": 1, "cpm":0.09400000}, {"level": 1.5, "cpm":0.1351374320}, {"level": 2, "cpm":0.16639787}, {"level": 2.5, "cpm":0.192650919}] },
-		{ "count":  400, "levels":[{"level": 3, "cpm":0.21573247}, {"level": 3.5, "cpm":0.2365726610}, {"level": 4, "cpm":0.25572005}, {"level": 4.5, "cpm":0.273530381}] },
-		{ "count":  600, "levels":[{"level": 5, "cpm":0.29024988}, {"level": 5.5, "cpm":0.3060573770}, {"level": 6, "cpm":0.32108760}, {"level": 6.5, "cpm":0.335445036}] },
-		{ "count":  800, "levels":[{"level": 7, "cpm":0.34921268}, {"level": 7.5, "cpm":0.3624577510}, {"level": 8, "cpm":0.37523559}, {"level": 8.5, "cpm":0.387592406}] },
-		{ "count": 1000, "levels":[{"level": 9, "cpm":0.39956728}, {"level": 9.5, "cpm":0.4111935510}, {"level":10, "cpm":0.42250001}, {"level":10.5, "cpm":0.432926419}] },
-		{ "count": 1300, "levels":[{"level":11, "cpm":0.44310755}, {"level":11.5, "cpm":0.4530599578}, {"level":12, "cpm":0.46279839}, {"level":12.5, "cpm":0.472336083}] },
-		{ "count": 1600, "levels":[{"level":13, "cpm":0.48168495}, {"level":13.5, "cpm":0.4908558000}, {"level":14, "cpm":0.49985844}, {"level":14.5, "cpm":0.508701765}] },
-		{ "count": 1900, "levels":[{"level":15, "cpm":0.51739395}, {"level":15.5, "cpm":0.5259425110}, {"level":16, "cpm":0.53435433}, {"level":16.5, "cpm":0.542635767}] },
-		{ "count": 2200, "levels":[{"level":17, "cpm":0.55079269}, {"level":17.5, "cpm":0.5588305760}, {"level":18, "cpm":0.56675452}, {"level":18.5, "cpm":0.574569153}] },
-		{ "count": 2500, "levels":[{"level":19, "cpm":0.58227891}, {"level":19.5, "cpm":0.5898879170}, {"level":20, "cpm":0.59740001}, {"level":20.5, "cpm":0.604818814}] },
-		{ "count": 3000, "levels":[{"level":21, "cpm":0.61215729}, {"level":21.5, "cpm":0.6193993650}, {"level":22, "cpm":0.62656713}, {"level":22.5, "cpm":0.633644533}] },
-		{ "count": 3500, "levels":[{"level":23, "cpm":0.64065295}, {"level":23.5, "cpm":0.6475764260}, {"level":24, "cpm":0.65443563}, {"level":24.5, "cpm":0.661214806}] },
-		{ "count": 4000, "levels":[{"level":25, "cpm":0.66793400}, {"level":25.5, "cpm":0.6745775370}, {"level":26, "cpm":0.68116492}, {"level":26.5, "cpm":0.687680648}] },
-		{ "count": 4500, "levels":[{"level":27, "cpm":0.69414365}, {"level":27.5, "cpm":0.7005386730}, {"level":28, "cpm":0.70688421}, {"level":28.5, "cpm":0.713164996}] },
-		{ "count": 5000, "levels":[{"level":29, "cpm":0.71939909}, {"level":29.5, "cpm":0.7255715520}, {"level":30, "cpm":0.73170000}, {"level":30.5, "cpm":0.734741009}] },
-		{ "count": 6000, "levels":[{"level":31, "cpm":0.73776948}, {"level":31.5, "cpm":0.7407855740}, {"level":32, "cpm":0.74378943}, {"level":32.5, "cpm":0.746781211}] },
-		{ "count": 7000, "levels":[{"level":33, "cpm":0.74976104}, {"level":33.5, "cpm":0.7527290870}, {"level":34, "cpm":0.75568551}, {"level":34.5, "cpm":0.758630378}] },
-		{ "count": 8000, "levels":[{"level":35, "cpm":0.76156384}, {"level":35.5, "cpm":0.7644860650}, {"level":36, "cpm":0.76739717}, {"level":36.5, "cpm":0.770297266}] },
-		{ "count": 9000, "levels":[{"level":37, "cpm":0.77318650}, {"level":37.5, "cpm":0.7760649620}, {"level":38, "cpm":0.77893275}, {"level":38.5, "cpm":0.781790055}] },
-		{ "count":10000, "levels":[{"level":39, "cpm":0.78463697}, {"level":39.5, "cpm":0.7874735780}, {"level":40, "cpm":0.79030001}, {"level":40.5, "cpm":0.790300010}] },
-	];
+angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootScope, $filter, $location, $cookies, toastr, API, ProfileService, pokedex) {
 	
 	$scope.appraisal1_list = [
 		{ "label":"label4" },
@@ -1855,89 +1495,20 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		{ "label":"label2", "min": 8, "max":12 },
 		{ "label":"label1", "min": 0, "max": 7 },
 	];
-	
-	$scope.profile = profile.get();
-
-	$scope.isLoading = true;
-	
-	API.sendRequest('/api/pokemon/list/', 'POST').then(function success(data) {
-		
-		$scope.pokemons = data;
-		
-		for (var i = 0; i < $scope.pokemons.length; i++) {
-			
-			data = null
-			
-			for (var j = 0; j < data_pokemon_list.length; j++) {
-				if (data_pokemon_list.code == $scope.pokemons[i].code) {
-					
-					data = data_pokemon_list[j];
-					break;
-				}
-			}
-			
-			if (data) angular.extend($scope.pokemons[i], data);
-		}
-		
-		$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-		
-		if ($scope.profile && $scope.profile.team) {
-			
-			$scope.computeModel.team = $scope.profile.team;
-			$scope.updateTeam($scope.computeModel.team);
-		}
-		
-		$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-		
-		$scope.sortType = 'percent';
-		
-		var sortTypeCookie = $cookies.get('sortType');
-		if (sortTypeCookie) $scope.sortType = sortTypeCookie;
-		
-		$scope.sort($scope.sortType);
-		
-		$scope.isLoading = false;
-		
-	}, function error(data) {
-		
-		$scope.isLoading = false;
-	
-		toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-	});
-	
-	$rootScope.$on('$stateChangeStart', function(event, toState) {
-		
-		if (toState.name == 'app.pokedex.add') {
-			
-			$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-			
-			if ($scope.profile && $scope.profile.team && $scope.profile.level) {
-				
-				$scope.computeModel.team = $scope.profile.team;
-				$scope.updateTeam($scope.computeModel.team);
-				
-				$scope.computeModel.level = $scope.profile.level;
-			}
-		
-			$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-			
-			$scope.results = null;
-		}
-	});
 
 	$scope.filterPokemons = function() {
 
 		$scope.filtered_pokemonlist = [];
 		
-		for (var i = 0; i < data_pokemon_list.length; i++) {
-			
-			var gameName = $filter('translate')('pokemon_' + data_pokemon_list[i].code + '_LABEL');
+		for (var code of data_pokemon.keys()) {
+
+			var gameName = $filter('translate')('pokemon_' + code + '_LABEL');
 			gameName = gameName.toLowerCase();
 			
 			var inputName = $scope.computeModel.pokemon.toLowerCase();
 			
 			if (gameName.indexOf(inputName) != -1) {
-				$scope.filtered_pokemonlist.push(data_pokemon_list[i]);
+				$scope.filtered_pokemonlist.push(data_pokemon.get(code));
 			}
 		}
 		
@@ -1955,15 +1526,15 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		
 		$scope.show_stardustlist = true;
 		
-		for (var i = 0; i < $scope.stardust_list.length; i++) {
+		for (var count of data_stardust.keys()) {
 			
-			var gameName = String($scope.stardust_list[i].count);
+			var gameName = String(count);
 			gameName = gameName.toLowerCase();
 			
 			var inputName = String(name).toLowerCase();
 			
 			if (!name || gameName.indexOf(inputName) != -1) {
-				$scope.filtered_stardustlist.push($scope.stardust_list[i]);
+				$scope.filtered_stardustlist.push(count);
 			}
 		}
 	}
@@ -2003,28 +1574,21 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		$scope.results = [];
 		
 		var pokemon = null;
-		for (var i = 0; i < data_pokemon_list.length; i++) {
+		for (var code of data_pokemon.keys()) {
 			
-			if ($scope.computeModel.pokemon == $filter('translate')('pokemon_' + data_pokemon_list[i].code + '_LABEL')) {
-				pokemon = data_pokemon_list[i];
+			if ($scope.computeModel.pokemon == $filter('translate')('pokemon_' + code + '_LABEL')) {
+				pokemon = data_pokemon.get(code);
 				break;
 			}
 		}
 		
 		if (!pokemon) return;
 		
-		var baseS = pokemon.baseS;
-		var baseA = pokemon.baseA;
-		var baseD = pokemon.baseD;
+		var baseS = pokemon.stigmata;
+		var baseA = pokemon.attack;
+		var baseD = pokemon.defense;
 		
-		var stardust = $scope.stardust_list[$scope.computeModel.stardust];
-		for (var i = 0; i < $scope.stardust_list.length; i++) {
-			
-			if ($scope.computeModel.stardust == String($scope.stardust_list[i].count)) {
-				stardust = $scope.stardust_list[i];
-				break;
-			}
-		}
+		var stardust = data_stardust.get($scope.computeModel.stardust);
 		
 		if (!stardust) return;
 		
@@ -2195,13 +1759,54 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 			case 'dexnumber': $scope.pokemons = $scope.pokemons.sort(_compareByDexnumber); break;
 		}
 	}
+	
+	$scope.profile = ProfileService.getProfile();
+
+	$scope.pokemons = pokedex;
+	
+	$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
+	
+	if ($scope.profile && $scope.profile.team) {
+		
+		$scope.computeModel.team = $scope.profile.team;
+		$scope.updateTeam($scope.computeModel.team);
+	}
+	
+	$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
+	
+	$scope.sortType = 'percent';
+	
+	var sortTypeCookie = $cookies.get('sortType');
+	if (sortTypeCookie) $scope.sortType = sortTypeCookie;
+	
+	$scope.sort($scope.sortType);
+
+	$rootScope.$on('$stateChangeStart', function(event, toState) {
+		
+		if (toState.name == 'app.pokedex.add') {
+			
+			$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
+			
+			if ($scope.profile && $scope.profile.team && $scope.profile.level) {
+				
+				$scope.computeModel.team = $scope.profile.team;
+				$scope.updateTeam($scope.computeModel.team);
+				
+				$scope.computeModel.level = $scope.profile.level;
+			}
+		
+			$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
+			
+			$scope.results = null;
+		}
+	});
 });
 
-angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootScope, $filter, $location, $cookies, $stateParams, toastr, API, profile) {
+angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootScope, $filter, $location, $cookies, $stateParams, toastr, API, ProfileService) {
 
 	$scope.isLoading = true;
 	
-	$scope.profile = profile.get();
+	$scope.profile = ProfileService.getProfile();
 	
 	$scope.data = null;
 	
@@ -2209,13 +1814,13 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 
 		if (!$scope.data || !$scope.data.pokemon) return;
 
-		var stats = data_pokemon_stats.get($scope.data.pokemon.code);
+		var stats = data_pokemon.get($scope.data.pokemon.code);
 		
-		var levels = data_pokemon_stardust.get($scope.data.pokemon.stardust);
+		var levels = data_stardust.get($scope.data.pokemon.stardust).levels;
 		for (var i = 0; i < 4; i++) {
 			
 			var level = levels[i];
-			var cpm = data_pokemon_cpm.get(level);
+			var cpm = data_level.get(level).cpm;
 			
 			var tempHP = Math.floor(cpm * (stats.stigmata + $scope.data.pokemon.stigmata));
 			tempHP = tempHP < 10 ? 10 : tempHP;
@@ -2235,14 +1840,14 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 
 		if (!$scope.data || !$scope.data.pokemon) return;
 		
-		var stats = data_pokemon_stats.get($scope.data.pokemon.code);
+		var stats = data_pokemon.get($scope.data.pokemon.code);
 		
 		if ($scope.data.owner.level) {
 			
 			$scope.data.pokemon.finalLevel = $scope.data.owner.level + 1.5;
 			$scope.data.pokemon.finalLevel = $scope.data.pokemon.finalLevel > 40 ? 40 : $scope.data.pokemon.finalLevel;
 			
-			var finalCpm = data_pokemon_cpm.get($scope.data.pokemon.finalLevel);
+			var finalCpm = data_level.get($scope.data.pokemon.finalLevel).cpm;
 			
 			$scope.data.pokemon.finalCP = Math.floor((finalCpm * finalCpm * (stats.attack + $scope.data.pokemon.attack) * Math.sqrt(stats.defense + $scope.data.pokemon.defense) * Math.sqrt(stats.stigmata + $scope.data.pokemon.stigmata)) / 10);
 			$scope.data.pokemon.finalHP = Math.floor(finalCpm * (stats.stigmata + $scope.data.pokemon.stigmata));
@@ -2264,22 +1869,12 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 		var startingCandy = 0;
 		var targetCandy = 0;
 		
-		for (var i = 0; i < data_pokemon_costs.length; i++) {
-			
-			if (data_pokemon_costs[i].level == $scope.data.pokemon.level) {
-				
-				startingStardust = data_pokemon_costs[i].stardust;
-				startingCandy = data_pokemon_costs[i].candy;
-			}
-			
-			if (data_pokemon_costs[i].level == $scope.data.pokemon.finalLevel) {
-				
-				targetStardust = data_pokemon_costs[i].stardust;
-				targetCandy = data_pokemon_costs[i].candy;
-				break;
-			}
-		}
+		startingStardust = data_level.get($scope.data.pokemon.level).cumul_stardust;
+		startingCandy = data_level.get($scope.data.pokemon.level).cumul_candy;
 		
+		targetStardust = data_level.get($scope.data.pokemon.finalLevel).cumul_stardust;
+		targetCandy = data_level.get($scope.data.pokemon.finalLevel).cumul_candy;
+
 		$scope.data.pokemon.requiredStardust = targetStardust - startingStardust;
 		$scope.data.pokemon.requiredCandy = targetCandy - startingCandy;
 	}
