@@ -454,9 +454,9 @@ angular.module('AngularApp.services').service('ProfileService', function(API) {
 	return service;
 });
 
-angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr', 'AngularApp.services']).config(function($stateProvider, $urlRouterProvider, $translateProvider, $authProvider) {
+angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr', 'AngularApp.services']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, $authProvider) {
 
-	$urlRouterProvider.otherwise('/welcome');
+	$urlRouterProvider.otherwise('/pokedex');
 	
 	$stateProvider
 	
@@ -476,7 +476,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 			
 				.state('app.profile.edit', { url: '/edit', templateUrl: '/static/front/pages/profile_edit.html', data:{ labelKey: 'profile_edit_PAGETITLE', authenticated: true }})
 			
-			.state('app.pokedex', { url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', data:{ labelKey: 'pokedex_view_PAGETITLE', authenticated: true }})
+			.state('app.pokedex', { url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', data:{ labelKey: 'pokedex_view_PAGETITLE', authenticated: true, redirect: 'base.welcome' }})
 			
 				.state('app.pokedex.add',  { url: '/add', templateUrl: '/static/front/pages/pokedex_add.html',  data:{ labelKey: 'pokedex_add_PAGETITLE',  authenticated: true }})
 
@@ -484,6 +484,8 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 			
 				.state('app.pokemon.edit', { url: '/edit', templateUrl: '/static/front/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_PAGETITLE', authenticated: true  }})
 
+	$locationProvider.html5Mode(true);
+	
 	$translateProvider.useSanitizeValueStrategy(null);
 	
 	$translateProvider.preferredLanguage('fr');
@@ -982,7 +984,13 @@ angular.module('AngularApp').run(function($rootScope, $state, $translate, $auth)
 		if (toState.data && toState.data.authenticated && !$auth.isAuthenticated()) {
 			
 			event.preventDefault();
-			$state.go('base.restricted', { location: 'replace' });
+			
+			if (toState.data.redirect) {
+				$state.go(toState.data.redirect, { location: 'replace' });
+			}
+			else {
+				$state.go('base.restricted', { location: 'replace' });
+			}
 		}
 	});
 	
@@ -2319,17 +2327,10 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 	
 		toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
 	});
-	
-	$scope.$on('profile-loaded', function(event, args) {
-		
-		_computeLevel();
-		_computeFinalData();
-		_computeRequiredData();
-	});
 
 	$rootScope.$on('$stateChangeStart', function(event, toState) {
 		
-		if (toState.name == 'app.pokemon.view') {
+		if (toState.name == 'app.pokemon') {
 		
 			_computeLevel();
 			_computeFinalData();
