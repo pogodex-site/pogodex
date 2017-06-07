@@ -2,10 +2,11 @@
     <div class="card">
 
         <div class="card-header">
+        <div class="container">
             
             <span class="title">{{'pokedex_view_TITLE' | translate}}</span>
     
-            <div ng-show="!isLoading && pokemons" class="pull-right ml-3 dropdown">
+            <div ng-show="!isLoading && pokemons" class="pull-right ml-4 dropdown">
                 
                 <a href="javascript:;" class="pull-right" data-toggle="dropdown"><i class="fa fa-sort"></i></a>
                 
@@ -22,11 +23,15 @@
     
             </div>
                 
-            <a class="pull-right" ui-sref="app.pokedex.add"><i class="fa fa-plus-square"></i></a>
+            <a class="pull-right ml-4" ui-sref="app.pokedex.add"><i class="fa fa-plus-square"></i></a>
+                
+            <a class="pull-right" ui-sref="app.profile"><i class="fa fa-user"></i></a>
             
+        </div>
         </div>
     
         <div class="card-block">
+        <div class="container">
             
             <div ng-show="isLoading" class="text-center">
                 <img src="/static/front/img/loading.gif" height="64"/>
@@ -39,27 +44,24 @@
                 </div>
             </div>
             
-            <div ng-show="!isLoading && pokemons && pokemons.length" class="row">
+            <div ng-show="!isLoading && pokemons && pokemons.length" class="row" style="margin-right:-5px; margin-left:-5px;">
     
-                <div class="col-md-2 col-4 mb-3" ng-repeat="item in pokemons">
-                    <a ui-sref="app.pokemon({ref:item.ref})" class="normal d-block text-center" style="line-height:1;">
+                <div class="col-md-2 col-4 mb-3 px-2" ng-repeat="item in pokemons">
+                    <a ui-sref="app.pokemon({ref:item.ref})" class="normal d-block text-center p-2" style="line-height:1;">
                         
-                        <small style="position:absolute; top:10px; left: 20px;">
-                            <i ng-show="item.cp == item.finalCP" class="fa fa-star text-success mr-2"></i>
-                        </small>
+                        <img ng-src="/static/front/img/{{item.code}}.png" width="48" height="48" class="mb-1">
                         
-                        <small>{{item.percent}}%</small>
-                        
-                        <br><img ng-src="/static/front/img/{{item.code}}.png" width="48" height="48">
-                        
-                        <br><small>IV {{item.attack}}/{{item.defense}}/{{item.stigmata}}</small>
-                        <br><strong>{{item.name}}</strong>
+                        <div class="mb-1"><strong>{{item.name}}</strong></div>
+
+                        <div><small>{{item.percent}}%</small></div>
+                        <div><small>IV {{item.attack}}/{{item.defense}}/{{item.stigmata}}</small></div>
                         
                     </a>
                 </div>
                 
             </div>
             
+        </div>
         </div>
         
     </div>

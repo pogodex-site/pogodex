@@ -74,7 +74,7 @@ class ProfileViewSet(viewsets.ViewSet):
     
 	def view(self, request):
 		
-		data = {'team':request.user.profile.team, 'level':request.user.profile.level}
+		data = {'team':request.user.profile.team, 'level':request.user.profile.level, 'name':request.user.username}
 		
 		return Response(data, status=status.HTTP_200_OK)
 

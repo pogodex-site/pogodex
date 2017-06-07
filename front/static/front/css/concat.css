@@ -18,12 +18,14 @@
 
 html, body { height: 100%; }
 
-body { overflow-y: scroll; font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #676a6c; font-size: 13px; background-color: #f3f3f4; }
+body { overflow-y: scroll; font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #676a6c; font-size: 13px; background-color: #fff; }
 
 a { color: #676a6c; }
 a:hover, a:focus { color: #676a6c; text-decoration: none; }
 
-a.highlight { color: #0275d8; }
+a.highlight { color: #673AB7; text-decoration: underline; }
+
+a.d-block { background-color: #f7f7f9; }
 
 small { font-size: 85%; }
 
@@ -39,7 +41,7 @@ small { font-size: 85%; }
 
 /* Container ---------------------------------------------------------------- */
 
-.container { padding: 0 .5rem; }
+.container { padding: 0; }
 
 @media (max-width: 576px) { .container { margin: 0; } }
 @media (max-width: 576px) { .navbar .container { padding: 0; } }
@@ -68,15 +70,16 @@ small { font-size: 85%; }
 
 .navbar-text { color: #999c9e; }
 
-.navbar-bottom { border-bottom: 0; border-top: 1px solid #e7eaec; }
-
+.navbar-bottom { border-bottom: 0; border-top: 1px solid #e7eaec; background: #ECEFF1; }
+.navbar-bottom .navbar-text { color: #B39DDB; }
 
 
 /* Dropdown ----------------------------------------------------------------- */
 
 .dropdown-menu { border-radius: .2rem; border: medium none; font-size: 12px; box-shadow: 0 0 3px rgba(86, 96, 117, 0.7); padding: 0; }
 
-.dropdown-item { border-radius: 3px; color: #999c9e; margin: 4px; width: auto; padding: 3px 20px; }
+.dropdown-item { border-radius: 3px; color: #673AB7 !important; margin: 4px; width: auto; padding: 3px 20px; }
+.dropdown-item:active { color: #fff !important; background-color: #673AB7; }
 
 .dropdown-menu-right .dropdown-item { text-align: right; }
 
@@ -84,16 +87,20 @@ small { font-size: 85%; }
 
 /* Card --------------------------------------------------------------------- */
 
-.card { margin-bottom: .5rem; border-radius: 0; border: 0; border-top: 3px solid #e5e6e7; }
+.card { margin-bottom: 0; border-radius: 0; border: 0; }
 
-.card-header { padding: .75rem; background-color: #fff; border-bottom: 1px solid #e7eaec; border-radius: 0 !important; font-size: .75rem; }
+.card-header { padding: .75rem; background-color: #673AB7; border-bottom: 1px solid #e7eaec; border-radius: 0 !important; font-size: .75rem; color: #fff; }
 
-.card-header .title { font-size: 1rem; font-weight: 600; }
+.card-header .title { color: #fff; font-size: 1rem; font-weight: 600; text-transform: uppercase; }
 
+.card-header a { color: #fff; }
 .card-header a.pull-right { margin-top: 5px; }
 
 .card-header a i { font-size: 1.05rem; }
 
+.card-subheader { padding: .5rem .75rem; background-color: #fff; border-bottom: 1px solid #673AB7; }
+.card-subheader .title { color: #673AB7; font-size: .8rem; text-transform: none; font-weight: 700; }
+    
 .card-block { padding: .75rem; }
 
 
@@ -104,6 +111,10 @@ small { font-size: 85%; }
 
 .btn-facebook { color: #fff; background-color: #3b5998;  border-color: #335190; }
 .btn-facebook:hover,.btn-facebook:focus { color: #fff; background-color: #294786; }
+
+.btn-primary { background-color: #673AB7; border-color: #673AB7; }
+.btn-primary:hover { background-color: #512DA8; border-color: #512DA8; }
+.btn-primary.disabled, .btn-primary:disabled { background-color: #9575CD; border-color: #9575CD; }
 
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus { border-color: #e5e6e7; }
 
@@ -123,7 +134,7 @@ label { margin-bottom: .25rem; font-weight: 700; }
 
 select.form-control:not([size]):not([multiple]) { height: auto; }
 
-.form-check-label { text-transform: uppercase; font-weight: normal; margin-bottom: .5rem; }
+.form-check-label { text-transform: uppercase; font-weight: normal; margin-bottom: 0; padding-left: 0; }
 
 .select-group { position: relative; z-index: 1000; background: #fff; border: 1px solid #e5e6e7; border-top: 0; margin: 0; }
 
@@ -147,7 +158,7 @@ select.form-control:not([size]):not([multiple]) { height: auto; }
 
 #toast-container { position: relative; }
 
-#toast-container .toast { box-shadow: none; margin-left: auto; margin-right: auto; border-radius: 0; opacity: 1; width: auto; margin: 0 0 .5rem; padding: .25rem .75rem; border-top: 3px solid #e5e6e7; font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; }
+#toast-container .toast { box-shadow: none; margin-left: auto; margin-right: auto; border-radius: 0; opacity: 1; width: auto; margin: 0; padding: .25rem .75rem; border-top: 3px solid #e5e6e7; font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; }
 
 #toast-container .toast.toast-error { background-image: none !important; background: #d9534f; border-color: #c34a47; }
 #toast-container .toast.toast-success { background-image: none !important; background: #5cb85c; border-color: #52a552; }
@@ -161,7 +172,7 @@ select.form-control:not([size]):not([multiple]) { height: auto; }
 .modal-content { border-radius: 0; border: 0; border-top: 3px solid #e5e6e7; }
 
 .modal-header { padding: .75rem; border-bottom: 1px solid #e7eaec; }
-.modal-header .title { font-size: 14px; font-weight: 600; }
+.modal-header .title { font-size: 13px; font-weight: 400; color: #676a6c; text-transform: none; }
 
 .modal-footer { padding: .75rem; border: 0; }
 
@@ -169,247 +180,5 @@ select.form-control:not([size]):not([multiple]) { height: auto; }
 
 /* Utils -------------------------------------------------------------------- */
 
+.text-primary { color: #673AB7 !important; }
 .text-muted { color: #c3c3c4 !important }
-
-
-
-/* Pokemon images ----------------------------------------------------------- */
-
-.bulbizarre		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.herbizarre		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.florizarre		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.salameche		{ width:50px; 	height:50px; 	margin: 15px 0px 0px 0px; }
-.reptincel		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.dracaufeu		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.carapuce		{ width:50px; 	height:50px; 	margin: 15px 0px 0px 0px; }
-.carabaffe		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tortank		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.chenipan		{ width:60px; 	height:60px; 	margin: 10px 0px 0px 0px; }
-.chrysacier 	{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.papilusion 	{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.aspicot 		{ width:60px; 	height:60px; 	margin: 10px 0px 0px 0px; }
-.coconfort 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.dardargnan 	{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.roucool 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.roucoups 		{ width:70px; 	height:70px; 	margin: 0px 0px 0px 0px; }
-.roucarnage 	{ width:80px; 	height:65px; 	margin: -5px 0px 0px -5px; }
-.rattata 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.rattatac 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.piafabec 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.rapasdepic 	{ width:85px; 	height:70px; 	margin: -5px 0px 0px -5px; }
-.abo 			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.arbok 			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.pichu 			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.pikachu 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 15px; }
-.raichu 		{ width:70px; 	height:70px; 	margin: -10px 0px 0px 0px; }
-.sabelette 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.sablaireau 	{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.nidoranmale 	{ width:60px; 	height:60px; 	margin: 10px 0px 0px 0px; }
-.nidorina 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.nidoqueen 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.nidoranfemale 	{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.nidorino 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.nidoking 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.melo 			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.melofee 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.melodelfe 		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.goupix 		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.feunard 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.toudoudou 		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.rondoudou 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.grodoudou 		{ width:70px; 	height:70px; 	margin: -10px 0px 0px 0px; }
-.nosferapti 	{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.nosferalto 	{ width:80px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.nostenfer 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.mystherbe 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.ortide 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.rafflesia 		{ width:80px; 	height:80px; 	margin: -10px 0px 0px 0px; }
-.joliflor 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.paras 			{ width:60px; 	height:60px; 	margin: 5px 0px 0px 0px; }
-.parasect 		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.mimitoss 		{ width:55px; 	height:55px; 	margin: 5px 0px 0px 0px; }
-.aeromite 		{ width:70px; 	height:70px; 	margin: -10px 0px 0px 0px; }
-.taupiqueur 	{ width:55px; 	height:55px; 	margin: 5px 0px 0px 0px; }
-.triopikeur 	{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.miaouss		{ width:55px; 	height:55px; 	margin: 5px 0px 0px 0px; }
-.persian		{ width:65px; 	height:65px; 	margin: 0px 0px 0px 0px; }
-.psykokwak		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.akwakwak		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.ferosinge		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.colossinge		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.caninos		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.arcanin		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.ptitard		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.tetarte		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tartard		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tarpaud		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.abra			{ width:60px; 	height:60px; 	margin: 5px 0px 0px 0px; }
-.kadabra		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.alakazam		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.machoc			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.machopeur		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.mackogneur		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.chetiflor		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.boustiflor		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.empiflor		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tentacool		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.tentacruel		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.racaillou		{ width:60px; 	height:60px; 	margin: 5px 0px 0px 0px; }
-.gravalanch		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.grolem			{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.ponyta			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.galopa			{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.ramoloss		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.flagadoss		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.roigada		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.magneti		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.magneton		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.canarticho		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.doduo			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.dodrio			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.otaria			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.lamantine		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tadmorv		{ width:60px; 	height:60px; 	margin: 5px 0px 0px 0px; }
-.grotadmorv		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.kokiyas		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.crustabri		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.fantominus		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.spectrum		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.ectoplasma		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.onix			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.steelix		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.soporifik		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.hypnomade		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.krabby			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.krabboss		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.voltorbe		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.electrode		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.noeunoeuf		{ width:50px; 	height:50px; 	margin: 15px 0px 0px 0px; }
-.noadkoko		{ width:75px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.osselait		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.ossatueur		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.debugant		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.kicklee		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tygnon			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.kapoera		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.excelangue		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.smogo			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.smogogo		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.rhinocorne		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.rhinoferos		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.leveinard		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.leuphorie		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.saquedeneu		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.kangourex		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.hypotrempe		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.hypocean		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.hyporoi		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.poissirene		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.poissoroy		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.stari			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.staross		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.mmime			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.insecateur		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.cizayox		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.lippouti		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.lippoutou		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.elekid			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.elektek		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.magby			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.magmar			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.scarabrute		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tauros			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.magicarpe		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.leviator		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.lokhlass		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.metamorph		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.evoli			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.aquali			{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.voltali		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.pyroli			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.mentali		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.noctali		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.porygon		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.porygon2		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.amonita		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.amonistar		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.kabuto			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.kabutops		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.ptera			{ width:80px; 	height:65px; 	margin: 0px 0px 0px 0px; }
-.ronflex		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.minidraco		{ width:50px; 	height:50px; 	margin: 5px 0px 0px 0px; }
-.draco			{ width:50px; 	height:50px; 	margin: 5px 0px 0px 0px; }
-.dracolosse		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.germignon		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.macronium		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.meganium		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.hericendre		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.feurisson		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.typhlosion		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.kaiminus		{ width:40px; 	height:40px; 	margin: 20px 0px 0px 0px; }
-.crocrodil		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.aligatueur		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.fouinette		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.fouinar		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.hoothoot		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.noarfang		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.coxy			{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.coxyclaque		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.mimigal		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.migalos		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.loupio			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.lanturn		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.togepi			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.togetic		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.natu			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.xatu			{ width:80px; 	height:80px; 	margin: -5px 0px 0px -10px; }
-.wattouat		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.lainergie		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.pharamp		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.marill			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.azumarill		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.simularbre		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.granivol		{ width:40px; 	height:40px; 	margin: 10px 0px 0px 0px; }
-.floravol		{ width:60px; 	height:60px; 	margin: 5px 0px 0px 0px; }
-.cotovol		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.capumain		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.tournegrin		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.heliatronc		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.yanma			{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.axoloto		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.maraiste		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.cornebre		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.feuforeve		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.zarbi			{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.qulbutoke		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.girafarig		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.pomdepik		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.foretress		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.insolourdo		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.scorplane		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.snubbull		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.granbull		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.qwilfish		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.caratroc		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.scarhino		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.farfuret		{ width:60px; 	height:60px; 	margin: 0px 0px 0px 0px; }
-.teddiursa		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.ursaring		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.limagma		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.volcaropod		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.marcacrin		{ width:50px; 	height:50px; 	margin: 15px 0px 0px 0px; }
-.cochignon		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.corayon		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.remoraid		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.octillery		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.demanta		{ width:80px; 	height:80px; 	margin: -5px 0px 0px 0px; }
-.airmure		{ width:80px; 	height:80px; 	margin: -5px 0px 0px 0px; }
-.malosse		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.demolosse		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.phanpy			{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.donphan		{ width:70px; 	height:70px; 	margin: -5px 0px 0px 0px; }
-.cerfrousse		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.ecremeuh		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }
-.embrylex		{ width:40px; 	height:40px; 	margin: 15px 0px 0px 0px; }
-.ymphect		{ width:50px; 	height:50px; 	margin: 10px 0px 0px 0px; }
-.tyranocif		{ width:60px; 	height:60px; 	margin:  0px 0px 0px 0px; }

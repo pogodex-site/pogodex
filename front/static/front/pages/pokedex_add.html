@@ -1,67 +1,80 @@
 <div class="card">
 
     <div class="card-header">
+    <div class="container">
             
         <a ui-sref="app.pokedex" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
         
         <span class="title">{{'pokedex_add_TITLE' | translate}}</span>
         
     </div>
+    </div>
     
     <div class="card-block">
+    <div class="container">
 
         <form name="form" novalidate>
             
-            <div class="form-group" ng-show="!computeModel.level">
-                <label>{{'pokedex_add_LEVEL' | translate}}</label>
-                <input type="number" class="form-control" ng-model="computeModel.level">
+            <div class="form-group row" ng-show="!computeModel.level">
+                <label class="col-4 col-form-label text-right">{{'pokedex_add_LEVEL' | translate}}</label>
+                <div class="col-8 pl-0">
+                    <input type="number" class="form-control" ng-model="computeModel.level">
+                </div>
             </div>
             
-            <div class="form-group">
-                <label>{{'pokemon_CODE' | translate}}</label>
-                <input type="text" class="form-control" ng-model="computeModel.pokemon" ng-focus="has_pokemonfocus = true; filterPokemons();" ng-change="filterPokemons();" ng-blur="has_pokemonfocus = false;" style="padding-left: 47px; background-image: url('/static/front/img/{{computeModel.image}}.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
-                <div class="select-group row" ng-show="has_pokemonfocus">
-                    <div class="col-md-3 p-1" ng-repeat="item in filtered_pokemonlist" ng-mousedown="selectPokemon(item)">
-                        <a href="javascript:;" class="select-group-item">
-                            <img ng-src="/static/front/img/{{item.code}}.png" width="24" height="24" class="mr-2">
-                            {{'pokemon_' + item.code + '_LABEL' | translate}}
-                        </a>
-                    </div>
-                    <div class="select-group-item col" ng-show="filtered_pokemonlist.length < 1">
-                       <i class="text-danger">{{'error_NOELEMENT' | translate}}</i>
+            <div class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_CODE' | translate}}</label>
+                <div class="col-8 pl-0">
+                    <input type="text" class="form-control" ng-model="computeModel.pokemon" ng-focus="has_pokemonfocus = true; filterPokemons();" ng-change="filterPokemons();" ng-blur="has_pokemonfocus = false;" style="padding-left: 47px; background-image: url('/static/front/img/{{computeModel.image}}.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
+                    <div class="select-group row" ng-show="has_pokemonfocus">
+                        <div class="col-md-3 p-1" ng-repeat="item in filtered_pokemonlist" ng-mousedown="selectPokemon(item)">
+                            <a href="javascript:;" class="select-group-item">
+                                <img ng-src="/static/front/img/{{item.code}}.png" width="24" height="24" class="mr-2">
+                                {{'pokemon_' + item.code + '_LABEL' | translate}}
+                            </a>
+                        </div>
+                        <div class="select-group-item col" ng-show="filtered_pokemonlist.length < 1">
+                           <i class="text-danger">{{'error_NOELEMENT' | translate}}</i>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label>{{'pokemon_CP' | translate}}</label>
+            <div class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_CP' | translate}}</label>
+                <div class="col-8 pl-0">
                 <input type="number" class="form-control" ng-model="computeModel.cp">
+                </div>
             </div>
             
-            <div class="form-group">
-                <label>{{'pokemon_HP' | translate}}</label>
+            <div class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_HP' | translate}}</label>
+                <div class="col-8 pl-0">
                 <input type="number" class="form-control" ng-model="computeModel.hp">
+                </div>
             </div>
             
-            <div class="form-group">
-                <label>{{'pokemon_STARDUST' | translate}}</label>
+            <div class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_STARDUST' | translate}}</label>
+                <div class="col-8 pl-0">
                 <input type="number" class="form-control" ng-model="computeModel.stardust" ng-focus="has_stardustfocus = true; filterStardust(computeModel.stardust);" ng-change="filterStardust(computeModel.stardust);" ng-blur="has_stardustfocus = false;" style="padding-left: 47px; background-image: url('/static/front/img/stardust.png'); background-size: 24px 24px; background-repeat: no-repeat; background-position: 12px 3px;">
                 <div class="select-group row" ng-show="has_stardustfocus">
-                    <div class="col-md-3 col-6 p-1" ng-repeat="item in filtered_stardustlist" ng-mousedown="computeModel.stardust = item.count">
+                    <div class="col-md-3 col-6 p-1" ng-repeat="item in filtered_stardustlist" ng-mousedown="computeModel.stardust = item">
                         <a href="javascript:;" class="select-group-item">
                             <img ng-src="/static/front/img/stardust.png" width="24" height="24" class="mr-2">
-                            {{item.count}}
+                            {{item}}
                         </a>
                     </div>
                     <div class="select-group-item col" ng-show="filtered_stardustlist.length < 1">
                        <i class="text-danger">{{'error_NOELEMENT' | translate}}</i>
                     </div>
                 </div>
+                </div>
             </div>
     
-            <div class="form-group" ng-show="!profile.team">
-                <label class="mb-2">{{'pokemon_TEAM' | translate}}</label>
-                <div class="row">
+            <div class="form-group row" ng-show="!profile.team">
+                <label  class="col-4 col-form-label text-right">{{'pokemon_TEAM' | translate}}</label>
+                <div class="col-8 pl-0">
                     <label class="col-md-4 form-check-label" ng-checked="computeModel.team == 'red'">
                         <input type="radio" ng-model="computeModel.team" ng-click="updateTeam(computeModel.team)" value="red">
                         <img src="/static/front/img/team_red.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
@@ -80,16 +93,18 @@
                 </div>
             </div>
             
-            <div ng-show="computeModel.team" class="form-group">
-                <label>{{'pokemon_APP1' | translate}}</label>
+            <div ng-show="computeModel.team" class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_APP1' | translate}}</label>
+                <div class="col-8 pl-0">
                 <select class="form-control" ng-model="computeModel.app1">
                     <option ng-repeat="item in appraisal1_list" value="{{$index}}">{{item.label | translate}}</option>
                 </select>
+                </div>
             </div>
             
-            <div ng-show="computeModel.team" class="form-group">
-                <label>{{'pokemon_APP2' | translate}}</label>
-                <div class="row">
+            <div ng-show="computeModel.team" class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_APP2' | translate}}</label>
+                <div class="col-8 pl-0">
                     <label class="col-md-4 form-check-label">
                         <input type="checkbox" ng-model="computeModel.app2A"> {{'pokemon_ATTACK' | translate}}
                     </label>
@@ -102,31 +117,41 @@
                 </div>
             </div>
             
-            <div ng-show="computeModel.team" class="form-group">
-                <label>{{'pokemon_APP3' | translate}}</label>
+            <div ng-show="computeModel.team" class="form-group row">
+                <label class="col-4 col-form-label text-right">{{'pokemon_APP3' | translate}}</label>
+                <div class="col-8 pl-0">
                 <select class="form-control" ng-model="computeModel.app3">
                     <option ng-repeat="item in appraisal3_list" value="{{$index}}">{{item.label | translate}}</option>
                 </select>
+                </div>
             </div>
             
-            <button type="submit" class="btn btn-primary" ng-disabled="!computeModel.level || !computeModel.pokemon || !computeModel.cp || !computeModel.hp || !computeModel.stardust || !computeModel.team || !computeModel.app1 || (!computeModel.app2S && !computeModel.app2A && !computeModel.app2D) || !computeModel.app3" ng-click="compute(form);">{{'pokedex_add_BTN1' | translate}}</button>
-            
+            <div class="row">
+                <div class="offset-4 col-8 pl-0">
+                    <button type="submit" class="btn btn-primary" ng-disabled="!computeModel.level || !computeModel.pokemon || !computeModel.cp || !computeModel.hp || !computeModel.stardust || !computeModel.team || !computeModel.app1 || (!computeModel.app2S && !computeModel.app2A && !computeModel.app2D) || !computeModel.app3" ng-click="compute(form);">{{'pokedex_add_BTN1' | translate}}</button>
+                </div>
+            </div>
+                
         </form>
         
         <div ng-show="results && !results.length" class="mt-4 text-danger font-italic">{{'pokedex_add_NORESULT' | translate}}</div>
         
+    </div>
     </div>
 </div>
 
 <div class="card" ng-show="results && results.length" ng-repeat="item in results">
 
     <div class="card-header">
+    <div class="container">
         
         <span class="title">{{'pokedex_add_RESULT' | translate}} {{$index + 1}}/{{results.length}} </span>
         
     </div>
+    </div>
     
     <div class="card-block">
+    <div class="container">
 
         <div class="row">
             <div class="col-6"><strong>{{'pokemon_ATTACK' | translate}}</strong></div>
@@ -192,5 +217,6 @@
             </form>
         </div>
             
+    </div>
     </div>
 </div>

@@ -771,7 +771,7 @@ angular.module('AngularApp.services').service('ProfileService', function(API) {
 		
 		init: function() { return API.sendRequest('/api/profile/', 'GET').then(function success(data) { profile = data; })},
 		
-		setProfile: function(data) { profile = data; return profile; },
+		setProfile: function(newProfile) { return API.sendRequest('/api/profile/edit/', 'POST', {}, newProfile).then(function success(data) { profile = newProfile; })},
 		
 		getProfile: function() { return profile; },
 	};
@@ -840,6 +840,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_TEAM: 'Equipe',
 		pokemon_LEVEL: 'Niveau',
 		pokemon_ATTACK: 'Attaque',
+		pokemon_LOADING: 'Recharge',
 		pokemon_PERCENT: 'Perfection',
 		pokemon_DEFENSE: 'Défense',
 		pokemon_FINALCP: 'PC Niv 40',
@@ -961,6 +962,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		profile_TITLE: 'Profil',
 		
+		profile_NAME: 'Nom',
 		profile_TEAM: 'Equipe',
 		profile_LEVEL: 'Niveau',
 		
@@ -971,21 +973,21 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Edit profile */
 		
-		profile_edit_PAGETITLE: 'Modifier le profil',
+		profile_edit_PAGETITLE: 'Modification du profil',
 		
 		profile_edit_LINK: 'Modifier',
 		
-		profile_edit_TITLE: 'Modifier le profil',
+		profile_edit_TITLE: 'Modification du profil',
 		
-		profile_edit_BTN: 'Modifier',
+		profile_edit_BTN: 'Enregistrer',
 		
 		/* List pokemons */
 		
-		pokedex_view_PAGETITLE: 'Mes pokémons',
+		pokedex_view_PAGETITLE: 'Pokémons',
 		
 		pokedex_view_LINK: 'Mes pokémons',
 		
-		pokedex_view_TITLE: 'Mes pokémons',
+		pokedex_view_TITLE: 'Pokémons',
 		
 		pokedex_view_NOPOKEMON: 'Ajoutez autant de pokémons que vous le souhaitez en appyuant sur ',
 		
@@ -1011,10 +1013,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_view_PAGETITLE: 'Pokémon',
 		
 		pokemon_view_CURRENT: 'Status',
-		
-		pokemon_view_ONMAX: 'Votre pokémon est rechargé au max !',
-		pokemon_view_NOTMAX: 'Votre pokémon peut encore être rechargé !',
-		
+
 		pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est as renseigné!',
 
 		pokemon_view_PROFILELINK: 'Renseigner mon profil',
@@ -1339,6 +1338,74 @@ angular.module('AngularApp').directive('pageTitle', function($rootScope, $filter
 		}
 	};
 });
+
+angular.module('AngularApp').directive('selectList', function() {
+	
+	return {
+		
+		restrict: 'EA',
+		
+		replace: true,
+		
+		scope: {model: '=model', label: '=label', list: '=list'},
+
+		template: '<div class="row form-group">' +
+					'<label class="col-4 col-form-label text-right">{{label | translate}}</label>' +
+					'<div class="col-8 pl-0">' +
+						'<input class="form-control" ng-model="model" ng-focus="has_focus = true; filterList();" ng-change="filterList();" ng-blur="has_focus = false; checkModel();">' +
+						'<div class="select-group row" ng-show="has_focus">' +
+		                    '<div class="col-2 p-1" ng-repeat="item in filtered_list" ng-mousedown="selectItem(item)">' +
+		                        '<a href="javascript:;" class="select-group-item">' +
+		                            '{{item}}' +
+		                        '</a>' +
+		                    '</div>' +
+		                    '<div class="select-group-item col" ng-show="filtered_list.length < 1">' +
+		                       '<i class="text-danger font-italic">{{\'error_NOELEMENT\' | translate}}</i>' +
+		                    '</div>' +
+						'</div>' +
+					'</div>' +
+				  '</div>',
+				  
+		link: function(scope, element, attrs) {
+			
+			scope.filtered_list = scope.list;
+			
+			scope.filterList = function() {
+				
+				scope.filtered_list = [];
+				
+				if (!scope.model) {
+					
+					scope.filtered_list = scope.list;
+					return;
+				}
+				
+				var inputValue = String(scope.model).toLowerCase();
+					
+				for (var i = 0; i < scope.list.length; i++) {
+					
+					var refValue = String(scope.list[i]).toLowerCase();
+					
+					if (refValue.indexOf(inputValue) != -1) {
+						scope.filtered_list.push(scope.list[i]);
+					}
+				}
+			};
+			
+			scope.selectItem = function(item) {
+				
+				scope.model = item;
+			};
+			
+			scope.checkModel= function() {
+				
+				if (scope.filtered_list.length < 1) {
+					scope.model = null;
+				}
+			}
+		},
+	};
+});
 angular.module('AngularApp').controller('LangCtrl', function($scope, $translate) {
 
 	$scope.changeLanguage = function(key) {
@@ -1431,32 +1498,11 @@ angular.module('AngularApp').controller('ProfileCtrl', function($scope, $locatio
 	
 	$scope.profile = ProfileService.getProfile();
 	
-	var level_list = [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
+	$scope.level_list = [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
 						 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 						 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
 						 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-	];
-	
-	$scope.filtered_levellist = $scope.level_list;
-	
-	$scope.filterLevels = function() {
-
-		$scope.filtered_levellist = [];
-		
-		for (var i = 0; i < level_list.length; i++) {
-			
-			var inputLevel = $scope.profile.level;
-			
-			if (!inputLevel || inputLevel == level_list[i]) {
-				$scope.filtered_levellist.push(level_list[i]);
-			}
-		}
-	}
-	
-	$scope.selectLevel = function(item) {
-		
-		$scope.profile.level = item;
-	}
+						];
 	
 	$scope.profileModel = {team: $scope.profile.team, level: $scope.profile.level};
 	
@@ -1464,9 +1510,9 @@ angular.module('AngularApp').controller('ProfileCtrl', function($scope, $locatio
 		
 		if (!form.$invalid) {
 		
-			API.sendRequest('/api/profile/edit/', 'POST', {}, $scope.profileModel).then(function(data) {
+			ProfileService.setProfile($scope.profileModel).then(function(data) {
 				
-				$scope.profile = ProfileService.setProfile($scope.profileModel);
+				$scope.profile = $scope.profileModel;
 				
 				$location.path('/profile');
 				
@@ -1588,7 +1634,8 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		var baseA = pokemon.attack;
 		var baseD = pokemon.defense;
 		
-		var stardust = data_stardust.get($scope.computeModel.stardust);
+		var stardust = data_stardust.get(parseInt($scope.computeModel.stardust));
+		console.log(stardust);
 		
 		if (!stardust) return;
 		
@@ -1607,8 +1654,8 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		
 		for (var i = 0; i < 4; i++) {
 			
-			var cpm = stardust.levels[i].cpm;
-			var level = stardust.levels[i].level;
+			var level = stardust.levels[i];
+			var cpm = data_level.get(level).cpm;
 			
 			for (var ivS = minS; ivS <= maxS; ivS++) {
 				
@@ -1764,7 +1811,7 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 
 	$scope.pokemons = pokedex;
 	
-	$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
+	$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:$scope.profile.team, level:$scope.profile.level, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
 	
 	if ($scope.profile && $scope.profile.team) {
 		

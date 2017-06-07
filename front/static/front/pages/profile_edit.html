@@ -1,57 +1,52 @@
 <div class="card">
     
     <div class="card-header">
-        
-        <a ui-sref="app.profile" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
-        
-        <span class="title">{{'profile_edit_TITLE' | translate}}</span>
-        
+        <div class="container">
+            
+            <a ui-sref="app.profile" class="mr-2"><i class="fa fa-arrow-circle-left"></i></a>
+            
+            <span class="title">{{'profile_edit_TITLE' | translate}}</span>
+            
+        </div>
     </div>
 
     <div class="card-block">
+        <div class="container">
         
-        <form name="form" novalidate>
-    
-            <div class="form-group">
-                <label class="mb-2">{{'profile_TEAM' | translate}}</label>
+            <form name="form" novalidate>
+        
+                <div class="form-group row">
+                    <label class="col-4 col-form-label text-right">{{'profile_TEAM' | translate}}</label>
+                    <div class="col-8 pl-0">
+                        <label class="col-12 col-form-label form-check-label" ng-checked="profileModel.team == 'red'">
+                            <input type="radio" ng-model="profileModel.team" value="red">
+                            <img src="/static/front/img/team_red.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
+                            {{'team_RED' | translate}}
+                        </label>
+                        <label class="col-12 col-form-label form-check-label" ng-checked="profileModel.team == 'blue'">
+                            <input type="radio" ng-model="profileModel.team" value="blue">
+                            <img src="/static/front/img/team_blue.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
+                            {{'team_BLUE' | translate}}
+                        </label>
+                        <label class="col-12 col-form-label form-check-label" ng-checked="profileModel.team == 'yellow'">
+                            <input type="radio" ng-model="profileModel.team" value="yellow">
+                            <img src="/static/front/img/team_yellow.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
+                            {{'team_YELLOW' | translate}}
+                        </label>
+                    </div>
+                </div>
+                
+                <select-list model="profileModel.level" label="'profile_LEVEL'" list="profileLevelList"></select-list>
+                
                 <div class="row">
-                    <label class="col-md-4 form-check-label" ng-checked="profileModel.team == 'red'">
-                        <input type="radio" ng-model="profileModel.team" value="red">
-                        <img src="/static/front/img/team_red.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
-                        {{'team_RED' | translate}}
-                    </label>
-                    <label class="col-md-4 form-check-label" ng-checked="profileModel.team == 'blue'">
-                        <input type="radio" ng-model="profileModel.team" value="blue">
-                        <img src="/static/front/img/team_blue.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
-                        {{'team_BLUE' | translate}}
-                    </label>
-                    <label class="col-md-4 form-check-label" ng-checked="profileModel.team == 'yellow'">
-                        <input type="radio" ng-model="profileModel.team" value="yellow">
-                        <img src="/static/front/img/team_yellow.png" width="18" height="18" class="d-inline-block align-text-bottom mr-2">
-                        {{'team_YELLOW' | translate}}
-                    </label>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label>{{'profile_LEVEL' | translate}}</label>
-                <input type="number" class="form-control" ng-model="profileModel.level" ng-focus="has_levelfocus = true; filterLevels();" ng-change="filterLevels();" ng-blur="has_levelfocus = false;">
-                <div class="select-group row" ng-show="has_levelfocus">
-                    <div class="col-2 p-1" ng-repeat="item in filtered_levellist" ng-mousedown="selectLevel(item)">
-                        <a href="javascript:;" class="select-group-item">
-                            {{item}}
-                        </a>
-                    </div>
-                    <div class="select-group-item col" ng-show="filtered_levellist.length < 1">
-                       <i class="text-danger font-italic">{{'error_NOELEMENT' | translate}}</i>
+                    <div class="offset-4 col-8 pl-0">
+                        <button type="submit" class="btn btn-primary" ng-disabled="!profileModel.team || !profileModel.level" ng-click="edit(form);">{{'profile_edit_BTN' | translate}}</button>
                     </div>
                 </div>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" ng-disabled="!profileModel.team || !profileModel.level" ng-click="edit(form);">{{'profile_edit_BTN' | translate}}</button>
-
-        </form>
+    
+            </form>
         
+        </div>
     </div>
     
 </div>
