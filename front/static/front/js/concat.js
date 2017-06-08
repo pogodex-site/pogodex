@@ -2135,10 +2135,31 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		}
 	}
 	
-	$scope.add = function() {
+	$scope.add = function(form, index) {
 		
 		$scope.isLoading = true;
 		
+		var item = $scope.results[index];
+		
+		$scope.addModel = {
+			name:		item.name,
+			code:		item.code,
+			attack:		item.ivA,
+			defense:	item.ivD,
+			stigmata:	item.ivS,
+			percent:	item.percent,
+			level:		item.level,
+			cp:			item.cp,
+			hp:			item.hp,
+			stardust:	item.stardust,
+			team:		item.team,
+			app1:		item.app1,
+			app2S:		item.app2S,
+			app2A:		item.app2A,
+			app2D:		item.app2D,
+			app3:		item.app3
+		};
+	
 		API.sendRequest('/api/pokemon/add/', 'POST', {}, $scope.addModel).then(function(data) {
 			
 			angular.extend($scope.addModel, data);
