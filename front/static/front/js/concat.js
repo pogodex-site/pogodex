@@ -2083,9 +2083,9 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 								var result = {	code:pokemon.code,
 												name:$filter('translate')('pokemon_' + pokemon.code + '_LABEL'),
 												level:level,
-												ivS:ivS,
-												ivA:ivA,
-												ivD:ivD,
+												stigmata:ivS,
+												attack:ivA,
+												defense:ivD,
 												percent:0.0,
 												cp:$scope.computeModel.cp,
 												hp:$scope.computeModel.hp,
@@ -2135,50 +2135,26 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		}
 	}
 	
-	$scope.add = function(form, index) {
-		
-		$scope.isLoading = true;
-		
-		var item = $scope.results[index];
-		
-		$scope.addModel = {
-			name:		item.name,
-			code:		item.code,
-			attack:		item.ivA,
-			defense:	item.ivD,
-			stigmata:	item.ivS,
-			percent:	item.percent,
-			level:		item.level,
-			cp:			item.cp,
-			hp:			item.hp,
-			stardust:	item.stardust,
-			team:		item.team,
-			app1:		item.app1,
-			app2S:		item.app2S,
-			app2A:		item.app2A,
-			app2D:		item.app2D,
-			app3:		item.app3
-		};
-	
-		API.sendRequest('/api/pokemon/add/', 'POST', {}, $scope.addModel).then(function(data) {
-			
-			angular.extend($scope.addModel, data);
-			$scope.pokemons.push($scope.addModel);
-			
-			$scope.sort($scope.sortType);
+	$scope.add = function(form, item) {
 
-			$location.path('/pokedex');
+		if (!form.$invalid) {
 			
-			$scope.isLoading = false;
+			API.sendRequest('/api/pokemon/add/', 'POST', {}, item).then(function(data) {
+				
+				angular.extend(item, data);
+				$scope.pokemons.push(item);
+				
+				$scope.sort($scope.sortType);
+	
+				$location.path('/pokedex');
+				
+				toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
+				
+			}, function error(data) {
 			
-			toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
-			
-		}, function error(data) {
-			
-			$scope.isLoading = false;
-		
-			toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-		});
+				toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
+			});
+		}
 	};
 	
 	function _compareByName(a, b) {

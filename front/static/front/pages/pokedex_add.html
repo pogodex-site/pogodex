@@ -143,78 +143,52 @@
 <div class="card" ng-show="results && results.length" ng-repeat="item in results">
     <div class="container">
 
-    <div class="card-header card-subheader">
-        
-        <span class="title">{{'pokedex_add_RESULT' | translate}} {{$index + 1}}/{{results.length}} </span>
-        
-    </div>
-
-    <div class="card-block">
-
-        <div class="row">
-            <div class="col-6"><strong>{{'pokemon_ATTACK' | translate}}</strong></div>
-            <div class="col-6">{{item.ivA}}</div>
+        <div class="card-header card-subheader">
+            <span class="title">{{'pokedex_add_RESULT' | translate}} {{$index + 1}}/{{results.length}} </span>
         </div>
-
-        <div class="line-dashed"></div>
-        
-        <div class="row">
-            <div class="col-6"><strong>{{'pokemon_DEFENSE' | translate}}</strong></div>
-            <div class="col-6">{{item.ivD}}</div>
-        </div>
-
-        <div class="line-dashed"></div>
-        
-        <div class="row">
-            <div class="col-6"><strong>{{'pokemon_STIGMATA' | translate}}</strong></div>
-            <div class="col-6">{{item.ivS}}</div>
-        </div>
-
-        <div class="line-dashed"></div>
-        
-        <div class="row">
-            <div class="col-6"><strong>{{'pokemon_PERCENT' | translate}}</strong></div>
-            <div class="col-6">{{item.percent}}%</div>
-        </div>
-
-        <div class="line-dashed"></div>
-        
-        <div class="row">
-            <div class="col-6"><strong>{{'pokemon_LEVEL' | translate}}</strong></div>
-            <div class="col-6">{{item.level}}</div>
-        </div>
-
-        <div class="mt-4">
-            <form name="form" novalidate>
-                
-                <input type="text" class="d-none" ng-model="addModel.name" ng-init="addModel.name = item.name" value="{{item.name}}">
-                
-                <input type="text" class="d-none" ng-model="addModel.code" ng-init="addModel.code = item.code" value="{{item.code}}">
-                
-                <input type="text" class="d-none" ng-model="addModel.attack" ng-init="addModel.attack = item.ivA" value="{{item.ivA}}">
-                <input type="text" class="d-none" ng-model="addModel.defense" ng-init="addModel.defense = item.ivD" value="{{item.ivD}}">
-                <input type="text" class="d-none" ng-model="addModel.stigmata" ng-init="addModel.stigmata = item.ivS" value="{{item.ivS}}">
-                
-                <input type="text" class="d-none" ng-model="addModel.percent" ng-init="addModel.percent = item.percent" value="{{item.percent}}">
-                <input type="text" class="d-none" ng-model="addModel.level" ng-init="addModel.level = item.level" value="{{item.level}}">
-                
-                <input type="text" class="d-none" ng-model="addModel.cp" ng-init="addModel.cp = item.cp" value="{{item.cp}}">
-                <input type="text" class="d-none" ng-model="addModel.hp" ng-init="addModel.hp = item.hp" value="{{item.hp}}">
-                <input type="text" class="d-none" ng-model="addModel.stardust" ng-init="addModel.stardust = item.stardust" value="{{item.stardust}}">
-                
-                <input type="text" class="d-none" ng-model="addModel.app1" ng-init="addModel.app1 = item.app1" value="{{item.app1}}">
-                <input type="text" class="d-none" ng-model="addModel.app2S" ng-init="addModel.app2S = item.app2S" value="{{item.app2S}}">
-                <input type="text" class="d-none" ng-model="addModel.app2A" ng-init="addModel.app2A = item.app2A" value="{{item.app2A}}">
-                <input type="text" class="d-none" ng-model="addModel.app2D" ng-init="addModel.app2D = item.app2D" value="{{item.app2D}}">
-                <input type="text" class="d-none" ng-model="addModel.app3" ng-init="addModel.app3 = item.app3" value="{{item.app3}}">
-
-                <input type="text" class="d-none" ng-model="addModel.team" ng-init="addModel.team = item.team" value="{{item.team}}">
-                
-                <button type="submit" class="btn btn-sm btn-primary" ng-click="add(form, $index);">{{'pokedex_add_BTN2' | translate}}</button>
-                
-            </form>
-        </div>
+    
+        <div class="card-block">
+    
+            <div class="row">
+                <div class="col-6"><strong>{{'pokemon_ATTACK' | translate}}</strong></div>
+                <div class="col-6">{{item.attack}}</div>
+            </div>
+    
+            <div class="line-dashed"></div>
             
-    </div>
+            <div class="row">
+                <div class="col-6"><strong>{{'pokemon_DEFENSE' | translate}}</strong></div>
+                <div class="col-6">{{item.defense}}</div>
+            </div>
+    
+            <div class="line-dashed"></div>
+            
+            <div class="row">
+                <div class="col-6"><strong>{{'pokemon_STIGMATA' | translate}}</strong></div>
+                <div class="col-6">{{item.stigmata}}</div>
+            </div>
+    
+            <div class="line-dashed"></div>
+            
+            <div class="row">
+                <div class="col-6"><strong>{{'pokemon_PERCENT' | translate}}</strong></div>
+                <div class="col-6">{{item.percent}}%</div>
+            </div>
+    
+            <div class="line-dashed"></div>
+            
+            <div class="row">
+                <div class="col-6"><strong>{{'pokemon_LEVEL' | translate}}</strong></div>
+                <div class="col-6">{{item.level}}</div>
+            </div>
+    
+            <div class="mt-4">
+                <form name="form" novalidate>
+                    <button type="submit" class="btn btn-sm btn-primary" ng-click="add(form, item);">{{'pokedex_add_BTN2' | translate}}</button>
+                </form>
+            </div>
+                
+        </div>
+        
     </div>
 </div>
