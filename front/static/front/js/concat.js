@@ -813,7 +813,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 	
 	$translateProvider.useSanitizeValueStrategy(null);
 	
-	$translateProvider.preferredLanguage('fr');
+	$translateProvider.preferredLanguage('en');
 	
 	$translateProvider.translations('en', {
 		
@@ -2225,9 +2225,7 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		$scope.computeModel.team = $scope.profile.team;
 		$scope.updateTeam($scope.computeModel.team);
 	}
-	
-	$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-	
+
 	$scope.sortType = 'percent';
 	
 	var sortTypeCookie = $cookies.get('sortType');
@@ -2248,9 +2246,7 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 				
 				$scope.computeModel.level = $scope.profile.level;
 			}
-		
-			$scope.addModel = {name:'', code:'', attack:null, defense:null, stigmata:null, percent:null, level:null, cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-			
+
 			$scope.results = null;
 		}
 	});
