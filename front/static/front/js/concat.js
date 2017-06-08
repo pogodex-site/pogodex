@@ -787,27 +787,27 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 	
 		.state('base', { templateUrl: '/static/front/pages/_base.html', })
 		
-			.state('base.welcome',    { url: '/welcome',    templateUrl: '/static/front/pages/welcome.html',    data:{ labelKey: 'welcome_PAGETITLE',    }})
-			.state('base.restricted', { url: '/restricted', templateUrl: '/static/front/pages/restricted.html', data:{ labelKey: 'restricted_PAGETITLE', }})
+			.state('base.welcome',    { url: '/welcome',    templateUrl: '/static/front/pages/welcome.html',    data:{ labelKey: 'welcome_TITLE',    }})
+			.state('base.restricted', { url: '/restricted', templateUrl: '/static/front/pages/restricted.html', data:{ labelKey: 'restricted_TITLE', }})
 			
 			.state('base.account', { controller: 'AccountCtrl', template: '<div ui-view=""></div>', })
 			
-				.state('base.account.login',    { url: '/login',    templateUrl: '/static/front/pages/login.html',    data:{ labelKey: 'login_PAGETITLE',    }})
-				.state('base.account.register', { url: '/register', templateUrl: '/static/front/pages/register.html', data:{ labelKey: 'register_PAGETITLE', }})
+				.state('base.account.login',    { url: '/login',    templateUrl: '/static/front/pages/login.html',    data:{ labelKey: 'login_TITLE',    }})
+				.state('base.account.register', { url: '/register', templateUrl: '/static/front/pages/register.html', data:{ labelKey: 'register_TITLE', }})
 
 		.state('app', { abstract: true, templateUrl: '/static/front/pages/_app.html', resolve: { appData: function(ProfileService) { return ProfileService.init(); }}, })
 		
-			.state('app.profile', { parent:'app', url: '/profile', controller: 'ProfileCtrl', templateUrl: '/static/front/pages/profile_view.html', data:{ labelKey: 'profile_PAGETITLE',      authenticated: true }})
+			.state('app.profile', { parent:'app', url: '/profile', controller: 'ProfileCtrl', templateUrl: '/static/front/pages/profile_view.html', data:{ labelKey: 'profile_TITLE',      authenticated: true }})
 			
-				.state('app.profile.edit', { url: '/edit', templateUrl: '/static/front/pages/profile_edit.html', data:{ labelKey: 'profile_edit_PAGETITLE', authenticated: true }})
+				.state('app.profile.edit', { url: '/edit', templateUrl: '/static/front/pages/profile_edit.html', data:{ labelKey: 'profile_edit_TITLE', authenticated: true }})
 			
-			.state('app.pokedex', { parent:'app', url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', resolve: { pokedex: function(API) { return API.sendRequest('/api/pokemon/list/', 'POST'); }}, data:{ labelKey: 'pokedex_view_PAGETITLE', authenticated: true, redirect: 'base.welcome' }})
+			.state('app.pokedex', { parent:'app', url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', resolve: { pokedex: function(API) { return API.sendRequest('/api/pokemon/list/', 'POST'); }}, data:{ labelKey: 'pokedex_view_TITLE', authenticated: true, redirect: 'base.welcome' }})
 			
-				.state('app.pokedex.add',  { url: '/add', templateUrl: '/static/front/pages/pokedex_add.html',  data:{ labelKey: 'pokedex_add_PAGETITLE',  authenticated: true }})
+				.state('app.pokedex.add',  { url: '/add', templateUrl: '/static/front/pages/pokedex_add.html',  data:{ labelKey: 'pokedex_add_TITLE',  authenticated: true }})
 
-			.state('app.pokemon', { parent:'app', url: '/pokemon/:ref', controller: 'PokemonCtrl', templateUrl: '/static/front/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_PAGETITLE', authenticated: false }})
+			.state('app.pokemon', { parent:'app', url: '/pokemon/:ref', controller: 'PokemonCtrl', templateUrl: '/static/front/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_TITLE', authenticated: false }})
 			
-				.state('app.pokemon.edit', { url: '/edit', templateUrl: '/static/front/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_PAGETITLE', authenticated: true  }})
+				.state('app.pokemon.edit', { url: '/edit', templateUrl: '/static/front/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_TITLE', authenticated: true  }})
 
 	$locationProvider.html5Mode(true);
 	
@@ -816,6 +816,439 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 	$translateProvider.preferredLanguage('fr');
 	
 	$translateProvider.translations('en', {
+		
+		error_EMAIL: 'A well formatted email address is required.',
+		error_REQUIRED: 'This field is mandatory.',
+		error_NOELEMENT: 'No valid value',
+		error_INTEGRITY_ERROR: 'A server error occured.',
+		
+		notif_ERROR: 'A server error occured',
+		notif_SUCCESS: 'Operation success',
+		
+		btn_NO: 'No',
+		btn_YES: 'Yes',
+		
+		/* Pokemon */
+		
+		pokemon_CP: 'CP',
+		pokemon_HP: 'HP',
+		pokemon_CODE: 'Pokemon',
+		pokemon_NAME: 'Name',
+		pokemon_TEAM: 'Team',
+		pokemon_LEVEL: 'Level',
+		pokemon_ATTACK: 'Attack',
+		pokemon_LOADING: 'Power Up',
+		pokemon_PERCENT: 'Perfection',
+		pokemon_DEFENSE: 'Defense',
+		pokemon_STIGMATA: 'Stigmata',
+		pokemon_STARDUST: 'Stardust',
+		pokemon_CANDIESREQUIRED: 'Candies required',
+		pokemon_STARDUSTREQUIRED: 'Stardust required',
+		
+		pokemon_APP1: 'Overall, your pokemon ...',
+		pokemon_APP2: 'Its best attribute is ...',
+		pokemon_APP3: 'Stats Feedback',
+		
+		pokemon_app1_CHOICE3_red: '... may not be great in battle, but I still like it!',
+		pokemon_app1_CHOICE2_red: '... is a decent pokemon.',
+		pokemon_app1_CHOICE1_red: '... is a strong pokemon. You should be proud!',
+		pokemon_app1_CHOICE0_red: '... simply amazes me. It can accomplish anything!',
+		
+		pokemon_app1_CHOICE3_blue: '... is not likely to make much headway in battle.',
+		pokemon_app1_CHOICE2_blue: '... is above average.',
+		pokemon_app1_CHOICE1_blue: '... has certainly caught my attention.',
+		pokemon_app1_CHOICE0_blue: '... is a wonder! What a breathtaking pokemon!',
+
+		pokemon_app1_CHOICE3_yellow: '... has room for improvement as far as battling goes.',
+		pokemon_app1_CHOICE2_yellow: '... is pretty decent!',
+		pokemon_app1_CHOICE1_yellow: '... is really strong!',
+		pokemon_app1_CHOICE0_yellow: '... looks like it can really battle with the best of them!',
+		
+		pokemon_app3_CHOICE3_red: 'Its stats don\'t point to greatness in battle.',
+		pokemon_app3_CHOICE2_red: 'Its stats indicate that in battle, it\'ll get the job done.',
+		pokemon_app3_CHOICE1_red: 'It\'s got excellent stats! How exciting!',
+		pokemon_app3_CHOICE0_red: 'I\'m blown away by its stats. WOW!',
+		
+		pokemon_app3_CHOICE3_blue: 'Its stats are not out of the norm, in my estimation.',
+		pokemon_app3_CHOICE2_blue: 'Its stats are noticeably trending to the positive.',
+		pokemon_app3_CHOICE1_blue: 'I am certainly impressed by its stats, I must say.',
+		pokemon_app3_CHOICE0_blue: 'Its stats exceed my calculations. It\'s incredible!',
+		
+		pokemon_app3_CHOICE3_yellow: 'Its stats are all right, but kinda basic, as far as I can see.',
+		pokemon_app3_CHOICE2_yellow: 'It\'s definitely got some good stats. Definitely!',
+		pokemon_app3_CHOICE1_yellow: 'Its stats are really strong! Impressive',
+		pokemon_app3_CHOICE0_yellow: 'Its stats are the best I\'ve ever seen! No doubt about it!',
+		
+		pokemon_sort_PERCENT: 'by perfection',
+		pokemon_sort_DEXNUMBER: 'by pokedex number',
+		pokemon_sort_NAME: 'by name',
+		pokemon_sort_ATTACK: 'by IV Attack',
+		pokemon_sort_DEFENSE: 'by IV Defense',
+		pokemon_sort_STIGMATA: 'by IV Stigmata',
+		
+		/* Team */
+		
+		team_RED: 'Valor',
+		team_BLUE: 'Mystic',
+		team_YELLOW: 'Instinct',
+		
+		/* Welcome */
+		
+		welcome_TITLE: 'Welcome',
+		
+		welcome_TEXT: 'Store, appraise and share your favorite pokemons',
+		
+		welcome_BTN: 'Open',
+		
+		/* Login */
+		
+		login_TITLE: 'Sign in',
+		
+		login_LINK: 'Sign in',
+		
+		login_local_BTN: 'Sign in',
+		login_facebook_BTN: 'Sign in with Facebook',
+		
+		login_SUBTITLE: 'Sign in with a local account',
+		
+		login_pwd_PLACEHOLDER: 'Password',
+		login_user_PLACEHOLDER: 'Username',
+		
+		login_TEXT: 'No local account?',
+		
+		error_USER_UNKNOWN: 'Username and/or password are unknown. Please check and try again.',
+		
+		/* Register */
+		
+		register_TITLE: 'Sign up',
+		
+		register_LINK: 'Sign up',
+		
+		register_user_PLACEHOLDER: 'Username',
+		register_pwd1_PLACEHOLDER: 'Password',
+		register_pwd2_PLACEHOLDER: 'Confirm password',
+		register_email_PLACEHOLDER: 'Email',
+		
+		register_TEXT1: 'By clicking on \'Sign up\', you agree with usage conditions and privacy policy',
+		register_TEXT2: 'Already registered ?',
+		
+		register_BTN: 'Sign up',
+		
+		error_PASSWORDS_NOT_EQUAL: 'Passwords are not the same.',
+		error_USERNAME_ALREADY_EXISTS: 'This username is already used.',
+		
+		/* Restricted */
+		
+		restricted_TITLE: 'Restricted',
+		
+		restricted_TEXT: 'This is a restricted area. You have to sign in first.',
+		
+		/* Logout */
+		
+		logout_LINK: 'Sign out',
+		
+		/* Profile */
+
+		profile_TITLE: 'Profile',
+		
+		profile_NAME: 'Name',
+		profile_TEAM: 'Team',
+		profile_LEVEL: 'Level',
+		
+		profile_NOPROFILE: 'No profile',
+		
+		profile_NOTEAM: 'no team selected',
+		profile_NOLEVEL: 'no level filled',
+		
+		/* Edit profile */
+		
+		profile_edit_TITLE: 'Update profile',
+		
+		profile_edit_BTN: 'Save',
+		
+		/* List pokemons */
+		
+		pokedex_view_TITLE: 'Pokemons',
+		
+		pokedex_view_NOPOKEMON: 'Add as many pokemons as you want by clicking on ',
+		
+		/* Add pokemon */
+		
+		pokedex_add_TITLE: 'New pokemon',
+
+		pokedex_add_BTN1: 'Evaluate',
+		pokedex_add_BTN2: 'Add',
+		
+		pokedex_add_NORESULT: 'No result',
+		
+		pokedex_add_RESULT: 'Result',
+		
+		pokedex_add_LEVEL: 'Trainer level',
+
+		/* Pokemon view */
+		
+		pokemon_view_TITLE: 'Pokemon',
+		
+		pokemon_view_CURRENT: 'Status',
+
+		pokemon_view_NOSTATUS: 'Pokemon status cannot be computed since your profile is not filled.',
+
+		pokemon_view_PROFILELINK: 'Fill my profile',
+		
+		pokemon_view_NOPOKEMON: 'No pokemon',
+
+		pokemon_view_SHARELINK: 'Share link',
+
+		/* Pokemon edit */
+		
+		pokemon_edit_TITLE: 'Update',
+		
+		pokemon_edit_BTN: 'Save',
+		
+		/* Pokemon delete */
+		
+		pokemon_delete_CONFIRM: 'Are you sure to remove this pokemon?',
+		
+		/* Pokemon labels */
+
+		pokemon_squirtle_LABEL: 'Squirtle',
+		pokemon_ivysaur_LABEL: 'Ivysaur',
+		pokemon_wartortle_LABEL: 'Wartortle',
+		pokemon_venusaur_LABEL: 'Venusaur',
+		pokemon_charizard_LABEL: 'Charizard',
+		pokemon_bulbasaur_LABEL: 'Bulbasaur',
+		pokemon_charmander_LABEL: 'Charmander',
+		pokemon_charmeleon_LABEL: 'Charmeleon',
+		pokemon_blastoise_LABEL: 'Blastoise',
+		pokemon_caterpie_LABEL: 'Caterpie',
+		pokemon_metapod_LABEL: 'Metapod',
+		pokemon_butterfree_LABEL: 'Butterfree',
+		pokemon_weedle_LABEL: 'Weedle',
+		pokemon_kakuna_LABEL: 'Kakuna',
+		pokemon_beedrill_LABEL: 'Beedrill',
+		pokemon_pidgey_LABEL: 'Pidgey',
+		pokemon_pidgeotto_LABEL: 'Pidgeotto',
+		pokemon_pidgeot_LABEL: 'Pidgeot',
+		pokemon_rattata_LABEL: 'Rattata',
+		pokemon_raticate_LABEL: 'Raticate',
+		pokemon_spearow_LABEL: 'Spearow',
+		pokemon_fearow_LABEL: 'Fearow',
+		pokemon_ekans_LABEL: 'Ekans',
+		pokemon_arbok_LABEL: 'Arbok',
+		pokemon_pikachu_LABEL: 'Pikachu',
+		pokemon_raichu_LABEL: 'Raichu',
+		pokemon_sandshrew_LABEL: 'Sandshrew',
+		pokemon_sandslash_LABEL: 'Sandslash',
+		pokemon_nidoranfemale_LABEL: 'Nidoranfemale',
+		pokemon_nidorina_LABEL: 'Nidorina',
+		pokemon_nidoqueen_LABEL: 'Nidoqueen',
+		pokemon_nidoranmale_LABEL: 'Nidoranmale',
+		pokemon_nidorino_LABEL: 'Nidorino',
+		pokemon_nidoking_LABEL: 'Nidoking',
+		pokemon_clefairy_LABEL: 'Clefairy',
+		pokemon_clefable_LABEL: 'Clefable',
+		pokemon_vulpix_LABEL: 'Vulpix',
+		pokemon_ninetales_LABEL: 'Ninetales',
+		pokemon_jigglypuff_LABEL: 'Jigglypuff',
+		pokemon_wigglytuff_LABEL: 'Wigglytuff',
+		pokemon_zubat_LABEL: 'Zubat',
+		pokemon_golbat_LABEL: 'Golbat',
+		pokemon_oddish_LABEL: 'Oddish',
+		pokemon_gloom_LABEL: 'Gloom',
+		pokemon_vileplume_LABEL: 'Vileplume',
+		pokemon_paras_LABEL: 'Paras',
+		pokemon_parasect_LABEL: 'Parasect',
+		pokemon_venonat_LABEL: 'Venonat',
+		pokemon_venomoth_LABEL: 'Venomoth',
+		pokemon_diglett_LABEL: 'Diglett',
+		pokemon_dugtrio_LABEL: 'Dugtrio',
+		pokemon_meowth_LABEL: 'Meowth',
+		pokemon_persian_LABEL: 'Persian',
+		pokemon_psyduck_LABEL: 'Psyduck',
+		pokemon_golduck_LABEL: 'Golduck',
+		pokemon_mankey_LABEL: 'Mankey',
+		pokemon_primeape_LABEL: 'Primeape',
+		pokemon_growlithe_LABEL: 'Growlithe',
+		pokemon_arcanine_LABEL: 'Arcanine',
+		pokemon_poliwag_LABEL: 'Poliwag',
+		pokemon_poliwhirl_LABEL: 'Poliwhirl',
+		pokemon_poliwrath_LABEL: 'Poliwrath',
+		pokemon_abra_LABEL: 'Abra',
+		pokemon_kadabra_LABEL: 'Kadabra',
+		pokemon_alakazam_LABEL: 'Alakazam',
+		pokemon_machop_LABEL: 'Machop',
+		pokemon_machoke_LABEL: 'Machoke',
+		pokemon_machamp_LABEL: 'Machamp',
+		pokemon_bellsprout_LABEL: 'Bellsprout',
+		pokemon_weepinbell_LABEL: 'Weepinbell',
+		pokemon_victreebel_LABEL: 'Victreebel',
+		pokemon_tentacool_LABEL: 'Tentacool',
+		pokemon_tentacruel_LABEL: 'Tentacruel',
+		pokemon_geodude_LABEL: 'Geodude',
+		pokemon_graveler_LABEL: 'Graveler',
+		pokemon_golem_LABEL: 'Golem',
+		pokemon_ponyta_LABEL: 'Ponyta',
+		pokemon_rapidash_LABEL: 'Rapidash',
+		pokemon_slowpoke_LABEL: 'Slowpoke',
+		pokemon_slowbro_LABEL: 'Slowbro',
+		pokemon_magnemite_LABEL: 'Magnemite',
+		pokemon_magneton_LABEL: 'Magneton',
+		pokemon_farfetchd_LABEL: 'Farfetchd',
+		pokemon_doduo_LABEL: 'Doduo',
+		pokemon_dodrio_LABEL: 'Dodrio',
+		pokemon_seel_LABEL: 'Seel',
+		pokemon_dewgong_LABEL: 'Dewgong',
+		pokemon_grimer_LABEL: 'Grimer',
+		pokemon_muk_LABEL: 'Muk',
+		pokemon_shellder_LABEL: 'Shellder',
+		pokemon_cloyster_LABEL: 'Cloyster',
+		pokemon_gastly_LABEL: 'Gastly',
+		pokemon_haunter_LABEL: 'Haunter',
+		pokemon_gengar_LABEL: 'Gengar',
+		pokemon_onix_LABEL: 'Onix',
+		pokemon_drowzee_LABEL: 'Drowzee',
+		pokemon_hypno_LABEL: 'Hypno',
+		pokemon_krabby_LABEL: 'Krabby',
+		pokemon_kingler_LABEL: 'Kingler',
+		pokemon_voltorb_LABEL: 'Voltorb',
+		pokemon_electrode_LABEL: 'Electrode',
+		pokemon_exeggcute_LABEL: 'Exeggcute',
+		pokemon_exeggutor_LABEL: 'Exeggutor',
+		pokemon_cubone_LABEL: 'Cubone',
+		pokemon_marowak_LABEL: 'Marowak',
+		pokemon_hitmonlee_LABEL: 'Hitmonlee',
+		pokemon_hitmonchan_LABEL: 'Hitmonchan',
+		pokemon_lickitung_LABEL: 'Lickitung',
+		pokemon_koffing_LABEL: 'Koffing',
+		pokemon_weezing_LABEL: 'Weezing',
+		pokemon_rhyhorn_LABEL: 'Rhyhorn',
+		pokemon_rhydon_LABEL: 'Rhydon',
+		pokemon_chansey_LABEL: 'Chansey',
+		pokemon_tangela_LABEL: 'Tangela',
+		pokemon_kangaskhan_LABEL: 'Kangaskhan',
+		pokemon_horsea_LABEL: 'Horsea',
+		pokemon_seadra_LABEL: 'Seadra',
+		pokemon_goldeen_LABEL: 'Goldeen',
+		pokemon_seaking_LABEL: 'Seaking',
+		pokemon_staryu_LABEL: 'Staryu',
+		pokemon_starmie_LABEL: 'Starmie',
+		pokemon_mrmime_LABEL: 'Mrmime',
+		pokemon_scyther_LABEL: 'Scyther',
+		pokemon_jynx_LABEL: 'Jynx',
+		pokemon_electabuzz_LABEL: 'Electabuzz',
+		pokemon_magmar_LABEL: 'Magmar',
+		pokemon_pinsir_LABEL: 'Pinsir',
+		pokemon_tauros_LABEL: 'Tauros',
+		pokemon_magikarp_LABEL: 'Magikarp',
+		pokemon_gyarados_LABEL: 'Gyarados',
+		pokemon_lapras_LABEL: 'Lapras',
+		pokemon_ditto_LABEL: 'Ditto',
+		pokemon_eevee_LABEL: 'Eevee',
+		pokemon_vaporeon_LABEL: 'Vaporeon',
+		pokemon_jolteon_LABEL: 'Jolteon',
+		pokemon_flareon_LABEL: 'Flareon',
+		pokemon_porygon_LABEL: 'Porygon',
+		pokemon_omanyte_LABEL: 'Omanyte',
+		pokemon_omastar_LABEL: 'Omastar',
+		pokemon_kabuto_LABEL: 'Kabuto',
+		pokemon_kabutops_LABEL: 'Kabutops',
+		pokemon_aerodactyl_LABEL: 'Aerodactyl',
+		pokemon_snorlax_LABEL: 'Snorlax',
+		pokemon_dratini_LABEL: 'Dratini',
+		pokemon_dragonair_LABEL: 'Dragonair',
+		pokemon_dragonite_LABEL: 'Dragonite',
+		pokemon_chikorita_LABEL: 'Chikorita',
+		pokemon_bayleef_LABEL: 'Bayleef',
+		pokemon_meganium_LABEL: 'Meganium',
+		pokemon_cyndaquil_LABEL: 'Cyndaquil',
+		pokemon_quilava_LABEL: 'Quilava',
+		pokemon_typhlosion_LABEL: 'Typhlosion',
+		pokemon_totodile_LABEL: 'Totodile',
+		pokemon_croconaw_LABEL: 'Croconaw',
+		pokemon_feraligatr_LABEL: 'Feraligatr',
+		pokemon_sentret_LABEL: 'Sentret',
+		pokemon_furret_LABEL: 'Furret',
+		pokemon_hoothoot_LABEL: 'Hoothoot',
+		pokemon_noctowl_LABEL: 'Noctowl',
+		pokemon_ledyba_LABEL: 'Ledyba',
+		pokemon_ledian_LABEL: 'Ledian',
+		pokemon_spinarak_LABEL: 'Spinarak',
+		pokemon_ariados_LABEL: 'Ariados',
+		pokemon_crobat_LABEL: 'Crobat',
+		pokemon_chinchou_LABEL: 'Chinchou',
+		pokemon_lanturn_LABEL: 'Lanturn',
+		pokemon_pichu_LABEL: 'Pichu',
+		pokemon_cleffa_LABEL: 'Cleffa',
+		pokemon_igglybuff_LABEL: 'Igglybuff',
+		pokemon_togepi_LABEL: 'Togepi',
+		pokemon_togetic_LABEL: 'Togetic',
+		pokemon_natu_LABEL: 'Natu',
+		pokemon_xatu_LABEL: 'Xatu',
+		pokemon_mareep_LABEL: 'Mareep',
+		pokemon_flaaffy_LABEL: 'Flaaffy',
+		pokemon_ampharos_LABEL: 'Ampharos',
+		pokemon_bellossom_LABEL: 'Bellossom',
+		pokemon_marill_LABEL: 'Marill',
+		pokemon_azumarill_LABEL: 'Azumarill',
+		pokemon_sudowoodo_LABEL: 'Sudowoodo',
+		pokemon_politoed_LABEL: 'Politoed',
+		pokemon_hoppip_LABEL: 'Hoppip',
+		pokemon_skiploom_LABEL: 'Skiploom',
+		pokemon_jumpluff_LABEL: 'Jumpluff',
+		pokemon_aipom_LABEL: 'Aipom',
+		pokemon_sunkern_LABEL: 'Sunkern',
+		pokemon_sunflora_LABEL: 'Sunflora',
+		pokemon_yanma_LABEL: 'Yanma',
+		pokemon_wooper_LABEL: 'Wooper',
+		pokemon_quagsire_LABEL: 'Quagsire',
+		pokemon_espeon_LABEL: 'Espeon',
+		pokemon_umbreon_LABEL: 'Umbreon',
+		pokemon_murkrow_LABEL: 'Murkrow',
+		pokemon_slowking_LABEL: 'Slowking',
+		pokemon_misdreavus_LABEL: 'Misdreavus',
+		pokemon_unown_LABEL: 'Unown',
+		pokemon_wobbuffet_LABEL: 'Wobbuffet',
+		pokemon_girafarig_LABEL: 'Girafarig',
+		pokemon_pineco_LABEL: 'Pineco',
+		pokemon_forretress_LABEL: 'Forretress',
+		pokemon_dunsparce_LABEL: 'Dunsparce',
+		pokemon_gligar_LABEL: 'Gligar',
+		pokemon_steelix_LABEL: 'Steelix',
+		pokemon_snubbull_LABEL: 'Snubbull',
+		pokemon_granbull_LABEL: 'Granbull',
+		pokemon_qwilfish_LABEL: 'Qwilfish',
+		pokemon_scizor_LABEL: 'Scizor',
+		pokemon_shuckle_LABEL: 'Shuckle',
+		pokemon_heracross_LABEL: 'Heracross',
+		pokemon_sneasel_LABEL: 'Sneasel',
+		pokemon_teddiursa_LABEL: 'Teddiursa',
+		pokemon_ursaring_LABEL: 'Ursaring',
+		pokemon_slugma_LABEL: 'Slugma',
+		pokemon_magcargo_LABEL: 'Magcargo',
+		pokemon_swinub_LABEL: 'Swinub',
+		pokemon_piloswine_LABEL: 'Piloswine',
+		pokemon_corsola_LABEL: 'Corsola',
+		pokemon_remoraid_LABEL: 'Remoraid',
+		pokemon_octillery_LABEL: 'Octillery',
+		pokemon_mantine_LABEL: 'Mantine',
+		pokemon_skarmory_LABEL: 'Skarmory',
+		pokemon_houndour_LABEL: 'Houndour',
+		pokemon_houndoom_LABEL: 'Houndoom',
+		pokemon_kingdra_LABEL: 'Kingdra',
+		pokemon_phanpy_LABEL: 'Phanpy',
+		pokemon_donphan_LABEL: 'Donphan',
+		pokemon_porygon2_LABEL: 'Porygon2',
+		pokemon_stantler_LABEL: 'Stantler',
+		pokemon_tyrogue_LABEL: 'Tyrogue',
+		pokemon_hitmontop_LABEL: 'Hitmontop',
+		pokemon_smoochum_LABEL: 'Smoochum',
+		pokemon_elekid_LABEL: 'Elekid',
+		pokemon_magby_LABEL: 'Magby',
+		pokemon_miltank_LABEL: 'Miltank',
+		pokemon_blissey_LABEL: 'Blissey',
+		pokemon_larvitar_LABEL: 'Larvitar',
+		pokemon_pupitar_LABEL: 'Pupitar',
+		pokemon_tyranitar_LABEL: 'Tyranitar',
 	});
 	
 	$translateProvider.translations('fr', {
@@ -843,8 +1276,6 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_LOADING: 'Recharge',
 		pokemon_PERCENT: 'Perfection',
 		pokemon_DEFENSE: 'Défense',
-		pokemon_FINALCP: 'PC Niv 40',
-		pokemon_FINALHP: 'PV Niv 40',
 		pokemon_STIGMATA: 'Endurance',
 		pokemon_STARDUST: 'Poussière',
 		pokemon_CANDIESREQUIRED: 'Bonbons requis',
@@ -899,9 +1330,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Welcome */
 		
-		welcome_PAGETITLE: 'Bienvenue!',
-		
-		welcome_TITLE: 'Accueil',
+		welcome_TITLE: 'Bienvenue!',
 		
 		welcome_TEXT: 'Enregistrez, évaluez et partagez vos pokémons préférés',
 		
@@ -909,7 +1338,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Login */
 		
-		login_PAGETITLE: 'Connexion',
+		login_TITLE: 'Connexion',
 		
 		login_LINK: 'Se connecter',
 		
@@ -927,7 +1356,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Register */
 		
-		register_PAGETITLE: 'Inscription',
+		register_TITLE: 'Inscription',
 		
 		register_LINK: 'S\'inscrire',
 		
@@ -946,7 +1375,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Restricted */
 		
-		restricted_PAGETITLE: 'Non autorisé',
+		restricted_TITLE: 'Non autorisé',
 		
 		restricted_TEXT: 'Vous avez tenté d\'accéder à un contenu protégé. Vous devez vous authentifier avant de pouvoir accéder à ce contenu.',
 		
@@ -955,11 +1384,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		logout_LINK: 'Se déconnecter',
 		
 		/* Profile */
-		
-		profile_PAGETITLE: 'Profil',
-		
-		profile_LINK: 'Profil',
-		
+
 		profile_TITLE: 'Profil',
 		
 		profile_NAME: 'Nom',
@@ -973,19 +1398,11 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Edit profile */
 		
-		profile_edit_PAGETITLE: 'Modification du profil',
-		
-		profile_edit_LINK: 'Modifier',
-		
 		profile_edit_TITLE: 'Modification du profil',
 		
 		profile_edit_BTN: 'Enregistrer',
 		
 		/* List pokemons */
-		
-		pokedex_view_PAGETITLE: 'Pokémons',
-		
-		pokedex_view_LINK: 'Mes pokémons',
 		
 		pokedex_view_TITLE: 'Pokémons',
 		
@@ -993,11 +1410,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		/* Add pokemon */
 		
-		pokedex_add_PAGETITLE: 'Ajouter un pokémon',
-		
-		pokedex_add_LINK: 'Ajouter',
-		
-		pokedex_add_TITLE: 'Ajouter un pokémon',
+		pokedex_add_TITLE: 'Nouveau pokémon',
 
 		pokedex_add_BTN1: 'Evaluer',
 		pokedex_add_BTN2: 'Ajouter',
@@ -1010,11 +1423,11 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 
 		/* Pokemon view */
 		
-		pokemon_view_PAGETITLE: 'Pokémon',
+		pokemon_view_TITLE: 'Pokémon',
 		
 		pokemon_view_CURRENT: 'Status',
 
-		pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est as renseigné!',
+		pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
 
 		pokemon_view_PROFILELINK: 'Renseigner mon profil',
 		
@@ -1023,8 +1436,6 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_view_SHARELINK: 'Lien de partage',
 
 		/* Pokemon edit */
-		
-		pokemon_edit_PAGETITLE: 'Modifier un pokémon',
 		
 		pokemon_edit_TITLE: 'Modifier',
 		
@@ -1635,7 +2046,6 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		var baseD = pokemon.defense;
 		
 		var stardust = data_stardust.get(parseInt($scope.computeModel.stardust));
-		console.log(stardust);
 		
 		if (!stardust) return;
 		

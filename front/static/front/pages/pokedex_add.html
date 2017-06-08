@@ -105,13 +105,13 @@
             <div ng-show="computeModel.team" class="form-group row">
                 <label class="col-4 col-form-label text-right">{{'pokemon_APP2' | translate}}</label>
                 <div class="col-8 pl-0">
-                    <label class="col-md-4 form-check-label">
+                    <label class="col-12 pl-0 col-form-label form-check-label">
                         <input type="checkbox" ng-model="computeModel.app2A"> {{'pokemon_ATTACK' | translate}}
                     </label>
-                    <label class="col-md-4 form-check-label">
+                    <label class="col-12 pl-0 col-form-label form-check-label">
                         <input type="checkbox" ng-model="computeModel.app2D"> {{'pokemon_DEFENSE' | translate}}
                     </label>
-                    <label class="col-md-4 form-check-label">
+                    <label class="col-12 pl-0 col-form-label form-check-label">
                         <input type="checkbox" ng-model="computeModel.app2S"> {{'pokemon_HP' | translate}}
                     </label>
                 </div>
@@ -141,17 +141,15 @@
 </div>
 
 <div class="card" ng-show="results && results.length" ng-repeat="item in results">
-
-    <div class="card-header">
     <div class="container">
+
+    <div class="card-header card-subheader">
         
         <span class="title">{{'pokedex_add_RESULT' | translate}} {{$index + 1}}/{{results.length}} </span>
         
     </div>
-    </div>
-    
+
     <div class="card-block">
-    <div class="container">
 
         <div class="row">
             <div class="col-6"><strong>{{'pokemon_ATTACK' | translate}}</strong></div>
