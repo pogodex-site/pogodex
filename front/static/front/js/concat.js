@@ -1005,6 +1005,8 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_view_NOPOKEMON: 'No pokemon',
 
 		pokemon_view_SHARELINK: 'Share link',
+		
+		pokemon_view_OWNERBY: 'A pokemon by',
 
 		/* Pokemon edit */
 		
@@ -1465,6 +1467,8 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		pokemon_view_NOPOKEMON: 'Aucun pokémon trouvé',
 
 		pokemon_view_SHARELINK: 'Lien de partage',
+		
+		pokemon_view_OWNERBY: 'Un pokemon de',
 
 		/* Pokemon edit */
 		

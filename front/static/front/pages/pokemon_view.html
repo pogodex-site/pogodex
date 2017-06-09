@@ -72,7 +72,7 @@
             
             <div ng-show="!isLoading && !isProfileLoading && data.pokemon">
                 
-                <div ng-if="!data.owner.is_owned" class="text-center">
+                <div ng-if="!data.owner.is_owned" class="text-center mb-2">
                     {{'pokemon_view_OWNERBY' | translate}} <strong>{{data.owner.name}}</strong>
                 </div>
             
