@@ -781,10 +781,12 @@ angular.module('AngularApp.services').service('ProfileService', function(API) {
 
 angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr', 'AngularApp.services']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, $authProvider) {
 
-	$urlRouterProvider.otherwise('/pokedex');
+	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider
 	
+		.state('root', { url: '/', controller: 'RootCtrl', })
+		
 		.state('base', { templateUrl: '/static/front/pages/_base.html', })
 		
 			.state('base.welcome',    { url: '/welcome',    templateUrl: '/static/front/pages/welcome.html',    data:{ labelKey: 'welcome_TITLE',    }})
@@ -1823,6 +1825,16 @@ angular.module('AngularApp').controller('LangCtrl', function($scope, $translate)
 	
 		$translate.use(key);
 	};
+});
+
+angular.module('AngularApp').controller('RootCtrl', function($auth, $state) {
+	
+	if ($auth.isAuthenticated()) {
+		$state.go('app.pokedex');
+	}
+	else {
+		$state.go('base.welcome');
+	}
 });
 
 angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $cookies, $location, $http, API) {
