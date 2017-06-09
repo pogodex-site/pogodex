@@ -763,13 +763,18 @@ angular.module('AngularApp.services').service('API', function($q, $http, $cookie
 	return service;
 });
 
-angular.module('AngularApp.services').service('ProfileService', function(API) {
+angular.module('AngularApp.services').service('ProfileService', function($auth, API) {
 	
 	var profile = null;
 
 	var service = {
 		
-		init: function() { return API.sendRequest('/api/profile/', 'GET').then(function success(data) { profile = data; })},
+		init: function() {
+			
+			if (!$auth.isAuthenticated()) return null;
+			
+			return API.sendRequest('/api/profile/', 'GET').then(function success(data) { profile = data; });
+		},
 		
 		setProfile: function(newProfile) { return API.sendRequest('/api/profile/edit/', 'POST', {}, newProfile).then(function success(data) { profile = newProfile; })},
 		
