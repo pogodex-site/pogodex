@@ -10,7 +10,11 @@
                 {{data.pokemon.name}}
             </span>
             
-            <span ng-if="!data.owner.is_owned" class="pull-right mt-1">{{data.owner.name}}</span>
+            <div ng-if="!isAuthenticated()" class="pull-right">
+                <a ui-sref="base.account.login" class="btn btn-primary">
+                    {{'login_LINK' | translate}}
+                </a>
+            </div>
             
             <div ng-show="!isLoading && data.owner.is_owned && data.pokemon" class="pull-right ml-4 dropdown">
                 
@@ -68,6 +72,10 @@
             
             <div ng-show="!isLoading && !isProfileLoading && data.pokemon">
                 
+                <div ng-if="!data.owner.is_owned" class="text-center">
+                    {{'pokemon_view_OWNERBY' | translate}} <strong>{{data.owner.name}}</strong>
+                </div>
+            
                 <div class="text-center">
                     <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
                 </div>
