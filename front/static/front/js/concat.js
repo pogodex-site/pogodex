@@ -2206,8 +2206,8 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 	
 	function _compareByDexnumber(a, b) {
 		
-		if (a.dexnumber > b.dexnumber) return 1;
-		if (a.dexnumber < b.dexnumber) return -1;
+		if (a.number > b.number) return 1;
+		if (a.number < b.number) return -1;
 		return 0;
 	}
 	
