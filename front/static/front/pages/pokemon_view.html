@@ -68,9 +68,19 @@
             
             <div ng-show="!isLoading && !isProfileLoading && data.pokemon">
                 
-                <p class="text-center">
+                <div class="text-center">
                     <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
-                </p>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-12 text-center">
+                        <span ng-repeat="type in data.db.types">
+                            <span ng-hide="$index == 0" class="text-muted mx-2">/</span>
+                            <i class="ico_type {{type}}"></i>
+                            <span class="small text-uppercase font-weight-bold text-{{type}}">{{'pokemon_type_' + type | translate}}</span>
+                        </span>
+                    </div>
+                </div>
                 
                 <div class="row mb-2">
                     

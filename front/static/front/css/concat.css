@@ -182,3 +182,50 @@ select.form-control:not([size]):not([multiple]) { height: auto; }
 
 .text-primary { color: #673AB7 !important; }
 .text-muted { color: #c3c3c4 !important }
+
+
+
+/* Pokemon types ------------------------------------------------------------ */
+
+.text-bug 		{ color: #92a20f !important; }
+.text-fighting 	{ color: #c03028!important; }
+.text-electr 	{ color: #e0b301!important; }
+.text-dark 		{ color: #705848!important; }
+.text-ghost 	{ color: #705898!important; }
+.text-fairy 	{ color: #ffaec9!important; }
+.text-psycho 	{ color: #f85888!important; }
+.text-water 	{ color: #6890f0!important; }
+.text-flying 	{ color: #a890f0!important; }
+.text-ice 		{ color: #a8a878!important; }
+.text-rock 		{ color: #b8a038!important; }
+.text-steel 	{ color: #676793!important; }
+.text-grass 	{ color: #78c850!important; }
+.text-fire 		{ color: #f08030!important; }
+.text-ground 	{ color: #896e25!important; }
+.text-poison 	{ color: #a040a0!important; }
+.text-dragon 	{ color: #7038f8!important; }
+.text-normal 	{ color: #A8A878!important; }
+
+.ico_type { width: 16px; height: 16px; display: inline-block; vertical-align: middle; background: url('/static/front/img/types_sprite.png'); background-size: 80px 64px; }
+
+.ico_type.bug 		{ background-position:   0%   0%; }
+.ico_type.fighting 	{ background-position:  25%   0%; }
+.ico_type.electr 	{ background-position:  50%   0%; }
+.ico_type.dark     	{ background-position:  75%   0%; }
+.ico_type.ghost     { background-position: 100%   0%; }
+
+.ico_type.fairy 	{ background-position:   0%  33%; }
+.ico_type.psycho 	{ background-position:  25%  33%; }
+.ico_type.water 	{ background-position:  50%  33%; }
+.ico_type.flying 	{ background-position:  75%  33%; }
+.ico_type.ice 		{ background-position: 100%  33%; }
+
+.ico_type.rock 		{ background-position:   0%  66%; }
+.ico_type.steel 	{ background-position:  25%  66%; }
+.ico_type.grass 	{ background-position:  50%  66%; }
+.ico_type.fire 		{ background-position:  75%  66%; }
+.ico_type.ground 	{ background-position: 100%  66%; }
+
+.ico_type.poison 	{ background-position:   0% 100%; }
+.ico_type.dragon 	{ background-position:  25% 100%; }
+.ico_type.normal 	{ background-position:  50% 100%; }
