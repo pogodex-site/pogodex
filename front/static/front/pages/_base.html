@@ -1,17 +1,31 @@
-<div class="container base pt-4">
-
-	<a ui-sref="base.welcome" class="d-block text-center mt-4 mb-4 p-2">
-	    <img src="/static/front/img/logo.png" width="64" height="64" style="opacity:.75;" />
-	    <h3 class="text-primary">MyPoGoDex</h3>
-	</a>
-	        
-	<div class="text-center mb-4" ng-controller="LangCtrl">
+<div class="content">
+	<div class="container base">
+	
+		<a ui-sref="base.welcome" class="d-block text-center m-4 p-2">
+		    <img src="/static/front/img/logo.png" width="64" height="64" style="opacity:.75;" />
+		    <h3 class="text-primary">MyPoGoDex</h3>
+		</a>
+		        
+		<div class="text-center mb-4" ng-controller="LangCtrl">
+			
+			<a class="ml-2" href="javascript:;" ng-click="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span></a>
+			<a class="ml-2" href="javascript:;" ng-click="changeLanguage('en')"><span class="flag-icon flag-icon-gb"></span></a>
+			
+		</div>
 		
-		<a class="ml-2" href="javascript:;" ng-click="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span></a>
-		<a class="ml-2" href="javascript:;" ng-click="changeLanguage('en')"><span class="flag-icon flag-icon-gb"></span></a>
-		
+		<div ui-view=""></div>
+	
 	</div>
-	
-	<div ui-view=""></div>
-	
+</div>
+
+
+<div class="navbar navbar-bottom">
+    <div class="container text-center">
+        
+        <small class="navbar-text p-0">
+            <a href="mailto:pogodex.site@gmail.com" class="mr-2"><i class="fa fa-envelope"></i></a>
+            Copyright <strong>DECONINCK Frédéric</strong> © 2017
+        </small>
+        
+    </div>
 </div>

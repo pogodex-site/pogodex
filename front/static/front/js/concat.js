@@ -794,6 +794,7 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		.state('base', { templateUrl: '/static/front/pages/_base.html', })
 		
+			.state('base.about',      { url: '/about',      templateUrl: '/static/front/pages/about.html',      data:{ labelKey: 'about_TITLE',      }})
 			.state('base.welcome',    { url: '/welcome',    templateUrl: '/static/front/pages/welcome.html',    data:{ labelKey: 'welcome_TITLE',    }})
 			.state('base.restricted', { url: '/restricted', templateUrl: '/static/front/pages/restricted.html', data:{ labelKey: 'restricted_TITLE', }})
 			
@@ -1368,6 +1369,15 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		welcome_TEXT: 'Enregistrez, évaluez et partagez vos pokémons préférés',
 		
 		welcome_BTN: 'Entrez !',
+		
+		/* About */
+		
+		about_TITLE: 'A propos',
+		
+		about_LINK: 'A propos de MyPoGoDex',
+		
+		about_TEXT1: 'MyPoGoDex est un site de partage autour du jeu Pokemon GO. Vous pourrez y enregistrer vos pokémons préférés afin de les partager. Vos pokémons seront analysés pour vour fournir des informations utiles sur leur valeur réelle.',
+		about_TEXT2: 'Voir un example',
 		
 		/* Login */
 		

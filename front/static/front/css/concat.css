@@ -206,7 +206,7 @@ select.form-control:not([size]):not([multiple]) { height: auto; }
 .text-dragon 	{ color: #7038f8!important; }
 .text-normal 	{ color: #A8A878!important; }
 
-.ico_type { width: 16px; height: 16px; display: inline-block; vertical-align: middle; background: url('/static/front/img/types_sprite.png'); background-size: 80px 64px; }
+.ico_type { width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom; background: url('/static/front/img/types_sprite.png'); background-size: 80px 64px; }
 
 .ico_type.bug 		{ background-position:   0%   0%; }
 .ico_type.fighting 	{ background-position:  25%   0%; }
