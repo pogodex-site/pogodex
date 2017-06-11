@@ -908,6 +908,15 @@ angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer
 		
 		welcome_BTN: 'Open',
 		
+		/* About */
+		
+		about_TITLE: 'About',
+		
+		about_LINK: 'About MyPoGoDex',
+		
+		about_TEXT1: 'MyPoGoDex is a site of sharing around Pokemon GO video game. You could register your favorite pokemons to share them. Your pokemons will be evaluated to provide useful informations about their real abilities.',
+		about_TEXT2: 'See a sample',
+		
 		/* Login */
 		
 		login_TITLE: 'Sign in',
