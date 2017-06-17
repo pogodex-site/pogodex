@@ -66,6 +66,8 @@ class Pokemon(models.Model):
     
     ref = models.CharField(max_length=32, default=_createRef, unique=True)
     
+    level = models.FloatField(default=0.0)
+    
     def __unicode__(self):
         return self.user.username + ' - ' + self.name
 

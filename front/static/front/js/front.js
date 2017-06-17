@@ -715,9 +715,951 @@ data_stardust.set( 8000, {'levels': [35.0, 35.5, 36.0, 36.5]});
 data_stardust.set( 9000, {'levels': [37.0, 37.5, 38.0, 38.5]});
 data_stardust.set(10000, {'levels': [39.0, 39.5, 40.0, 40.5]});
 
+var data_appraisal3 = new Map();
+data_level.set( 0,	{'min': 15,	'max': 15});
+data_level.set( 1,	{'min': 13,	'max': 14});
+data_level.set( 2,	{'min':  8,	'max': 12});
+data_level.set( 3,	{'min':  0,	'max':  7});
+
+var en_translations = {
+	
+	lang_CODE: 'en',
+	lang_FLAG: 'gb',
+	lang_LABEL: 'English',
+	
+	site_DESC: 'Analyze and share your favorite Pokemons',
+	
+	menu_POGODEX: 'My Pokemons',
+	menu_IVCALCULATOR: 'IV Calculator',
+	menu_CHARTS: 'Charts',
+	menu_POKEDEX: 'Pokedex',
+	
+	error_EMAIL: 'A well formatted email address is required.',
+	error_TIMEOUT: 'Server timed out. Please try again.',
+	error_REQUIRED: 'This field is mandatory.',
+	error_NOELEMENT: 'No valid value',
+	error_NOCONNECTION: 'Could not connect. Please try again.',
+	error_INTEGRITY_ERROR: 'A server error occured.',
+	
+	notif_ERROR: 'A server error occured',
+	notif_SUCCESS: 'Operation success',
+	
+	btn_NO: 'No',
+	btn_YES: 'Yes',
+	
+	restricted_TEXT: 'Access to this page is restricted. You must be signed in before accessing it.',
+	
+	/* Pokemon */
+	
+	pokemon_CP: 'CP',
+	pokemon_HP: 'HP',
+	pokemon_CODE: 'Pokemon',
+	pokemon_NAME: 'Name',
+	pokemon_TEAM: 'Team',
+	pokemon_LEVEL: 'Level',
+	pokemon_ATTACK: 'Attack',
+	pokemon_LOADING: 'Power Up',
+	pokemon_PERCENT: 'Perfection',
+	pokemon_DEFENSE: 'Defense',
+	pokemon_STIGMATA: 'Stigmata',
+	pokemon_STARDUST: 'Stardust',
+	pokemon_CANDIESREQUIRED: 'Candies required',
+	pokemon_STARDUSTREQUIRED: 'Stardust required',
+	
+	pokemon_APP1: 'Appraise #1',
+	pokemon_APP2: 'Appraise #2',
+	pokemon_APP3: 'Appraise #3',
+	
+	pokemon_app1_CHOICE3_red: '... may not be great in battle, but I still like it!',
+	pokemon_app1_CHOICE2_red: '... is a decent pokemon.',
+	pokemon_app1_CHOICE1_red: '... is a strong pokemon. You should be proud!',
+	pokemon_app1_CHOICE0_red: '... simply amazes me. It can accomplish anything!',
+	
+	pokemon_app1_CHOICE3_blue: '... is not likely to make much headway in battle.',
+	pokemon_app1_CHOICE2_blue: '... is above average.',
+	pokemon_app1_CHOICE1_blue: '... has certainly caught my attention.',
+	pokemon_app1_CHOICE0_blue: '... is a wonder! What a breathtaking pokemon!',
+
+	pokemon_app1_CHOICE3_yellow: '... has room for improvement as far as battling goes.',
+	pokemon_app1_CHOICE2_yellow: '... is pretty decent!',
+	pokemon_app1_CHOICE1_yellow: '... is really strong!',
+	pokemon_app1_CHOICE0_yellow: '... looks like it can really battle with the best of them!',
+	
+	pokemon_app3_CHOICE3_red: 'Its stats don\'t point to greatness in battle.',
+	pokemon_app3_CHOICE2_red: 'Its stats indicate that in battle, it\'ll get the job done.',
+	pokemon_app3_CHOICE1_red: 'It\'s got excellent stats! How exciting!',
+	pokemon_app3_CHOICE0_red: 'I\'m blown away by its stats. WOW!',
+	
+	pokemon_app3_CHOICE3_blue: 'Its stats are not out of the norm, in my estimation.',
+	pokemon_app3_CHOICE2_blue: 'Its stats are noticeably trending to the positive.',
+	pokemon_app3_CHOICE1_blue: 'I am certainly impressed by its stats, I must say.',
+	pokemon_app3_CHOICE0_blue: 'Its stats exceed my calculations. It\'s incredible!',
+	
+	pokemon_app3_CHOICE3_yellow: 'Its stats are all right, but kinda basic, as far as I can see.',
+	pokemon_app3_CHOICE2_yellow: 'It\'s definitely got some good stats. Definitely!',
+	pokemon_app3_CHOICE1_yellow: 'Its stats are really strong! Impressive',
+	pokemon_app3_CHOICE0_yellow: 'Its stats are the best I\'ve ever seen! No doubt about it!',
+	
+	/* Team */
+	
+	team_red: 'Valor',
+	team_blue: 'Mystic',
+	team_yellow: 'Instinct',
+	
+	/* Home */
+	
+	home_TITLE: 'Welcome',
+	
+	home_TEXT: 'You could register your favorite Pokemons to share them. Your Pokemons will be analyzed to provide useful informations about their real abilities. Try it!',
+	
+	home_FIELDLABEL: 'Select a Pokemon',
+	
+	home_BTN: 'Analyze',
+
+	/* Login */
+	
+	login_LINK: 'Sign in',
+	
+	login_TITLE: 'Sign in',
+	login_PAGE: 'Sign in to MyPoGoDex',
+	
+	login_local_BTN: 'Sign in',
+	login_facebook_BTN: 'Sign in with Facebook',
+	
+	login_SUBTITLE: 'Sign in with a local account',
+	
+	login_pwd_PLACEHOLDER: 'Password',
+	login_user_PLACEHOLDER: 'Username',
+	
+	error_USER_UNKNOWN: 'Username and/or password are not correct',
+	
+	/* Register */
+	
+	register_LINK: 'Sign up',
+	
+	register_TITLE: 'Sign up',
+	register_PAGE: 'Sign up to MyPoGoDex',
+	
+	register_user_PLACEHOLDER: 'Username',
+	register_pwd1_PLACEHOLDER: 'Password',
+	register_pwd2_PLACEHOLDER: 'Confirm password',
+	register_email_PLACEHOLDER: 'Email',
+	
+	register_TEXT1: 'By clicking on \'Sign up\', you agree with usage conditions and privacy policy',
+	
+	register_BTN: 'Sign up',
+	
+	error_PASSWORDS_NOT_EQUAL: 'Passwords are not the same.',
+	error_USERNAME_ALREADY_EXISTS: 'This username is already used.',
+
+	/* Logout */
+	
+	logout_LINK: 'Sign out',
+	
+	/* Profile */
+	
+	profile_LINK: 'Profile',
+
+	profile_TITLE: 'Profile',
+	profile_PAGE: 'Trainer Profile',
+	
+	profile_NAME: 'Name',
+	profile_TEAM: 'Team',
+	profile_LEVEL: 'Level',
+	
+	/* IV Calculator */
+	
+	ivcalculator_LINK: 'IV Calculator',
+	
+	ivcalculator_TITLE: 'IV Calculator',
+	ivcalculator_PAGE: 'Compute IVs of a Pokemon',
+
+	ivcalculator_BTN1: 'Evaluate',
+	ivcalculator_BTN2: 'Save',
+	
+	ivcalculator_NORESULT: 'No accurate result',
+	
+	ivcalculator_RESULT: 'Result',
+	
+	ivcalculator_NOSAVE: 'To save this result: ',
+
+	/* Pogodex */
+	
+	pogodex_TITLE: 'My Pokemons',
+	pogodex_PAGE: 'List of saved Pokemons',
+	
+	pogodex_SUBTITLE: 'Sorted by ',
+	
+	pogodex_NOPOKEMON: 'Add as many pokemons as you want thanks to ',
+	
+	pogodex_sort_PERCENT: 'perfection',
+	pogodex_sort_DEXNUMBER: 'pokedex number',
+	pogodex_sort_NAME: 'name',
+	pogodex_sort_ATTACK: 'IV Attack',
+	pogodex_sort_DEFENSE: 'IV Defense',
+	pogodex_sort_STIGMATA: 'IV Stigmata',
+
+	/* Pokemon view */
+	
+	pokemon_TITLE: 'Pokemon',
+	
+	pokemon_view_CURRENT: 'Status',
+
+	pokemon_view_NOSTATUS: 'Pokemon status cannot be computed since your profile is not filled.',
+
+	pokemon_view_PROFILELINK: 'Fill my profile',
+	
+	pokemon_view_NOPOKEMON: 'No pokemon',
+
+	pokemon_view_SHARELINK: 'Share link',
+	
+	pokemon_view_OWNERBY: 'A pokemon by',
+
+	pokemon_delete_CONFIRM: 'Are you sure to remove this pokemon?',
+	
+	/* Pokedex */
+	
+	pokedex_TITLE: 'Pokedex',
+	
+	pokedex_TEXT: 'Page under construction',
+	
+	/* Pokemon labels */
+
+	squirtle: 'Squirtle',
+	ivysaur: 'Ivysaur',
+	wartortle: 'Wartortle',
+	venusaur: 'Venusaur',
+	charizard: 'Charizard',
+	bulbasaur: 'Bulbasaur',
+	charmander: 'Charmander',
+	charmeleon: 'Charmeleon',
+	blastoise: 'Blastoise',
+	caterpie: 'Caterpie',
+	metapod: 'Metapod',
+	butterfree: 'Butterfree',
+	weedle: 'Weedle',
+	kakuna: 'Kakuna',
+	beedrill: 'Beedrill',
+	pidgey: 'Pidgey',
+	pidgeotto: 'Pidgeotto',
+	pidgeot: 'Pidgeot',
+	rattata: 'Rattata',
+	raticate: 'Raticate',
+	spearow: 'Spearow',
+	fearow: 'Fearow',
+	ekans: 'Ekans',
+	arbok: 'Arbok',
+	pikachu: 'Pikachu',
+	raichu: 'Raichu',
+	sandshrew: 'Sandshrew',
+	sandslash: 'Sandslash',
+	nidoranfemale: 'Nidoranfemale',
+	nidorina: 'Nidorina',
+	nidoqueen: 'Nidoqueen',
+	nidoranmale: 'Nidoranmale',
+	nidorino: 'Nidorino',
+	nidoking: 'Nidoking',
+	clefairy: 'Clefairy',
+	clefable: 'Clefable',
+	vulpix: 'Vulpix',
+	ninetales: 'Ninetales',
+	jigglypuff: 'Jigglypuff',
+	wigglytuff: 'Wigglytuff',
+	zubat: 'Zubat',
+	golbat: 'Golbat',
+	oddish: 'Oddish',
+	gloom: 'Gloom',
+	vileplume: 'Vileplume',
+	paras: 'Paras',
+	parasect: 'Parasect',
+	venonat: 'Venonat',
+	venomoth: 'Venomoth',
+	diglett: 'Diglett',
+	dugtrio: 'Dugtrio',
+	meowth: 'Meowth',
+	persian: 'Persian',
+	psyduck: 'Psyduck',
+	golduck: 'Golduck',
+	mankey: 'Mankey',
+	primeape: 'Primeape',
+	growlithe: 'Growlithe',
+	arcanine: 'Arcanine',
+	poliwag: 'Poliwag',
+	poliwhirl: 'Poliwhirl',
+	poliwrath: 'Poliwrath',
+	abra: 'Abra',
+	kadabra: 'Kadabra',
+	alakazam: 'Alakazam',
+	machop: 'Machop',
+	machoke: 'Machoke',
+	machamp: 'Machamp',
+	bellsprout: 'Bellsprout',
+	weepinbell: 'Weepinbell',
+	victreebel: 'Victreebel',
+	tentacool: 'Tentacool',
+	tentacruel: 'Tentacruel',
+	geodude: 'Geodude',
+	graveler: 'Graveler',
+	golem: 'Golem',
+	ponyta: 'Ponyta',
+	rapidash: 'Rapidash',
+	slowpoke: 'Slowpoke',
+	slowbro: 'Slowbro',
+	magnemite: 'Magnemite',
+	magneton: 'Magneton',
+	farfetchd: 'Farfetchd',
+	doduo: 'Doduo',
+	dodrio: 'Dodrio',
+	seel: 'Seel',
+	dewgong: 'Dewgong',
+	grimer: 'Grimer',
+	muk: 'Muk',
+	shellder: 'Shellder',
+	cloyster: 'Cloyster',
+	gastly: 'Gastly',
+	haunter: 'Haunter',
+	gengar: 'Gengar',
+	onix: 'Onix',
+	drowzee: 'Drowzee',
+	hypno: 'Hypno',
+	krabby: 'Krabby',
+	kingler: 'Kingler',
+	voltorb: 'Voltorb',
+	electrode: 'Electrode',
+	exeggcute: 'Exeggcute',
+	exeggutor: 'Exeggutor',
+	cubone: 'Cubone',
+	marowak: 'Marowak',
+	hitmonlee: 'Hitmonlee',
+	hitmonchan: 'Hitmonchan',
+	lickitung: 'Lickitung',
+	koffing: 'Koffing',
+	weezing: 'Weezing',
+	rhyhorn: 'Rhyhorn',
+	rhydon: 'Rhydon',
+	chansey: 'Chansey',
+	tangela: 'Tangela',
+	kangaskhan: 'Kangaskhan',
+	horsea: 'Horsea',
+	seadra: 'Seadra',
+	goldeen: 'Goldeen',
+	seaking: 'Seaking',
+	staryu: 'Staryu',
+	starmie: 'Starmie',
+	mrmime: 'Mrmime',
+	scyther: 'Scyther',
+	jynx: 'Jynx',
+	electabuzz: 'Electabuzz',
+	magmar: 'Magmar',
+	pinsir: 'Pinsir',
+	tauros: 'Tauros',
+	magikarp: 'Magikarp',
+	gyarados: 'Gyarados',
+	lapras: 'Lapras',
+	ditto: 'Ditto',
+	eevee: 'Eevee',
+	vaporeon: 'Vaporeon',
+	jolteon: 'Jolteon',
+	flareon: 'Flareon',
+	porygon: 'Porygon',
+	omanyte: 'Omanyte',
+	omastar: 'Omastar',
+	kabuto: 'Kabuto',
+	kabutops: 'Kabutops',
+	aerodactyl: 'Aerodactyl',
+	snorlax: 'Snorlax',
+	dratini: 'Dratini',
+	dragonair: 'Dragonair',
+	dragonite: 'Dragonite',
+	chikorita: 'Chikorita',
+	bayleef: 'Bayleef',
+	meganium: 'Meganium',
+	cyndaquil: 'Cyndaquil',
+	quilava: 'Quilava',
+	typhlosion: 'Typhlosion',
+	totodile: 'Totodile',
+	croconaw: 'Croconaw',
+	feraligatr: 'Feraligatr',
+	sentret: 'Sentret',
+	furret: 'Furret',
+	hoothoot: 'Hoothoot',
+	noctowl: 'Noctowl',
+	ledyba: 'Ledyba',
+	ledian: 'Ledian',
+	spinarak: 'Spinarak',
+	ariados: 'Ariados',
+	crobat: 'Crobat',
+	chinchou: 'Chinchou',
+	lanturn: 'Lanturn',
+	pichu: 'Pichu',
+	cleffa: 'Cleffa',
+	igglybuff: 'Igglybuff',
+	togepi: 'Togepi',
+	togetic: 'Togetic',
+	natu: 'Natu',
+	xatu: 'Xatu',
+	mareep: 'Mareep',
+	flaaffy: 'Flaaffy',
+	ampharos: 'Ampharos',
+	bellossom: 'Bellossom',
+	marill: 'Marill',
+	azumarill: 'Azumarill',
+	sudowoodo: 'Sudowoodo',
+	politoed: 'Politoed',
+	hoppip: 'Hoppip',
+	skiploom: 'Skiploom',
+	jumpluff: 'Jumpluff',
+	aipom: 'Aipom',
+	sunkern: 'Sunkern',
+	sunflora: 'Sunflora',
+	yanma: 'Yanma',
+	wooper: 'Wooper',
+	quagsire: 'Quagsire',
+	espeon: 'Espeon',
+	umbreon: 'Umbreon',
+	murkrow: 'Murkrow',
+	slowking: 'Slowking',
+	misdreavus: 'Misdreavus',
+	unown: 'Unown',
+	wobbuffet: 'Wobbuffet',
+	girafarig: 'Girafarig',
+	pineco: 'Pineco',
+	forretress: 'Forretress',
+	dunsparce: 'Dunsparce',
+	gligar: 'Gligar',
+	steelix: 'Steelix',
+	snubbull: 'Snubbull',
+	granbull: 'Granbull',
+	qwilfish: 'Qwilfish',
+	scizor: 'Scizor',
+	shuckle: 'Shuckle',
+	heracross: 'Heracross',
+	sneasel: 'Sneasel',
+	teddiursa: 'Teddiursa',
+	ursaring: 'Ursaring',
+	slugma: 'Slugma',
+	magcargo: 'Magcargo',
+	swinub: 'Swinub',
+	piloswine: 'Piloswine',
+	corsola: 'Corsola',
+	remoraid: 'Remoraid',
+	octillery: 'Octillery',
+	mantine: 'Mantine',
+	skarmory: 'Skarmory',
+	houndour: 'Houndour',
+	houndoom: 'Houndoom',
+	kingdra: 'Kingdra',
+	phanpy: 'Phanpy',
+	donphan: 'Donphan',
+	porygon2: 'Porygon2',
+	stantler: 'Stantler',
+	tyrogue: 'Tyrogue',
+	hitmontop: 'Hitmontop',
+	smoochum: 'Smoochum',
+	elekid: 'Elekid',
+	magby: 'Magby',
+	miltank: 'Miltank',
+	blissey: 'Blissey',
+	larvitar: 'Larvitar',
+	pupitar: 'Pupitar',
+	tyranitar: 'Tyranitar',
+	
+	/* Pokemon types */
+	
+	pokemon_type_bug: 'Bug',
+	pokemon_type_fighting: 'Fighting',
+	pokemon_type_electr: 'Electric',
+	pokemon_type_dark: 'Dark',
+	pokemon_type_ghost: 'Ghost',
+
+	pokemon_type_fairy: 'Fairy',
+	pokemon_type_psycho: 'Psycho',
+	pokemon_type_water: 'Water',
+	pokemon_type_flying: 'Flying',
+	pokemon_type_ice: 'Ice',
+
+	pokemon_type_rock: 'Rock',
+	pokemon_type_steel: 'Steel',
+	pokemon_type_grass: 'Grass',
+	pokemon_type_fire: 'Fire',
+	pokemon_type_ground: 'Ground',
+
+	pokemon_type_poison: 'Poison',
+	pokemon_type_dragon: 'Dragon',
+	pokemon_type_normal: 'Normal',
+};
+
+var fr_translations = {
+	
+	lang_CODE: 'fr',
+	lang_FLAG: 'fr',
+	lang_LABEL: 'Français',
+	
+	site_DESC: 'Evaluez et partagez vos Pokémons favoris',
+	
+	menu_POGODEX: 'Mes Pokemons',
+	menu_IVCALCULATOR: 'Calculateur d\'IV',
+	menu_CHARTS: 'Guides',
+	menu_POKEDEX: 'Pokédex',
+	
+	error_EMAIL: 'Une adresse email bien formattée est requise.',
+	error_TIMEOUT: 'Délai d\'attente dépassé. Réessayez svp.',
+	error_REQUIRED: 'Ce champ est obligatoire.',
+	error_NOELEMENT: 'Aucun élément',
+	error_NOCONNECTION: 'Le serveur ne répond pas. Réessayez svp.',
+	error_INTEGRITY_ERROR: 'Une erreur server est survenue.',
+	
+	notif_ERROR: 'Une erreur est survenue',
+	notif_SUCCESS: 'Opération réussie',
+	
+	btn_NO: 'Non',
+	btn_YES: 'Oui',
+	
+	restricted_TEXT: 'L\'accès à cette page est restreint. Vous devez être connecté pour y accéder.',
+	
+	/* Pokemon */
+	
+	pokemon_CP: 'PC',
+	pokemon_HP: 'PV',
+	pokemon_CODE: 'Pokémon',
+	pokemon_NAME: 'Nom',
+	pokemon_TEAM: 'Equipe',
+	pokemon_LEVEL: 'Niveau',
+	pokemon_ATTACK: 'Attaque',
+	pokemon_LOADING: 'Recharge',
+	pokemon_PERCENT: 'Perfection',
+	pokemon_DEFENSE: 'Défense',
+	pokemon_STIGMATA: 'Endurance',
+	pokemon_STARDUST: 'Poussière',
+	pokemon_CANDIESREQUIRED: 'Bonbons requis',
+	pokemon_STARDUSTREQUIRED: 'Poussière requise',
+	
+	pokemon_APP1: 'Eval #1',
+	pokemon_APP2: 'Eval #2',
+	pokemon_APP3: 'Eval #3',
+	
+	pokemon_app1_CHOICE3_red: '... n’est pas un combattant mais je l’aime bien.',
+	pokemon_app1_CHOICE2_red: '... est un pokémon solide.',
+	pokemon_app1_CHOICE1_red: '... est très fort, tu dois être fier.',
+	pokemon_app1_CHOICE0_red: '... m’étonne beaucoup, il peut tout faire.',
+	
+	pokemon_app1_CHOICE3_blue: '... n’ira pas très loin au combat.',
+	pokemon_app1_CHOICE2_blue: '... est supérieur à la moyenne.',
+	pokemon_app1_CHOICE1_blue: '... a retenu toute mon attention.',
+	pokemon_app1_CHOICE0_blue: '... est une merveille. Un pokémon captivant !',
+
+	pokemon_app1_CHOICE3_yellow: '... peut devenir un meilleur combattant.',
+	pokemon_app1_CHOICE2_yellow: '... est plutôt bien.',
+	pokemon_app1_CHOICE1_yellow: '... est vraiment fort.',
+	pokemon_app1_CHOICE0_yellow: '... semble être capable de tenir tête aux meilleurs.',
+	
+	pokemon_app3_CHOICE3_red: 'Je suis renversée par ses statistiques. WOW !',
+	pokemon_app3_CHOICE2_red: 'Il a d\'excellentes statistiques ! Que c\'est excitant !',
+	pokemon_app3_CHOICE1_red: 'Ses statistiques indiquent qu\'en combat, il fera le job.',
+	pokemon_app3_CHOICE0_red: 'Ses statistiques ne font pas espérer d\'excellentes batailles.',
+	
+	pokemon_app3_CHOICE3_blue: 'Ses statistiques ne dépassent pas de la moyenne à mon avis.',
+	pokemon_app3_CHOICE2_blue: 'Ses statistiques tendent notablement vers le positif.',
+	pokemon_app3_CHOICE1_blue: 'Je suis certainement impressionnée par ses statistiques, je dois le dire !',
+	pokemon_app3_CHOICE0_blue: 'Ses statistiques dépassent mes calculs. C\'est incroyable !',
+	
+	pokemon_app3_CHOICE3_yellow: 'Ses statistiques sont bien, mais plutôt basiques, d\'après ce que je vois.',
+	pokemon_app3_CHOICE2_yellow: 'Il a définitivement quelques bonnes statistiques. Définitivement !',
+	pokemon_app3_CHOICE1_yellow: 'Ses statistiques sont vraiment fortes ! Impressionnant.',
+	pokemon_app3_CHOICE0_yellow: 'Ses statistiques sont les meilleures que j\'ai jamais vues ! Aucun doute là dessus !',
+	
+	/* Team */
+	
+	team_red: 'Bravoure',
+	team_blue: 'Sagesse',
+	team_yellow: 'Intuition',
+	
+	/* Home */
+	
+	home_TITLE: 'Bienvenue',
+	
+	home_TEXT: 'Vous pouvez enregistrer vos Pokémons préférés afin de les partager. Vos Pokémons seront évalués pour vous fournir les informations utiles sur leur valeur réelle. Essayez !',
+	
+	home_FIELDLABEL: 'Sélectionnez un Pokémon',
+	
+	home_BTN: 'Evaluez',
+
+	/* Login */
+	
+	login_LINK: 'Se connecter',
+	
+	login_TITLE: 'Connexion',
+	login_PAGE: 'Se connecter à MyPoGoDex',
+	
+	login_local_BTN: 'Se connecter',
+	login_facebook_BTN: 'Se connecter avec Facebook',
+	
+	login_SUBTITLE: 'Se connecter avec un compte local',
+	
+	login_pwd_PLACEHOLDER: 'Mot de passe',
+	login_user_PLACEHOLDER: 'Nom d\'utilisateur',
+	
+	error_USER_UNKNOWN: 'Nom d\'utilisateur et/ou mot de passe incorrects',
+	
+	/* Register */
+	
+	register_LINK: 'S\'inscrire',
+	
+	register_TITLE: 'Inscription',
+	register_PAGE: 'S\'inscrire sur MyPoGoDex',
+	
+	register_user_PLACEHOLDER: 'Nom d\'utilisateur',
+	register_pwd1_PLACEHOLDER: 'Mot de passe',
+	register_pwd2_PLACEHOLDER: 'Confirmer le mot de passe',
+	register_email_PLACEHOLDER: 'Email',
+	
+	register_TEXT1: 'En cliquant sur \'S\'inscire\', vous déclarez être en accord avec les conditions et la politique des données privées',
+	
+	register_BTN: 'S\'inscrire',
+	
+	error_PASSWORDS_NOT_EQUAL: 'Les mots de passe saisis ne sont pas identiques.',
+	error_USERNAME_ALREADY_EXISTS: 'Un utilisateur avec ce nom existe déjà.',
+
+	/* Logout */
+	
+	logout_LINK: 'Se déconnecter',
+	
+	/* Profile */
+	
+	profile_LINK: 'Profil',
+
+	profile_TITLE: 'Profil',
+	profile_PAGE: 'Profil de dresseur',
+	
+	profile_NAME: 'Nom',
+	profile_TEAM: 'Equipe',
+	profile_LEVEL: 'Niveau',
+	
+	/* IV Calculator */
+	
+	ivcalculator_LINK: 'Calculateur d\'IV',
+	
+	ivcalculator_TITLE: 'Calculateur d\'IV',
+	ivcalculator_PAGE: 'Calculer les IVs d\'un Pokémon',
+
+	ivcalculator_BTN1: 'Evaluer',
+	ivcalculator_BTN2: 'Enregistrer',
+	
+	ivcalculator_NORESULT: 'Aucun résultat possible',
+	
+	ivcalculator_RESULT: 'Résultat',
+	
+	ivcalculator_NOSAVE: 'Pour enregitrer ce résulat: ',
+
+	/* Pogodex */
+	
+	pogodex_TITLE: 'Mes Pokémons',
+	pogodex_PAGE: 'Liste des Pokémons enregitrés',
+	
+	pogodex_SUBTITLE: 'Trié par ',
+	
+	pogodex_NOPOKEMON: 'Ajoutez autant de pokémons que vous le souhaitez grâce au ',
+
+	pogodex_sort_PERCENT: 'perfection',
+	pogodex_sort_DEXNUMBER: 'numéro de pokédex',
+	pogodex_sort_NAME: 'nom',
+	pogodex_sort_ATTACK: 'IV d\'attaque',
+	pogodex_sort_DEFENSE: 'IV de défense',
+	pogodex_sort_STIGMATA: 'IV d\'endurance',
+	
+	/* Pokemon */
+	
+	pokemon_TITLE: 'Pokémon',
+	
+	pokemon_view_CURRENT: 'Status',
+
+	pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
+
+	pokemon_view_PROFILELINK: 'Renseigner mon profil',
+	
+	pokemon_view_NOPOKEMON: 'Aucun pokémon trouvé',
+
+	pokemon_view_SHARELINK: 'Lien de partage',
+	
+	pokemon_view_OWNERBY: 'Un pokemon de',
+
+	pokemon_delete_CONFIRM: 'Etes-vous sûr de vouloir supprimer ce pokémon ?',
+	
+	/* Pokedex */
+	
+	pokedex_TITLE: 'Pokédex',
+	
+	pokedex_TEXT: 'Page en cours de construction',
+
+	/* Pokemon labels */
+
+	squirtle: 'Carapuce',
+	ivysaur: 'Herbizarre',
+	wartortle: 'Carabaffe',
+	venusaur: 'Florizarre',
+	charizard: 'Dracaufeu',
+	bulbasaur: 'Bulbizarre',
+	charmander: 'Salamèche',
+	charmeleon: 'Reptincel',
+	blastoise: 'Tortank',
+	caterpie: 'Chenipan',
+	metapod: 'Chrysacier',
+	butterfree: 'Papilusion',
+	weedle: 'Aspicot',
+	kakuna: 'Coconfort',
+	beedrill: 'Dardargnan',
+	pidgey: 'Roucool',
+	pidgeotto: 'Roucoups',
+	pidgeot: 'Roucarnage',
+	rattata: 'Rattata',
+	raticate: 'Rattatac',
+	spearow: 'Piafabec',
+	fearow: 'Rapasdepic',
+	ekans: 'Abo',
+	arbok: 'Arbok',
+	pikachu: 'Pikachu',
+	raichu: 'Raichu',
+	sandshrew: 'Sabelette',
+	sandslash: 'Sablaireau',
+	nidoranfemale: 'Nidoran♀',
+	nidorina: 'Nidorina',
+	nidoqueen: 'Nidoqueen',
+	nidoranmale: 'Nidoran♂',
+	nidorino: 'Nidorino',
+	nidoking: 'Nidoking',
+	clefairy: 'Mélofée',
+	clefable: 'Mélodelfe',
+	vulpix: 'Goupix',
+	ninetales: 'Feunard',
+	jigglypuff: 'Rondoudou',
+	wigglytuff: 'Grodoudou',
+	zubat: 'Nosferapti',
+	golbat: 'Nosferalto',
+	oddish: 'Mystherbe',
+	gloom: 'Ortide',
+	vileplume: 'Rafflesia',
+	paras: 'Paras',
+	parasect: 'Parasect',
+	venonat: 'Mimitoss',
+	venomoth: 'Aéromite',
+	diglett: 'Taupiqueur',
+	dugtrio: 'Triopikeur',
+	meowth: 'Miaouss',
+	persian: 'Persian',
+	psyduck: 'Psykokwak',
+	golduck: 'Akwakwak',
+	mankey: 'Férosinge',
+	primeape: 'Colossinge',
+	growlithe: 'Caninos',
+	arcanine: 'Arcanin',
+	poliwag: 'Ptitard',
+	poliwhirl: 'Têtarte',
+	poliwrath: 'Tartard',
+	abra: 'Abra',
+	kadabra: 'Kadabra',
+	alakazam: 'Alakazam',
+	machop: 'Machoc',
+	machoke: 'Machopeur',
+	machamp: 'Mackogneur',
+	bellsprout: 'Chétiflor',
+	weepinbell: 'Boustiflor',
+	victreebel: 'Empiflor',
+	tentacool: 'Tentacool',
+	tentacruel: 'Tentacruel',
+	geodude: 'Racaillou',
+	graveler: 'Gravalanch',
+	golem: 'Grolem',
+	ponyta: 'Ponyta',
+	rapidash: 'Galopa',
+	slowpoke: 'Ramoloss',
+	slowbro: 'Flagadoss',
+	magnemite: 'Magnéti',
+	magneton: 'Magnéton',
+	farfetchd: 'Canarticho',
+	doduo: 'Doduo',
+	dodrio: 'Dodrio',
+	seel: 'Otaria',
+	dewgong: 'Lamantine',
+	grimer: 'Tadmorv',
+	muk: 'Grotadmorv',
+	shellder: 'Grotadmorv',
+	cloyster: 'Crustabri',
+	gastly: 'Fantominus',
+	haunter: 'Spectrum',
+	gengar: 'Ectoplasma',
+	onix: 'Onix',
+	drowzee: 'Soporifik',
+	hypno: 'Hypnomade',
+	krabby: 'Krabby',
+	kingler: 'Krabboss',
+	voltorb: 'Voltorbe',
+	electrode: 'Électrode',
+	exeggcute: 'Nœunœuf',
+	exeggutor: 'Noadkoko',
+	cubone: 'Osselait',
+	marowak: 'Ossatueur',
+	hitmonlee: 'Kicklee',
+	hitmonchan: 'Tygnon',
+	lickitung: 'Excelangue',
+	koffing: 'Smogo',
+	weezing: 'Smogogo',
+	rhyhorn: 'Rhinocorne',
+	rhydon: 'Rhinoféros',
+	chansey: 'Leveinard',
+	tangela: 'Saquedeneu',
+	kangaskhan: 'Kangourex',
+	horsea: 'Hypotrempe',
+	seadra: 'Hypocéan',
+	goldeen: 'Poissirène',
+	seaking: 'Poissoroy',
+	staryu: 'Stari',
+	starmie: 'Staross',
+	mrmime: 'M. Mime',
+	scyther: 'Insécateur',
+	jynx: 'Lippoutou',
+	electabuzz: 'Élektek',
+	magmar: 'Magmar',
+	pinsir: 'Scarabrute',
+	tauros: 'Tauros',
+	magikarp: 'Magicarpe',
+	gyarados: 'Léviator',
+	lapras: 'Lokhlass',
+	ditto: 'Métamorph',
+	eevee: 'Évoli',
+	vaporeon: 'Aquali',
+	jolteon: 'Voltali',
+	flareon: 'Pyroli',
+	porygon: 'Porygon',
+	omanyte: 'Amonita',
+	omastar: 'Amonistar',
+	kabuto: 'Kabuto',
+	kabutops: 'Kabutops',
+	aerodactyl: 'Ptéra',
+	snorlax: 'Ronflex',
+	dratini: 'Minidraco',
+	dragonair: 'Draco',
+	dragonite: 'Dracolosse',
+	chikorita: 'Germignon',
+	bayleef: 'Macronium',
+	meganium: 'Méganium',
+	cyndaquil: 'Héricendre',
+	quilava: 'Feurisson',
+	typhlosion: 'Typhlosion',
+	totodile: 'Kaiminus',
+	croconaw: 'Crocrodil',
+	feraligatr: 'Aligatueur',
+	sentret: 'Fouinette',
+	furret: 'Fouinar',
+	hoothoot: 'Hoothoot',
+	noctowl: 'Noarfang',
+	ledyba: 'Coxy',
+	ledian: 'Coxyclaque',
+	spinarak: 'Mimigal',
+	ariados: 'Migalos',
+	crobat: 'Nostenfer',
+	chinchou: 'Loupio',
+	lanturn: 'Lanturn',
+	pichu: 'Pichu',
+	cleffa: 'Mélo',
+	igglybuff: 'Toudoudou',
+	togepi: 'Togepi',
+	togetic: 'Togetic',
+	natu: 'Natu',
+	xatu: 'Xatu',
+	mareep: 'Wattouat',
+	flaaffy: 'Lainergie',
+	ampharos: 'Pharamp',
+	bellossom: 'Joliflor',
+	marill: 'Marill',
+	azumarill: 'Azumarill',
+	sudowoodo: 'Simularbre',
+	politoed: 'Tarpaud',
+	hoppip: 'Granivol',
+	skiploom: 'Floravol',
+	jumpluff: 'Cotovol',
+	aipom: 'Capumain',
+	sunkern: 'Tournegrin',
+	sunflora: 'Héliatronc',
+	yanma: 'Yanma',
+	wooper: 'Axoloto',
+	quagsire: 'Maraiste',
+	espeon: 'Mentali',
+	umbreon: 'Noctali',
+	murkrow: 'Cornèbre',
+	slowking: 'Roigada',
+	misdreavus: 'Feuforêve',
+	unown: 'Zarbi',
+	wobbuffet: 'Qulbutoké',
+	girafarig: 'Girafarig',
+	pineco: 'Pomdepik',
+	forretress: 'Foretress',
+	dunsparce: 'Insolourdo',
+	gligar: 'Scorplane',
+	steelix: 'Steelix',
+	snubbull: 'Snubbull',
+	granbull: 'Granbull',
+	qwilfish: 'Qwilfish',
+	scizor: 'Cizayox',
+	shuckle: 'Caratroc',
+	heracross: 'Scarhino',
+	sneasel: 'Farfuret',
+	teddiursa: 'Teddiursa',
+	ursaring: 'Ursaring',
+	slugma: 'Limagma',
+	magcargo: 'Volcaropod',
+	swinub: 'Marcacrin',
+	piloswine: 'Cochignon',
+	corsola: 'Corayon',
+	remoraid: 'Rémoraid',
+	octillery: 'Octillery',
+	mantine: 'Démanta',
+	skarmory: 'Airmure',
+	houndour: 'Malosse',
+	houndoom: 'Démolosse',
+	kingdra: 'Hyporoi',
+	phanpy: 'Phanpy',
+	donphan: 'Donphan',
+	porygon2: 'Porygon2',
+	stantler: 'Cerfrousse',
+	tyrogue: 'Debugant',
+	hitmontop: 'Kapoera',
+	smoochum: 'Lippouti',
+	elekid: 'Élekid',
+	magby: 'Magby',
+	miltank: 'Écrémeuh',
+	blissey: 'Leuphorie',
+	larvitar: 'Embrylex',
+	pupitar: 'Ymphect',
+	tyranitar: 'Tyranocif',
+	
+	/* Pokemon types */
+	
+	pokemon_type_bug: 'Insecte',
+	pokemon_type_fighting: 'Combat',
+	pokemon_type_electr: 'Electrik',
+	pokemon_type_dark: 'Ténèbre',
+	pokemon_type_ghost: 'Spectre',
+
+	pokemon_type_fairy: 'Fée',
+	pokemon_type_psycho: 'Psy',
+	pokemon_type_water: 'Eau',
+	pokemon_type_flying: 'Vol',
+	pokemon_type_ice: 'Glace',
+
+	pokemon_type_rock: 'Roche',
+	pokemon_type_steel: 'Acier',
+	pokemon_type_grass: 'Plante',
+	pokemon_type_fire: 'Feu',
+	pokemon_type_ground: 'Sol',
+
+	pokemon_type_poison: 'Poison',
+	pokemon_type_dragon: 'Dragon',
+	pokemon_type_normal: 'Normal',
+};
+
 angular.module('AngularApp.services', [])
 
-angular.module('AngularApp.services').service('API', function($q, $http, $cookies) {
+angular.module('AngularApp.services').service('API', function($q, $http, $cookies, $filter, toastr) {
 	
 	var service = {
 		
@@ -733,26 +1675,15 @@ angular.module('AngularApp.services').service('API', function($q, $http, $cookie
 					deferred.resolve(response.data, response.status);
 				}
 				, function errorCallback(response) {
-					
-					console.log('Error calling ' + url);
-				
+
 					if (response.status == 0) {
 						
-							if (response.data == '') {
-								
-								data = {};
-								data['status'] = 0;
-								data['server_errors'] = ['Could not connect. Please try again.'];
-							}
-							
-							if (response.data == null) {
-								
-								data = {};
-								data['status'] = 0;
-								data['server_errors'] = ['Server timed out. Please try again.'];
-							}
+						if (response.data == '') response.data = 'error_TIMEOUT';
+						if (response.data == null) response.data = 'error_NOCONNECTION';
 					}
 					
+					toastr.error($filter('translate')(response.data));
+
 					deferred.reject(response.data, response.status, response.headers, response.config);
 				});
 			
@@ -763,1488 +1694,287 @@ angular.module('AngularApp.services').service('API', function($q, $http, $cookie
 	return service;
 });
 
-angular.module('AngularApp.services').service('ProfileService', function($auth, API) {
+angular.module('AngularApp.services').service('UserService', function($auth, $http, $cookies, $state, API) {
 	
-	var profile = null;
-
 	var service = {
-		
+
+		data: {
+
+			name: null,
+			team: null,
+			level: null,
+			
+			authenticated: false,
+		},
+
 		init: function() {
+
+			if (!$auth.isAuthenticated()) return;
 			
-			if (!$auth.isAuthenticated()) return null;
+			service.data.authenticated = true;
 			
-			return API.sendRequest('/api/profile/', 'GET').then(function success(data) { profile = data; });
+			return API.sendRequest('/api/profile/', 'GET').then(function(response) {
+				
+				service.data.name = response.name;
+				service.data.team = response.team;
+				service.data.level = response.level;
+			});
+		},
+
+		logout: function() {
+			
+			delete $http.defaults.headers.common.Authorization;
+	    	delete $cookies.token;
+			
+			$auth.removeToken();
+			
+			service.data.name = null;
+			service.data.team = null;
+			service.data.level = null;
+			
+			service.data.authenticated = false;
+			
+			return API.sendRequest('/api/logout/', 'POST').then(function(response) {
+				
+				$state.go('root.home', {location: 'replace'});
+			});
 		},
 		
-		setProfile: function(newProfile) { return API.sendRequest('/api/profile/edit/', 'POST', {}, newProfile).then(function success(data) { profile = newProfile; })},
+		socialLogin: function(provider) {
+			
+			return $auth.authenticate(provider).then(function(response) {
+				
+				$auth.setToken(response.data.token);
+				$cookies.token = response.data.token;
+				
+				service.init();
+				
+				$state.go('root.pogodex', {location: 'replace'});
+			});
+		},
 		
-		getProfile: function() { return profile; },
+		localLogin: function(username, password) {
+			
+			var data = { 'username':username, 'password':password }
+			return API.sendRequest('/api/login/', 'POST', {}, data).then(function(response) {
+				
+				$auth.setToken(response.token);
+				$cookies.token = response.token;
+			
+				service.init();
+				
+				$state.go('root.pogodex', {location: 'replace'});
+			});
+		},
+		
+		register: function(username, password1, password2, email) {
+			
+			var data = { 'username':username, 'password1':password1, 'password2':password2, 'email':email }
+			return API.sendRequest('/api/register/', 'POST', {}, data).then(function(response) {
+				
+				$auth.setToken(response.token);
+				$cookies.token = response.token;
+				
+				service.init();
+				
+				$state.go('root.pogodex', {location: 'replace'});
+			});
+		},
+		
+		updateName: function(newvalue) {
+			
+			var data = { 'name':newvalue };
+			return API.sendRequest('/api/profile/name/', 'POST', {}, data).then(function(response) {
+				
+				service.data.name = newvalue;
+			});
+		},
+		
+		updateTeam: function(newvalue) {
+			
+			var data = { 'team':newvalue };
+			return API.sendRequest('/api/profile/team/', 'POST', {}, data).then(function(response) {
+				
+				service.data.team = newvalue;
+			});
+		},
+		
+		updateLevel: function(newvalue) {
+			
+			var data = { 'level':newvalue };
+			return API.sendRequest('/api/profile/level/', 'POST', {}, data).then(function(response) {
+				
+				service.data.level = newvalue;
+			});
+		},
 	};
 	
 	return service;
 });
 
-angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr', 'AngularApp.services']).config(function($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider, $authProvider) {
-
-	$urlRouterProvider.otherwise('/');
+angular.module('AngularApp.services').service('PokemonService', function($state, API) {
 	
-	$stateProvider
-	
-		.state('root', { url: '/', controller: 'RootCtrl', })
-		
-		.state('base', { templateUrl: '/static/front/pages/_base.html', })
-		
-			.state('base.about',      { url: '/about',      templateUrl: '/static/front/pages/about.html',      data:{ labelKey: 'about_TITLE',      }})
-			.state('base.welcome',    { url: '/welcome',    templateUrl: '/static/front/pages/welcome.html',    data:{ labelKey: 'welcome_TITLE',    }})
-			.state('base.restricted', { url: '/restricted', templateUrl: '/static/front/pages/restricted.html', data:{ labelKey: 'restricted_TITLE', }})
-			
-			.state('base.account', { controller: 'AccountCtrl', template: '<div ui-view=""></div>', })
-			
-				.state('base.account.login',    { url: '/login',    templateUrl: '/static/front/pages/login.html',    data:{ labelKey: 'login_TITLE',    }})
-				.state('base.account.register', { url: '/register', templateUrl: '/static/front/pages/register.html', data:{ labelKey: 'register_TITLE', }})
+	var service = {
 
-		.state('app', { abstract: true, templateUrl: '/static/front/pages/_app.html', resolve: { appData: function(ProfileService) { return ProfileService.init(); }}, })
-		
-			.state('app.profile', { parent:'app', url: '/profile', controller: 'ProfileCtrl', templateUrl: '/static/front/pages/profile_view.html', data:{ labelKey: 'profile_TITLE',      authenticated: true }})
-			
-				.state('app.profile.edit', { url: '/edit', templateUrl: '/static/front/pages/profile_edit.html', data:{ labelKey: 'profile_edit_TITLE', authenticated: true }})
-			
-			.state('app.pokedex', { parent:'app', url: '/pokedex', controller: 'PokedexCtrl', templateUrl: '/static/front/pages/pokedex_view.html', resolve: { pokedex: function(API) { return API.sendRequest('/api/pokemon/list/', 'POST'); }}, data:{ labelKey: 'pokedex_view_TITLE', authenticated: true, redirect: 'base.welcome' }})
-			
-				.state('app.pokedex.add',  { url: '/add', templateUrl: '/static/front/pages/pokedex_add.html',  data:{ labelKey: 'pokedex_add_TITLE',  authenticated: true }})
-
-			.state('app.pokemon', { parent:'app', url: '/pokemon/:ref', controller: 'PokemonCtrl', templateUrl: '/static/front/pages/pokemon_view.html', data:{ labelKey: 'pokemon_view_TITLE', authenticated: false }})
-			
-				.state('app.pokemon.edit', { url: '/edit', templateUrl: '/static/front/pages/pokemon_edit.html', data:{ labelKey: 'pokemon_edit_TITLE', authenticated: true  }})
-
-	$locationProvider.html5Mode(true);
-	
-	$translateProvider.useSanitizeValueStrategy(null);
-	
-	$translateProvider.preferredLanguage('en');
-	
-	$translateProvider.translations('en', {
-		
-		error_EMAIL: 'A well formatted email address is required.',
-		error_REQUIRED: 'This field is mandatory.',
-		error_NOELEMENT: 'No valid value',
-		error_INTEGRITY_ERROR: 'A server error occured.',
-		
-		notif_ERROR: 'A server error occured',
-		notif_SUCCESS: 'Operation success',
-		
-		btn_NO: 'No',
-		btn_YES: 'Yes',
-		
-		/* Pokemon */
-		
-		pokemon_CP: 'CP',
-		pokemon_HP: 'HP',
-		pokemon_CODE: 'Pokemon',
-		pokemon_NAME: 'Name',
-		pokemon_TEAM: 'Team',
-		pokemon_LEVEL: 'Level',
-		pokemon_ATTACK: 'Attack',
-		pokemon_LOADING: 'Power Up',
-		pokemon_PERCENT: 'Perfection',
-		pokemon_DEFENSE: 'Defense',
-		pokemon_STIGMATA: 'Stigmata',
-		pokemon_STARDUST: 'Stardust',
-		pokemon_CANDIESREQUIRED: 'Candies required',
-		pokemon_STARDUSTREQUIRED: 'Stardust required',
-		
-		pokemon_APP1: 'Overall, your pokemon ...',
-		pokemon_APP2: 'Its best attribute is ...',
-		pokemon_APP3: 'Stats Feedback',
-		
-		pokemon_app1_CHOICE3_red: '... may not be great in battle, but I still like it!',
-		pokemon_app1_CHOICE2_red: '... is a decent pokemon.',
-		pokemon_app1_CHOICE1_red: '... is a strong pokemon. You should be proud!',
-		pokemon_app1_CHOICE0_red: '... simply amazes me. It can accomplish anything!',
-		
-		pokemon_app1_CHOICE3_blue: '... is not likely to make much headway in battle.',
-		pokemon_app1_CHOICE2_blue: '... is above average.',
-		pokemon_app1_CHOICE1_blue: '... has certainly caught my attention.',
-		pokemon_app1_CHOICE0_blue: '... is a wonder! What a breathtaking pokemon!',
-
-		pokemon_app1_CHOICE3_yellow: '... has room for improvement as far as battling goes.',
-		pokemon_app1_CHOICE2_yellow: '... is pretty decent!',
-		pokemon_app1_CHOICE1_yellow: '... is really strong!',
-		pokemon_app1_CHOICE0_yellow: '... looks like it can really battle with the best of them!',
-		
-		pokemon_app3_CHOICE3_red: 'Its stats don\'t point to greatness in battle.',
-		pokemon_app3_CHOICE2_red: 'Its stats indicate that in battle, it\'ll get the job done.',
-		pokemon_app3_CHOICE1_red: 'It\'s got excellent stats! How exciting!',
-		pokemon_app3_CHOICE0_red: 'I\'m blown away by its stats. WOW!',
-		
-		pokemon_app3_CHOICE3_blue: 'Its stats are not out of the norm, in my estimation.',
-		pokemon_app3_CHOICE2_blue: 'Its stats are noticeably trending to the positive.',
-		pokemon_app3_CHOICE1_blue: 'I am certainly impressed by its stats, I must say.',
-		pokemon_app3_CHOICE0_blue: 'Its stats exceed my calculations. It\'s incredible!',
-		
-		pokemon_app3_CHOICE3_yellow: 'Its stats are all right, but kinda basic, as far as I can see.',
-		pokemon_app3_CHOICE2_yellow: 'It\'s definitely got some good stats. Definitely!',
-		pokemon_app3_CHOICE1_yellow: 'Its stats are really strong! Impressive',
-		pokemon_app3_CHOICE0_yellow: 'Its stats are the best I\'ve ever seen! No doubt about it!',
-		
-		pokemon_sort_PERCENT: 'by perfection',
-		pokemon_sort_DEXNUMBER: 'by pokedex number',
-		pokemon_sort_NAME: 'by name',
-		pokemon_sort_ATTACK: 'by IV Attack',
-		pokemon_sort_DEFENSE: 'by IV Defense',
-		pokemon_sort_STIGMATA: 'by IV Stigmata',
-		
-		/* Team */
-		
-		team_RED: 'Valor',
-		team_BLUE: 'Mystic',
-		team_YELLOW: 'Instinct',
-		
-		/* Welcome */
-		
-		welcome_TITLE: 'Welcome',
-		
-		welcome_TEXT: 'Store, appraise and share your favorite pokemons',
-		
-		welcome_BTN: 'Open',
-		
-		/* About */
-		
-		about_TITLE: 'About',
-		
-		about_LINK: 'About MyPoGoDex',
-		
-		about_TEXT1: 'MyPoGoDex is a site of sharing around Pokemon GO video game. You could register your favorite pokemons to share them. Your pokemons will be evaluated to provide useful informations about their real abilities.',
-		about_TEXT2: 'See a sample',
-		
-		/* Login */
-		
-		login_TITLE: 'Sign in',
-		
-		login_LINK: 'Sign in',
-		
-		login_local_BTN: 'Sign in',
-		login_facebook_BTN: 'Sign in with Facebook',
-		
-		login_SUBTITLE: 'Sign in with a local account',
-		
-		login_pwd_PLACEHOLDER: 'Password',
-		login_user_PLACEHOLDER: 'Username',
-		
-		login_TEXT: 'No local account?',
-		
-		error_USER_UNKNOWN: 'Username and/or password are unknown. Please check and try again.',
-		
-		/* Register */
-		
-		register_TITLE: 'Sign up',
-		
-		register_LINK: 'Sign up',
-		
-		register_user_PLACEHOLDER: 'Username',
-		register_pwd1_PLACEHOLDER: 'Password',
-		register_pwd2_PLACEHOLDER: 'Confirm password',
-		register_email_PLACEHOLDER: 'Email',
-		
-		register_TEXT1: 'By clicking on \'Sign up\', you agree with usage conditions and privacy policy',
-		register_TEXT2: 'Already registered ?',
-		
-		register_BTN: 'Sign up',
-		
-		error_PASSWORDS_NOT_EQUAL: 'Passwords are not the same.',
-		error_USERNAME_ALREADY_EXISTS: 'This username is already used.',
-		
-		/* Restricted */
-		
-		restricted_TITLE: 'Restricted',
-		
-		restricted_TEXT: 'This is a restricted area. You have to sign in first.',
-		
-		/* Logout */
-		
-		logout_LINK: 'Sign out',
-		
-		/* Profile */
-
-		profile_TITLE: 'Profile',
-		
-		profile_NAME: 'Name',
-		profile_TEAM: 'Team',
-		profile_LEVEL: 'Level',
-		
-		profile_NOPROFILE: 'No profile',
-		
-		profile_NOTEAM: 'no team selected',
-		profile_NOLEVEL: 'no level filled',
-		
-		/* Edit profile */
-		
-		profile_edit_TITLE: 'Update profile',
-		
-		profile_edit_BTN: 'Save',
-		
-		/* List pokemons */
-		
-		pokedex_view_TITLE: 'Pokemons',
-		
-		pokedex_view_NOPOKEMON: 'Add as many pokemons as you want by clicking on ',
-		
-		/* Add pokemon */
-		
-		pokedex_add_TITLE: 'New pokemon',
-
-		pokedex_add_BTN1: 'Evaluate',
-		pokedex_add_BTN2: 'Add',
-		
-		pokedex_add_NORESULT: 'No result',
-		
-		pokedex_add_RESULT: 'Result',
-		
-		pokedex_add_LEVEL: 'Trainer level',
-
-		/* Pokemon view */
-		
-		pokemon_view_TITLE: 'Pokemon',
-		
-		pokemon_view_CURRENT: 'Status',
-
-		pokemon_view_NOSTATUS: 'Pokemon status cannot be computed since your profile is not filled.',
-
-		pokemon_view_PROFILELINK: 'Fill my profile',
-		
-		pokemon_view_NOPOKEMON: 'No pokemon',
-
-		pokemon_view_SHARELINK: 'Share link',
-		
-		pokemon_view_OWNERBY: 'A pokemon by',
-
-		/* Pokemon edit */
-		
-		pokemon_edit_TITLE: 'Update',
-		
-		pokemon_edit_BTN: 'Save',
-		
-		/* Pokemon delete */
-		
-		pokemon_delete_CONFIRM: 'Are you sure to remove this pokemon?',
-		
-		/* Pokemon labels */
-
-		pokemon_squirtle_LABEL: 'Squirtle',
-		pokemon_ivysaur_LABEL: 'Ivysaur',
-		pokemon_wartortle_LABEL: 'Wartortle',
-		pokemon_venusaur_LABEL: 'Venusaur',
-		pokemon_charizard_LABEL: 'Charizard',
-		pokemon_bulbasaur_LABEL: 'Bulbasaur',
-		pokemon_charmander_LABEL: 'Charmander',
-		pokemon_charmeleon_LABEL: 'Charmeleon',
-		pokemon_blastoise_LABEL: 'Blastoise',
-		pokemon_caterpie_LABEL: 'Caterpie',
-		pokemon_metapod_LABEL: 'Metapod',
-		pokemon_butterfree_LABEL: 'Butterfree',
-		pokemon_weedle_LABEL: 'Weedle',
-		pokemon_kakuna_LABEL: 'Kakuna',
-		pokemon_beedrill_LABEL: 'Beedrill',
-		pokemon_pidgey_LABEL: 'Pidgey',
-		pokemon_pidgeotto_LABEL: 'Pidgeotto',
-		pokemon_pidgeot_LABEL: 'Pidgeot',
-		pokemon_rattata_LABEL: 'Rattata',
-		pokemon_raticate_LABEL: 'Raticate',
-		pokemon_spearow_LABEL: 'Spearow',
-		pokemon_fearow_LABEL: 'Fearow',
-		pokemon_ekans_LABEL: 'Ekans',
-		pokemon_arbok_LABEL: 'Arbok',
-		pokemon_pikachu_LABEL: 'Pikachu',
-		pokemon_raichu_LABEL: 'Raichu',
-		pokemon_sandshrew_LABEL: 'Sandshrew',
-		pokemon_sandslash_LABEL: 'Sandslash',
-		pokemon_nidoranfemale_LABEL: 'Nidoranfemale',
-		pokemon_nidorina_LABEL: 'Nidorina',
-		pokemon_nidoqueen_LABEL: 'Nidoqueen',
-		pokemon_nidoranmale_LABEL: 'Nidoranmale',
-		pokemon_nidorino_LABEL: 'Nidorino',
-		pokemon_nidoking_LABEL: 'Nidoking',
-		pokemon_clefairy_LABEL: 'Clefairy',
-		pokemon_clefable_LABEL: 'Clefable',
-		pokemon_vulpix_LABEL: 'Vulpix',
-		pokemon_ninetales_LABEL: 'Ninetales',
-		pokemon_jigglypuff_LABEL: 'Jigglypuff',
-		pokemon_wigglytuff_LABEL: 'Wigglytuff',
-		pokemon_zubat_LABEL: 'Zubat',
-		pokemon_golbat_LABEL: 'Golbat',
-		pokemon_oddish_LABEL: 'Oddish',
-		pokemon_gloom_LABEL: 'Gloom',
-		pokemon_vileplume_LABEL: 'Vileplume',
-		pokemon_paras_LABEL: 'Paras',
-		pokemon_parasect_LABEL: 'Parasect',
-		pokemon_venonat_LABEL: 'Venonat',
-		pokemon_venomoth_LABEL: 'Venomoth',
-		pokemon_diglett_LABEL: 'Diglett',
-		pokemon_dugtrio_LABEL: 'Dugtrio',
-		pokemon_meowth_LABEL: 'Meowth',
-		pokemon_persian_LABEL: 'Persian',
-		pokemon_psyduck_LABEL: 'Psyduck',
-		pokemon_golduck_LABEL: 'Golduck',
-		pokemon_mankey_LABEL: 'Mankey',
-		pokemon_primeape_LABEL: 'Primeape',
-		pokemon_growlithe_LABEL: 'Growlithe',
-		pokemon_arcanine_LABEL: 'Arcanine',
-		pokemon_poliwag_LABEL: 'Poliwag',
-		pokemon_poliwhirl_LABEL: 'Poliwhirl',
-		pokemon_poliwrath_LABEL: 'Poliwrath',
-		pokemon_abra_LABEL: 'Abra',
-		pokemon_kadabra_LABEL: 'Kadabra',
-		pokemon_alakazam_LABEL: 'Alakazam',
-		pokemon_machop_LABEL: 'Machop',
-		pokemon_machoke_LABEL: 'Machoke',
-		pokemon_machamp_LABEL: 'Machamp',
-		pokemon_bellsprout_LABEL: 'Bellsprout',
-		pokemon_weepinbell_LABEL: 'Weepinbell',
-		pokemon_victreebel_LABEL: 'Victreebel',
-		pokemon_tentacool_LABEL: 'Tentacool',
-		pokemon_tentacruel_LABEL: 'Tentacruel',
-		pokemon_geodude_LABEL: 'Geodude',
-		pokemon_graveler_LABEL: 'Graveler',
-		pokemon_golem_LABEL: 'Golem',
-		pokemon_ponyta_LABEL: 'Ponyta',
-		pokemon_rapidash_LABEL: 'Rapidash',
-		pokemon_slowpoke_LABEL: 'Slowpoke',
-		pokemon_slowbro_LABEL: 'Slowbro',
-		pokemon_magnemite_LABEL: 'Magnemite',
-		pokemon_magneton_LABEL: 'Magneton',
-		pokemon_farfetchd_LABEL: 'Farfetchd',
-		pokemon_doduo_LABEL: 'Doduo',
-		pokemon_dodrio_LABEL: 'Dodrio',
-		pokemon_seel_LABEL: 'Seel',
-		pokemon_dewgong_LABEL: 'Dewgong',
-		pokemon_grimer_LABEL: 'Grimer',
-		pokemon_muk_LABEL: 'Muk',
-		pokemon_shellder_LABEL: 'Shellder',
-		pokemon_cloyster_LABEL: 'Cloyster',
-		pokemon_gastly_LABEL: 'Gastly',
-		pokemon_haunter_LABEL: 'Haunter',
-		pokemon_gengar_LABEL: 'Gengar',
-		pokemon_onix_LABEL: 'Onix',
-		pokemon_drowzee_LABEL: 'Drowzee',
-		pokemon_hypno_LABEL: 'Hypno',
-		pokemon_krabby_LABEL: 'Krabby',
-		pokemon_kingler_LABEL: 'Kingler',
-		pokemon_voltorb_LABEL: 'Voltorb',
-		pokemon_electrode_LABEL: 'Electrode',
-		pokemon_exeggcute_LABEL: 'Exeggcute',
-		pokemon_exeggutor_LABEL: 'Exeggutor',
-		pokemon_cubone_LABEL: 'Cubone',
-		pokemon_marowak_LABEL: 'Marowak',
-		pokemon_hitmonlee_LABEL: 'Hitmonlee',
-		pokemon_hitmonchan_LABEL: 'Hitmonchan',
-		pokemon_lickitung_LABEL: 'Lickitung',
-		pokemon_koffing_LABEL: 'Koffing',
-		pokemon_weezing_LABEL: 'Weezing',
-		pokemon_rhyhorn_LABEL: 'Rhyhorn',
-		pokemon_rhydon_LABEL: 'Rhydon',
-		pokemon_chansey_LABEL: 'Chansey',
-		pokemon_tangela_LABEL: 'Tangela',
-		pokemon_kangaskhan_LABEL: 'Kangaskhan',
-		pokemon_horsea_LABEL: 'Horsea',
-		pokemon_seadra_LABEL: 'Seadra',
-		pokemon_goldeen_LABEL: 'Goldeen',
-		pokemon_seaking_LABEL: 'Seaking',
-		pokemon_staryu_LABEL: 'Staryu',
-		pokemon_starmie_LABEL: 'Starmie',
-		pokemon_mrmime_LABEL: 'Mrmime',
-		pokemon_scyther_LABEL: 'Scyther',
-		pokemon_jynx_LABEL: 'Jynx',
-		pokemon_electabuzz_LABEL: 'Electabuzz',
-		pokemon_magmar_LABEL: 'Magmar',
-		pokemon_pinsir_LABEL: 'Pinsir',
-		pokemon_tauros_LABEL: 'Tauros',
-		pokemon_magikarp_LABEL: 'Magikarp',
-		pokemon_gyarados_LABEL: 'Gyarados',
-		pokemon_lapras_LABEL: 'Lapras',
-		pokemon_ditto_LABEL: 'Ditto',
-		pokemon_eevee_LABEL: 'Eevee',
-		pokemon_vaporeon_LABEL: 'Vaporeon',
-		pokemon_jolteon_LABEL: 'Jolteon',
-		pokemon_flareon_LABEL: 'Flareon',
-		pokemon_porygon_LABEL: 'Porygon',
-		pokemon_omanyte_LABEL: 'Omanyte',
-		pokemon_omastar_LABEL: 'Omastar',
-		pokemon_kabuto_LABEL: 'Kabuto',
-		pokemon_kabutops_LABEL: 'Kabutops',
-		pokemon_aerodactyl_LABEL: 'Aerodactyl',
-		pokemon_snorlax_LABEL: 'Snorlax',
-		pokemon_dratini_LABEL: 'Dratini',
-		pokemon_dragonair_LABEL: 'Dragonair',
-		pokemon_dragonite_LABEL: 'Dragonite',
-		pokemon_chikorita_LABEL: 'Chikorita',
-		pokemon_bayleef_LABEL: 'Bayleef',
-		pokemon_meganium_LABEL: 'Meganium',
-		pokemon_cyndaquil_LABEL: 'Cyndaquil',
-		pokemon_quilava_LABEL: 'Quilava',
-		pokemon_typhlosion_LABEL: 'Typhlosion',
-		pokemon_totodile_LABEL: 'Totodile',
-		pokemon_croconaw_LABEL: 'Croconaw',
-		pokemon_feraligatr_LABEL: 'Feraligatr',
-		pokemon_sentret_LABEL: 'Sentret',
-		pokemon_furret_LABEL: 'Furret',
-		pokemon_hoothoot_LABEL: 'Hoothoot',
-		pokemon_noctowl_LABEL: 'Noctowl',
-		pokemon_ledyba_LABEL: 'Ledyba',
-		pokemon_ledian_LABEL: 'Ledian',
-		pokemon_spinarak_LABEL: 'Spinarak',
-		pokemon_ariados_LABEL: 'Ariados',
-		pokemon_crobat_LABEL: 'Crobat',
-		pokemon_chinchou_LABEL: 'Chinchou',
-		pokemon_lanturn_LABEL: 'Lanturn',
-		pokemon_pichu_LABEL: 'Pichu',
-		pokemon_cleffa_LABEL: 'Cleffa',
-		pokemon_igglybuff_LABEL: 'Igglybuff',
-		pokemon_togepi_LABEL: 'Togepi',
-		pokemon_togetic_LABEL: 'Togetic',
-		pokemon_natu_LABEL: 'Natu',
-		pokemon_xatu_LABEL: 'Xatu',
-		pokemon_mareep_LABEL: 'Mareep',
-		pokemon_flaaffy_LABEL: 'Flaaffy',
-		pokemon_ampharos_LABEL: 'Ampharos',
-		pokemon_bellossom_LABEL: 'Bellossom',
-		pokemon_marill_LABEL: 'Marill',
-		pokemon_azumarill_LABEL: 'Azumarill',
-		pokemon_sudowoodo_LABEL: 'Sudowoodo',
-		pokemon_politoed_LABEL: 'Politoed',
-		pokemon_hoppip_LABEL: 'Hoppip',
-		pokemon_skiploom_LABEL: 'Skiploom',
-		pokemon_jumpluff_LABEL: 'Jumpluff',
-		pokemon_aipom_LABEL: 'Aipom',
-		pokemon_sunkern_LABEL: 'Sunkern',
-		pokemon_sunflora_LABEL: 'Sunflora',
-		pokemon_yanma_LABEL: 'Yanma',
-		pokemon_wooper_LABEL: 'Wooper',
-		pokemon_quagsire_LABEL: 'Quagsire',
-		pokemon_espeon_LABEL: 'Espeon',
-		pokemon_umbreon_LABEL: 'Umbreon',
-		pokemon_murkrow_LABEL: 'Murkrow',
-		pokemon_slowking_LABEL: 'Slowking',
-		pokemon_misdreavus_LABEL: 'Misdreavus',
-		pokemon_unown_LABEL: 'Unown',
-		pokemon_wobbuffet_LABEL: 'Wobbuffet',
-		pokemon_girafarig_LABEL: 'Girafarig',
-		pokemon_pineco_LABEL: 'Pineco',
-		pokemon_forretress_LABEL: 'Forretress',
-		pokemon_dunsparce_LABEL: 'Dunsparce',
-		pokemon_gligar_LABEL: 'Gligar',
-		pokemon_steelix_LABEL: 'Steelix',
-		pokemon_snubbull_LABEL: 'Snubbull',
-		pokemon_granbull_LABEL: 'Granbull',
-		pokemon_qwilfish_LABEL: 'Qwilfish',
-		pokemon_scizor_LABEL: 'Scizor',
-		pokemon_shuckle_LABEL: 'Shuckle',
-		pokemon_heracross_LABEL: 'Heracross',
-		pokemon_sneasel_LABEL: 'Sneasel',
-		pokemon_teddiursa_LABEL: 'Teddiursa',
-		pokemon_ursaring_LABEL: 'Ursaring',
-		pokemon_slugma_LABEL: 'Slugma',
-		pokemon_magcargo_LABEL: 'Magcargo',
-		pokemon_swinub_LABEL: 'Swinub',
-		pokemon_piloswine_LABEL: 'Piloswine',
-		pokemon_corsola_LABEL: 'Corsola',
-		pokemon_remoraid_LABEL: 'Remoraid',
-		pokemon_octillery_LABEL: 'Octillery',
-		pokemon_mantine_LABEL: 'Mantine',
-		pokemon_skarmory_LABEL: 'Skarmory',
-		pokemon_houndour_LABEL: 'Houndour',
-		pokemon_houndoom_LABEL: 'Houndoom',
-		pokemon_kingdra_LABEL: 'Kingdra',
-		pokemon_phanpy_LABEL: 'Phanpy',
-		pokemon_donphan_LABEL: 'Donphan',
-		pokemon_porygon2_LABEL: 'Porygon2',
-		pokemon_stantler_LABEL: 'Stantler',
-		pokemon_tyrogue_LABEL: 'Tyrogue',
-		pokemon_hitmontop_LABEL: 'Hitmontop',
-		pokemon_smoochum_LABEL: 'Smoochum',
-		pokemon_elekid_LABEL: 'Elekid',
-		pokemon_magby_LABEL: 'Magby',
-		pokemon_miltank_LABEL: 'Miltank',
-		pokemon_blissey_LABEL: 'Blissey',
-		pokemon_larvitar_LABEL: 'Larvitar',
-		pokemon_pupitar_LABEL: 'Pupitar',
-		pokemon_tyranitar_LABEL: 'Tyranitar',
-		
-		/* Pokemon types */
-		
-		pokemon_type_bug: 'Bug',
-		pokemon_type_fighting: 'Fighting',
-		pokemon_type_electr: 'Electric',
-		pokemon_type_dark: 'Dark',
-		pokemon_type_ghost: 'Ghost',
-
-		pokemon_type_fairy: 'Fairy',
-		pokemon_type_psycho: 'Psycho',
-		pokemon_type_water: 'Water',
-		pokemon_type_flying: 'Flying',
-		pokemon_type_ice: 'Ice',
-
-		pokemon_type_rock: 'Rock',
-		pokemon_type_steel: 'Steel',
-		pokemon_type_grass: 'Grass',
-		pokemon_type_fire: 'Fire',
-		pokemon_type_ground: 'Ground',
-
-		pokemon_type_poison: 'Poison',
-		pokemon_type_dragon: 'Dragon',
-		pokemon_type_normal: 'Normal',
-	});
-	
-	$translateProvider.translations('fr', {
-		
-		error_EMAIL: 'Une adresse email bien formattée est requise.',
-		error_REQUIRED: 'Ce champ est obligatoire.',
-		error_NOELEMENT: 'Aucun élément',
-		error_INTEGRITY_ERROR: 'Une erreur server est survenue.',
-		
-		notif_ERROR: 'Une erreur est survenue',
-		notif_SUCCESS: 'Opération réussie',
-		
-		btn_NO: 'Non',
-		btn_YES: 'Oui',
-		
-		/* Pokemon */
-		
-		pokemon_CP: 'PC',
-		pokemon_HP: 'PV',
-		pokemon_CODE: 'Pokémon',
-		pokemon_NAME: 'Nom',
-		pokemon_TEAM: 'Equipe',
-		pokemon_LEVEL: 'Niveau',
-		pokemon_ATTACK: 'Attaque',
-		pokemon_LOADING: 'Recharge',
-		pokemon_PERCENT: 'Perfection',
-		pokemon_DEFENSE: 'Défense',
-		pokemon_STIGMATA: 'Endurance',
-		pokemon_STARDUST: 'Poussière',
-		pokemon_CANDIESREQUIRED: 'Bonbons requis',
-		pokemon_STARDUSTREQUIRED: 'Poussière requise',
-		
-		pokemon_APP1: 'Dans l\'ensemble, ton pokémon ...',
-		pokemon_APP2: 'Son meilleur atout ...',
-		pokemon_APP3: 'Ses statistiques ...',
-		
-		pokemon_app1_CHOICE3_red: '... n’est pas un combattant mais je l’aime bien.',
-		pokemon_app1_CHOICE2_red: '... est un pokémon solide.',
-		pokemon_app1_CHOICE1_red: '... est très fort, tu dois être fier.',
-		pokemon_app1_CHOICE0_red: '... m’étonne beaucoup, il peut tout faire.',
-		
-		pokemon_app1_CHOICE3_blue: '... n’ira pas très loin au combat.',
-		pokemon_app1_CHOICE2_blue: '... est supérieur à la moyenne.',
-		pokemon_app1_CHOICE1_blue: '... a retenu toute mon attention.',
-		pokemon_app1_CHOICE0_blue: '... est une merveille. Un pokémon captivant !',
-
-		pokemon_app1_CHOICE3_yellow: '... peut devenir un meilleur combattant.',
-		pokemon_app1_CHOICE2_yellow: '... est plutôt bien.',
-		pokemon_app1_CHOICE1_yellow: '... est vraiment fort.',
-		pokemon_app1_CHOICE0_yellow: '... semble être capable de tenir tête aux meilleurs.',
-		
-		pokemon_app3_CHOICE3_red: 'Je suis renversée par ses statistiques. WOW !',
-		pokemon_app3_CHOICE2_red: 'Il a d\'excellentes statistiques ! Que c\'est excitant !',
-		pokemon_app3_CHOICE1_red: 'Ses statistiques indiquent qu\'en combat, il fera le job.',
-		pokemon_app3_CHOICE0_red: 'Ses statistiques ne font pas espérer d\'excellentes batailles.',
-		
-		pokemon_app3_CHOICE3_blue: 'Ses statistiques ne dépassent pas de la moyenne à mon avis.',
-		pokemon_app3_CHOICE2_blue: 'Ses statistiques tendent notablement vers le positif.',
-		pokemon_app3_CHOICE1_blue: 'Je suis certainement impressionnée par ses statistiques, je dois le dire !',
-		pokemon_app3_CHOICE0_blue: 'Ses statistiques dépassent mes calculs. C\'est incroyable !',
-		
-		pokemon_app3_CHOICE3_yellow: 'Ses statistiques sont bien, mais plutôt basiques, d\'après ce que je vois.',
-		pokemon_app3_CHOICE2_yellow: 'Il a définitivement quelques bonnes statistiques. Définitivement !',
-		pokemon_app3_CHOICE1_yellow: 'Ses statistiques sont vraiment fortes ! Impressionnant.',
-		pokemon_app3_CHOICE0_yellow: 'Ses statistiques sont les meilleures que j\'ai jamais vues ! Aucun doute là dessus !',
-		
-		pokemon_sort_PERCENT: 'par perfection',
-		pokemon_sort_DEXNUMBER: 'par numéro de pokédex',
-		pokemon_sort_NAME: 'par nom',
-		pokemon_sort_ATTACK: 'par IV d\'attaque',
-		pokemon_sort_DEFENSE: 'par IV de défense',
-		pokemon_sort_STIGMATA: 'par IV d\'endurance',
-		
-		/* Team */
-		
-		team_RED: 'Bravoure',
-		team_BLUE: 'Sagesse',
-		team_YELLOW: 'Intuition',
-		
-		/* Welcome */
-		
-		welcome_TITLE: 'Bienvenue!',
-		
-		welcome_TEXT: 'Enregistrez, évaluez et partagez vos pokémons préférés',
-		
-		welcome_BTN: 'Entrez !',
-		
-		/* About */
-		
-		about_TITLE: 'A propos',
-		
-		about_LINK: 'A propos de MyPoGoDex',
-		
-		about_TEXT1: 'MyPoGoDex est un site de partage autour du jeu Pokemon GO. Vous pourrez y enregistrer vos pokémons préférés afin de les partager. Vos pokémons seront analysés pour vour fournir des informations utiles sur leur valeur réelle.',
-		about_TEXT2: 'Voir un example',
-		
-		/* Login */
-		
-		login_TITLE: 'Connexion',
-		
-		login_LINK: 'Se connecter',
-		
-		login_local_BTN: 'Se connecter',
-		login_facebook_BTN: 'Se connecter avec Facebook',
-		
-		login_SUBTITLE: 'Se connecter avec un compte local',
-		
-		login_pwd_PLACEHOLDER: 'Mot de passe',
-		login_user_PLACEHOLDER: 'Nom d\'utilisateur',
-		
-		login_TEXT: 'Pas de compte local ?',
-		
-		error_USER_UNKNOWN: 'Le nom d\'utilisateur et/ou le mot de passe ne correspondent pas à un utilisateur connu. Veuillez vérifier et réessayer.',
-		
-		/* Register */
-		
-		register_TITLE: 'Inscription',
-		
-		register_LINK: 'S\'inscrire',
-		
-		register_user_PLACEHOLDER: 'Nom d\'utilisateur',
-		register_pwd1_PLACEHOLDER: 'Mot de passe',
-		register_pwd2_PLACEHOLDER: 'Confirmer le mot de passe',
-		register_email_PLACEHOLDER: 'Email',
-		
-		register_TEXT1: 'En cliquant sur \'S\'inscire\', vous déclarez être en accord avec les conditions et la politique des données privées',
-		register_TEXT2: 'Déjà inscrit ?',
-		
-		register_BTN: 'S\'inscrire',
-		
-		error_PASSWORDS_NOT_EQUAL: 'Les mots de passe saisis ne sont pas identiques.',
-		error_USERNAME_ALREADY_EXISTS: 'Un utilisateur avec ce nom existe déjà.',
-		
-		/* Restricted */
-		
-		restricted_TITLE: 'Non autorisé',
-		
-		restricted_TEXT: 'Vous avez tenté d\'accéder à un contenu protégé. Vous devez vous authentifier avant de pouvoir accéder à ce contenu.',
-		
-		/* Logout */
-		
-		logout_LINK: 'Se déconnecter',
-		
-		/* Profile */
-
-		profile_TITLE: 'Profil',
-		
-		profile_NAME: 'Nom',
-		profile_TEAM: 'Equipe',
-		profile_LEVEL: 'Niveau',
-		
-		profile_NOPROFILE: 'Aucun profil',
-		
-		profile_NOTEAM: 'aucune équipe sélectionnée',
-		profile_NOLEVEL: 'aucun niveau renseigné',
-		
-		/* Edit profile */
-		
-		profile_edit_TITLE: 'Modification du profil',
-		
-		profile_edit_BTN: 'Enregistrer',
-		
-		/* List pokemons */
-		
-		pokedex_view_TITLE: 'Pokémons',
-		
-		pokedex_view_NOPOKEMON: 'Ajoutez autant de pokémons que vous le souhaitez en appyuant sur ',
-		
-		/* Add pokemon */
-		
-		pokedex_add_TITLE: 'Nouveau pokémon',
-
-		pokedex_add_BTN1: 'Evaluer',
-		pokedex_add_BTN2: 'Ajouter',
-		
-		pokedex_add_NORESULT: 'Aucun résultat possible',
-		
-		pokedex_add_RESULT: 'Résultat',
-		
-		pokedex_add_LEVEL: 'Niveau du dresseur',
-
-		/* Pokemon view */
-		
-		pokemon_view_TITLE: 'Pokémon',
-		
-		pokemon_view_CURRENT: 'Status',
-
-		pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
-
-		pokemon_view_PROFILELINK: 'Renseigner mon profil',
-		
-		pokemon_view_NOPOKEMON: 'Aucun pokémon trouvé',
-
-		pokemon_view_SHARELINK: 'Lien de partage',
-		
-		pokemon_view_OWNERBY: 'Un pokemon de',
-
-		/* Pokemon edit */
-		
-		pokemon_edit_TITLE: 'Modifier',
-		
-		pokemon_edit_BTN: 'Enregistrer',
-		
-		/* Pokemon delete */
-		
-		pokemon_delete_CONFIRM: 'Etes-vous sûr de vouloir supprimer ce pokémon ?',
-		
-		/* Pokemon labels */
-
-		pokemon_squirtle_LABEL: 'Carapuce',
-		pokemon_ivysaur_LABEL: 'Herbizarre',
-		pokemon_wartortle_LABEL: 'Carabaffe',
-		pokemon_venusaur_LABEL: 'Florizarre',
-		pokemon_charizard_LABEL: 'Dracaufeu',
-		pokemon_bulbasaur_LABEL: 'Bulbizarre',
-		pokemon_charmander_LABEL: 'Salamèche',
-		pokemon_charmeleon_LABEL: 'Reptincel',
-		pokemon_blastoise_LABEL: 'Tortank',
-		pokemon_caterpie_LABEL: 'Chenipan',
-		pokemon_metapod_LABEL: 'Chrysacier',
-		pokemon_butterfree_LABEL: 'Papilusion',
-		pokemon_weedle_LABEL: 'Aspicot',
-		pokemon_kakuna_LABEL: 'Coconfort',
-		pokemon_beedrill_LABEL: 'Dardargnan',
-		pokemon_pidgey_LABEL: 'Roucool',
-		pokemon_pidgeotto_LABEL: 'Roucoups',
-		pokemon_pidgeot_LABEL: 'Roucarnage',
-		pokemon_rattata_LABEL: 'Rattata',
-		pokemon_raticate_LABEL: 'Rattatac',
-		pokemon_spearow_LABEL: 'Piafabec',
-		pokemon_fearow_LABEL: 'Rapasdepic',
-		pokemon_ekans_LABEL: 'Abo',
-		pokemon_arbok_LABEL: 'Arbok',
-		pokemon_pikachu_LABEL: 'Pikachu',
-		pokemon_raichu_LABEL: 'Raichu',
-		pokemon_sandshrew_LABEL: 'Sabelette',
-		pokemon_sandslash_LABEL: 'Sablaireau',
-		pokemon_nidoranfemale_LABEL: 'Nidoran♀',
-		pokemon_nidorina_LABEL: 'Nidorina',
-		pokemon_nidoqueen_LABEL: 'Nidoqueen',
-		pokemon_nidoranmale_LABEL: 'Nidoran♂',
-		pokemon_nidorino_LABEL: 'Nidorino',
-		pokemon_nidoking_LABEL: 'Nidoking',
-		pokemon_clefairy_LABEL: 'Mélofée',
-		pokemon_clefable_LABEL: 'Mélodelfe',
-		pokemon_vulpix_LABEL: 'Goupix',
-		pokemon_ninetales_LABEL: 'Feunard',
-		pokemon_jigglypuff_LABEL: 'Rondoudou',
-		pokemon_wigglytuff_LABEL: 'Grodoudou',
-		pokemon_zubat_LABEL: 'Nosferapti',
-		pokemon_golbat_LABEL: 'Nosferalto',
-		pokemon_oddish_LABEL: 'Mystherbe',
-		pokemon_gloom_LABEL: 'Ortide',
-		pokemon_vileplume_LABEL: 'Rafflesia',
-		pokemon_paras_LABEL: 'Paras',
-		pokemon_parasect_LABEL: 'Parasect',
-		pokemon_venonat_LABEL: 'Mimitoss',
-		pokemon_venomoth_LABEL: 'Aéromite',
-		pokemon_diglett_LABEL: 'Taupiqueur',
-		pokemon_dugtrio_LABEL: 'Triopikeur',
-		pokemon_meowth_LABEL: 'Miaouss',
-		pokemon_persian_LABEL: 'Persian',
-		pokemon_psyduck_LABEL: 'Psykokwak',
-		pokemon_golduck_LABEL: 'Akwakwak',
-		pokemon_mankey_LABEL: 'Férosinge',
-		pokemon_primeape_LABEL: 'Colossinge',
-		pokemon_growlithe_LABEL: 'Caninos',
-		pokemon_arcanine_LABEL: 'Arcanin',
-		pokemon_poliwag_LABEL: 'Ptitard',
-		pokemon_poliwhirl_LABEL: 'Têtarte',
-		pokemon_poliwrath_LABEL: 'Tartard',
-		pokemon_abra_LABEL: 'Abra',
-		pokemon_kadabra_LABEL: 'Kadabra',
-		pokemon_alakazam_LABEL: 'Alakazam',
-		pokemon_machop_LABEL: 'Machoc',
-		pokemon_machoke_LABEL: 'Machopeur',
-		pokemon_machamp_LABEL: 'Mackogneur',
-		pokemon_bellsprout_LABEL: 'Chétiflor',
-		pokemon_weepinbell_LABEL: 'Boustiflor',
-		pokemon_victreebel_LABEL: 'Empiflor',
-		pokemon_tentacool_LABEL: 'Tentacool',
-		pokemon_tentacruel_LABEL: 'Tentacruel',
-		pokemon_geodude_LABEL: 'Racaillou',
-		pokemon_graveler_LABEL: 'Gravalanch',
-		pokemon_golem_LABEL: 'Grolem',
-		pokemon_ponyta_LABEL: 'Ponyta',
-		pokemon_rapidash_LABEL: 'Galopa',
-		pokemon_slowpoke_LABEL: 'Ramoloss',
-		pokemon_slowbro_LABEL: 'Flagadoss',
-		pokemon_magnemite_LABEL: 'Magnéti',
-		pokemon_magneton_LABEL: 'Magnéton',
-		pokemon_farfetchd_LABEL: 'Canarticho',
-		pokemon_doduo_LABEL: 'Doduo',
-		pokemon_dodrio_LABEL: 'Dodrio',
-		pokemon_seel_LABEL: 'Otaria',
-		pokemon_dewgong_LABEL: 'Lamantine',
-		pokemon_grimer_LABEL: 'Tadmorv',
-		pokemon_muk_LABEL: 'Grotadmorv',
-		pokemon_shellder_LABEL: 'Grotadmorv',
-		pokemon_cloyster_LABEL: 'Crustabri',
-		pokemon_gastly_LABEL: 'Fantominus',
-		pokemon_haunter_LABEL: 'Spectrum',
-		pokemon_gengar_LABEL: 'Ectoplasma',
-		pokemon_onix_LABEL: 'Onix',
-		pokemon_drowzee_LABEL: 'Soporifik',
-		pokemon_hypno_LABEL: 'Hypnomade',
-		pokemon_krabby_LABEL: 'Krabby',
-		pokemon_kingler_LABEL: 'Krabboss',
-		pokemon_voltorb_LABEL: 'Voltorbe',
-		pokemon_electrode_LABEL: 'Électrode',
-		pokemon_exeggcute_LABEL: 'Nœunœuf',
-		pokemon_exeggutor_LABEL: 'Noadkoko',
-		pokemon_cubone_LABEL: 'Osselait',
-		pokemon_marowak_LABEL: 'Ossatueur',
-		pokemon_hitmonlee_LABEL: 'Kicklee',
-		pokemon_hitmonchan_LABEL: 'Tygnon',
-		pokemon_lickitung_LABEL: 'Excelangue',
-		pokemon_koffing_LABEL: 'Smogo',
-		pokemon_weezing_LABEL: 'Smogogo',
-		pokemon_rhyhorn_LABEL: 'Rhinocorne',
-		pokemon_rhydon_LABEL: 'Rhinoféros',
-		pokemon_chansey_LABEL: 'Leveinard',
-		pokemon_tangela_LABEL: 'Saquedeneu',
-		pokemon_kangaskhan_LABEL: 'Kangourex',
-		pokemon_horsea_LABEL: 'Hypotrempe',
-		pokemon_seadra_LABEL: 'Hypocéan',
-		pokemon_goldeen_LABEL: 'Poissirène',
-		pokemon_seaking_LABEL: 'Poissoroy',
-		pokemon_staryu_LABEL: 'Stari',
-		pokemon_starmie_LABEL: 'Staross',
-		pokemon_mrmime_LABEL: 'M. Mime',
-		pokemon_scyther_LABEL: 'Insécateur',
-		pokemon_jynx_LABEL: 'Lippoutou',
-		pokemon_electabuzz_LABEL: 'Élektek',
-		pokemon_magmar_LABEL: 'Magmar',
-		pokemon_pinsir_LABEL: 'Scarabrute',
-		pokemon_tauros_LABEL: 'Tauros',
-		pokemon_magikarp_LABEL: 'Magicarpe',
-		pokemon_gyarados_LABEL: 'Léviator',
-		pokemon_lapras_LABEL: 'Lokhlass',
-		pokemon_ditto_LABEL: 'Métamorph',
-		pokemon_eevee_LABEL: 'Évoli',
-		pokemon_vaporeon_LABEL: 'Aquali',
-		pokemon_jolteon_LABEL: 'Voltali',
-		pokemon_flareon_LABEL: 'Pyroli',
-		pokemon_porygon_LABEL: 'Porygon',
-		pokemon_omanyte_LABEL: 'Amonita',
-		pokemon_omastar_LABEL: 'Amonistar',
-		pokemon_kabuto_LABEL: 'Kabuto',
-		pokemon_kabutops_LABEL: 'Kabutops',
-		pokemon_aerodactyl_LABEL: 'Ptéra',
-		pokemon_snorlax_LABEL: 'Ronflex',
-		pokemon_dratini_LABEL: 'Minidraco',
-		pokemon_dragonair_LABEL: 'Draco',
-		pokemon_dragonite_LABEL: 'Dracolosse',
-		pokemon_chikorita_LABEL: 'Germignon',
-		pokemon_bayleef_LABEL: 'Macronium',
-		pokemon_meganium_LABEL: 'Méganium',
-		pokemon_cyndaquil_LABEL: 'Héricendre',
-		pokemon_quilava_LABEL: 'Feurisson',
-		pokemon_typhlosion_LABEL: 'Typhlosion',
-		pokemon_totodile_LABEL: 'Kaiminus',
-		pokemon_croconaw_LABEL: 'Crocrodil',
-		pokemon_feraligatr_LABEL: 'Aligatueur',
-		pokemon_sentret_LABEL: 'Fouinette',
-		pokemon_furret_LABEL: 'Fouinar',
-		pokemon_hoothoot_LABEL: 'Hoothoot',
-		pokemon_noctowl_LABEL: 'Noarfang',
-		pokemon_ledyba_LABEL: 'Coxy',
-		pokemon_ledian_LABEL: 'Coxyclaque',
-		pokemon_spinarak_LABEL: 'Mimigal',
-		pokemon_ariados_LABEL: 'Migalos',
-		pokemon_crobat_LABEL: 'Nostenfer',
-		pokemon_chinchou_LABEL: 'Loupio',
-		pokemon_lanturn_LABEL: 'Lanturn',
-		pokemon_pichu_LABEL: 'Pichu',
-		pokemon_cleffa_LABEL: 'Mélo',
-		pokemon_igglybuff_LABEL: 'Toudoudou',
-		pokemon_togepi_LABEL: 'Togepi',
-		pokemon_togetic_LABEL: 'Togetic',
-		pokemon_natu_LABEL: 'Natu',
-		pokemon_xatu_LABEL: 'Xatu',
-		pokemon_mareep_LABEL: 'Wattouat',
-		pokemon_flaaffy_LABEL: 'Lainergie',
-		pokemon_ampharos_LABEL: 'Pharamp',
-		pokemon_bellossom_LABEL: 'Joliflor',
-		pokemon_marill_LABEL: 'Marill',
-		pokemon_azumarill_LABEL: 'Azumarill',
-		pokemon_sudowoodo_LABEL: 'Simularbre',
-		pokemon_politoed_LABEL: 'Tarpaud',
-		pokemon_hoppip_LABEL: 'Granivol',
-		pokemon_skiploom_LABEL: 'Floravol',
-		pokemon_jumpluff_LABEL: 'Cotovol',
-		pokemon_aipom_LABEL: 'Capumain',
-		pokemon_sunkern_LABEL: 'Tournegrin',
-		pokemon_sunflora_LABEL: 'Héliatronc',
-		pokemon_yanma_LABEL: 'Yanma',
-		pokemon_wooper_LABEL: 'Axoloto',
-		pokemon_quagsire_LABEL: 'Maraiste',
-		pokemon_espeon_LABEL: 'Mentali',
-		pokemon_umbreon_LABEL: 'Noctali',
-		pokemon_murkrow_LABEL: 'Cornèbre',
-		pokemon_slowking_LABEL: 'Roigada',
-		pokemon_misdreavus_LABEL: 'Feuforêve',
-		pokemon_unown_LABEL: 'Zarbi',
-		pokemon_wobbuffet_LABEL: 'Qulbutoké',
-		pokemon_girafarig_LABEL: 'Girafarig',
-		pokemon_pineco_LABEL: 'Pomdepik',
-		pokemon_forretress_LABEL: 'Foretress',
-		pokemon_dunsparce_LABEL: 'Insolourdo',
-		pokemon_gligar_LABEL: 'Scorplane',
-		pokemon_steelix_LABEL: 'Steelix',
-		pokemon_snubbull_LABEL: 'Snubbull',
-		pokemon_granbull_LABEL: 'Granbull',
-		pokemon_qwilfish_LABEL: 'Qwilfish',
-		pokemon_scizor_LABEL: 'Cizayox',
-		pokemon_shuckle_LABEL: 'Caratroc',
-		pokemon_heracross_LABEL: 'Scarhino',
-		pokemon_sneasel_LABEL: 'Farfuret',
-		pokemon_teddiursa_LABEL: 'Teddiursa',
-		pokemon_ursaring_LABEL: 'Ursaring',
-		pokemon_slugma_LABEL: 'Limagma',
-		pokemon_magcargo_LABEL: 'Volcaropod',
-		pokemon_swinub_LABEL: 'Marcacrin',
-		pokemon_piloswine_LABEL: 'Cochignon',
-		pokemon_corsola_LABEL: 'Corayon',
-		pokemon_remoraid_LABEL: 'Rémoraid',
-		pokemon_octillery_LABEL: 'Octillery',
-		pokemon_mantine_LABEL: 'Démanta',
-		pokemon_skarmory_LABEL: 'Airmure',
-		pokemon_houndour_LABEL: 'Malosse',
-		pokemon_houndoom_LABEL: 'Démolosse',
-		pokemon_kingdra_LABEL: 'Hyporoi',
-		pokemon_phanpy_LABEL: 'Phanpy',
-		pokemon_donphan_LABEL: 'Donphan',
-		pokemon_porygon2_LABEL: 'Porygon2',
-		pokemon_stantler_LABEL: 'Cerfrousse',
-		pokemon_tyrogue_LABEL: 'Debugant',
-		pokemon_hitmontop_LABEL: 'Kapoera',
-		pokemon_smoochum_LABEL: 'Lippouti',
-		pokemon_elekid_LABEL: 'Élekid',
-		pokemon_magby_LABEL: 'Magby',
-		pokemon_miltank_LABEL: 'Écrémeuh',
-		pokemon_blissey_LABEL: 'Leuphorie',
-		pokemon_larvitar_LABEL: 'Embrylex',
-		pokemon_pupitar_LABEL: 'Ymphect',
-		pokemon_tyranitar_LABEL: 'Tyranocif',
-		
-		/* Pokemon types */
-		
-		pokemon_type_bug: 'Insecte',
-		pokemon_type_fighting: 'Combat',
-		pokemon_type_electr: 'Electrik',
-		pokemon_type_dark: 'Ténèbre',
-		pokemon_type_ghost: 'Spectre',
-
-		pokemon_type_fairy: 'Fée',
-		pokemon_type_psycho: 'Psy',
-		pokemon_type_water: 'Eau',
-		pokemon_type_flying: 'Vol',
-		pokemon_type_ice: 'Glace',
-
-		pokemon_type_rock: 'Roche',
-		pokemon_type_steel: 'Acier',
-		pokemon_type_grass: 'Plante',
-		pokemon_type_fire: 'Feu',
-		pokemon_type_ground: 'Sol',
-
-		pokemon_type_poison: 'Poison',
-		pokemon_type_dragon: 'Dragon',
-		pokemon_type_normal: 'Normal',
-	});
-	
-	$authProvider.facebook({
-		
-		url: '/login/social/token_user/facebook',
-		clientId: '362521904117518'
-	});
-
-	$authProvider.authToken = 'Token';
-	$authProvider.tokenType = 'Token';
-});
-
-angular.module('AngularApp').config(function(toastrConfig) {
-	
-	angular.extend(toastrConfig, {
-		
-		target: '#toast-content',
-		timeOut: 2500,
-		positionClass: 'toast-top-full-width',
-	});
-});
-
-angular.module('AngularApp').run(function($rootScope, $state, $translate, $auth) {
-	
-	var lang = window.navigator.language || window.navigator.userLanguage;
-	if (lang === 'fr') $translate.use('fr');
-	
-	$rootScope.state = $state;
-	
-	$rootScope.$on('$stateChangeStart', function(event, toState) {
-		
-		if (toState.data && toState.data.authenticated && !$auth.isAuthenticated()) {
-			
-			event.preventDefault();
-			
-			if (toState.data.redirect) {
-				$state.go(toState.data.redirect, { location: 'replace' });
-			}
-			else {
-				$state.go('base.restricted', { location: 'replace' });
-			}
-		}
-	});
-	
-	$rootScope.isAuthenticated = function() { return $auth.isAuthenticated(); };
-});
-
-angular.module('AngularApp').directive('pageTitle', function($rootScope, $filter, $timeout) {
-	
-	return {
-		link: function(scope, element) {
-		
-			var listener = function(event, toState) {
-			
-				var title = 'MyPoGoDex';
-				if (toState.data && toState.data.labelKey) title = 'MyPoGoDex - ' + $filter('translate')(toState.data.labelKey);
-				
-				$timeout(function() { element.text(title); }, 0, false);
-			};
-			
-			$rootScope.$on('$stateChangeSuccess', listener);
-		}
-	};
-});
-
-angular.module('AngularApp').directive('selectList', function() {
-	
-	return {
-		
-		restrict: 'EA',
-		
-		replace: true,
-		
-		scope: {model: '=model', label: '=label', list: '=list'},
-
-		template: '<div class="row form-group">' +
-					'<label class="col-4 col-form-label text-right">{{label | translate}}</label>' +
-					'<div class="col-8 pl-0">' +
-						'<input class="form-control" ng-model="model" ng-focus="has_focus = true; filterList();" ng-change="filterList();" ng-blur="has_focus = false; checkModel();">' +
-						'<div class="select-group row" ng-show="has_focus">' +
-		                    '<div class="col-2 p-1" ng-repeat="item in filtered_list" ng-mousedown="selectItem(item)">' +
-		                        '<a href="javascript:;" class="select-group-item">' +
-		                            '{{item}}' +
-		                        '</a>' +
-		                    '</div>' +
-		                    '<div class="select-group-item col" ng-show="filtered_list.length < 1">' +
-		                       '<i class="text-danger font-italic">{{\'error_NOELEMENT\' | translate}}</i>' +
-		                    '</div>' +
-						'</div>' +
-					'</div>' +
-				  '</div>',
-				  
-		link: function(scope, element, attrs) {
-			
-			scope.filtered_list = scope.list;
-			
-			scope.filterList = function() {
-				
-				scope.filtered_list = [];
-				
-				if (!scope.model) {
-					
-					scope.filtered_list = scope.list;
-					return;
-				}
-				
-				var inputValue = String(scope.model).toLowerCase();
-					
-				for (var i = 0; i < scope.list.length; i++) {
-					
-					var refValue = String(scope.list[i]).toLowerCase();
-					
-					if (refValue.indexOf(inputValue) != -1) {
-						scope.filtered_list.push(scope.list[i]);
-					}
-				}
-			};
-			
-			scope.selectItem = function(item) {
-				
-				scope.model = item;
-			};
-			
-			scope.checkModel= function() {
-				
-				if (scope.filtered_list.length < 1) {
-					scope.model = null;
-				}
-			}
+		data: {
 		},
-	};
-});
-angular.module('AngularApp').controller('LangCtrl', function($scope, $translate) {
-
-	$scope.changeLanguage = function(key) {
-	
-		$translate.use(key);
-	};
-});
-
-angular.module('AngularApp').controller('RootCtrl', function($auth, $state) {
-	
-	if ($auth.isAuthenticated()) {
-		$state.go('app.pokedex');
-	}
-	else {
-		$state.go('base.welcome');
-	}
-});
-
-angular.module('AngularApp').controller('AccountCtrl', function($scope, $auth, $cookies, $location, $http, API) {
-	
-	$scope.socialLogin = function(provider) {
 		
-		API.sendRequest('/api/logout/', 'POST');
+		create: function(data) {
 		
-		delete $http.defaults.headers.common.Authorization;
-    	delete $cookies.token;
+			return API.sendRequest('/api/pokemon/add/', 'POST', {}, data);	
+		},
 		
-		$auth.removeToken();
-		
-		$auth.authenticate(provider).then(function(response) {
+		load: function(ref) {
 			
-			$auth.setToken(response.data.token);
-			$cookies.token = response.data.token;
-			$location.path('/pokedex');
-			
-		});
-	};
-	
-	$scope.loginModel = {username: '', password: ''};
-	
-	$scope.localLogin = function(form) {
-		
-		API.sendRequest('/api/logout/', 'POST');
-		
-		delete $http.defaults.headers.common.Authorization;
-    	delete $cookies.token;
-		
-		$auth.removeToken();
-		
-		if (!form.$invalid) {
-			
-			var data = { 'username':$scope.loginModel.username, 'password':$scope.loginModel.password }
-			API.sendRequest('/api/login/', 'POST', {}, data).then(function success(data) {
+			return API.sendRequest('/api/pokemon/' + ref + '/', 'GET').then(function(response) {
 				
-					$auth.setToken(data.token);
-					$cookies.token = data.token;
-					$location.path('/pokedex');
-					
-				},function error(data) {
+				service.data = response;
 				
-					$scope.error = data;
+				service.data.db = {};
+				angular.extend(service.data.db, data_pokemon.get(service.data.pokemon.code));
+				
+				service.computeLevel();
+				service.computeFinalData();
+				service.computeRequiredData();
 			});
-		}
-	};
-
-	$scope.registerModel = {username: '', password1: '', password2: '', email: ''};
-	
-	$scope.register = function(form) {
+		},
 		
-		if (!form.$invalid) {
-			
-			var data = { 'username':$scope.registerModel.username, 'password1':$scope.registerModel.password1, 'password2':$scope.registerModel.password2, 'email':$scope.registerModel.email }
-			API.sendRequest('/api/register/', 'POST', {}, data).then(function(data) {
+		computeLevel: function() {
+
+			var pokemon = null;
+			for (var code of data_pokemon.keys()) {
 				
-					$auth.setToken(data.token);
-					$cookies.token = data.token;
-					$location.path('/pokedex');
-					
-				},function(data) {
-				
-					$scope.error = data;
-			});
-		}
-	}
-
-	$scope.logout = function() {
-		
-		API.sendRequest('/api/logout/', 'POST');
-		
-		delete $http.defaults.headers.common.Authorization;
-    	delete $cookies.token;
-		
-		$auth.removeToken();
-		
-		$location.path('/');
-	};
-});
-
-angular.module('AngularApp').controller('ProfileCtrl', function($scope, $location, $filter, toastr, API, ProfileService) {
-	
-	$scope.profile = ProfileService.getProfile();
-	
-	$scope.profileLevelList = [  1,  2,  3,  4,  5,  6,  7,  8,  9, 10,
-								11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-								21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-								31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-							  ];
-	
-	$scope.profileModel = {team: $scope.profile.team, level: $scope.profile.level};
-	
-	$scope.edit = function(form) {
-		
-		if (!form.$invalid) {
-		
-			ProfileService.setProfile($scope.profileModel).then(function(data) {
-				
-				$scope.profile = $scope.profileModel;
-				
-				$location.path('/profile');
-				
-				toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
-					
-			}, function error(data) {
-				
-				toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-			});
-		}
-	};
-});
-
-angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootScope, $filter, $location, $cookies, toastr, API, ProfileService, pokedex) {
-	
-	$scope.appraisal1_list = [
-		{ "label":"label4" },
-		{ "label":"label3" },
-		{ "label":"label2" },
-		{ "label":"label1" },
-	];
-	
-	$scope.appraisal3_list = [
-		{ "label":"label4", "min":15, "max":15 },
-		{ "label":"label3", "min":13, "max":14 },
-		{ "label":"label2", "min": 8, "max":12 },
-		{ "label":"label1", "min": 0, "max": 7 },
-	];
-
-	$scope.filterPokemons = function() {
-
-		$scope.filtered_pokemonlist = [];
-		
-		for (var code of data_pokemon.keys()) {
-
-			var gameName = $filter('translate')('pokemon_' + code + '_LABEL');
-			gameName = gameName.toLowerCase();
-			
-			var inputName = $scope.computeModel.pokemon.toLowerCase();
-			
-			if (gameName.indexOf(inputName) != -1) {
-				$scope.filtered_pokemonlist.push(data_pokemon.get(code));
+				if (service.data.pokemon.code == code) {
+					pokemon = data_pokemon.get(code);
+					break;
+				}
 			}
-		}
-		
-	}
-	
-	$scope.selectPokemon = function(item) {
-		
-		$scope.computeModel.pokemon = $filter('translate')('pokemon_' + item.code + '_LABEL');
-		$scope.computeModel.image = item.code;
-	}
-	
-	$scope.filterStardust = function(name) {
+			if (!pokemon) return;
 
-		$scope.filtered_stardustlist = [];
-		
-		$scope.show_stardustlist = true;
-		
-		for (var count of data_stardust.keys()) {
+			var baseS = pokemon.stigmata;
+			var baseA = pokemon.attack;
+			var baseD = pokemon.defense;
 			
-			var gameName = String(count);
-			gameName = gameName.toLowerCase();
+			var stardust = data_stardust.get(parseInt(service.data.pokemon.stardust));
+			if (!stardust) return;
 			
-			var inputName = String(name).toLowerCase();
+			var highS = service.data.pokemon.app2S;
+			var highA = service.data.pokemon.app2A;
+			var highD = service.data.pokemon.app2D;
 			
-			if (!name || gameName.indexOf(inputName) != -1) {
-				$scope.filtered_stardustlist.push(count);
-			}
-		}
-	}
-	
-	$scope.updateTeam = function(team) {
-		
-		if (team) {
+			var minS =  0, minA =  0, minD =  0;
+			var maxS = 15, maxA = 15, maxD = 15;
+			
+			var appraisal3 = data_appraisal3.get(parseInt(service.data.pokemon.app3));
+			
 			for (var i = 0; i < 4; i++) {
-			
-				$scope.appraisal1_list[i].label = "pokemon_app1_CHOICE" + i + "_" + team;
-				$scope.appraisal3_list[i].label = "pokemon_app3_CHOICE" + i + "_" + team;
-			}
-		}
-	}
-	
-	$scope.compute = function() {
-		
-		var updateProfile = false;
-		
-		if ($scope.computeModel.team && !$scope.profile.team) { updateProfile = true; }
-		if ($scope.computeModel.level && !$scope.profile.level) { updateProfile = true; }
-		
-		if (updateProfile == true) {
-			
-			var data = { 'team':$scope.computeModel.team, 'level':$scope.computeModel.level }
-			API.sendRequest('/api/profile/edit/', 'POST', {}, data).then(function(data) {
 				
-				$scope.profile.team = $scope.computeModel.team
-				$scope.profile.level = $scope.computeModel.level
-
-			}, function error(data) {
+				var level = stardust.levels[i];
+				var cpm = data_level.get(level).cpm;
 				
-				toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-			});
-		}
-		
-		$scope.results = [];
-		
-		var pokemon = null;
-		for (var code of data_pokemon.keys()) {
-			
-			if ($scope.computeModel.pokemon == $filter('translate')('pokemon_' + code + '_LABEL')) {
-				pokemon = data_pokemon.get(code);
-				break;
-			}
-		}
-		
-		if (!pokemon) return;
-		
-		var baseS = pokemon.stigmata;
-		var baseA = pokemon.attack;
-		var baseD = pokemon.defense;
-		
-		var stardust = data_stardust.get(parseInt($scope.computeModel.stardust));
-		
-		if (!stardust) return;
-		
-		var highS = $scope.computeModel.app2S;
-		var highA = $scope.computeModel.app2A;
-		var highD = $scope.computeModel.app2D;
-		
-		var appraisal3 = $scope.appraisal3_list[$scope.computeModel.app3];
-		
-		var minS =  0, minA =  0, minD =  0;
-		var maxS = 16, maxA = 15, maxD = 15;
-		
-		if (highS) { minS = appraisal3.min; maxS = appraisal3.max; }
-		if (highA) { minA = appraisal3.min; maxA = appraisal3.max; }
-		if (highD) { minD = appraisal3.min; maxD = appraisal3.max; }
-		
-		for (var i = 0; i < 4; i++) {
-			
-			var level = stardust.levels[i];
-			var cpm = data_level.get(level).cpm;
-			
-			for (var ivS = minS; ivS <= maxS; ivS++) {
-				
-				var tempHP = Math.floor(cpm * (baseS + ivS));
-				tempHP = tempHP < 10 ? 10 : tempHP;
-				if (tempHP == $scope.computeModel.hp) {
+				for (var ivS = minS; ivS <= maxS; ivS++) {
 					
-					for (var ivA = minA; ivA <= maxA; ivA++) {
-						for (var ivD = minD; ivD <= maxD; ivD++) {
-							
-							var tempCP = Math.floor((baseA + ivA) * Math.pow(baseD + ivD, 0.5) * Math.pow(baseS + ivS, 0.5) * Math.pow(cpm, 2) / 10);
-							tempCP = tempCP < 10 ? 10 : tempCP;
-							if (tempCP == $scope.computeModel.cp) {
+					var tempHP = Math.floor(cpm * (baseS + ivS));
+					tempHP = tempHP < 10 ? 10 : tempHP;
+					if (tempHP == service.data.pokemon.hp) {
+						
+						for (var ivA = minA; ivA <= maxA; ivA++) {
+							for (var ivD = minD; ivD <= maxD; ivD++) {
 								
-								var result = {	code:pokemon.code,
-												name:$filter('translate')('pokemon_' + pokemon.code + '_LABEL'),
-												level:level,
-												stigmata:ivS,
-												attack:ivA,
-												defense:ivD,
-												percent:0.0,
-												cp:$scope.computeModel.cp,
-												hp:$scope.computeModel.hp,
-												stardust:$scope.computeModel.stardust,
-												app1:parseInt($scope.computeModel.app1),
-												app2S:$scope.computeModel.app2S,
-												app2A:$scope.computeModel.app2A,
-												app2D:$scope.computeModel.app2D,
-												app3:parseInt($scope.computeModel.app3),
-												team:$scope.computeModel.team,
-								};
-								
-								var valid = true;
-								
-								if (highS) {
+								var tempCP = Math.floor((baseA + ivA) * Math.pow(baseD + ivD, 0.5) * Math.pow(baseS + ivS, 0.5) * Math.pow(cpm, 2) / 10);
+								tempCP = tempCP < 10 ? 10 : tempCP;
+								if (tempCP == service.data.pokemon.cp) {
 									
-									if ((ivS  < ivA) || (ivS < ivD)) { valid = false; }
-									if ((ivS == ivA) && !highA) { valid = false; }
-									if ((ivS == ivD) && !highD) { valid = false; }
-								}
-								
-								if (highA) {
+									var valid = true;
 									
-									if ((ivA  < ivS) || (ivA < ivD)) { valid = false; }
-									if ((ivA == ivS) && !highS) { valid = false; }
-									if ((ivA == ivD) && !highD) { valid = false; }
-								}
-								
-								if (highD) {
+									if (highS) {
+										
+										if ((ivS  < ivA) || (ivS < ivD)) { valid = false; }
+										if ((ivS == ivA) && !highA) { valid = false; }
+										if ((ivS == ivD) && !highD) { valid = false; }
+									}
 									
-									if ((ivD  < result.ATK) || (ivD < ivS)) { valid = false; }
-									if ((ivD == ivS) && !highS) { valid = false; }
-									if ((ivD == ivA) && !highA) { valid = false; }
-								}
-								
-								if (valid) {
+									if (highA) {
+										
+										if ((ivA  < ivS) || (ivA < ivD)) { valid = false; }
+										if ((ivA == ivS) && !highS) { valid = false; }
+										if ((ivA == ivD) && !highD) { valid = false; }
+									}
 									
-									result.percent = ((ivS + ivA + ivD) * 100.0 / 45.0).toFixed(1);
+									if (highD) {
+										
+										if ((ivD  < ivA) || (ivD < ivS)) { valid = false; }
+										if ((ivD == ivS) && !highS) { valid = false; }
+										if ((ivD == ivA) && !highA) { valid = false; }
+									}
 									
-									$scope.results.push(result);
+									if (valid) {
+										
+										service.data.pokemon.level = level;
+										break;
+									}
 								}
 							}
 						}
 					}
 				}
 			}
-		}
-	}
+		},
+		
+		computeFinalData: function() {
 	
-	$scope.add = function(form, item) {
+			var stats = data_pokemon.get(service.data.pokemon.code);
+		
+			if (service.data.owner.level) {
+				
+				service.data.pokemon.finalLevel = service.data.owner.level + 1.5;
+				service.data.pokemon.finalLevel = service.data.pokemon.finalLevel > 40 ? 40 : service.data.pokemon.finalLevel;
+				
+				var finalCpm = data_level.get(service.data.pokemon.finalLevel).cpm;
+				
+				service.data.pokemon.finalCP = Math.floor((finalCpm * finalCpm * (stats.attack + service.data.pokemon.attack) * Math.sqrt(stats.defense + service.data.pokemon.defense) * Math.sqrt(stats.stigmata + service.data.pokemon.stigmata)) / 10);
+				service.data.pokemon.finalHP = Math.floor(finalCpm * (stats.stigmata + service.data.pokemon.stigmata));
+			}
+			else {
+			
+				service.data.pokemon.finalCP = null;
+				service.data.pokemon.finalHP = null;
+				service.data.pokemon.finalLevel = null;
+			}
+		},
+		
+		computeRequiredData: function() {
 
-		if (!form.$invalid) {
+			var startingStardust = 0;
+			var targetStardust = 0;
+			var startingCandy = 0;
+			var targetCandy = 0;
 			
-			API.sendRequest('/api/pokemon/add/', 'POST', {}, item).then(function(data) {
-				
-				angular.extend(item, data);
-				$scope.pokemons.push(item);
-				
-				$scope.sort($scope.sortType);
+			startingStardust = data_level.get(service.data.pokemon.level).cumul_stardust;
+			startingCandy = data_level.get(service.data.pokemon.level).cumul_candy;
+			
+			targetStardust = data_level.get(service.data.pokemon.finalLevel).cumul_stardust;
+			targetCandy = data_level.get(service.data.pokemon.finalLevel).cumul_candy;
 	
-				$location.path('/pokedex');
-				
-				toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
-				
-			}, function error(data) {
+			service.data.pokemon.requiredStardust = targetStardust - startingStardust;
+			service.data.pokemon.requiredCandy = targetCandy - startingCandy;
+		},
+		
+		updateName: function(newvalue) {
 			
-				toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
+			var data = { 'name':newvalue };
+			return API.sendRequest('/api/pokemon/' + service.data.pokemon.ref + '/name/', 'POST', {}, data).then(function(response) {
+				
+				service.data.pokemon.name = newvalue;
 			});
-		}
+		},
 	};
 	
+	return service;
+});
+
+angular.module('AngularApp.services').service('PogodexService', function($state, $cookies, API, PokemonService) {
+
 	function _compareByName(a, b) {
 		
 		if (a.name > b.name) return 1;
@@ -2287,147 +2017,454 @@ angular.module('AngularApp').controller('PokedexCtrl', function($scope, $rootSco
 		return 0;
 	}
 	
-	$scope.sort = function(sortType) {
-		
-		$cookies.put('sortType', sortType);
-		
-		switch(sortType) {
-			
-			case 'name': $scope.pokemons = $scope.pokemons.sort(_compareByName); break;
-			case 'percent': $scope.pokemons = $scope.pokemons.sort(_compareByPercent); break;
-			case 'attack': $scope.pokemons = $scope.pokemons.sort(_compareByAttack); break;
-			case 'defense': $scope.pokemons = $scope.pokemons.sort(_compareByDefense); break;
-			case 'stigmata': $scope.pokemons = $scope.pokemons.sort(_compareByStigmata); break;
-			case 'dexnumber': $scope.pokemons = $scope.pokemons.sort(_compareByDexnumber); break;
-		}
-	}
-	
-	$scope.profile = ProfileService.getProfile();
+	var service = {
 
-	$scope.pokemons = pokedex;
-	
-	$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:$scope.profile.team, level:$scope.profile.level, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
-	
-	if ($scope.profile && $scope.profile.team) {
-		
-		$scope.computeModel.team = $scope.profile.team;
-		$scope.updateTeam($scope.computeModel.team);
-	}
-
-	$scope.sortType = 'percent';
-	
-	var sortTypeCookie = $cookies.get('sortType');
-	if (sortTypeCookie) $scope.sortType = sortTypeCookie;
-	
-	$scope.sort($scope.sortType);
-
-	$rootScope.$on('$stateChangeStart', function(event, toState) {
-		
-		if (toState.name == 'app.pokedex.add') {
+		data: {
 			
-			$scope.computeModel = {image:'pokeball', pokemon:'', cp:null, hp:null, stardust:'', team:null, app1:null, app2S:false, app2A:false, app2D:false, app3:null};
+			sortType: '',
 			
-			if ($scope.profile && $scope.profile.team && $scope.profile.level) {
+			pokemons: [],
+		},
+		
+		init: function() {
+			
+			service.data.sortType = 'percent';
+			
+			var sortTypeCookie = $cookies.get('sortType');
+			if (sortTypeCookie) service.data.sortType = sortTypeCookie;
+			
+			return API.sendRequest('/api/pokemon/list/', 'POST').then(function(response) {
 				
-				$scope.computeModel.team = $scope.profile.team;
-				$scope.updateTeam($scope.computeModel.team);
+				service.data.pokemons = response;
+				service.sort();
+			});
+		},
+		
+		setSort: function(type) {
+			
+			service.data.sortType = type;
+			$cookies.put('sortType', service.data.sortType);
+			
+			service.sort();
+		},
+		
+		sort: function() {
+			
+			switch(service.data.sortType) {
 				
-				$scope.computeModel.level = $scope.profile.level;
+				case 'name': service.data.pokemons = service.data.pokemons.sort(_compareByName); break;
+				case 'percent': service.data.pokemons = service.data.pokemons.sort(_compareByPercent); break;
+				case 'attack': service.data.pokemons = service.data.pokemons.sort(_compareByAttack); break;
+				case 'defense': service.data.pokemons = service.data.pokemons.sort(_compareByDefense); break;
+				case 'stigmata': service.data.pokemons = service.data.pokemons.sort(_compareByStigmata); break;
+				case 'dexnumber': service.data.pokemons = service.data.pokemons.sort(_compareByDexnumber); break;
 			}
+		},
+		
+		save: function(item) {
+			
+			return PokemonService.create(item).then(function() {
+				
+				service.data.pokemons.push(item);
+				service.sort();
+				
+				$state.go('root.pogodex', {location: 'replace'});
+			})
+		},
+		
+		delete: function(ref) {
+			
+			return API.sendRequest('/api/pokemon/' + ref + '/delete/', 'POST').then(function(response) {
+				
+				service.init();
+				
+				$state.go('root.pogodex', {location: 'replace'});
+			});
+		},
+	};
+	
+	return service;
+});
+angular.module('AngularApp.directives', [])
 
-			$scope.results = null;
+angular.module('AngularApp.directives').directive('pageTitle', function($rootScope, $filter, $timeout) {
+	
+	return {
+		
+		link: function(scope, element) {
+		
+			var listener = function(event, toState) {
+			
+				var title = 'MyPoGoDex';
+				if (toState.data && toState.data.title) title = 'MyPoGoDex - ' + $filter('translate')(toState.data.title);
+				
+				$timeout(function() { element.text(title); }, 0, false);
+			};
+			
+			$rootScope.$on('$stateChangeSuccess', listener);
 		}
-	});
+	};
 });
 
-angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootScope, $filter, $location, $cookies, $stateParams, toastr, API, ProfileService) {
-
-	$scope.isLoading = true;
+angular.module('AngularApp.directives').directive('selectList', function($filter) {
 	
-	$scope.profile = ProfileService.getProfile();
-	
-	$scope.data = null;
-	
-	var _computeLevel = function() {
-
-		if (!$scope.data || !$scope.data.pokemon) return;
-
-		var stats = data_pokemon.get($scope.data.pokemon.code);
+	return {
 		
-		var levels = data_stardust.get($scope.data.pokemon.stardust).levels;
-		for (var i = 0; i < 4; i++) {
+		restrict: 'EA',
+		
+		replace: true,
+		
+		scope: { id:'=id', model:'=model', label:'=label', list:'=list', img:'=img', placeholder:'=placeholder', callback:'=callback' },
+
+		template:	'<div>' +
+						'<input id="{{id}}" class="form-control" placeholder="{{placeholder | translate}}" ng-model="model" ng-focus="has_focus = true; filterList();" ng-change="filterList();" ng-blur="has_focus = false; checkModel();">' +
+						'<div class="select-group row" ng-show="has_focus">' +
+		                    '<div class="col-12 col-md-3 p-0" ng-repeat="item in filtered_list" ng-mousedown="selectItem(item)">' +
+		                        '<div class="select-group-item">' +
+		                        	'<img ng-if="img" ng-src="/static/front/img/{{item}}.png" />' + 
+		                            '{{item | translate}}' +
+		                        '</div>' +
+		                    '</div>' +
+		                    '<div class="select-group-empty col" ng-show="filtered_list.length < 1">' +
+		                       '{{\'error_NOELEMENT\' | translate}}' +
+		                    '</div>' +
+						'</div>' +
+					'</div>',
+				  
+		link: function(scope, element, attrs) {
 			
-			var level = levels[i];
-			var cpm = data_level.get(level).cpm;
+			scope.filtered_list = scope.list;
 			
-			var tempHP = Math.floor(cpm * (stats.stigmata + $scope.data.pokemon.stigmata));
-			tempHP = tempHP < 10 ? 10 : tempHP;
-			
-			var tempCP = Math.floor((stats.attack + $scope.data.pokemon.attack) * Math.pow(stats.defense + $scope.data.pokemon.defense, 0.5) * Math.pow(stats.stigmata + $scope.data.pokemon.stigmata, 0.5) * Math.pow(cpm, 2) / 10);
-			tempCP = tempCP < 10 ? 10 : tempCP;
-			
-			if ((tempHP == $scope.data.pokemon.hp) && (tempCP == $scope.data.pokemon.cp)) {
+			scope.filterList = function() {
 				
-				$scope.data.pokemon.level = level;
-				break;
+				scope.filtered_list = [];
+				
+				if (!scope.model) {
+					
+					scope.filtered_list = scope.list;
+					return;
+				}
+				
+				var inputValue = String(scope.model).toLowerCase();
+					
+				for (var i = 0; i < scope.list.length; i++) {
+					
+					var refValue = String($filter('translate')(scope.list[i])).toLowerCase();
+					
+					if (refValue.indexOf(inputValue) != -1) {
+						scope.filtered_list.push(scope.list[i]);
+					}
+				}
+			};
+			
+			scope.selectItem = function(item) {
+				
+				scope.model = $filter('translate')(item);
+			};
+			
+			scope.checkModel= function() {
+				
+				if (scope.filtered_list.length < 1) {
+					scope.model = null;
+				}
+				
+				if (scope.callback) scope.callback(scope.model);
+			}
+		},
+	};
+});
+
+angular.module('AngularApp.controllers', [])
+
+angular.module('AngularApp.controllers').controller('RootCtrl', function($scope, $stateParams, $translate, $window, UserService) {
+	
+	if ($stateParams.codelang) {
+		
+		$translate.use($stateParams.codelang);
+		UserService.data.lang = $stateParams.codelang;
+	}
+	else {
+		
+		var lang = $window.navigator.language || $window.navigator.userLanguage;
+		
+		$translate.use(lang);
+		UserService.data.lang = lang;
+		
+		$window.location.href = '/' + lang + '/home';
+	}
+	
+	$scope.user = UserService.data;
+	
+	$scope.logout = UserService.logout;
+});
+
+angular.module('AngularApp.controllers').controller('HomeCtrl', function($scope, $filter, $state) {
+	
+	$scope.homeModel = {code: null, list: Array.from(data_pokemon.keys())};
+	
+	$scope.evaluate = function(form) {
+		
+		if (!form.$invalid) {
+			
+			for (var code of data_pokemon.keys()) {
+	
+				var refvalue = $filter('translate')(code);
+				
+				if (refvalue == $scope.homeModel.code) {
+					
+					$state.go('root.ivcalculator', {code: code, location: 'replace'});
+					break;
+				}
 			}
 		}
 	}
-	
-	var _computeFinalData = function() {
+});
 
-		if (!$scope.data || !$scope.data.pokemon) return;
+angular.module('AngularApp.controllers').controller('LoginCtrl', function($scope, UserService) {
+	
+	$scope.loginModel = { username:null, password:null };
+	
+	$scope.localLogin = UserService.localLogin;
+	$scope.socialLogin = UserService.socialLogin;
+});
+
+angular.module('AngularApp.controllers').controller('RegisterCtrl', function($scope, UserService) {
+	
+	$scope.registerModel = { username:null, password1:null, password2:null, email:null };
+	
+	$scope.register = UserService.register;
+});
+
+angular.module('AngularApp.controllers').controller('ProfileCtrl', function($scope, UserService, $timeout) {
+	
+	$scope.user = UserService.data;
+	
+	/* Name */
+	
+	$scope.editname = false;
+	$scope.newname = UserService.data.name;
+	
+	$scope.nameClick = function() {
 		
-		var stats = data_pokemon.get($scope.data.pokemon.code);
+		$scope.editname = true;
+			
+		$timeout(function() {
+			$('#input-name').focus();
+		});
+	}
+	
+	$scope.nameBlur = function() {
 		
-		if ($scope.data.owner.level) {
+		$scope.editname = false;
+		
+		if ($scope.newname && $scope.newname != UserService.data.name) {
 			
-			$scope.data.pokemon.finalLevel = $scope.data.owner.level + 1.5;
-			$scope.data.pokemon.finalLevel = $scope.data.pokemon.finalLevel > 40 ? 40 : $scope.data.pokemon.finalLevel;
-			
-			var finalCpm = data_level.get($scope.data.pokemon.finalLevel).cpm;
-			
-			$scope.data.pokemon.finalCP = Math.floor((finalCpm * finalCpm * (stats.attack + $scope.data.pokemon.attack) * Math.sqrt(stats.defense + $scope.data.pokemon.defense) * Math.sqrt(stats.stigmata + $scope.data.pokemon.stigmata)) / 10);
-			$scope.data.pokemon.finalHP = Math.floor(finalCpm * (stats.stigmata + $scope.data.pokemon.stigmata));
+			$scope.loadingname = true;
+			UserService.updateName($scope.newname).then(function() {
+				$scope.loadingname = false;
+			});
 		}
-		else {
+	}
+	
+	/* Team */
+	
+	$scope.editteam = false;
+	$scope.newteam = UserService.data.team;
+	
+	$scope.teamClick = function() {
 		
-			$scope.data.pokemon.finalCP = null;
-			$scope.data.pokemon.finalHP = null;
-			$scope.data.pokemon.finalLevel = null;
+		$scope.editteam = true;
+	}
+	
+	$scope.teamBlur = function(newvalue) {
+		
+		$scope.editteam = false;
+		
+		if (newvalue && newvalue != UserService.data.team) {
+			
+			$scope.loadingteam = true;
+			UserService.updateTeam(newvalue).then(function() {
+				$scope.newteam = UserService.data.team;
+				$scope.loadingteam = false;
+			});
 		}
 	}
 	
-	var _computeRequiredData = function() {
-
-		if (!$scope.data || !$scope.data.pokemon) return;
-		
-		var startingStardust = 0;
-		var targetStardust = 0;
-		var startingCandy = 0;
-		var targetCandy = 0;
-		
-		startingStardust = data_level.get($scope.data.pokemon.level).cumul_stardust;
-		startingCandy = data_level.get($scope.data.pokemon.level).cumul_candy;
-		
-		targetStardust = data_level.get($scope.data.pokemon.finalLevel).cumul_stardust;
-		targetCandy = data_level.get($scope.data.pokemon.finalLevel).cumul_candy;
-
-		$scope.data.pokemon.requiredStardust = targetStardust - startingStardust;
-		$scope.data.pokemon.requiredCandy = targetCandy - startingCandy;
-	}
+	/* Level */
 	
-	var _setEditModel = function() {
+	$scope.editlevel = false;
+	$scope.newlevel = UserService.data.level;
+	
+	$scope.levellist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40];
+	
+	$scope.levelClick = function() {
 		
-		$scope.editModel = {
+		$scope.editlevel = true;
 			
-			cp:$scope.data.pokemon.cp,
-			hp:$scope.data.pokemon.hp,
-			name:$scope.data.pokemon.name,
-			stardust:$scope.data.pokemon.stardust
-		};
+		$timeout(function() {
+			$('#input-level').focus();
+		});
 	}
 	
+	$scope.levelBlur = function(newvalue) {
+		
+		$scope.editlevel = false;
+		
+		if (newvalue && newvalue != UserService.data.level) {
+			
+			$scope.loadinglevel = true;
+			UserService.updateLevel(newvalue).then(function() {
+				$scope.newlevel = UserService.data.level;
+				$scope.loadinglevel = false;
+			});
+		}
+	}
+});
+
+angular.module('AngularApp.controllers').controller('IVCalculatorCtrl', function($scope, UserService, $stateParams, $filter, PogodexService) {
+
+	$scope.user = UserService.data
+	
+	$scope.ivModel = { team:UserService.data.team, level:UserService.data.level, code:$filter('translate')($stateParams.code), cp:null, hp:null, stardust:null, app1:null, app2A:false, app2D:false, app2S:false, app3:null };
+
+	$scope.levellist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40];
+	
+	$scope.codelist = Array.from(data_pokemon.keys());
+	$scope.stardustlist = Array.from(data_stardust.keys());
+	
+	$scope.compute = function(form) {
+		
+		$scope.results = [];
+		
+		if (!form.$invalid) {
+			
+			if (UserService.data.authenticated && !UserService.data.team) UserService.updateTeam($scope.ivModel.team);
+			if (UserService.data.authenticated && !UserService.data.level) UserService.updateLevel($scope.ivModel.level);
+			
+			var pokemon = null;
+			for (var code of data_pokemon.keys()) {
+				
+				if ($scope.ivModel.code == $filter('translate')(code)) {
+					pokemon = data_pokemon.get(code);
+					break;
+				}
+			}
+			if (!pokemon) return;
+
+			var baseS = pokemon.stigmata;
+			var baseA = pokemon.attack;
+			var baseD = pokemon.defense;
+			
+			var stardust = data_stardust.get(parseInt($scope.ivModel.stardust));
+			if (!stardust) return;
+			
+			var highS = $scope.ivModel.app2S;
+			var highA = $scope.ivModel.app2A;
+			var highD = $scope.ivModel.app2D;
+			
+			var minS =  0, minA =  0, minD =  0;
+			var maxS = 15, maxA = 15, maxD = 15;
+			
+			var appraisal3 = data_appraisal3.get(parseInt($scope.ivModel.app3));
+			
+			for (var i = 0; i < 4; i++) {
+				
+				var level = stardust.levels[i];
+				var cpm = data_level.get(level).cpm;
+				
+				for (var ivS = minS; ivS <= maxS; ivS++) {
+					
+					var tempHP = Math.floor(cpm * (baseS + ivS));
+					tempHP = tempHP < 10 ? 10 : tempHP;
+					if (tempHP == $scope.ivModel.hp) {
+						
+						for (var ivA = minA; ivA <= maxA; ivA++) {
+							for (var ivD = minD; ivD <= maxD; ivD++) {
+								
+								var tempCP = Math.floor((baseA + ivA) * Math.pow(baseD + ivD, 0.5) * Math.pow(baseS + ivS, 0.5) * Math.pow(cpm, 2) / 10);
+								tempCP = tempCP < 10 ? 10 : tempCP;
+								if (tempCP == $scope.ivModel.cp) {
+									
+									var result = {	code:pokemon.code,
+													name:$filter('translate')(pokemon.code),
+													level:level,
+													stigmata:ivS,
+													attack:ivA,
+													defense:ivD,
+													percent:((ivS + ivA + ivD) * 100.0 / 45.0).toFixed(1),
+													cp:$scope.ivModel.cp,
+													hp:$scope.ivModel.hp,
+													stardust:$scope.ivModel.stardust,
+													app1:parseInt($scope.ivModel.app1),
+													app2S:$scope.ivModel.app2S,
+													app2A:$scope.ivModel.app2A,
+													app2D:$scope.ivModel.app2D,
+													app3:parseInt($scope.ivModel.app3),
+													team:$scope.ivModel.team,
+									};
+									
+									var valid = true;
+									
+									if (highS) {
+										
+										if ((ivS  < ivA) || (ivS < ivD)) { valid = false; }
+										if ((ivS == ivA) && !highA) { valid = false; }
+										if ((ivS == ivD) && !highD) { valid = false; }
+									}
+									
+									if (highA) {
+										
+										if ((ivA  < ivS) || (ivA < ivD)) { valid = false; }
+										if ((ivA == ivS) && !highS) { valid = false; }
+										if ((ivA == ivD) && !highD) { valid = false; }
+									}
+									
+									if (highD) {
+										
+										if ((ivD  < result.ATK) || (ivD < ivS)) { valid = false; }
+										if ((ivD == ivS) && !highS) { valid = false; }
+										if ((ivD == ivA) && !highA) { valid = false; }
+									}
+									
+									if (valid) $scope.results.push(result);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	$scope.save = function(form, item) {
+		
+		if (!form.$invalid) PogodexService.save(item);
+	}
+});
+
+angular.module('AngularApp.controllers').controller('PogodexCtrl', function($scope, PogodexService) {
+	
+	$scope.pokemons = PogodexService.data.pokemons;
+	$scope.sorttype = PogodexService.data.sortType;
+	
+	$scope.sort = PogodexService.setSort;
+});
+
+angular.module('AngularApp.controllers').controller('PokemonCtrl', function($scope, $stateParams, $timeout, PokemonService, PogodexService, UserService) {
+	
+	$scope.profile = UserService.data;
+	
+	$scope.isLoading = true;
+	
+	PokemonService.load($stateParams.ref).then(function() {
+		
+		$scope.data = PokemonService.data;
+		
+		$scope.newname = PokemonService.data.pokemon.name;
+		
+		$scope.isLoading = false;
+	});
+
 	$scope.selectShareLink = function() {
 		
 		$('#js-copytext').select();
@@ -2441,81 +2478,120 @@ angular.module('AngularApp').controller('PokemonCtrl', function($scope, $rootSco
 		var msg = successful ? 'successful' : 'unsuccessful';
 		console.log('Copying text command was ' + msg);		
 	}
-	
-	API.sendRequest('/api/pokemon/' + $stateParams.ref + '/', 'GET').then(function success(data) {
-		
-		$scope.data = data;
-		
-		_computeLevel();
-		_computeFinalData();
-		_computeRequiredData();
-		
-		_setEditModel();
-		
-		$scope.data.db = {};
-		angular.extend($scope.data.db, data_pokemon.get($scope.data.pokemon.code));
-		
-		$scope.isLoading = false;
-		
-	}, function error(data) {
-	
-		$scope.isLoading = false;
-	
-		toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-	});
 
-	$rootScope.$on('$stateChangeStart', function(event, toState) {
-		
-		if (toState.name == 'app.pokemon') {
-		
-			_computeLevel();
-			_computeFinalData();
-			_computeRequiredData();
-		}
-		
-		if (toState.name == 'app.pokemon.edit') {
-		
-			_setEditModel();
-		}
-	});
+	/* Name */
 	
-	$scope.edit = function(form) {
+	$scope.editname = false;
+	
+	$scope.nameClick = function() {
 		
-		if (!form.$invalid) {
-				
-			var tempPokemon = $scope.data.pokemon;
+		$scope.editname = true;
+			
+		$timeout(function() {
+			$('#input-name').focus();
+		});
+	}
+	
+	$scope.nameBlur = function() {
 		
-			tempPokemon.cp = $scope.editModel.cp;
-			tempPokemon.hp = $scope.editModel.hp;
-			tempPokemon.name = $scope.editModel.name;
-			tempPokemon.stardust = $scope.editModel.stardust;
+		$scope.editname = false;
 		
-			API.sendRequest('/api/pokemon/' + $scope.data.pokemon.ref + '/edit/', 'POST', {}, tempPokemon).then(function success(data) {
-				
-				$scope.pokemon = tempPokemon;
-				
-				$location.path('/pokemon/' + $scope.data.pokemon.ref);
-				
-				toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
-				
-			}, function error(data) {
-				
-				toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
+		if ($scope.newname && $scope.newname != PokemonService.data.pokemon.name) {
+			
+			$scope.loadingname = true;
+			PokemonService.updateName($scope.newname).then(function() {
+				$scope.loadingname = false;
 			});
 		}
 	}
 	
-	$scope.delete = function() {
+	$scope.delete = PogodexService.delete;
+});
+
+angular.module('AngularApp.controllers').controller('PokedexCtrl', function($auth, $state, $stateParams, $translate, $window) {
+});
+
+angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr',
+							  'AngularApp.services', 'AngularApp.controllers', 'AngularApp.directives', ]);
+
+
+
+/* Routing config */
+
+angular.module('AngularApp').config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+	
+	$urlRouterProvider.otherwise('/');
+	
+	$stateProvider
+	
+		.state('root', { url: '/:codelang', controller: 'RootCtrl', templateUrl: '/static/front/pages/root.html', resolve: {loadUser: function(UserService) { return UserService.init(); }, }, })
+
+			.state('root.home',    		{ url: '/home',    				controller: 'HomeCtrl',			templateUrl: '/static/front/pages/home.html',  			data:{ title: 'home_TITLE', 		}})
+			
+			.state('root.login',    	{ url: '/login',    			controller: 'LoginCtrl',		templateUrl: '/static/front/pages/login.html',  		data:{ title: 'login_TITLE', 		}})
+			.state('root.profile',		{ url: '/profile',				controller: 'ProfileCtrl',		templateUrl: '/static/front/pages/profile.html',		data:{ title: 'profile_TITLE',   	}})
+			.state('root.register', 	{ url: '/register', 			controller: 'RegisterCtrl', 	templateUrl: '/static/front/pages/register.html',		data:{ title: 'register_TITLE',		}})
+
+			.state('root.pokedex',		{ url: '/pokedex',				controller: 'PokedexCtrl',		templateUrl: '/static/front/pages/pokedex.html',		data:{ title: 'pokedex_TITLE',		}})
+			
+			.state('root.ivcalculator',	{ url: '/ivcalculator/:code',	controller: 'IVCalculatorCtrl',	templateUrl: '/static/front/pages/ivcalculator.html',	data:{ title: 'ivcalculator_TITLE',	}})
+			
+			.state('root.pogodex',		{ url: '/pogodex',				controller: 'PogodexCtrl',		templateUrl: '/static/front/pages/pogodex.html',		data:{ title: 'pogodex_TITLE',		}, resolve: {loadPogodex: function(UserService, PogodexService) { if (UserService.data.authenticated) {return PogodexService.init();} else {return} }, }, })
+			.state('root.pokemon',		{ url: '/pokemon/:ref', 		controller: 'PokemonCtrl',		templateUrl: '/static/front/pages/pokemon.html',		data:{ title: 'pokemon_TITLE',		}})
+			
+	$locationProvider.html5Mode(true);
+});
+
+
+
+/* Translations config */
+
+angular.module('AngularApp').config(function($translateProvider) {
+	
+	$translateProvider.useSanitizeValueStrategy(null);
+	
+	$translateProvider.preferredLanguage('en');
+	
+	$translateProvider.translations('en', en_translations);
+	$translateProvider.translations('fr', fr_translations);
+});
+
+
+
+/* Satellizer config */
+
+angular.module('AngularApp').config(function($authProvider) {
+	
+	$authProvider.facebook({
 		
-		API.sendRequest('/api/pokemon/' + $scope.data.pokemon.ref + '/delete/', 'POST', {}, $scope.data.pokemon).then(function success(data) {
-			
-			$location.path('/pokedex');
-			
-			toastr.success('<i class="fa fa-check mr-2"></i> ' + $filter('translate')('notif_SUCCESS'), '', {allowHtml: true});
-			
-		}, function error(data) {
-			
-			toastr.error('<i class="fa fa-exclamation-triangle mr-2"></i> ' + $filter('translate')('notif_ERROR'), '', {allowHtml: true});
-		});
-	}
+		url: '/login/social/token_user/facebook',
+		clientId: '362521904117518'
+	});
+
+	$authProvider.authToken = 'Token';
+	$authProvider.tokenType = 'Token';
+});
+
+
+
+/* Toastr config */
+
+angular.module('AngularApp').config(function(toastrConfig) {
+	
+	angular.extend(toastrConfig, {
+		
+		target: '#toast-content',
+		timeOut: 5000,
+		positionClass: 'toast-bottom-center',
+	});
+});
+
+
+
+/* Running */
+
+angular.module('AngularApp').run(function($rootScope, $state, $stateParams) {
+	
+	$rootScope.state = $state;
+	$rootScope.stateParams = $stateParams;
 });

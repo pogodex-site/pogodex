@@ -81,9 +81,28 @@ class ProfileViewSet(viewsets.ViewSet):
 
 
 
-	def edit(self, request):
+	def name(self, request):
+		
+		request.user.username = request.data['name']
+		request.user.save()
+		
+		return Response(None, status=status.HTTP_200_OK)
+
+
+
+
+	def team(self, request):
 		
 		request.user.profile.team = request.data['team']
+		request.user.profile.save()
+		
+		return Response(None, status=status.HTTP_200_OK)
+
+
+
+
+	def level(self, request):
+		
 		request.user.profile.level = request.data['level']
 		request.user.profile.save()
 		
@@ -91,7 +110,6 @@ class ProfileViewSet(viewsets.ViewSet):
 
 
 
-    
 #---------------------------------------------------------------------------------------------------
 class PokemonViewSet(viewsets.ViewSet):
 	
@@ -162,7 +180,7 @@ class PokemonViewSet(viewsets.ViewSet):
 				'defense':item.defense, 'stigmata':item.stigmata, 'percent':item.percent,
 				'cp':item.cp, 'hp':item.hp, 'stardust':item.stardust,
 				'app1':item.app1, 'app2S':item.app2S, 'app2A':item.app2A, 'app2D':item.app2D,
-				'app3':item.app3, 'team':item.team, }
+				'app3':item.app3, 'team':item.team, 'level':item.level, }
 		
 		is_owned = False
 		if item.user == request.user:
@@ -176,19 +194,15 @@ class PokemonViewSet(viewsets.ViewSet):
 
 
 
-	def edit(self, request, ref):
+	def name(self, request, ref):
 		
-		results = Pokemon.objects.filter(user = request.user, ref = request.data['ref'])
+		results = Pokemon.objects.filter(user = request.user, ref = ref)
 		if results.count() < 1:
 			return Response('error_NO_POKEMON', status=status.HTTP_400_BAD_REQUEST)
 		
 		item = results[0]
 		
-		item.cp = request.data['cp']
-		item.hp = request.data['hp']
 		item.name = request.data['name']
-		item.stardust = request.data['stardust']
-		
 		item.save()
 		
 		return Response(None, status=status.HTTP_200_OK)
@@ -197,12 +211,11 @@ class PokemonViewSet(viewsets.ViewSet):
 		
 	def delete(self, request, ref):
 		
-		results = Pokemon.objects.filter(user = request.user, ref = request.data['ref'])
+		results = Pokemon.objects.filter(user = request.user, ref = ref)
 		if results.count() < 1:
 			return Response('error_NO_POKEMON', status=status.HTTP_400_BAD_REQUEST)
 		
 		item = results[0]
-		
 		item.delete()
 		
 		return Response(None, status=status.HTTP_200_OK)

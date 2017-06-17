@@ -1,30 +1,48 @@
-<!doctype html>
-<html ng-app="AngularApp">
+{% verbatim %}
+<!DOCTYPE html>
+<html lang="{{'lang_CODE' | translate}}" ng-app="AngularApp">
 	
 	<head>
 		
 		<base href="/">
 		
+		<title page-title="">MyPoGoDex</title>
+		
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
-		<meta name="abstract" content="Store, appraise and share your favorite pokemons" />
-		<meta name="keywords" content="pokemon, pokemon go, sharing, social network, iv, iv calculator" />
-		<meta name="description" content="Store, appraise and share your favorite pokemons" />
+		<meta name="abstract" content="{{'site_DESC' | translate}}" />
+		<meta name="description" content="{{'site_DESC' | translate}}" />
 		
-		<title page-title=""></title>
+		<meta property="og:url" content="https://www.mypogodex.com/{{'lang_CODE' | translate}}">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="MyPoGoDex - {{state.current.data.title | translate}}">
+		<meta property="og:description" content="{{'site_DESC' | translate}}">
 		
 		<link rel="shortcut icon" href="/static/front/img/logo.png" />
 		
-		<link rel="stylesheet" href="/static/front/css/concat.css" />
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,700" type="text/css">
+		
+		<link rel="stylesheet" href="/static/front/css/front.css" />
+		
+		<link rel="canonical" href="https://www.mypogodex.com">
+		
+		<link rel="alternate" href="https://www.mypogodex.com/en" hreflang="en">
+		<link rel="alternate" href="https://www.mypogodex.com/fr" hreflang="fr">
 		
 	</head>
 	
 	<body>
-		
-		<div class="main-wrapper" ui-view=""></div>
-		
 
+		<div class="wrapper" ui-view="">
+			
+			<div class="loading">
+				<img src="/static/front/img/loading.gif" />
+			</div>
+
+		</div>
+		
 		<script>
 		
 		    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -37,8 +55,9 @@
 		
 		</script>
 
-		<script src="/static/front/js/concat.js"></script>
+		<script src="/static/front/js/front.js"></script>
 		
 	</body>
 	
 </html>
+{% endverbatim %}

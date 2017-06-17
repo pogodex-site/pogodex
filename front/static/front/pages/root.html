@@ -1,0 +1,138 @@
+<div class="topbar">
+	<div class="container">
+	
+		<div class="dropdown px-3 mr-auto">
+			
+			<div class="dropdown-toggle topbar-text" data-toggle="dropdown">
+				<span class="flag-icon flag-icon-{{'lang_FLAG' | translate}} mr-1"></span>
+				<span class="mr-1">{{'lang_LABEL' | translate}}</span>
+			</div>
+			
+			<div class="dropdown-menu dropdown-menu-small">
+				
+				<a class="dropdown-item" href="/en{{state.current.url}}">
+					<span class="flag-icon flag-icon-gb mr-1"></span>
+					English
+				</a>
+				
+				<a class="dropdown-item" href="/fr{{state.current.url}}">
+					<span class="flag-icon flag-icon-fr mr-1"></span>
+					Français
+				</a>
+				
+			</div>
+			
+		</div>
+		
+		<a ng-show="!user.authenticated" ui-sref="root.login" class="d-block px-3 topbar-text">
+			<i class="fa fa-sign-in mr-2"></i>
+			{{'login_LINK' | translate}}
+		</a>
+		
+		<div ng-show="user.authenticated" class="dropdown px-3">
+			
+			<div class="dropdown-toggle topbar-text" data-toggle="dropdown">
+				<i ng-if="!user.team" class="fa fa-user mr-2"></i>
+				<img ng-if="user.team" ng-src="/static/front/img/team_{{user.team}}.svg" class="img-icon mr-1" />
+				{{user.name}}
+			</div>
+			
+			<div class="dropdown-menu dropdown-menu-right dropdown-menu-small">
+				
+				<a class="dropdown-item" ui-sref="root.profile">
+					{{'profile_LINK' | translate}}
+				</a>
+				
+				<a class="dropdown-item" href="javascript:;" ng-click="logout();">
+					{{'logout_LINK' | translate}}
+				</a>
+				
+			</div>
+			
+		</div>
+	
+	</div>
+</div>
+
+<header class="hidden-sm-up">
+	
+	<div class="menu-toggler" ng-click="menuopened = !menuopened">
+		<i class="fa fa-bars fa-fw"></i>
+	</div>
+	
+	<div ng-show="menuopened" class="menu-overlay" ng-click="menuopened = false"></div>
+	
+	<div ng-class="{opened: menuopened}" class="menu-pane">
+		
+		<a ui-sref="root.home" class="header" ng-click="menuopened = false">
+			<span class="title">MyPoGoDex</span>
+		</a>
+		
+		<nav class="menu">
+			
+			<a ng-click="menuopened = false" ui-sref-active="active" ui-sref="root.pogodex" class="item">{{'menu_POGODEX' | translate}}</a>
+			<a ng-click="menuopened = false" ui-sref-active="active" ui-sref="root.ivcalculator" class="item">{{'menu_IVCALCULATOR' | translate}}</a>
+			
+			<div class="title">{{'menu_CHARTS' | translate}}</div>
+				<a ng-click="menuopened = false" ui-sref-active="active" ui-sref="root.pokedex" class="subitem">{{'menu_POKEDEX' | translate}}</a>
+			
+		</nav>
+		
+	</div>
+	
+	<h1>{{state.current.data.title | translate}}</h1>
+
+</header>
+
+<header class="hidden-xs-down sticky-top">
+	<div class="container">
+	
+		<a ui-sref="root.home" class="header-brand">
+			<span class="title">MyPoGoDex</span>
+		</a>
+		
+		<nav class="header-nav">
+			
+			<a ui-sref-active="active" ui-sref="root.pogodex" class="header-navitem">{{'menu_POGODEX' | translate}}</a>
+			<a ui-sref-active="active" ui-sref="root.ivcalculator" class="header-navitem">{{'menu_IVCALCULATOR' | translate}}</a>
+			
+			<div class="dropdown">
+				
+				<div class="header-navitem dropdown-toggle" data-toggle="dropdown">
+					{{'menu_CHARTS' | translate}}
+				</div>
+				
+				<div class="dropdown-menu">
+					<a class="dropdown-item" ui-sref="root.pokedex">{{'menu_POKEDEX' | translate}}</a>
+				</div>
+				
+			</div>
+			
+		</nav>
+	
+	</div>
+</header>
+
+<div class="content">
+	<div id="toast-content" class="container" ui-view="">
+		
+		<div class="loading">
+			<img src="/static/front/img/loading.gif" />
+		</div>
+		
+	</div>
+</div>
+
+<footer>
+	<div class="container">
+	
+		<a href="mailto:pogodex.site@gmail.com" class="footer-text px-3">
+			<i class="fa fa-envelope"></i>
+		</a>
+		
+		<div class="footer-text">
+			2017 © Copyright DECONINCK Frédéric
+		</div>
+	
+	</div>
+</footer>

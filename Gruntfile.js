@@ -7,16 +7,14 @@ module.exports = function(grunt) {
 		concat: {
 			css: {
 				src: [
-					'front/build/css/fonts.css',
-					
 					'front/vendor/bootstrap/css/bootstrap.min.css',
 					'front/vendor/flag-icon-css/css/flag-icon.min.css',
 					'front/vendor/font-awesome/css/font-awesome.min.css',
 					'front/vendor/angular-toastr/css/angular-toastr.min.css',
 					
-					'front/build/css/styles.css',
+					'front/css/styles.css',
 				],
-				dest: 'front/static/front/css/concat.css'
+				dest: 'front/static/front/css/front.css'
 			},
 			js: {
 				src: [
@@ -30,17 +28,22 @@ module.exports = function(grunt) {
 					'front/vendor/angular-translate/js/angular-translate.min.js',
 					'front/vendor/angular-ui-router/js/angular-ui-router.min.js',
 					
-					'front/build/data/data_level.js',
-					'front/build/data/data_pokemon.js',
-					'front/build/data/data_stardust.js',
+					'front/data/data_level.js',
+					'front/data/data_pokemon.js',
+					'front/data/data_stardust.js',
+					'front/data/data_appraisal3.js',
 					
-					'front/build/scripts/services.js',
-					'front/build/scripts/app.js',
-					'front/build/scripts/directives.js',
-					'front/build/scripts/controllers.js',
+					'front/lang/en.js',
+					'front/lang/fr.js',
+					
+					'front/scripts/services.js',
+					'front/scripts/directives.js',
+					'front/scripts/controllers.js',
+					
+					'front/scripts/app.js',
 				],
-				dest: 'front/static/front/js/concat.js'
-			}
+				dest: 'front/static/front/js/front.js'
+			},
 		},
 	});
 	
