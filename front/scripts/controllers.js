@@ -280,11 +280,15 @@ angular.module('AngularApp.controllers').controller('PokemonCtrl', function($sco
 	
 	$scope.isLoading = true;
 	
-	PokemonService.load($stateParams.ref).then(function() {
+	PokemonService.load($stateParams.ref).then(function(response) {
 		
 		$scope.data = PokemonService.data;
 		
 		$scope.newname = PokemonService.data.pokemon.name;
+		
+		$scope.isLoading = false;
+		
+	}, function(response) {
 		
 		$scope.isLoading = false;
 	});

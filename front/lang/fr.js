@@ -180,19 +180,21 @@ var fr_translations = {
 	
 	pokemon_TITLE: 'Pokémon',
 	
-	pokemon_view_CURRENT: 'Status',
+	pokemon_CURRENT: 'Status',
 
-	pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
+	pokemon_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
 
-	pokemon_view_PROFILELINK: 'Renseigner mon profil',
+	pokemon_PROFILELINK: 'Renseigner mon profil',
 	
-	pokemon_view_NOPOKEMON: 'Aucun pokémon trouvé',
+	pokemon_NOPOKEMON: 'Aucun pokémon trouvé',
 
-	pokemon_view_SHARELINK: 'Lien de partage',
+	pokemon_SHARELINK: 'Lien de partage',
 	
-	pokemon_view_OWNERBY: 'Un pokemon de',
+	pokemon_OWNERBY: 'Un pokemon de',
 
-	pokemon_delete_CONFIRM: 'Etes-vous sûr de vouloir supprimer ce pokémon ?',
+	pokemon_DELETE: 'Etes-vous sûr de vouloir supprimer ce pokémon ?',
+	
+	error_NO_POKEMON: 'Aucun Pokémon correspondant',
 	
 	/* Pokedex */
 	

@@ -903,19 +903,21 @@ var en_translations = {
 	
 	pokemon_TITLE: 'Pokemon',
 	
-	pokemon_view_CURRENT: 'Status',
+	pokemon_CURRENT: 'Status',
 
-	pokemon_view_NOSTATUS: 'Pokemon status cannot be computed since your profile is not filled.',
+	pokemon_NOSTATUS: 'Pokemon status cannot be computed since your profile is not filled.',
 
-	pokemon_view_PROFILELINK: 'Fill my profile',
+	pokemon_PROFILELINK: 'Fill my profile',
 	
-	pokemon_view_NOPOKEMON: 'No pokemon',
+	pokemon_NOPOKEMON: 'No pokemon found',
 
-	pokemon_view_SHARELINK: 'Share link',
+	pokemon_SHARELINK: 'Share link',
 	
-	pokemon_view_OWNERBY: 'A pokemon by',
+	pokemon_OWNERBY: 'A pokemon by',
 
-	pokemon_delete_CONFIRM: 'Are you sure to remove this pokemon?',
+	pokemon_DELETE: 'Are you sure to remove this pokemon?',
+	
+	error_NO_POKEMON: 'No Pokemon',
 	
 	/* Pokedex */
 	
@@ -1371,19 +1373,21 @@ var fr_translations = {
 	
 	pokemon_TITLE: 'Pokémon',
 	
-	pokemon_view_CURRENT: 'Status',
+	pokemon_CURRENT: 'Status',
 
-	pokemon_view_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
+	pokemon_NOSTATUS: 'Le status de votre pokémon n\'a pas pu être calculé car votre profil n\'est pas renseigné!',
 
-	pokemon_view_PROFILELINK: 'Renseigner mon profil',
+	pokemon_PROFILELINK: 'Renseigner mon profil',
 	
-	pokemon_view_NOPOKEMON: 'Aucun pokémon trouvé',
+	pokemon_NOPOKEMON: 'Aucun pokémon trouvé',
 
-	pokemon_view_SHARELINK: 'Lien de partage',
+	pokemon_SHARELINK: 'Lien de partage',
 	
-	pokemon_view_OWNERBY: 'Un pokemon de',
+	pokemon_OWNERBY: 'Un pokemon de',
 
-	pokemon_delete_CONFIRM: 'Etes-vous sûr de vouloir supprimer ce pokémon ?',
+	pokemon_DELETE: 'Etes-vous sûr de vouloir supprimer ce pokémon ?',
+	
+	error_NO_POKEMON: 'Aucun Pokémon correspondant',
 	
 	/* Pokedex */
 	
@@ -2456,11 +2460,15 @@ angular.module('AngularApp.controllers').controller('PokemonCtrl', function($sco
 	
 	$scope.isLoading = true;
 	
-	PokemonService.load($stateParams.ref).then(function() {
+	PokemonService.load($stateParams.ref).then(function(response) {
 		
 		$scope.data = PokemonService.data;
 		
 		$scope.newname = PokemonService.data.pokemon.name;
+		
+		$scope.isLoading = false;
+		
+	}, function(response) {
 		
 		$scope.isLoading = false;
 	});

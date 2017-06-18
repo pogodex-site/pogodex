@@ -23,6 +23,9 @@ a:hover, a:focus {
     color: #9C27B0;
 }
 
+a.soft { color: rgba(0,0,0,.35);}
+a.soft:hover, a.soft:focus { color: #9C27B0; }
+
 
 
 /* Image */
@@ -438,7 +441,7 @@ footer > .container {
 .field-edit {
     height: 2.375rem; line-height: 2.375rem;
     float: right;
-    color: rgba(0,0,0,.15);
+    color: rgba(0,0,0,.5);
 }
 .field-edit:hover {
     cursor: pointer;

@@ -1,23 +1,27 @@
-<div ng-show="!isLoading && !isProfileLoading && !data.pokemon">{{'pokemon_view_NOPOKEMON' | translate}}</div>
+<div ng-if="isLoading" class="loading">
+	<img src="/static/front/img/loading.gif" />
+</div>
+		
+<div ng-if="!isLoading && !data.pokemon" class="text-center text-danger">
+    {{'pokemon_NOPOKEMON' | translate}}
+</div>
 
-<article class="">
+<article ng-if="!isLoading && data.pokemon" class="compact">
     
-    <div ng-if="!data.owner.is_owned" class="text-center mb-4">
-        {{'pokemon_view_OWNERBY' | translate}} <strong>{{data.owner.name}}</strong>
+    <div ng-if="!data.owner.is_owned" class="text-center mb-3">
+        {{'pokemon_OWNERBY' | translate}} <strong>{{data.owner.name}}</strong>
     </div>
 
-    <div ng-show="!isLoading && data.owner.is_owned && data.pokemon" class="">
+    <div ng-if="data.owner.is_owned">
         
-        <a ng-show="!isLoading && data.owner.is_owned && data.pokemon" href="javascript:;" class="pull-left" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></a>
+        <a href="javascript:;" class="pull-left soft" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></a>
         
         <div class="modal fade" id="myModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     
                     <div class="modal-header">
-                        
-                        <div class="title">{{'pokemon_delete_CONFIRM' | translate}}</div>
-                        
+                        <div class="title">{{'pokemon_DELETE' | translate}}</div>
                     </div>
                     
                     <div class="modal-footer">
@@ -31,13 +35,13 @@
         
     </div>
     
-    <div ng-show="!isLoading && data.owner.is_owned && data.pokemon" class="dropdown">
+    <div ng-show="data.owner.is_owned" class="dropdown">
         
         <a href="javascript:;" class="" data-toggle="dropdown" style="position:absolute; right:0;"><i class="fa fa-share-alt"></i></a>
     
         <div class="dropdown-menu dropdown-menu-right p-2" style="width:275px;">
             
-            <div class="mb-1">{{'pokemon_view_SHARELINK' | translate}}</div>
+            <div class="mb-1">{{'pokemon_SHARELINK' | translate}}</div>
             
             <div class="input-group">
                 <input type="text" class="form-control" value="https://www.mypogodex.com/pokemon/{{data.pokemon.ref}}" readonly id="js-copytext" ng-focus="selectShareLink();">
@@ -53,32 +57,26 @@
     <div class="text-center">
         <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
     </div>
-    
-    <div class="row mb-4">
-        <div class="col-12 text-center">
-            <span ng-repeat="type in data.db.types">
-                <span ng-hide="$index == 0" class="text-muted mx-2">/</span>
-                <i class="ico_type {{type}}"></i>
-                <span class="small text-uppercase font-weight-bold text-{{type}}">{{'pokemon_type_' + type | translate}}</span>
-            </span>
-        </div>
-    </div>
-    
-    <div class="title text-center mb-3">
-        
-    	<div class="field" ng-if='user.authenticated'>
-    		<div ng-show="!editname" class="field-value" ng-click="nameClick();">
-    			{{data.pokemon.name}}
-                <i class="field-edit fa fa-edit"></i>
-                <div ng-show="loadingname" class="field-loading">
-                	<img src="/static/front/img/loading.gif" />
-                </div>
-            </div>
-    		<input type="text" id="input-name" class="form-control" ng-model="newname" ng-show="editname" ng-blur="nameBlur();" />
-    	</div>
-        
-    </div>
 
+	<div ng-if='!data.owner.is_owned' class="text-center">
+	    {{data.pokemon.name}}
+	</div>
+	
+	<div class="field mb-0" ng-if='data.owner.is_owned'>
+		<div ng-show="!editname" class="field-value text-center" ng-click="nameClick();">
+			{{data.pokemon.name}}
+            <i class="field-edit fa fa-edit"></i>
+            <div ng-show="loadingname" class="field-loading">
+            	<img src="/static/front/img/loading.gif" />
+            </div>
+        </div>
+		<input type="text" id="input-name" class="form-control text-center" ng-model="newname" ng-show="editname" ng-blur="nameBlur();" />
+	</div>
+
+</article>
+
+<article ng-if="!isLoading && data.pokemon" class="compact">
+    
     <div class="row mb-2">
         
         <div class="col-4 text-center">
@@ -108,10 +106,10 @@
         
 </article>
 
-<article class="">
+<article ng-if="!isLoading && data.pokemon" class="compact">
     
     <div class="article-title">
-        {{'pokemon_view_CURRENT' | translate}}
+        {{'pokemon_CURRENT' | translate}}
     </div>
 
     <div ng-if="data.pokemon.finalLevel && data.pokemon.finalHP && data.pokemon.finalCP">
@@ -144,7 +142,7 @@
     
 </article>
 
-<article>
+<article ng-if="!isLoading && data.pokemon" class="compact">
      
     <div class="article-title">
         {{'pokemon_LOADING' | translate}}
