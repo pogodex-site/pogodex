@@ -1,48 +1,57 @@
-<div ng-if='!user.authenticated' class="text-danger text-center">
-	{{'restricted_TEXT' | translate}}
-</div>
-
-<h1 ng-if='user.authenticated'>{{'pogodex_PAGE' | translate}}</h1>
-
-<div ng-if='user.authenticated' class="text-center mb-3">
+<section>
     
-    {{'pogodex_SUBTITLE' | translate}}
-    
-    <select class="form-control d-inline-block ml-3" style="width: auto;" ng-init="type = sorttype;" ng-model="type" ng-change="sort(type);">
-        <option value="name">{{'pogodex_sort_NAME' | translate}}</option>
-        <option value="percent">{{'pogodex_sort_PERCENT' | translate}}</option>
-        <option value="attack">{{'pogodex_sort_ATTACK' | translate}}</option>
-        <option value="defense">{{'pogodex_sort_DEFENSE' | translate}}</option>
-        <option value="stigmata">{{'pogodex_sort_STIGMATA' | translate}}</option>
-        <option value="dexnumber">{{'pogodex_sort_DEXNUMBER' | translate}}</option>
-    </select>
-    
-</div>
-
-<div ng-if='user.authenticated'>
-
-    <div ng-show="!pokemons || !pokemons.length" class="text-danger">
-        {{'pogodex_NOPOKEMON' | translate}}
-        <a ui-sref="root.ivcalculator">{{'ivcalculator_LINK' | translate}}</a>
+    <div class="text-danger text-center" ng-if='!user.authenticated' >
+    	{{'restricted_TEXT' | translate}}
     </div>
     
-    <div ng-show="pokemons && pokemons.length" class="row pogodex-list">
-
-        <div class="col-md-2 col-4 pogodex-item" ng-repeat="item in pokemons">
-            <a ui-sref="root.pokemon({ref:item.ref})" class="d-block">
-                <article class="text-center">
-                    
-                    <img ng-src="/static/front/img/{{item.code}}.png" class="mb-1">
-                    
-                    <div class="mb-1">{{item.name}}</div>
-    
-                    <div class="small text-muted mb-1" style="line-height: 1;">{{item.percent}}%</div>
-                    <div class="small text-muted" style="line-height: 1;">IV {{item.attack}}/{{item.defense}}/{{item.stigmata}}</div>
-                    
-                </article>
-            </a>
+    <form name="form" class="inline" novalidate ng-if='user.authenticated'>
+        
+        <div class="form-group">
+            <label class="cell">{{'pogodex_SUBTITLE' | translate}}</label>
+            <select class="cell form-control" ng-init="type = sorttype;" ng-model="type" ng-change="sort(type);">
+                <option value="name">{{'pogodex_sort_NAME' | translate}}</option>
+                <option value="percent">{{'pogodex_sort_PERCENT' | translate}}</option>
+                <option value="attack">{{'pogodex_sort_ATTACK' | translate}}</option>
+                <option value="defense">{{'pogodex_sort_DEFENSE' | translate}}</option>
+                <option value="stigmata">{{'pogodex_sort_STIGMATA' | translate}}</option>
+                <option value="dexnumber">{{'pogodex_sort_DEXNUMBER' | translate}}</option>
+            </select>
         </div>
         
+    </form>
+    
+    <div ng-if='user.authenticated'>
+    
+        <div class="text-danger" ng-show="!pokemons || !pokemons.length">
+            {{'pogodex_NOPOKEMON' | translate}}
+            <a ui-sref="root.ivcalculator">{{'ivcalculator_LINK' | translate}}</a>
+        </div>
+    
+        <a ui-sref="root.pokemon({ref:item.ref})" ng-repeat="item in pokemons">
+            <article>
+                
+                <div class="grid-row mb-2">
+                    
+                    <div class="px-3">
+                        <img ng-src="/static/front/img/{{item.code}}.png" style="width:2.875rem; height:2.875rem;" />
+                    </div>
+                    
+                    <div class="cell">
+                        
+                        <div class="text-body">{{item.name}}</div>
+        
+                        <div class="small">
+                            {{item.percent}}% - 
+                            IV {{item.attack}} &middot; {{item.defense}} &middot; {{item.stigmata}}
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </article>
+        </a>
+    
     </div>
 
-</div>
+</section>

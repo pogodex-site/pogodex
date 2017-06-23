@@ -1,17 +1,21 @@
-<h1>{{'site_DESC' | translate}}</h1>
-<h3>{{'home_TEXT' | translate}}</h3>
+<section>
+    
+    <h1>{{'site_DESC' | translate}}</h1>
+    <h3>{{'home_TEXT' | translate}}</h3>
+    
+    <article>
+        <form name="form" novalidate>
+            
+            <div class="form-group">
+    	        <select-list model="homeModel.code" list="homeModel.list" img="true" placeholder="'home_FIELDLABEL'" />
+            </div>
+            
+            <button type="submit" class="btn btn-primary" ng-disabled="!homeModel.code" ng-click="evaluate(form);">
+                {{'home_BTN' | translate}}
+                <i class="fa fa-angle-double-right"></i>
+            </button>
+    
+        </form>
+    </article>
 
-<article>
-    <form class="form-compact" name="form" novalidate>
-        
-        <div class="form-group">
-		    <select-list model="homeModel.code" list="homeModel.list" img="true" placeholder="'home_FIELDLABEL'" />
-        </div>
-        
-        <button type="submit" class="btn btn-primary" ng-disabled="!homeModel.code" ng-click="evaluate(form);">
-            {{'home_BTN' | translate}}
-            <i class="fa fa-angle-double-right"></i>
-        </button>
-
-    </form>
-</article>
+</section>

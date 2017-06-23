@@ -4,7 +4,7 @@ var en_translations = {
 	lang_FLAG: 'gb',
 	lang_LABEL: 'English',
 	
-	site_DESC: 'Analyze and share your favorite Pokemons',
+	site_DESC: 'Share your favorite Pokemons',
 	
 	menu_POGODEX: 'My Pokemons',
 	menu_IVCALCULATOR: 'IV Calculator',
@@ -87,11 +87,11 @@ var en_translations = {
 	
 	home_TITLE: 'Welcome',
 	
-	home_TEXT: 'You could register your favorite Pokemons to share them. Your Pokemons will be analyzed to provide useful informations about their real abilities. Try it!',
+	home_TEXT: 'Thanks to MyPoGoDex, you will be able to register your favorite Pokemons to share them to your friends. Your Pokemons will be analyzed to provide useful informations about their real abilities. Try it, it is free!',
 	
 	home_FIELDLABEL: 'Select a Pokemon',
 	
-	home_BTN: 'Analyze',
+	home_BTN: 'Share it',
 
 	/* Login */
 	
@@ -192,7 +192,7 @@ var en_translations = {
 	
 	pokemon_OWNERBY: 'A pokemon by',
 
-	pokemon_DELETE: 'Are you sure to remove this pokemon?',
+	pokemon_DELETELINK: 'Delete this pokemon',
 	
 	error_NO_POKEMON: 'No Pokemon',
 	

@@ -1,165 +1,137 @@
-<div ng-if="isLoading" class="loading">
+<div class="loading" ng-show="isLoading">
 	<img src="/static/front/img/loading.gif" />
 </div>
-		
-<div ng-if="!isLoading && !data.pokemon" class="text-center text-danger">
-    {{'pokemon_NOPOKEMON' | translate}}
-</div>
 
-<article ng-if="!isLoading && data.pokemon" class="compact">
+<div ng-show="!isLoading">
     
-    <div ng-if="!data.owner.is_owned" class="text-center mb-3">
-        {{'pokemon_OWNERBY' | translate}} <strong>{{data.owner.name}}</strong>
-    </div>
+    <section ng-if="!data.pokemon">
+    
+        <div class="text-center text-danger">
+            {{'pokemon_NOPOKEMON' | translate}}
+        </div>
+        
+    </section>
+    
+    <div ng-if="data.pokemon">
+        
+        <section>
 
-    <div ng-if="data.owner.is_owned">
-        
-        <a href="javascript:;" class="pull-left soft" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash"></i></a>
-        
-        <div class="modal fade" id="myModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
+            <article>
+                
+                <div class="text-center mb-3" ng-if="!data.owner.is_owned">
+                    {{'pokemon_OWNERBY' | translate}} <strong>{{data.owner.name}}</strong>
+                </div>
+                
+                <div class="text-center mb-3">
+                    <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
+                </div>
+            
+            	<div class="text-center" ng-if='!data.owner.is_owned'>
+            	    {{data.pokemon.name}}
+            	</div>
+            	
+            	<dl class="edit" ng-if='data.owner.is_owned'>
+            		<dd class="text-center" ng-show="!editname" ng-click="nameClick();">
+            			{{data.pokemon.name}}
+                        <i class="fa fa-edit"></i>
+                        <div class="loading" ng-show="loadingname" >
+                        	<img src="/static/front/img/loading.gif" />
+                        </div>
+                    </dd>
+            		<input type="text" id="input-name" class="form-control text-center" ng-model="newname" ng-show="editname" ng-blur="nameBlur();" />
+            	</dl>
+            
+            </article>
+            
+            <article>
+                
+                <div class="grid-row mb-2">
                     
-                    <div class="modal-header">
-                        <div class="title">{{'pokemon_DELETE' | translate}}</div>
+                    <div class="cell text-center">
+                        <img src="/static/front/img/glave.svg" width="16" height="16">
+                        {{data.pokemon.attack}}
                     </div>
                     
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{'btn_NO' | translate}}</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="delete(data.pokemon.ref);">{{'btn_YES' | translate}}</button>
+                    <div class="cell text-center">
+                        <img src="/static/front/img/sheild.svg" width="16" height="16">
+                        {{data.pokemon.defense}}
+                    </div>
+            
+                    <div class="cell text-center">
+                        <img src="/static/front/img/heart.svg" width="16" height="16">
+                        {{data.pokemon.stigmata}}
+                    </div>
+            
+            	</div>
+            
+                <div class="text-center">
+                    {{data.pokemon.percent}}%
+                </div>
+                    
+            </article>
+            
+            <article>
+            
+                <dl>
+                    <dt>{{'pokemon_HP' | translate}}</dt>
+                    <dd>
+                        {{data.pokemon.hp}}
+                    </dd>
+                </dl>
+        
+                <dl>
+                    <dt>{{'pokemon_CP' | translate}}</dt>
+                    <dd>
+                        {{data.pokemon.cp}}
+                    </dd>
+                </dl>
+        
+                <dl class="mb-3">
+                    <dt>{{'pokemon_LEVEL' | translate}}</dt>
+                    <dd>
+                        {{data.pokemon.level}}
+                    </dd>
+                </dl>
+                
+            </article>
+            
+        </section>
+        
+        <section ng-if="data.owner.is_owned">
+            
+            <article>
+                
+                <div class="form-group">
+                    
+                    <label>{{'pokemon_SHARELINK' | translate}}</label>
+                    
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="https://www.mypogodex.com/pokemon/{{data.pokemon.ref}}" readonly id="js-copytext" ng-focus="selectShareLink();">
+                        <span class="input-group-addon button" ng-click="copyToClipboard();">
+                            <i class="fa fa-clipboard"></i>
+                        </span>
                     </div>
                     
                 </div>
-            </div>
-        </div>
+                
+            </article>
         
-    </div>
-    
-    <div ng-show="data.owner.is_owned" class="dropdown">
+        </section>
         
-        <a href="javascript:;" class="" data-toggle="dropdown" style="position:absolute; right:0;"><i class="fa fa-share-alt"></i></a>
-    
-        <div class="dropdown-menu dropdown-menu-right p-2" style="width:275px;">
+        <section ng-if="data.owner.is_owned">
             
-            <div class="mb-1">{{'pokemon_SHARELINK' | translate}}</div>
-            
-            <div class="input-group">
-                <input type="text" class="form-control" value="https://www.mypogodex.com/pokemon/{{data.pokemon.ref}}" readonly id="js-copytext" ng-focus="selectShareLink();">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" ng-click="copyToClipboard();"><i class="fa fa-clipboard"></i></button>
-                </span>
-            </div>
-
-        </div>
-
-    </div>
-    
-    <div class="text-center">
-        <img ng-src="/static/front/img/{{data.pokemon.code}}.png" width="128" height="128">
-    </div>
-
-	<div ng-if='!data.owner.is_owned' class="text-center">
-	    {{data.pokemon.name}}
-	</div>
-	
-	<div class="field mb-0" ng-if='data.owner.is_owned'>
-		<div ng-show="!editname" class="field-value text-center" ng-click="nameClick();">
-			{{data.pokemon.name}}
-            <i class="field-edit fa fa-edit"></i>
-            <div ng-show="loadingname" class="field-loading">
-            	<img src="/static/front/img/loading.gif" />
-            </div>
-        </div>
-		<input type="text" id="input-name" class="form-control text-center" ng-model="newname" ng-show="editname" ng-blur="nameBlur();" />
-	</div>
-
-</article>
-
-<article ng-if="!isLoading && data.pokemon" class="compact">
-    
-    <div class="row mb-2">
+            <article class="grid-row center">
+                
+                <div class="form-group">
+                    <a href="javascript:;" class="btn btn-secondary" ng-click="delete(data.pokemon.ref);">
+                        {{'pokemon_DELETELINK' | translate}}
+                    </a>
+                </div>
+                
+            </article>
         
-        <div class="col-4 text-center">
-            <img src="/static/front/img/glave.svg" width="16" height="16">
-            {{data.pokemon.attack}}
-        </div>
-        
-        <div class="col-4 text-center">
-            <img src="/static/front/img/sheild.svg" width="16" height="16">
-            {{data.pokemon.defense}}
-        </div>
+        </section>
 
-        <div class="col-4 text-center">
-            <img src="/static/front/img/heart.svg" width="16" height="16">
-            {{data.pokemon.stigmata}}
-        </div>
-
-	</div>
-	
-    <div class="progress mb-1">
-        <div class="progress-bar" style=" height: 3px; width:{{data.pokemon.percent}}%"></div>
     </div>
 
-    <div class="text-center">
-        {{data.pokemon.percent}}%
-    </div>
-        
-</article>
-
-<article ng-if="!isLoading && data.pokemon" class="compact">
-    
-    <div class="article-title">
-        {{'pokemon_CURRENT' | translate}}
-    </div>
-
-    <div ng-if="data.pokemon.finalLevel && data.pokemon.finalHP && data.pokemon.finalCP">
-        
-        <div class="row mb-2">
-            <div class="col-6"><label>{{'pokemon_HP' | translate}}</label></div>
-            <div class="col-6 text-right">
-                {{data.pokemon.hp}}
-                <small class="text-muted">/ {{data.pokemon.finalHP}}</small>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="col-5"><label>{{'pokemon_LEVEL' | translate}}</label></div>
-            <div class="col-7 text-right">
-                {{data.pokemon.level}}
-                <small class="text-muted">/ {{data.pokemon.finalLevel}}</small>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="col-5"><label>{{'pokemon_CP' | translate}}</label></div>
-            <div class="col-7 text-right">
-                {{data.pokemon.cp}}
-                <small class="text-muted">/ {{data.pokemon.finalCP}}</small>
-            </div>
-        </div>
-    
-    </div>
-    
-</article>
-
-<article ng-if="!isLoading && data.pokemon" class="compact">
-     
-    <div class="article-title">
-        {{'pokemon_LOADING' | translate}}
-    </div>
-
-    <div class="row mb-2">
-        <div class="col-7"><label>{{'pokemon_STARDUSTREQUIRED' | translate}}</label></div>
-        <div class="col-5 text-right">
-            {{data.pokemon.requiredStardust}}
-        </div>
-    </div>
-
-    <div class="row mb-2">
-        <div class="col-7"><label>{{'pokemon_CANDIESREQUIRED' | translate}}</label></div>
-        <div class="col-5 text-right">
-            {{data.pokemon.requiredCandy}}
-        </div>
-    </div>
-
-</article>
+</div>

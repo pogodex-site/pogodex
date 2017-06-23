@@ -1,4 +1,4 @@
-angular.module('AngularApp', ['ui.router', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr',
+angular.module('AngularApp', ['ui.router', 'ui.bootstrap', 'pascalprecht.translate', 'satellizer', 'ngCookies', 'toastr', 'rzModule',
 							  'AngularApp.services', 'AngularApp.controllers', 'AngularApp.directives', ]);
 
 
@@ -25,7 +25,7 @@ angular.module('AngularApp').config(function($urlRouterProvider, $stateProvider,
 			
 			.state('root.pogodex',		{ url: '/pogodex',				controller: 'PogodexCtrl',		templateUrl: '/static/front/pages/pogodex.html',		data:{ title: 'pogodex_TITLE',		}, resolve: {loadPogodex: function(UserService, PogodexService) { if (UserService.data.authenticated) {return PogodexService.init();} else {return} }, }, })
 			.state('root.pokemon',		{ url: '/pokemon/:ref', 		controller: 'PokemonCtrl',		templateUrl: '/static/front/pages/pokemon.html',		data:{ title: 'pokemon_TITLE',		}})
-			
+
 	$locationProvider.html5Mode(true);
 });
 
@@ -68,8 +68,7 @@ angular.module('AngularApp').config(function(toastrConfig) {
 	angular.extend(toastrConfig, {
 		
 		target: '#toast-content',
-		timeOut: 5000,
-		positionClass: 'toast-bottom-center',
+		timeOut: 50000,
 	});
 });
 
@@ -81,4 +80,12 @@ angular.module('AngularApp').run(function($rootScope, $state, $stateParams) {
 	
 	$rootScope.state = $state;
 	$rootScope.stateParams = $stateParams;
+	
+	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+		$rootScope.route_loading = true;
+	});
+	
+	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+		$rootScope.route_loading = false;
+	});
 });

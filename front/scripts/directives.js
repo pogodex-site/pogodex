@@ -29,16 +29,14 @@ angular.module('AngularApp.directives').directive('selectList', function($filter
 		
 		scope: { id:'=id', model:'=model', label:'=label', list:'=list', img:'=img', placeholder:'=placeholder', callback:'=callback' },
 
-		template:	'<div>' +
-						'<input id="{{id}}" class="form-control" placeholder="{{placeholder | translate}}" ng-model="model" ng-focus="has_focus = true; filterList();" ng-change="filterList();" ng-blur="has_focus = false; checkModel();">' +
-						'<div class="select-group row" ng-show="has_focus">' +
-		                    '<div class="col-12 col-md-3 p-0" ng-repeat="item in filtered_list" ng-mousedown="selectItem(item)">' +
-		                        '<div class="select-group-item">' +
-		                        	'<img ng-if="img" ng-src="/static/front/img/{{item}}.png" />' + 
-		                            '{{item | translate}}' +
-		                        '</div>' +
-		                    '</div>' +
-		                    '<div class="select-group-empty col" ng-show="filtered_list.length < 1">' +
+		template:	'<div class="select-group">' +
+						'<input id="{{id}}" class="form-control" placeholder="{{placeholder | translate}}" ng-class="{\'has-focus\': has_focus}" ng-model="model" ng-focus="has_focus = true; filterList();" ng-change="filterList();" ng-blur="has_focus = false; checkModel();">' +
+						'<div class="select-list" ng-show="has_focus">' +
+	                        '<div class="select-list-item" ng-repeat="item in filtered_list" ng-mousedown="selectItem(item)">' +
+	                        	'<img ng-if="img" ng-src="/static/front/img/{{item}}.png" />' + 
+	                            '{{item | translate}}' +
+	                        '</div>' +
+		                    '<div class="select-list-item text-danger" ng-show="filtered_list.length < 1">' +
 		                       '{{\'error_NOELEMENT\' | translate}}' +
 		                    '</div>' +
 						'</div>' +

@@ -1,174 +1,170 @@
-<h1>{{'ivcalculator_PAGE' | translate}}</h1>
+<section>
 
-<article>
-
-    <form name="form" novalidate>
+    <article>
     
-        <div ng-if="!user.team" class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_TEAM' | translate}}</label>
-            <div class="col-8 pl-0">
-        		<div class="form-check">
-        			<label class="form-check-label">
-        				<input type="radio" class="form-check-input" value="red" ng-model="ivModel.team" />
+        <form name="form" class="inline" novalidate>
+        
+            <div class="form-group" ng-if="!user.team">
+                
+                <label>{{'pokemon_TEAM' | translate}}</label>
+                
+                <div class="cell grid-col">
+                    
+        			<label class="label-check">
+        				<input type="radio" value="red" ng-model="ivModel.team" />
         				<img ng-src="/static/front/img/team_red.svg" class="img-icon mr-1" />
         				{{'team_red' | translate}}
         			</label>
-        		</div>
-        		<div class="form-check">
-        			<label class="form-check-label">
-        				<input type="radio" class="form-check-input" value="blue" ng-model="ivModel.team" />
+        			
+        			<label class="label-check">
+        				<input type="radio" value="blue" ng-model="ivModel.team" />
         				<img ng-src="/static/front/img/team_blue.svg" class="img-icon mr-1" />
         				{{'team_blue' | translate}}
         			</label>
-        		</div>
-        		<div class="form-check">
-        			<label class="form-check-label">
-        				<input type="radio" class="form-check-input" value="yellow" ng-model="ivModel.team" />
+        			
+        			<label class="label-check">
+        				<input type="radio" value="yellow" ng-model="ivModel.team" />
         				<img ng-src="/static/front/img/team_yellow.svg" class="img-icon mr-1" />
         				{{'team_yellow' | translate}}
         			</label>
-        		</div>
+        			
+        	    </div>
+        	    
             </div>
-        </div>
-        
-        <div ng-if="!user.level" class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_LEVEL' | translate}}</label>
-            <div class="col-8 pl-0">
+            
+            <div class="form-group" ng-if="!user.level">
+                
+                <label>{{'pokemon_LEVEL' | translate}}</label>
                 <select-list model="ivModel.level" list="levellist" />
+                
             </div>
-        </div>
+    
+            <div class="form-group">
+                
+                <label>{{'pokemon_CODE' | translate}}</label>
+    	        <select-list model="ivModel.code" list="codelist" img="true" />
+    	        
+            </div>
+                
+            <div class="form-group">
+                
+                <label>{{'pokemon_CP' | translate}}</label>
+                <input type="number" class="form-control" ng-model="ivModel.cp" />
 
-        <div class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_CODE' | translate}}</label>
-            <div class="col-8 pl-0">
-		        <select-list model="ivModel.code" list="codelist" img="true" />
             </div>
-        </div>
-            
-        <div class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_CP' | translate}}</label>
-            <div class="col-8 pl-0">
-                <input type="number" class="form-control" ng-model="ivModel.cp">
+                
+            <div class="form-group">
+                
+                <label>{{'pokemon_HP' | translate}}</label>
+                <input type="number" class="form-control" ng-model="ivModel.hp" />
+                
             </div>
-        </div>
-            
-        <div class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_HP' | translate}}</label>
-            <div class="col-8 pl-0">
-                <input type="number" class="form-control" ng-model="ivModel.hp">
-            </div>
-        </div>
-            
-        <div class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_STARDUST' | translate}}</label>
-            <div class="col-8 pl-0">
+                
+            <div class="form-group">
+                
+                <label>{{'pokemon_STARDUST' | translate}}</label>
                 <select-list model="ivModel.stardust" list="stardustlist" />
+                
             </div>
-        </div>
-
-        <div ng-show="ivModel.team" class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_APP1' | translate}}</label>
-            <div class="col-8 pl-0">
+    
+            <div class="form-group" ng-show="ivModel.team">
+                
+                <label>{{'pokemon_APP1' | translate}}</label>
                 <select class="form-control" ng-model="ivModel.app1">
                     <option ng-repeat="item in [1,2,3,4]" value="{{$index}}">{{'pokemon_app1_CHOICE' + $index + '_' + ivModel.team | translate}}</option>
                 </select>
+                
             </div>
-        </div>
-            
-        <div ng-show="ivModel.team" class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_APP2' | translate}}</label>
-            <div class="col-8 pl-0">
-        		<div class="form-check">
-        			<label class="form-check-label">
-        				<input type="checkbox" class="form-check-input" ng-model="ivModel.app2A" />
+                
+            <div class="form-group" ng-show="ivModel.team">
+                
+                <label>{{'pokemon_APP2' | translate}}</label>
+                
+                <div class="cell grid-col">
+                    
+        			<label class="label-check">
+        				<input type="checkbox" ng-model="ivModel.app2A" />
         				{{'pokemon_ATTACK' | translate}}
         			</label>
-        		</div>
-        		<div class="form-check">
-        			<label class="form-check-label">
-        				<input type="checkbox" class="form-check-input" ng-model="ivModel.app2D" />
+
+        			<label class="label-check">
+        				<input type="checkbox" ng-model="ivModel.app2D" />
         				{{'pokemon_DEFENSE' | translate}}
         			</label>
-        		</div>
-        		<div class="form-check">
-        			<label class="form-check-label">
-        				<input type="checkbox" class="form-check-input" ng-model="ivModel.app2S" />
+
+        			<label class="label-check">
+        				<input type="checkbox" ng-model="ivModel.app2S" />
         				{{'pokemon_HP' | translate}}
         			</label>
-        		</div>
+
+                </div>
+                
             </div>
-        </div>
-            
-        <div ng-show="ivModel.team" class="form-group row">
-            <label class="col-4 pl-0 col-form-label text-right">{{'pokemon_APP3' | translate}}</label>
-            <div class="col-8 pl-0">
+                
+            <div class="form-group" ng-show="ivModel.team">
+                
+                <label>{{'pokemon_APP3' | translate}}</label>
                 <select class="form-control" ng-model="ivModel.app3">
                     <option ng-repeat="item in [1,2,3,4]" value="{{$index}}">{{'pokemon_app3_CHOICE' + $index + '_' + ivModel.team | translate}}</option>
                 </select>
+                
             </div>
-        </div>
             
-        <div class="row">
-            <div class="offset-4 col-8 pl-0">
-                <button type="submit" class="btn btn-primary" 
+            <div class="offset-4">
+                <button type="submit" class="btn btn-secondary" 
                         ng-disabled="!ivModel.team || !ivModel.level || !ivModel.code || !ivModel.cp || !ivModel.hp || !ivModel.stardust || !ivModel.app1 || (!ivModel.app2S && !ivModel.app2A && !ivModel.app2D) || !ivModel.app3"
                         ng-click="compute(form);">
                     {{'ivcalculator_BTN1' | translate}}
                 </button>
             </div>
-        </div>
-                
-    </form>
-    
-</article>
 
-<article ng-show="results && !results.length" class="text-center">
-    
-    <span class="text-danger">{{'ivcalculator_NORESULT' | translate}}</span>
-    
-</article>
-        
-<article ng-show="results && results.length" ng-repeat="item in results">
-
-    <div class="article-title">
-        {{'ivcalculator_RESULT' | translate}} {{$index + 1}}/{{results.length}}
-    </div>
-
-    <div class="row mb-2">
-        <div class="col-4 text-right"><label>{{'pokemon_ATTACK' | translate}}</label></div>
-        <div class="col-8 pl-0">{{item.attack}}</div>
-    </div>
-    
-    <div class="row mb-2">
-        <div class="col-4 text-right"><label>{{'pokemon_DEFENSE' | translate}}</label></div>
-        <div class="col-8 pl-0">{{item.defense}}</div>
-    </div>
-    
-    <div class="row mb-2">
-        <div class="col-4 text-right"><label>{{'pokemon_STIGMATA' | translate}}</label></div>
-        <div class="col-8 pl-0">{{item.stigmata}}</div>
-    </div>
-    
-    <div class="row mb-2">
-        <div class="col-4 text-right"><label>{{'pokemon_PERCENT' | translate}}</label></div>
-        <div class="col-8 pl-0">{{item.percent}}%</div>
-    </div>
-
-    <div class="mt-3">
-        <form name="form" novalidate>
-            <div class="row">
-                <div class="offset-4 col-8 pl-0">
-                    
-                    <button type="submit" class="btn btn-primary" ng-click="save(form, item);" ng-disabled="!user.authenticated">{{'ivcalculator_BTN2' | translate}}</button>
-                    
-                    <div ng-if="!user.authenticated" class="small mt-2 text-danger">
-                        {{'ivcalculator_NOSAVE' | translate}}
-                        <br><a ui-sref="root.login">{{'login_LINK' | translate}}</a>
-                    </div>
-                    
-                </div>
-            </div>
         </form>
-    </div>
+        
+    </article>
+    
+    <article ng-show="results && !results.length">
+        
+        <div class="cell text-center text-danger">{{'ivcalculator_NORESULT' | translate}}</div>
+        
+    </article>
+            
+    <article ng-show="results && results.length" ng-repeat="item in results">
+    
+        <h3>
+            {{'ivcalculator_RESULT' | translate}} {{$index + 1}}/{{results.length}}
+        </h3>
+    
+        <dl>
+            <dt>{{'pokemon_ATTACK' | translate}}</dt>
+            <dd>{{item.attack}}</dd>
+        </dl>
+        
+        <dl>
+            <dt>{{'pokemon_DEFENSE' | translate}}</dt>
+            <dd>{{item.defense}}</dd>
+        </dl>
+        
+        <dl>
+            <dt>{{'pokemon_STIGMATA' | translate}}</dt>
+            <dd>{{item.stigmata}}</dd>
+        </dl>
+        
+        <dl>
+            <dt>{{'pokemon_PERCENT' | translate}}</dt>
+            <dd>{{item.percent}}%</dd>
+        </dl>
+        
+        <form name="form" class="mt-3" novalidate>
 
-</article>
+            <button type="submit" class="btn btn-primary" ng-click="save(form, item);" ng-disabled="!user.authenticated">{{'ivcalculator_BTN2' | translate}}</button>
+            
+            <div ng-if="!user.authenticated" class="small mt-2 text-danger">
+                {{'ivcalculator_NOSAVE' | translate}}
+                <br><a ui-sref="root.login">{{'login_LINK' | translate}}</a>
+            </div>
+            
+        </form>
+    
+    </article>
+
+</section>

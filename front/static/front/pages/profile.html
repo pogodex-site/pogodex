@@ -1,66 +1,66 @@
-<div ng-if='!user.authenticated' class="text-danger text-center">
-	{{'restricted_TEXT' | translate}}
-</div>
-
-<h1 ng-if='user.authenticated'>{{'profile_PAGE' | translate}}</h1>
-
-<article ng-if='user.authenticated'>
-
-	<div class="field">
-        <label class="field-label">{{'profile_NAME' | translate}}</label>
-		<div ng-show="!editname" class="field-value" ng-click="nameClick();">
-			{{user.name}}
-            <i class="field-edit fa fa-edit"></i>
-            <div ng-show="loadingname" class="field-loading">
-            	<img src="/static/front/img/loading.gif" />
-            </div>
-        </div>
-		<input type="text" id="input-name" class="form-control" ng-model="newname" ng-show="editname" ng-blur="nameBlur();" />
-	</div>
+<section ng-if='!user.authenticated'>
 	
-	<div class="field">
-        <label class="field-label">{{'profile_TEAM' | translate}}</label>
-		<div ng-show="!editteam" class="field-value" ng-click="teamClick();">
-			<img ng-if="user.team" ng-src="/static/front/img/team_{{user.team}}.svg" class="img-icon mr-1" />
-			<span ng-if="user.team">{{'team_' + user.team | translate}}</span>
-            <i class="field-edit fa fa-edit"></i>
-            <div ng-show="loadingteam" class="field-loading">
-            	<img src="/static/front/img/loading.gif" />
-            </div>
-        </div>
-		<div ng-show="editteam" class="form-check" ng-click="teamBlur('red');">
-			<label class="form-check-label">
-				<input type="radio" class="form-check-input" ng-model="teamred" ng-checked="newteam == 'red'" />
-				<img ng-src="/static/front/img/team_red.svg" class="img-icon mr-1" />
+	<div class="text-danger text-center">
+		{{'restricted_TEXT' | translate}}
+	</div>
+
+</section>
+
+<section ng-if='user.authenticated'>
+	
+	<article>
+	
+		<dl class="edit">
+	        <dt ng-show="!editname" ng-click="nameClick();">{{'profile_NAME' | translate}}</dt>
+			<dd ng-show="!editname" ng-click="nameClick();">
+				{{user.name}}
+	            <i class="fa fa-edit"></i>
+	            <div class="loading" ng-show="loadingname">
+	            	<img src="/static/front/img/loading.gif" />
+	            </div>
+	        </dd>
+			<input id="input-name" type="text" class="form-control" ng-model="newname" ng-show="editname" ng-blur="nameBlur(newname);" />
+		</dl>
+		
+		<dl class="edit">
+	        <dt ng-show="!editteam" ng-click="teamClick();">{{'profile_TEAM' | translate}}</dt>
+			<dd ng-show="!editteam" ng-click="teamClick();">
+				<img class="img-icon mr-1" ng-if="user.team" ng-src="/static/front/img/team_{{user.team}}.svg" />
+				<span ng-if="user.team">{{'team_' + user.team | translate}}</span>
+	            <i class="fa fa-edit"></i>
+	            <div class="loading" ng-show="loadingteam">
+	            	<img src="/static/front/img/loading.gif" />
+	            </div>
+	        </dd>
+			<div class="cell text-center" ng-show="editteam" ng-click="teamBlur('red');">
+				<input type="radio" ng-model="teamred" ng-checked="newteam == 'red'" />
+				<img class="img-icon mr-1" ng-src="/static/front/img/team_red.svg" />
 				{{'team_red' | translate}}
-			</label>
-		</div>
-		<div ng-show="editteam" class="form-check" ng-click="teamBlur('blue');">
-			<label class="form-check-label">
-				<input type="radio" class="form-check-input" ng-model="teamblue" ng-checked="newteam == 'blue'" />
-				<img ng-src="/static/front/img/team_blue.svg" class="img-icon mr-1" />
+			</div>
+			<div class="cell text-center" ng-show="editteam" ng-click="teamBlur('blue');">
+				<input type="radio" ng-model="teamblue" ng-checked="newteam == 'blue'" />
+				<img class="img-icon mr-1" ng-src="/static/front/img/team_blue.svg" />
 				{{'team_blue' | translate}}
-			</label>
-		</div>
-		<div ng-show="editteam" class="form-check" ng-click="teamBlur('yellow');" >
-			<label class="form-check-label">
-				<input type="radio" class="form-check-input" ng-model="teamyellow" ng-checked="newteam == 'yellow'" />
-				<img ng-src="/static/front/img/team_yellow.svg" class="img-icon mr-1" />
+			</div>
+			<div class="cell text-center" ng-show="editteam" ng-click="teamBlur('yellow');" >
+				<input type="radio" ng-model="teamyellow" ng-checked="newteam == 'yellow'" />
+				<img class="img-icon mr-1" ng-src="/static/front/img/team_yellow.svg" />
 				{{'team_yellow' | translate}}
-			</label>
-		</div>
-	</div>
-
-	<div class="field">
-        <label class="field-label">{{'profile_LEVEL' | translate}}</label>
-		<div ng-show="!editlevel" class="field-value" ng-click="levelClick();">
-			{{user.level}}
-            <i class="field-edit fa fa-edit"></i>
-            <div ng-show="loadinglevel" class="field-loading">
-            	<img src="/static/front/img/loading.gif" />
-            </div>
-        </div>
-		<select-list id="'input-level'" ng-show="editlevel" model="newlevel" list="levellist" callback="levelBlur" />
-	</div>
+			</div>
+		</dl>
 	
-</article>
+		<dl class="edit">
+	        <dt ng-show="!editlevel" ng-click="levelClick();">{{'profile_LEVEL' | translate}}</dt>
+			<dd ng-show="!editlevel" ng-click="levelClick();">
+				{{user.level}}
+	            <i class="fa fa-edit"></i>
+	            <div class="loading" ng-show="loadinglevel">
+	            	<img src="/static/front/img/loading.gif" />
+	            </div>
+	        </dd>
+			<select-list id="'input-level'" style="width:100%" ng-show="editlevel" model="newlevel" list="levellist" callback="levelBlur" />
+		</dl>
+		
+	</article>
+
+</section>

@@ -1,138 +1,180 @@
 <div class="topbar">
-	<div class="container">
-	
-		<div class="dropdown px-3 mr-auto">
-			
-			<div class="dropdown-toggle topbar-text" data-toggle="dropdown">
+    <div class="container">
+        
+        <div uib-dropdown>
+            
+			<div uib-dropdown-toggle>
 				<span class="flag-icon flag-icon-{{'lang_FLAG' | translate}} mr-1"></span>
-				<span class="mr-1">{{'lang_LABEL' | translate}}</span>
+				{{'lang_LABEL' | translate}}
 			</div>
 			
-			<div class="dropdown-menu dropdown-menu-small">
+			<div uib-dropdown-menu>
 				
-				<a class="dropdown-item" href="/en{{state.current.url}}">
+				<a href="/en{{state.current.url}}">
 					<span class="flag-icon flag-icon-gb mr-1"></span>
 					English
 				</a>
 				
-				<a class="dropdown-item" href="/fr{{state.current.url}}">
+				<a href="/fr{{state.current.url}}">
 					<span class="flag-icon flag-icon-fr mr-1"></span>
 					Français
 				</a>
 				
 			</div>
 			
-		</div>
-		
-		<a ng-show="!user.authenticated" ui-sref="root.login" class="d-block px-3 topbar-text">
-			<i class="fa fa-sign-in mr-2"></i>
+        </div>
+         
+		<a ui-sref="root.login" ng-show="!user.authenticated" >
+			<i class="fa fa-sign-in mr-1"></i>
 			{{'login_LINK' | translate}}
 		</a>
 		
-		<div ng-show="user.authenticated" class="dropdown px-3">
-			
-			<div class="dropdown-toggle topbar-text" data-toggle="dropdown">
-				<i ng-if="!user.team" class="fa fa-user mr-2"></i>
-				<img ng-if="user.team" ng-src="/static/front/img/team_{{user.team}}.svg" class="img-icon mr-1" />
+        <div uib-dropdown ng-show="user.authenticated">
+            
+			<div uib-dropdown-toggle>
+				<i ng-if="!user.team" class="fa fa-user mr-1"></i>
+				<img ng-if="user.team" ng-src="/static/front/img/team_{{user.team}}.svg" />
 				{{user.name}}
 			</div>
 			
-			<div class="dropdown-menu dropdown-menu-right dropdown-menu-small">
-				
-				<a class="dropdown-item" ui-sref="root.profile">
+			<div uib-dropdown-menu class="dropdown-menu-right">
+			    
+				<a ui-sref="root.profile">
 					{{'profile_LINK' | translate}}
 				</a>
 				
-				<a class="dropdown-item" href="javascript:;" ng-click="logout();">
+				<a href="javascript:;" ng-click="logout();">
 					{{'logout_LINK' | translate}}
 				</a>
 				
 			</div>
 			
-		</div>
-	
-	</div>
+        </div>
+       
+    </div>
 </div>
 
-<header class="hidden-sm-up">
-	
-	<div class="menu-toggler" ng-click="menuopened = !menuopened">
+<div class="menu-overlay" ng-show="menu_open" ng-click="menu_open = false;"></div>
+
+<div class="menu-pane" ng-click="menu_open = false;" ng-class="{'open': menu_open}">
+    
+    <header>
+    	
+		<a ui-sref="root.home">
+			MyPoGoDex
+		</a>
+		
+    </header>
+    
+	<nav>
+	    
+	    <a ui-sref="root.ivcalculator" ui-sref-active="active">
+	    	{{'menu_IVCALCULATOR' | translate}}
+	    </a>
+	    
+	    <a ui-sref="root.pogodex" ui-sref-active="active">
+	    	{{'menu_POGODEX' | translate}}
+	    </a>
+	    
+	    <nav>
+	        
+			<span>
+				{{'menu_CHARTS' | translate}}
+			</span>
+	        
+    	    <a ui-sref="root.pokedex" ui-sref-active="active">
+    	    	{{'menu_POKEDEX' | translate}}
+    	    </a>
+	        
+	    </nav>
+	    
+	</nav>
+    
+</div>
+
+<header class="hidden-up">
+    
+	<div class="menu-toggler" ng-click="menu_open = true">
 		<i class="fa fa-bars fa-fw"></i>
 	</div>
+    
+	<h1>
+		{{state.current.data.title | translate}}
+	</h1>
 	
-	<div ng-show="menuopened" class="menu-overlay" ng-click="menuopened = false"></div>
-	
-	<div ng-class="{opened: menuopened}" class="menu-pane">
-		
-		<a ui-sref="root.home" class="header" ng-click="menuopened = false">
-			<span class="title">MyPoGoDex</span>
-		</a>
-		
-		<nav class="menu">
-			
-			<a ng-click="menuopened = false" ui-sref-active="active" ui-sref="root.pogodex" class="item">{{'menu_POGODEX' | translate}}</a>
-			<a ng-click="menuopened = false" ui-sref-active="active" ui-sref="root.ivcalculator" class="item">{{'menu_IVCALCULATOR' | translate}}</a>
-			
-			<div class="title">{{'menu_CHARTS' | translate}}</div>
-				<a ng-click="menuopened = false" ui-sref-active="active" ui-sref="root.pokedex" class="subitem">{{'menu_POKEDEX' | translate}}</a>
-			
-		</nav>
-		
-	</div>
-	
-	<h1>{{state.current.data.title | translate}}</h1>
-
 </header>
 
-<header class="hidden-xs-down sticky-top">
-	<div class="container">
-	
-		<a ui-sref="root.home" class="header-brand">
-			<span class="title">MyPoGoDex</span>
+<header class="hidden-down">
+    <div class="container">
+        
+		<a ui-sref="root.home">
+			MyPoGoDex
 		</a>
 		
-		<nav class="header-nav">
+		<nav>
 			
-			<a ui-sref-active="active" ui-sref="root.pogodex" class="header-navitem">{{'menu_POGODEX' | translate}}</a>
-			<a ui-sref-active="active" ui-sref="root.ivcalculator" class="header-navitem">{{'menu_IVCALCULATOR' | translate}}</a>
+			<a ui-sref-active="active" ui-sref="root.pogodex">
+				{{'menu_POGODEX' | translate}}
+			</a>
 			
-			<div class="dropdown">
+			<a ui-sref-active="active" ui-sref="root.ivcalculator">
+				{{'menu_IVCALCULATOR' | translate}}
+			</a>
+			
+			<div uib-dropdown>
 				
-				<div class="header-navitem dropdown-toggle" data-toggle="dropdown">
+				<div uib-dropdown-toggle>
 					{{'menu_CHARTS' | translate}}
 				</div>
 				
-				<div class="dropdown-menu">
-					<a class="dropdown-item" ui-sref="root.pokedex">{{'menu_POKEDEX' | translate}}</a>
+				<div uib-dropdown-menu>
+					
+					<a ui-sref="root.pokedex">
+						{{'menu_POKEDEX' | translate}}
+					</a>
+					
 				</div>
 				
 			</div>
 			
 		</nav>
-	
-	</div>
+        
+    </div>
 </header>
 
 <div class="content">
-	<div id="toast-content" class="container" ui-view="">
-		
-		<div class="loading">
-			<img src="/static/front/img/loading.gif" />
-		</div>
-		
+    
+	<div class="loading" ng-show="route_loading">
+		<img src="/static/front/img/loading.gif" />
 	</div>
+
+    <div class="container" ui-view="" ng-show="!route_loading"></div>
+    
 </div>
 
 <footer>
-	<div class="container">
-	
-		<a href="mailto:pogodex.site@gmail.com" class="footer-text px-3">
+    <div class="container">
+        
+		<a href="mailto:pogodex.site@gmail.com">
 			<i class="fa fa-envelope"></i>
 		</a>
 		
-		<div class="footer-text">
+		<span>
 			2017 © Copyright DECONINCK Frédéric
-		</div>
-	
-	</div>
+		</span>
+		
+    </div>
 </footer>
+
+<script>
+    $(document).ready(function() {
+        
+        $(window).on('scroll', function() {
+            
+            var fromTop = $('body').scrollTop();
+            
+            $('.menu-pane').toggleClass('sticky', (fromTop > 32));
+            $('.wrapper > header').toggleClass('sticky', (fromTop > 32));
+        });
+    });
+</script>

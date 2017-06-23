@@ -77,14 +77,14 @@ angular.module('AngularApp.controllers').controller('ProfileCtrl', function($sco
 		});
 	}
 	
-	$scope.nameBlur = function() {
+	$scope.nameBlur = function(newvalue) {
 		
 		$scope.editname = false;
 		
-		if ($scope.newname && $scope.newname != UserService.data.name) {
+		if (newvalue && newvalue != UserService.data.name) {
 			
 			$scope.loadingname = true;
-			UserService.updateName($scope.newname).then(function() {
+			UserService.updateName(newvalue).then(function() {
 				$scope.loadingname = false;
 			});
 		}
@@ -274,7 +274,7 @@ angular.module('AngularApp.controllers').controller('PogodexCtrl', function($sco
 	$scope.sort = PogodexService.setSort;
 });
 
-angular.module('AngularApp.controllers').controller('PokemonCtrl', function($scope, $stateParams, $timeout, PokemonService, PogodexService, UserService) {
+angular.module('AngularApp.controllers').controller('PokemonCtrl', function($scope, $stateParams, $timeout, $uibModal, PokemonService, PogodexService, UserService) {
 	
 	$scope.profile = UserService.data;
 	
@@ -285,6 +285,17 @@ angular.module('AngularApp.controllers').controller('PokemonCtrl', function($sco
 		$scope.data = PokemonService.data;
 		
 		$scope.newname = PokemonService.data.pokemon.name;
+		
+		$scope.slider = {
+			value: PokemonService.data.pokemon.level,
+			options: {
+				ceil: 39,
+				step: 0.5,
+				floor: 1,
+				precision: 1,
+				showSelectionBar: true
+			}
+		};
 		
 		$scope.isLoading = false;
 		
@@ -333,6 +344,8 @@ angular.module('AngularApp.controllers').controller('PokemonCtrl', function($sco
 		}
 	}
 	
+	/* Delete */
+
 	$scope.delete = PogodexService.delete;
 });
 
