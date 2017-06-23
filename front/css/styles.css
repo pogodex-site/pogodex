@@ -563,8 +563,9 @@ label {
 
 .menu-pane header a {
     display: block;
-    font-size: 1.5rem; font-weight: 100;
+    padding-left: .5rem;
     letter-spacing: -1.5px; white-space: nowrap;
+    color: #FFFFFF; font-size: 1.5rem; font-weight: 100;
 }
 
 .menu-pane nav {
